@@ -3,7 +3,7 @@ td{
 }
 
 table {
-  
+    font-family: "MSゴシック" ;
     border-collapse: collapse;
     border: solid 2px orange;/*表全体を線で囲う*/
   }
@@ -13,7 +13,12 @@ table {
     /*破線 1px オレンジ*/
   }
 
+/* .subtotal_1{
+  background-color: #ffd9d2;
+} */
+
 h1 {
+  font-family: "MSゴシック" ;
   text-align: center;
   background: #ffd98a;
   padding: 2px 5px 2px 25px;
@@ -22,4 +27,13 @@ h1 {
   border-radius: 100px 100px 10px 10px;
 
   color: #ffffff;
+}
+
+.txt{
+  width: 50%;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  
+  
 }
