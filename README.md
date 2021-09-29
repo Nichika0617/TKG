@@ -4,7 +4,7 @@ ___
 
 [Miroはこちら](https://miro.com/app/board/o9J_lvA2OUA=/)
 
-[TKGのURL](http://まだない)
+[TKGのURL](https://nichika0617.github.io/TKG/)
 ___
 
 ## エレベーターピッチ
@@ -15,7 +15,7 @@ ___
 
 履修登録の不安を減らすこと を実現する
 
- TKG  です。
+ TKG です。
  
 これは  本当に選択するべき科目の把握，個数の確認，また，講義を受けた人のレビュー閲覧  ができ
 
