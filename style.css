@@ -10,3 +10,13 @@ table {
     border: dashed 1px orange;/**/
     /*破線 1px オレンジ*/
   }
+
+/* タイトルデザイン */
+h1 {
+  position: relative;
+  background: #ffd98a;
+  padding: 2px 5px 2px 25px;
+  font-size: 30px;
+  color: #474747;
+  border-radius: 0 100px 10px 0;
+}
