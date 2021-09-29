@@ -3,10 +3,23 @@ td{
 }
 
 table {
+  
     border-collapse: collapse;
     border: solid 2px orange;/*表全体を線で囲う*/
   }
+
   table th, table td {
     border: dashed 1px orange;/**/
     /*破線 1px オレンジ*/
   }
+
+h1 {
+  text-align: center;
+  background: #ffd98a;
+  padding: 2px 5px 2px 25px;
+  font-size: 30px;
+  color: #474747;
+  border-radius: 100px 100px 10px 10px;
+
+  color: #ffffff;
+}
