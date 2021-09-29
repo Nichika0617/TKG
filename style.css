@@ -13,6 +13,10 @@ table {
     /*破線 1px オレンジ*/
   }
 
+/* .subtotal_1{
+  background-color: #ffd9d2;
+} */
+
 h1 {
   text-align: center;
   background: #ffd98a;
@@ -22,4 +26,13 @@ h1 {
   border-radius: 100px 100px 10px 10px;
 
   color: #ffffff;
+}
+
+.txt{
+  width: 50%;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  
+  
 }
