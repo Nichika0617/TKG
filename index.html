@@ -12,49 +12,56 @@
 </head>
 <body>
     
-        <h1>TKG 〜TANNI KEISAN GAIDO〜</h1>
-        <div style="text-align: center;">[取得単位]列に数値を入力してください</div>
-          </svg>
-            <table align="center" border="1">
-                <tr>
-                    <th> </th>
-                    <th>必須単位</th>
-                    <th>取得単位</th>
-                    <th>不足単位(必修)</th>
-                    
-                </tr>
+
+    <h1>TKG 〜TANNI KEISAN GAIDO〜</h1>
+    <div style="text-align: center;">[取得単位]列に数値を入力してください</div>
+        </svg>
+        <table align="center" border="1">
+            <tr>
+                <th> </th>
+                <th>必須単位</th>
+                <th>取得単位</th>
+                <th>不足単位(必修)</th>
                 
-                <tr>
-                    <th>■共通教育</th>
-                    <td></td>
-                    <td> 
-                        
-                    </td>
-                    <td></td>
-                </tr>
-
-                <tr>
-                    <th>健康運動</th>
-                    <td>2</td>
-                    <td>
-                        <input type="text" class="txt">
-                    </td>
-                    <td></td>
-                </tr>
-
-                <tr>
-                    <th>　</th>
-                    <td></td>
-                    <td>
+            </tr>
+            
+            <tr>
+                <th class="category">■共通教育</th>
+                <td></td>
+                <td> 
                     
-                    </td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th class="subtotal_1">人文
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark" viewBox="0 0 16 16">
-                            <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
-                        </svg>
+                </td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <th>健康運動
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-check-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zm8.854-9.646a.5.5 0 0 0-.708-.708L7.5 7.793 6.354 6.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
+                      </svg>
+                </th>
+                <td>2</td>
+                <td>
+                    <input type="text" class="txt" onKeyDown="return next_text(1);" id="health">
+                </td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <th>　</th>
+                <td></td>
+                <td>
+                
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="subtotal_1">人文
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark" viewBox="0 0 16 16">
+                        <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
+                    </svg>
+
+                    
 
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-check" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M10.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
@@ -64,9 +71,9 @@
                     </th>
                     <td>2</td>
                     <td>
-                        <input type="text" class="txt">
+                        <input type="number" class="box" id="jinbun">
                     </td>
-                    <td></td>
+                    <td><input id="result_jinbun" class="box" type="text" readonly=""></td>
                 </tr>
 
                 <tr>
@@ -82,9 +89,9 @@
                     </th>
                     <td>2</td>
                     <td>
-                        <input type="text" class="txt">
+                        <input type="number" class="box" id="syakai">
                     </td>
-                    <td></td>
+                    <td><input id="result_syakai" class="box" type="text" readonly=""></td>
                 </tr>
 
                 <tr>
@@ -100,7 +107,7 @@
                     </th>
                     <td></td>
                     <td>
-                        <input type="text" class="txt">
+                        <input type="number" class="box" id="sougou">
                     </td>
                     <td></td>
                 </tr>
@@ -118,7 +125,7 @@
                     </th>
                     <td></td>
                     <td>
-                        <input type="text" class="txt">
+                        <input type="number" class="box" id="career">
                     </td>
                     <td></td>
                 </tr>
@@ -136,7 +143,7 @@
                     </th>
                     <td></td>
                     <td>
-                        <input type="text" class="txt">
+                        <input type="number" class="box" id="ryudai">
                     </td>
                     <td></td>
                 </tr>
@@ -153,15 +160,15 @@
                           </svg>
                           <br>総合 キャリア関係 琉大特色・地域創生</th>
                     <td>2</td>
-                    <td></td>
-                    <td></td>
+                    <td><input id="sougouryouiki" class="box" type="text" readonly=""></td>
+                    <td><input id="result_sougouryouiki" class="box" type="text" readonly=""></td>
                 </tr>
 
                 <tr>
                     <th>日本語・日本語事情</th>
                     <td></td>
                     <td>
-                        <input type="text" class="txt">
+                        <input type="text" class="txt" id="Japanese">
                     </td>
                     <td></td>
                 </tr>
@@ -186,7 +193,7 @@
                     </th>
                     <td></td>
                     <td>
-                        <input type="text" class="txt">
+                        <input type="text" class="txt" id="sizen">
                     </td>
                     <td></td>
                 </tr>
@@ -215,7 +222,7 @@
                     <th>情報関係</th>
                     <td>2</td>
                     <td>
-                        <input type="text" class="txt">
+                        <input type="text" class="txt" id="info">
                     </td>
                     <td></td>
                 </tr>
@@ -231,7 +238,7 @@
                     <th>英語</th>
                     <td>8</td>
                     <td>
-                        <input type="text" class="txt">
+                        <input type="text" class="txt" id="English">
                     </td>
                     <td></td>
                 </tr>
@@ -240,7 +247,7 @@
                     <th>ドイツ語</th>
                     <td></td>
                     <td>
-                        <input type="text" class="txt">
+                        <input type="text" class="txt" id="German">
                     </td>
                     <td></td>
                 </tr>
@@ -249,7 +256,7 @@
                     <th>フランス語</th>
                     <td></td>
                     <td>
-                        <input type="text" class="txt">
+                        <input type="text" class="txt" id="French">
                     </td>
                     <td></td>
                 </tr>
@@ -258,7 +265,7 @@
                     <th>スペイン語</th>
                     <td></td>
                     <td>
-                        <input type="text" class="txt">
+                        <input type="text" class="txt" id="Spanish">
                     </td>
                     <td></td>
                 </tr>
@@ -267,7 +274,7 @@
                     <th>中国語</th>
                     <td></td>
                     <td>
-                        <input type="text" class="txt">
+                        <input type="text" class="txt" id="Chinese">
                     </td>
                     <td></td>
                 </tr>
@@ -276,7 +283,7 @@
                     <th>その他</th>
                     <td></td>
                     <td>
-                        <input type="text" class="txt">
+                        <input type="text" class="txt" id="etc">
                     </td>
                     <td></td>
                 </tr>
@@ -327,7 +334,7 @@
                     <th>専門基礎</th>
                     <td>8</td>
                     <td>
-                        <input type="text" class="txt">
+                        <input type="text" class="txt" id="major_base">
                     </td>
                     <td></td>
                 </tr>
@@ -336,7 +343,7 @@
                     <th>専門基礎指定外</th>
                     <td></td>
                     <td>
-                        <input type="text" class="txt">
+                        <input type="text" class="txt" id="out_major_base">
                     </td>
                     <td></td>
                 </tr>
@@ -359,7 +366,7 @@
                     <th>情報技術</th>
                     <td>2</td>
                     <td>
-                        <input type="text" class="txt">
+                        <input type="text" class="txt" id="info_tec">
                     </td>
                     <td></td>
                 </tr>
@@ -368,7 +375,7 @@
                     <th>総合力演習</th>
                     <td>7</td>
                     <td>
-                        <input type="text" class="txt">
+                        <input type="text" class="txt" id="ex">
                     </td>
                     <td></td>
                 </tr>
@@ -377,7 +384,7 @@
                     <th>研究実験</th>
                     <td>15</td>
                     <td>
-                        <input type="text" class="txt">
+                        <input type="text" class="txt" id="experiment">
                     </td>
                     <td></td>
                 </tr>
@@ -386,7 +393,7 @@
                     <th>数学基礎</th>
                     <td>6</td>
                     <td>
-                        <input type="text" class="txt">
+                        <input type="text" class="txt" id="math_base">
                     </td>
                     <td></td>
                 </tr>
@@ -395,7 +402,7 @@
                     <th>知能情報コア</th>
                     <td>26</td>
                     <td>
-                        <input type="text" class="txt">
+                        <input type="text" class="txt" id="core">
                     </td>
                     <td></td>
                 </tr>
@@ -411,7 +418,7 @@
                     <th>工学融合(選択)</th>
                     <td>4</td>
                     <td>
-                        <input type="text" class="txt">
+                        <input type="text" class="txt" id="fusion">
                     </td>
                     <td></td>
                 </tr>
@@ -420,7 +427,7 @@
                     <th>数学基礎(選択)</th>
                     <td></td>
                     <td>
-                        <input type="text" class="txt">
+                        <input type="text" class="txt" id="math_base_select">
                     </td>
                     <td></td>
                 </tr>
@@ -429,7 +436,7 @@
                     <th>知能情報アドバンスド</th>
                     <td></td>
                     <td>
-                        <input type="text" class="txt">
+                        <input type="text" class="txt" id="adv">
                     </td>
                     <td></td>
                 </tr>
@@ -438,7 +445,7 @@
                     <th>知能情報関連</th>
                     <td></td>
                     <td>
-                        <input type="text" class="txt">
+                        <input type="text" class="txt" id="relation">
                     </td>
                     <td></td>
                 </tr>
@@ -454,7 +461,7 @@
                     <th>選択(工学共通)</th>
                     <td></td>
                     <td>
-                        <input type="text" class="txt">
+                        <input type="text" class="txt" id="common_engineering">
                     </td>
                     <td></td>
                 </tr>
@@ -463,7 +470,7 @@
                     <th>自由</th>
                     <td></td>
                     <td>
-                        <input type="text" class="txt">
+                        <input type="text" class="txt" id="free">
                     </td>
                     <td></td>
                 </tr>
@@ -472,7 +479,7 @@
                     <th>教職</th>
                     <td></td>
                     <td>
-                        <input type="text" class="txt">
+                        <input type="text" class="txt" id="teacher">
                     </td>
                     <td></td>
                 </tr>
@@ -520,6 +527,12 @@
                 </tr>
 
             </table>
+            <!--
+                <p><input type="button" class="calc-btn" onclick="calc(jinbun.value, syakai.value, sougou.value, career.value, ryudai.value);" value="計算"></p>
+            -->
+            <p><input type="button" class="calc-btn" onclick="calc();" value="計算"></p>
+        
+            </form>
         
     <script src="app.js"></script>
 </body>
