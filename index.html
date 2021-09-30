@@ -15,6 +15,7 @@
         <h1>TKG 〜TANNI KEISAN GAIDO〜</h1>
         <div style="text-align: center;">[取得単位]列に数値を入力してください</div>
           </svg>
+          <form class="diet_form">
             <table align="center" border="1">
                 <tr>
                     <th> </th>
@@ -64,9 +65,9 @@
                     </th>
                     <td>2</td>
                     <td>
-                        <input type="text" class="txt">
+                        <input type="number" class="box" name="jinbun">
                     </td>
-                    <td></td>
+                    <td><input id="result_jinbun" class="box" type="text" readonly=""></td>
                 </tr>
 
                 <tr>
@@ -520,6 +521,8 @@
                 </tr>
 
             </table>
+            <p><input type="button" class="calc-btn" onclick="calc(jinbun.value);" value="計算"></p>
+        </form>
         
     <script src="app.js"></script>
 </body>
