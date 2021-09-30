@@ -1,8 +1,8 @@
-function calc(jinbun, syakai, sougou,  career, ryudai) {
-    //const jinbun = document.getElementById('jinbun');
-    //const syakai = document.getElementById('syakai');
-    const sougouryouiki = document.getElementById('sougouryouiki');
-
+function calc() {
+    const jinbun = parseInt(document.getElementById('jinbun').value);
+    const syakai = parseInt(document.getElementById('syakai').value);
+    const sougouryouiki = parseInt(document.getElementById('sougouryouiki'));
+    console.log(jinbun);
     if (jinbun > 2) {
         document.getElementById('result_jinbun').value = 0;
     }else{
@@ -22,12 +22,12 @@ function calc(jinbun, syakai, sougou,  career, ryudai) {
     }else{
         document.getElementById('result_sougouryouiki').value = 2 - parseInt(sum_sougouryouiki);
     }
-
+    /*
     if (Japanese > 2) {
         document.getElementById('result_Japanese').value = 0;
     }else{
         document.getElementById('result_Japanese').value = 2 - parseInt(sum_sougouryouiki);
     }
-
+    */
     
 }
