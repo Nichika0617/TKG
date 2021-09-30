@@ -40,4 +40,3 @@ const next_input = (id) => {
         
     }
 };
-

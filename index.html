@@ -39,7 +39,7 @@
                 </th>
                 <td>2</td>
                 <td>
-                    <input id="health" type="text" class="txt" onKeyDown="next_input('jinbun')">
+                    <input id="health" type="text" class="txt" onKeyDown="next_input('jinbun');calc();">
                 </td>
                 </td>
                 <td></td>
@@ -67,7 +67,7 @@
                     </th>
                     <td>2</td>
                     <td>
-                        <input type="number" class="box" id="jinbun">
+                        <input type="number" class="box" id="jinbun" onKeyDown="next_input('syakai');calc();">
                     </td>
                     <td><input id="result_jinbun" class="box" type="text" readonly=""></td>
                 </tr>
@@ -85,7 +85,7 @@
                     </th>
                     <td>2</td>
                     <td>
-                        <input type="number" class="box" id="syakai">
+                        <input type="number" class="box" id="syakai" onKeyDown="next_input('sougou');calc();">
                     </td>
                     <td><input id="result_syakai" class="box" type="text" readonly=""></td>
                 </tr>
@@ -103,7 +103,7 @@
                     </th>
                     <td></td>
                     <td>
-                        <input type="number" class="box" id="sougou">
+                        <input type="number" class="box" id="sougou" onKeyDown="next_input('career');calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -121,7 +121,7 @@
                     </th>
                     <td></td>
                     <td>
-                        <input type="number" class="box" id="career">
+                        <input type="number" class="box" id="career" onKeyDown="next_input('ryudai');calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -139,7 +139,7 @@
                     </th>
                     <td></td>
                     <td>
-                        <input type="number" class="box" id="ryudai">
+                        <input type="number" class="box" id="ryudai" onKeyDown="next_input('Japanese');calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -166,7 +166,7 @@
                     <th>日本語・日本語事情</th>
                     <td></td>
                     <td>
-                        <input type="text" class="txt" id="Japanese">
+                        <input type="text" class="txt" id="Japanese" onKeyDown="next_input('sizen');calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -191,7 +191,7 @@
                     </th>
                     <td></td>
                     <td>
-                        <input type="text" class="txt" id="sizen">
+                        <input type="text" class="txt" id="sizen" onKeyDown="next_input('info');calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -220,7 +220,7 @@
                     <th>情報関係</th>
                     <td>2</td>
                     <td>
-                        <input type="text" class="txt" id="info">
+                        <input type="text" class="txt" id="info" onKeyDown="next_input('English');calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -236,7 +236,7 @@
                     <th>英語</th>
                     <td>8</td>
                     <td>
-                        <input type="text" class="txt" id="English">
+                        <input type="text" class="txt" id="English" onKeyDown="next_input('German');calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -245,7 +245,7 @@
                     <th>ドイツ語</th>
                     <td></td>
                     <td>
-                        <input type="text" class="txt" id="German">
+                        <input type="text" class="txt" id="German" onKeyDown="next_input('French');calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -254,7 +254,7 @@
                     <th>フランス語</th>
                     <td></td>
                     <td>
-                        <input type="text" class="txt" id="French">
+                        <input type="text" class="txt" id="French" onKeyDown="next_input('Spanish');calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -263,7 +263,7 @@
                     <th>スペイン語</th>
                     <td></td>
                     <td>
-                        <input type="text" class="txt" id="Spanish">
+                        <input type="text" class="txt" id="Spanish"onKeyDown="next_input('Chinese');calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -272,7 +272,7 @@
                     <th>中国語</th>
                     <td></td>
                     <td>
-                        <input type="text" class="txt" id="Chinese">
+                        <input type="text" class="txt" id="Chinese" onKeyDown="next_input('etc');calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -281,7 +281,7 @@
                     <th>その他</th>
                     <td></td>
                     <td>
-                        <input type="text" class="txt" id="etc">
+                        <input type="text" class="txt" id="etc" onKeyDown="next_input('major_base');calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -332,7 +332,7 @@
                     <th>専門基礎</th>
                     <td>8</td>
                     <td>
-                        <input type="text" class="txt" id="major_base">
+                        <input type="text" class="txt" id="major_base" onKeyDown="next_input('out_major_base');calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -341,7 +341,7 @@
                     <th>専門基礎指定外</th>
                     <td></td>
                     <td>
-                        <input type="text" class="txt" id="out_major_base">
+                        <input type="text" class="txt" id="out_major_base" onKeyDown="next_input('info_tec');calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -364,7 +364,7 @@
                     <th>情報技術</th>
                     <td>2</td>
                     <td>
-                        <input type="text" class="txt" id="info_tec">
+                        <input type="text" class="txt" id="info_tec" onKeyDown="next_input('ex');calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -373,7 +373,7 @@
                     <th>総合力演習</th>
                     <td>7</td>
                     <td>
-                        <input type="text" class="txt" id="ex">
+                        <input type="text" class="txt" id="ex" onKeyDown="next_input('experiment');calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -382,7 +382,7 @@
                     <th>研究実験</th>
                     <td>15</td>
                     <td>
-                        <input type="text" class="txt" id="experiment">
+                        <input type="text" class="txt" id="experiment" onKeyDown="next_input('math_base');calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -391,7 +391,7 @@
                     <th>数学基礎</th>
                     <td>6</td>
                     <td>
-                        <input type="text" class="txt" id="math_base">
+                        <input type="text" class="txt" id="math_base" onKeyDown="next_input('core');calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -400,7 +400,7 @@
                     <th>知能情報コア</th>
                     <td>26</td>
                     <td>
-                        <input type="text" class="txt" id="core">
+                        <input type="text" class="txt" id="core" onKeyDown="next_input('fusion');calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -416,7 +416,7 @@
                     <th>工学融合(選択)</th>
                     <td>4</td>
                     <td>
-                        <input type="text" class="txt" id="fusion">
+                        <input type="text" class="txt" id="fusion" onKeyDown="next_input('math_base_select');calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -425,7 +425,7 @@
                     <th>数学基礎(選択)</th>
                     <td></td>
                     <td>
-                        <input type="text" class="txt" id="math_base_select">
+                        <input type="text" class="txt" id="math_base_select" onKeyDown="next_input('adv');calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -434,7 +434,7 @@
                     <th>知能情報アドバンスド</th>
                     <td></td>
                     <td>
-                        <input type="text" class="txt" id="adv">
+                        <input type="text" class="txt" id="adv" onKeyDown="next_input('relation');calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -443,7 +443,7 @@
                     <th>知能情報関連</th>
                     <td></td>
                     <td>
-                        <input type="text" class="txt" id="relation">
+                        <input type="text" class="txt" id="relation" onKeyDown="next_input('common_engineering');calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -459,7 +459,7 @@
                     <th>選択(工学共通)</th>
                     <td></td>
                     <td>
-                        <input type="text" class="txt" id="common_engineering">
+                        <input type="text" class="txt" id="common_engineering" onKeyDown="next_input('free'); calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -468,7 +468,7 @@
                     <th>自由</th>
                     <td></td>
                     <td>
-                        <input type="text" class="txt" id="free">
+                        <input type="text" class="txt" id="free" onKeyDown="next_input('teacher');calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -477,7 +477,7 @@
                     <th>教職</th>
                     <td></td>
                     <td>
-                        <input type="text" class="txt" id="teacher">
+                        <input type="text" class="txt" id="teacher" onkeydown="calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -528,7 +528,7 @@
             <!--
                 <p><input type="button" class="calc-btn" onclick="calc(jinbun.value, syakai.value, sougou.value, career.value, ryudai.value);" value="計算"></p>
             -->
-            <p><input type="button" class="calc-btn" onclick="calc();" value="計算"></p>
+            <!-- <p><input type="button" class="calc-btn" onclick="calc();" value="計算"></p> -->
         
             </form>
         
