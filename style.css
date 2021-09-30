@@ -10,6 +10,7 @@ table {
 
   table th, table td {
     border: dashed 1px orange;/**/
+    text-align: center;
     /*破線 1px オレンジ*/
   }
 
@@ -35,4 +36,9 @@ h1 {
   border-left: none;
   
   
+}
+
+.category{
+  text-align: left;
+  background-color: #ffd98a;
 }
