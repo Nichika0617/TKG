@@ -31,3 +31,13 @@ function calc() {
     */
     
 }
+
+const next_input = (id) => {
+    if( window.event.keyCode == 13 ){        // 13は0x0d(CRキー)
+        // 次のテキストボックスへ飛ばす処理
+        // window.alert('エンター押された')
+        document.getElementById(id).focus();
+        
+    }
+};
+
