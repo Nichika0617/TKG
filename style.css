@@ -3,9 +3,9 @@ td{
 }
 
 table {
-    font-family: "MSゴシック" ;
-    border-collapse: collapse;
-    border: solid 2px orange;/*表全体を線で囲う*/
+  font-family: "MSゴシック" ;
+  border-collapse: collapse;    
+  border: solid 2px orange;/*表全体を線で囲う*/
   }
 
   table th, table td {
@@ -17,8 +17,10 @@ table {
 /* .subtotal_1{
   background-color: #ffd9d2;
 } */
+/* ↑↑小計の内訳はとりあえずアイコンで */
 
 h1 {
+  /* タイトルTLGのCSS */
   font-family: "MSゴシック" ;
   text-align: center;
   background: #ffd98a;
@@ -29,7 +31,14 @@ h1 {
   color: #ffffff;
 }
 
+.useage{
+  /* 上の使い方説明のcss */
+  text-align: center;
+  margin: 10px 10px;
+}
+
 .txt{
+  /* 入力してもらうinputのCSS */
   width: 50%;
   border-top: none;
   border-right: none;
@@ -39,6 +48,8 @@ h1 {
 }
 
 .category{
+  font-size: 20px;
+  /* 共通教育，専門教育，とかのカテゴリー？のCSS */
   text-align: left;
   background-color: #ffd98a;
 }
