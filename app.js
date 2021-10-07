@@ -262,8 +262,8 @@ function calc() {
         }
     }
     // ここまで専門計__________________________________________________________________
-    document.getElementById('all_total').value = All_total;
-    document.getElementById('result_all_total').value = Math.max(130-All_total,0);
+    document.getElementById('all_total').textContent = All_total;
+    document.getElementById('result_all_total').textContent = Math.max(130-All_total,0);
 
 }
 
