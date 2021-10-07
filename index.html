@@ -88,10 +88,11 @@
                 </th>
                 <td>2</td>
                 <td>
-                    <input id="health" type="number" class="txt" onKeyDown="next_input('jinbun');calc();">
+                    <input id="health" class="txt" type="number" onKeyDown="next_input('jinbun');calc();">
                 </td>
+                <td id="result_health">
+                    <!-- 計算結果をjsから書き込む． -->
                 </td>
-                <td></td>
             </tr>
 <!--____________________________________________________________-->
             <tr>
@@ -118,9 +119,9 @@
                     </th>
                     <td>2</td>
                     <td>
-                        <input type="number" class="txt"" id="jinbun" onKeyDown="next_input('syakai');calc();">
+                        <input type="number" class="txt" id="jinbun" onKeyDown="next_input('syakai');calc();">
                     </td>
-                    <td><input id="result_jinbun" class="txt" type="number" readonly=""></td>
+                    <td id="result_jinbun"></td>
                 </tr>
 <!--____________________________________________________________-->
                 <tr>
@@ -131,9 +132,9 @@
                     </th>
                     <td>2</td>
                     <td>
-                        <input type="number" class="txt"" id="syakai" onKeyDown="next_input('sougou');calc();">
+                        <input id="syakai" class="txt" type="number" onKeyDown="next_input('sougou');calc();">
                     </td>
-                    <td><input id="result_syakai" class="txt" type="number" readonly=""></td>
+                    <td id="result_syakai"></td>
                 </tr>
 <!--____________________________________________________________-->
                 <tr>
@@ -144,7 +145,7 @@
                     </th>
                     <td></td>
                     <td>
-                        <input type="number" class="txt"" id="sougou" onKeyDown="next_input('career');calc();">
+                        <input id="sougou" class="txt" type="number" onKeyDown="next_input('career');calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -157,7 +158,7 @@
                     </th>
                     <td></td>
                     <td>
-                        <input type="number" class="txt"" id="career" onKeyDown="next_input('ryudai');calc();">
+                        <input id="career" class="txt" type="number" onKeyDown="next_input('ryudai');calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -170,7 +171,7 @@
                     </th>
                     <td></td>
                     <td>
-                        <input type="number" class="txt"" id="ryudai" onKeyDown="next_input('Japanese');calc();">
+                        <input id="ryudai" class="txt" type="number" onKeyDown="next_input('Japanese');calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -184,17 +185,17 @@
                           総合 キャリア関係 琉大特色・地域創生
                     </th>
                     <td>2</td>
-                    <td><input id="sougouryouiki" class="box" type="text" readonly=""></td> 
-                    <!-- ↑↑sumを自動で出力 だからreadonly -->
-                    <td><input id="result_sougouryouiki" class="box" type="text" readonly=""></td>
-                    <!-- 計算結果を自動で出力 だからreadonly -->
+                    <td id="sougouryouiki"></td> 
+                    
+                    <td id="result_sougouryouiki"></td>
+                    
                 </tr>
 <!--____________________________________________________________-->
                 <tr>
                     <th>日本語・日本語事情</th>
                     <td></td>
                     <td>
-                        <input type="number" class="txt" id="Japanese" onKeyDown="next_input('sizen');calc();">
+                        <input id="Japanese" class="txt" type="number" onKeyDown="next_input('sizen');calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -212,8 +213,8 @@
     
                     </th>
                     <td>12</td>
-                    <td><input id="subtotal1" class="txt" type="number" readonly=""></td>
-                    <td><input id="result_subtotal1" class="txt" type="number" readonly=""></td>
+                    <td id="subtotal1"></td>
+                    <td id ="result_subtotal1"></td>
                 </tr>
 <!--____________________________________________________________-->
                 <tr>
@@ -225,7 +226,7 @@
                     </th>
                     <td></td>
                     <td>
-                        <input type="number" class="txt" id="sizen" onKeyDown="next_input('info');calc();">
+                        <input id="sizen" class="txt" type="number" onKeyDown="next_input('info');calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -242,8 +243,8 @@
                     </svg>
                     </th>
                     <td>14</td>
-                    <td><input id="subtotal2" class="txt" type="number" readonly=""></td>
-                    <td><input id="result_subtotal2" class="txt" type="number" readonly=""></td>
+                    <td id="subtotal2"></td>
+                    <td id="result_subtotal2"></td>
                 </tr>
 
                 <tr>
@@ -263,11 +264,9 @@
                     </th>
                     <td>2</td>
                     <td>
-                        <input type="number" class="txt" id="info" onKeyDown="next_input('English');calc();">
+                        <input id="info" class="txt" type="number" onKeyDown="next_input('English');calc();">
                     </td>
-                    <td>
-                        <input type="number" class="txt" id="result_info" readonly="">
-                    </td>
+                    <td id="result_info"></td>
                 </tr>
 
                 <tr>
@@ -281,15 +280,16 @@
 <!--____________________________________________________________-->
                 <tr>
                     <th>英語
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-check-fill" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zm8.854-9.646a.5.5 0 0 0-.708-.708L7.5 7.793 6.354 6.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-x" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M6.146 5.146a.5.5 0 0 1 .708 0L8 6.293l1.146-1.147a.5.5 0 1 1 .708.708L8.707 7l1.147 1.146a.5.5 0 0 1-.708.708L8 7.707 6.854 8.854a.5.5 0 1 1-.708-.708L7.293 7 6.146 5.854a.5.5 0 0 1 0-.708z"/>
+                            <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
                         </svg>
                     </th>
                     <td>8</td>
                     <td>
-                        <input type="number" class="txt" id="English" onKeyDown="next_input('German');calc();">
+                        <input id="English" class="txt" type="number" onKeyDown="next_input('German');calc();">
                     </td>
-                    <td></td>
+                    <td id="result_eng"></td>
                 </tr>
 <!--____________________________________________________________-->
                 <tr>
@@ -297,16 +297,13 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-dash" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M5.5 6.5A.5.5 0 0 1 6 6h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5z"/>
                             <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
-                        </svg>
-                        
-
+                        </svg>                    
                     </th>
                     <td>(4)</td>
                     <td>
-
-                        <input type="number" class="txt" id="German" onKeyDown="next_input('French');calc();">
+                        <input id="German" class="txt" type="number" onKeyDown="next_input('French');calc();">
                     </td>
-                    <td></td>
+                    <td id="result_german"></td>
                 </tr>
 <!--____________________________________________________________-->
                 <tr>
@@ -319,9 +316,9 @@
                     </th>
                     <td>(4)</td>
                     <td>
-                        <input type="number" class="txt" id="French" onKeyDown="next_input('Spanish');calc();">
+                        <input id="French" class="txt" type="number" onKeyDown="next_input('Spanish');calc();">
                     </td>
-                    <td></td>
+                    <td id="result_french"></td>
                 </tr>
 <!--____________________________________________________________-->
                 <tr>
@@ -334,9 +331,9 @@
                     </th>
                     <td>(4)</td>
                     <td>
-                        <input type="number" class="txt" id="Spanish"onKeyDown="next_input('Chinese');calc();">
+                        <input id="Spanish" class="txt" type="number" onKeyDown="next_input('Chinese');calc();">
                     </td>
-                    <td></td>
+                    <td id="result_spanish"></td>
                 </tr>
 <!--____________________________________________________________-->
                 <tr>
@@ -348,18 +345,18 @@
                     </th>
                     <td>(4)</td>
                     <td>
-                        <input type="number" class="txt" id="Chinese" onKeyDown="next_input('etc');calc();">
+                        <input id="Chinese" class="txt" type="number" onKeyDown="next_input('etc');calc();">
                     </td>
-                    <td></td>
+                    <td id="result_chinese"></td>
                 </tr>
 <!--____________________________________________________________-->
                 <tr>
                     <th>その他</th>
                     <td>(4)</td>
                     <td>
-                        <input type="number" class="txt" id="etc" onKeyDown="next_input('major_base');calc();">
+                        <input id="etc" class="txt" type="number" onKeyDown="next_input('major_base');calc();">
                     </td>
-                    <td></td>
+                    <td id="result_etc"></td>
                 </tr>
 <!--____________________________________________________________-->
                 
@@ -371,19 +368,26 @@
                         </svg>
 
                         (第二言語計)　
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-check-fill" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zm8.854-9.646a.5.5 0 0 0-.708-.708L7.5 7.793 6.354 6.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
-                    </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-x" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M6.146 5.146a.5.5 0 0 1 .708 0L8 6.293l1.146-1.147a.5.5 0 1 1 .708.708L8.707 7l1.147 1.146a.5.5 0 0 1-.708.708L8 7.707 6.854 8.854a.5.5 0 1 1-.708-.708L7.293 7 6.146 5.854a.5.5 0 0 1 0-.708z"/>
+                            <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
+                        </svg>
                     
                     <br>英語以外の1外国語を4単位
                     </th>
                     <td>4</td>
-                    <td></td>
-                    <td></td>
+                    <td id="sum_second"></td> 
+                    
+                    <td id="result_second"></td>
                 </tr>
 <!--____________________________________________________________-->
                 <tr>
-                    <th>(外国語計)
+                    <th>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-x" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M6.146 5.146a.5.5 0 0 1 .708 0L8 6.293l1.146-1.147a.5.5 0 1 1 .708.708L8.707 7l1.147 1.146a.5.5 0 0 1-.708.708L8 7.707 6.854 8.854a.5.5 0 1 1-.708-.708L7.293 7 6.146 5.854a.5.5 0 0 1 0-.708z"/>
+                            <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
+                        </svg>
+                        (外国語計)
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-check-fill" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zm8.854-9.646a.5.5 0 0 0-.708-.708L7.5 7.793 6.354 6.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
                         </svg>
@@ -391,12 +395,8 @@
                         英語12または英語8と1つの外国語4
                     </th>
                     <td>12</td>
-                    <td>
-                        <input type="number" class="txt" id="foreignTotal" readonly="">
-                    </td>
-                    <td>
-                        <input type="number" class="txt" id="result_foreignTotal" readonly="">
-                    </td>
+                    <td id="foreignTotal"></td>
+                    <td id="result_foreignTotal"></td>
                 </tr>
 
                 <tr>
@@ -425,8 +425,8 @@
                         
                     </th>
                     <td>30</td>
-                    <td></td>
-                    <td></td>
+                    <td id="total1"></td>
+                    <td id="result_total1"></td>
                 </tr>
 <!--____________________________________________________________-->
                 <tr>
@@ -458,16 +458,16 @@
                     <th>専門基礎</th>
                     <td>8</td>
                     <td>
-                        <input type="number" class="txt" id="major_base" onKeyDown="next_input('out_major_base');calc();">
+                        <input id="major_base" class="txt" type="number" onKeyDown="next_input('out_major_base');calc();">
                     </td>
-                    <td></td>
+                    <td id="result_major_base"></td>
                 </tr>
 <!--____________________________________________________________-->
                 <tr>
                     <th>専門基礎指定外</th>
                     <td></td>
                     <td>
-                        <input type="number" class="txt" id="out_major_base" onKeyDown="next_input('info_tec');calc();">
+                        <input id="out_major_base" class="txt" type="number" onKeyDown="next_input('info_tec');calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -498,9 +498,9 @@
                     </th>
                     <td>2</td>
                     <td>
-                        <input type="number" class="txt" id="info_tec" onKeyDown="next_input('ex');calc();">
+                        <input id="info_tec" class="txt" type="number" onKeyDown="next_input('ex');calc();">
                     </td>
-                    <td></td>
+                    <td id="result_info_tec"></td>
                 </tr>
 <!--____________________________________________________________-->
                 <tr>
@@ -513,9 +513,9 @@
                     </th>
                     <td>7</td>
                     <td>
-                        <input type="number" class="txt" id="ex" onKeyDown="next_input('experiment');calc();">
+                        <input id="ex" class="txt" type="number" onKeyDown="next_input('experiment');calc();">
                     </td>
-                    <td></td>
+                    <td id="result_ex"></td>
                 </tr>
 <!--____________________________________________________________-->
                 <tr>
@@ -528,9 +528,9 @@
                     </th>
                     <td>15</td>
                     <td>
-                        <input type="number" class="txt" id="experiment" onKeyDown="next_input('math_base');calc();">
+                        <input id="experiment" class="txt" type="number" onKeyDown="next_input('math_base');calc();">
                     </td>
-                    <td></td>
+                    <td id="result_exp"></td>
                 </tr>
 <!--____________________________________________________________-->
                 <tr>
@@ -542,9 +542,9 @@
                     </th>
                     <td>6</td>
                     <td>
-                        <input type="number" class="txt" id="math_base" onKeyDown="next_input('core');calc();">
+                        <input id="math_base" class="txt" type="number" onKeyDown="next_input('core');calc();">
                     </td>
-                    <td></td>
+                    <td id="result_math_base"></td>
                 </tr>
 <!--____________________________________________________________-->
                 <tr>
@@ -556,9 +556,9 @@
                     </th>
                     <td>26</td>
                     <td>
-                        <input type="number" class="txt" id="core" onKeyDown="next_input('fusion');calc();">
+                        <input id="core" class="txt" type="number" onKeyDown="next_input('fusion');calc();">
                     </td>
-                    <td></td>
+                    <td id="result_core"></td>
                 </tr>
 <!--____________________________________________________________-->
                 <tr>
@@ -578,9 +578,9 @@
                     </th>
                     <td>4</td>
                     <td>
-                        <input type="number" class="txt" id="fusion" onKeyDown="next_input('math_base_select');calc();">
+                        <input id="fusion" class="txt" type="number" onKeyDown="next_input('math_base_select');calc();">
                     </td>
-                    <td></td>
+                    <td id="result_fusion"></td>
                 </tr>
 <!--____________________________________________________________-->
                 <tr>
@@ -592,13 +592,13 @@
                     </th>
                     <td></td>
                     <td>
-                        <input type="number" class="txt" id="math_base_select" onKeyDown="next_input('adv');calc();">
+                        <input id="math_base_select" class="txt" type="number" onKeyDown="next_input('adv');calc();">
                     </td>
                     <td></td>
                 </tr>
 <!--____________________________________________________________-->
                 <tr>
-                    <th>知能情報アドバンスド
+                    <th>知能情報アドバンスト
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-star" viewBox="0 0 16 16">
                             <path d="M7.84 4.1a.178.178 0 0 1 .32 0l.634 1.285a.178.178 0 0 0 .134.098l1.42.206c.145.021.204.2.098.303L9.42 6.993a.178.178 0 0 0-.051.158l.242 1.414a.178.178 0 0 1-.258.187l-1.27-.668a.178.178 0 0 0-.165 0l-1.27.668a.178.178 0 0 1-.257-.187l.242-1.414a.178.178 0 0 0-.05-.158l-1.03-1.001a.178.178 0 0 1 .098-.303l1.42-.206a.178.178 0 0 0 .134-.098L7.84 4.1z"/>
                             <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
@@ -606,7 +606,7 @@
                     </th>
                     <td></td>
                     <td>
-                        <input type="number" class="txt" id="adv" onKeyDown="next_input('relation');calc();">
+                        <input id="adv" class="txt" type="number" onKeyDown="next_input('relation');calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -620,7 +620,7 @@
                     </th>
                     <td></td>
                     <td>
-                        <input type="number" class="txt" id="relation" onKeyDown="next_input('common_engineering');calc();">
+                        <input id="relation" class="txt" type="number" onKeyDown="next_input('common_engineering');calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -637,8 +637,8 @@
                     </svg>
                     </th>
                     <td>22</td>
-                    <td></td>
-                    <td></td>
+                    <td id="sub_total3"></td>
+                    <td id="result_sub_total3"></td>
                 </tr>
 <!--____________________________________________________________-->
                 <tr>
@@ -649,7 +649,7 @@
                     </th>
                     <td></td>
                     <td>
-                        <input type="number" class="txt" id="common_engineering" onKeyDown="next_input('free'); calc();">
+                        <input id="common_engineering" class="txt" type="number" onKeyDown="next_input('free'); calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -663,7 +663,7 @@
                     </th>
                     <td></td>
                     <td>
-                        <input type="number" class="txt" id="free" onKeyDown="next_input('teacher');calc();">
+                        <input id="free" class="txt" type="number" onKeyDown="next_input('teacher');calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -676,7 +676,7 @@
                     </th>
                     <td></td>
                     <td>
-                        <input type="number" class="txt" id="teacher" onkeydown="calc();">
+                        <input id="teacher" class="txt" type="number" onkeydown="calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -692,8 +692,8 @@
                         <path d="M4.268 1A2 2 0 0 1 6 0h6a2 2 0 0 1 2 2v11.5a.5.5 0 0 1-.777.416L13 13.768V2a1 1 0 0 0-1-1H4.268z"/>
                     </svg></th>
                     <td>36</td>
-                    <td></td>
-                    <td></td>
+                    <td id="sub_total4"></td>
+                    <td id="result_sub_total4"></td>
                 </tr>
 <!--____________________________________________________________-->
                 <tr>
@@ -713,8 +713,8 @@
                         </svg>
                         【専門計】</th>
                     <td>92</td>
-                    <td></td>
-                    <td></td>
+                    <td id="total2"></td>
+                    <td id='result_total2'></td>
                 </tr>
 <!--____________________________________________________________-->
                 <tr>
@@ -738,8 +738,8 @@
                 <tr>
                     <th>【合計】</th>
                     <td>130</td>
-                    <td></td>
-                    <td></td>
+                    <td id="all_total"></td>
+                    <td id="result_all_total"></td>
                 </tr>
 <!--____________________________________________________________-->
             </table>
