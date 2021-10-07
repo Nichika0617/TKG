@@ -40,14 +40,19 @@ function calc() {
     const adv = convertNum(document.getElementById('adv').value);
     const relation = convertNum(document.getElementById('relation').value);
     const subTotal3 = math_base_select + adv + relation;
-    // 数情計
+    // 数情計↑↑
     const common_engineering = convertNum(document.getElementById('common_engineering').value);
     const free = convertNum(document.getElementById('free').value);
     const teacher = convertNum(document.getElementById('teacher').value);
+    if(teacher > 10){
+        document.getElementById('teacher_warning').textContent = "教職科目は10単位までしか卒業単位に含まれません";
+    }else{
+        document.getElementById('teacher_warning').textContent = "";
+    }
     const subTotal4 = fusion + subTotal3 + common_engineering + free + teacher; 
-    // 数情統計
+    // 数情統計 教職もここに↑↑
     const total2 = info_tec + ex + experiment + math_base + core + subTotal4;
-    // 専門計
+    // 専門計↑↑
     const All_total = total1 + total2 + major_base;
     // 合計 共通30 + 専門計92 + 専門基礎8 = 130
 
@@ -253,12 +258,12 @@ function calc() {
         }else if(core_judge != true){
             // 92超えてるが，知能情報コアを満たしていない
             document.getElementById('result_total2').innerHTML = "0 <span class='warning'><br>知能情報コアの単位が不足しています．</span>"
-        }else if(subTotal4 <= 36){
+        }else if(subTotal4 < 36){
             // 92超えてるが，数情統計36単位を満たしていない
             document.getElementById('result_total2').innerHTML = "0 <span class='warning'><br>数情統計の単位が不足しています．</span>"
         }else{
             // おそらく全部満たしている．．
-            document.getElementById('result_total2').textContent = 0
+            document.getElementById('result_total2').innerHTML = "0 <span class='success'> <br>92単位の条件を満たしています．</span>"
         }
     }
     // ここまで専門計__________________________________________________________________
