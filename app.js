@@ -40,14 +40,19 @@ function calc() {
     const adv = convertNum(document.getElementById('adv').value);
     const relation = convertNum(document.getElementById('relation').value);
     const subTotal3 = math_base_select + adv + relation;
-    // 数情計
+    // 数情計↑↑
     const common_engineering = convertNum(document.getElementById('common_engineering').value);
     const free = convertNum(document.getElementById('free').value);
     const teacher = convertNum(document.getElementById('teacher').value);
+    if(teacher > 10){
+        document.getElementById('teacher_warning').textContent = "教職科目は10単位までしか卒業単位に含まれません";
+    }else{
+        document.getElementById('teacher_warning').textContent = "";
+    }
     const subTotal4 = fusion + subTotal3 + common_engineering + free + teacher; 
-    // 数情統計
+    // 数情統計 教職もここに↑↑
     const total2 = info_tec + ex + experiment + math_base + core + subTotal4;
-    // 専門計
+    // 専門計↑↑
     const All_total = total1 + total2 + major_base;
     // 合計 共通30 + 専門計92 + 専門基礎8 = 130
 
@@ -253,12 +258,12 @@ function calc() {
         }else if(core_judge != true){
             // 92超えてるが，知能情報コアを満たしていない
             document.getElementById('result_total2').innerHTML = "0 <span class='warning'><br>知能情報コアの単位が不足しています．</span>"
-        }else if(subTotal4 <= 36){
+        }else if(subTotal4 < 36){
             // 92超えてるが，数情統計36単位を満たしていない
             document.getElementById('result_total2').innerHTML = "0 <span class='warning'><br>数情統計の単位が不足しています．</span>"
         }else{
             // おそらく全部満たしている．．
-            document.getElementById('result_total2').textContent = 0
+            document.getElementById('result_total2').innerHTML = "0 <span class='success'> <br>92単位の条件を満たしています．</span>"
         }
     }
     // ここまで専門計__________________________________________________________________
@@ -275,3 +280,208 @@ const next_input = (id) => {
         
     }
 };
+
+// ＿＿＿＿＿＿＿＿＿＿小計1のハイライト↓↓
+document.addEventListener('DOMContentLoaded', function() {
+    // DOMContentLoaded = HTMLが読み込まれた時，functionを実行
+    let subtotal_1 = document.getElementsByClassName("subtotal_1");
+    console.log(subtotal_1);
+    //マウスポインターが乗ったタイミングで背景色を変更
+    
+    
+    subtotal_1[5].addEventListener('mouseover', function() {
+        // 5個目(一番最後)が，小計1の欄
+        // console.log("小計1マウスオーバー")
+        let subtotal1_count = 0;
+        while(subtotal1_count < subtotal_1.length){
+            subtotal_1[subtotal1_count].style.backgroundColor = '#ffd9d2';
+            subtotal1_count++;
+        }
+    }, false)
+    // getElementsByClassNameで同じクラス名のタグの配列を取り，その配列の中身ひとつひとつにbackgroundの処理を行なっていくという方法で，全部塗る
+    
+    // マウスポインターが外れたタイミングで背景色を戻す
+    subtotal_1[5].addEventListener('mouseout', function() {
+        let subtotal1_count = 0;
+        while(subtotal1_count < subtotal_1.length){
+            subtotal_1[subtotal1_count].style.backgroundColor = '';
+            subtotal1_count++;
+        }
+    }, false)
+},false)
+
+
+// ＿＿＿＿＿＿＿＿＿＿小計2のハイライト↓↓
+
+document.addEventListener('DOMContentLoaded', function() {
+    // DOMContentLoaded = HTMLが読み込まれた時，functionを実行
+    let subtotal_2 = document.getElementsByClassName("subtotal_2");
+    console.log(subtotal_2);
+    //マウスポインターが乗ったタイミングで背景色を変更
+    
+    
+    subtotal_2[6].addEventListener('mouseover', function() {
+        // 6個目(一番最後)が，小計2の欄
+        let subtotal2_count = 0;
+        while(subtotal2_count < subtotal_2.length){
+            subtotal_2[subtotal2_count].style.backgroundColor = '#c6f78e';
+            subtotal2_count++;
+        }
+    }, false)
+    // getElementsByClassNameで同じクラス名のタグの配列を取り，その配列の中身ひとつひとつにbackgroundの処理を行なっていくという方法で，全部塗る
+    
+    // マウスポインターが外れたタイミングで背景色を戻す
+    subtotal_2[6].addEventListener('mouseout', function() {
+        let subtotal2_count = 0;
+        while(subtotal2_count < subtotal_2.length){
+            subtotal_2[subtotal2_count].style.backgroundColor = '';
+            subtotal2_count++;
+        }
+    }, false)
+},false)
+
+// ＿＿＿＿＿＿＿＿＿＿共通計のハイライト↓↓
+
+document.addEventListener('DOMContentLoaded', function() {
+    // DOMContentLoaded = HTMLが読み込まれた時，functionを実行
+    let Total_1 = document.getElementsByClassName("Total_1");
+    console.log(Total_1);
+    //マウスポインターが乗ったタイミングで背景色を変更
+    
+    
+    Total_1[14].addEventListener('mouseover', function() {
+        // 14個目(一番最後)が，共通計の欄
+        let Total_1_count = 0;
+        while(Total_1_count < Total_1.length){
+            Total_1[Total_1_count].style.backgroundColor = '#88f1db';
+            Total_1_count++;
+        }
+    }, false)
+    // getElementsByClassNameで同じクラス名のタグの配列を取り，その配列の中身ひとつひとつにbackgroundの処理を行なっていくという方法で，全部塗る
+    
+    // マウスポインターが外れたタイミングで背景色を戻す
+    Total_1[14].addEventListener('mouseout', function() {
+        let Total_1_count = 0;
+        while(Total_1_count < Total_1.length){
+            Total_1[Total_1_count].style.backgroundColor = '';
+            Total_1_count++;
+        }
+    }, false)
+},false)
+
+// ＿＿＿＿＿＿＿＿＿＿数情計のハイライト↓↓
+
+document.addEventListener('DOMContentLoaded', function() {
+    // DOMContentLoaded = HTMLが読み込まれた時，functionを実行
+    let subtotal_3 = document.getElementsByClassName("subtotal_3");
+    console.log(subtotal_3);
+    //マウスポインターが乗ったタイミングで背景色を変更
+    
+    
+    subtotal_3[3].addEventListener('mouseover', function() {
+        // 3個目(一番最後)が，数情計の欄
+        let subtotal3_count = 0;
+        while(subtotal3_count < subtotal_3.length){
+            subtotal_3[subtotal3_count].style.backgroundColor = '#94aaf3';
+            subtotal3_count++;
+        }
+    }, false)
+    // getElementsByClassNameで同じクラス名のタグの配列を取り，その配列の中身ひとつひとつにbackgroundの処理を行なっていくという方法で，全部塗る
+    
+    // マウスポインターが外れたタイミングで背景色を戻す
+    subtotal_3[3].addEventListener('mouseout', function() {
+        let subtotal3_count = 0;
+        while(subtotal3_count < subtotal_3.length){
+            subtotal_3[subtotal3_count].style.backgroundColor = '';
+            subtotal3_count++;
+        }
+    }, false)
+},false)
+
+// ＿＿＿＿＿＿＿＿＿＿数情等計のハイライト↓↓
+
+document.addEventListener('DOMContentLoaded', function() {
+    // DOMContentLoaded = HTMLが読み込まれた時，functionを実行
+    let subtotal_4 = document.getElementsByClassName("subtotal_4");
+    console.log(subtotal_4);
+    //マウスポインターが乗ったタイミングで背景色を変更
+    
+    
+    subtotal_4[7].addEventListener('mouseover', function() {
+        // 7個目(一番最後)が，数情等計の欄
+        let subtotal4_count = 0;
+        while(subtotal4_count < subtotal_4.length){
+            subtotal_4[subtotal4_count].style.backgroundColor = '#e6ccf5';
+            subtotal4_count++;
+        }
+    }, false)
+    // getElementsByClassNameで同じクラス名のタグの配列を取り，その配列の中身ひとつひとつにbackgroundの処理を行なっていくという方法で，全部塗る
+    
+    // マウスポインターが外れたタイミングで背景色を戻す
+    subtotal_4[7].addEventListener('mouseout', function() {
+        let subtotal4_count = 0;
+        while(subtotal4_count < subtotal_4.length){
+            subtotal_4[subtotal4_count].style.backgroundColor = '';
+            subtotal4_count++;
+        }
+    }, false)
+},false)
+
+
+// ＿＿＿＿＿＿＿＿＿＿専門計のハイライト↓↓
+
+document.addEventListener('DOMContentLoaded', function() {
+    // DOMContentLoaded = HTMLが読み込まれた時，functionを実行
+    let Total_2 = document.getElementsByClassName("Total_2");
+    console.log(Total_2);
+    //マウスポインターが乗ったタイミングで背景色を変更
+    
+    
+    Total_2[12].addEventListener('mouseover', function() {
+        // 12個目(一番最後)が，専門計の欄
+        let Total_2_count = 0;
+        while(Total_2_count < Total_2.length){
+            Total_2[Total_2_count].style.backgroundColor = '#faffaf';
+            Total_2_count++;
+        }
+    }, false)
+    // getElementsByClassNameで同じクラス名のタグの配列を取り，その配列の中身ひとつひとつにbackgroundの処理を行なっていくという方法で，全部塗る
+    
+    // マウスポインターが外れたタイミングで背景色を戻す
+    Total_2[12].addEventListener('mouseout', function() {
+        let Total_2_count = 0;
+        while(Total_2_count < Total_2.length){
+            Total_2[Total_2_count].style.backgroundColor = '';
+            Total_2_count++;
+        }
+    }, false)
+},false)
+
+// ＿＿＿＿＿＿＿＿＿＿最後の合計ののハイライト↓↓
+
+document.addEventListener('DOMContentLoaded', function() {
+    // DOMContentLoaded = HTMLが読み込まれた時，functionを実行
+    let all_total = document.getElementsByClassName("all_total");
+    console.log(all_total);
+    //マウスポインターが乗ったタイミングで背景色を変更
+    
+    
+    all_total[3].addEventListener('mouseover', function() {
+        // 3個目(一番最後)が，合計の欄
+        let all_total_count = 0;
+        while(all_total_count < all_total.length){
+            all_total[all_total_count].style.backgroundColor = '#ffde4b';
+            all_total_count++;
+        }
+    }, false)
+    // getElementsByClassNameで同じクラス名のタグの配列を取り，その配列の中身ひとつひとつにbackgroundの処理を行なっていくという方法で，全部塗る
+    
+    // マウスポインターが外れたタイミングで背景色を戻す
+    all_total[3].addEventListener('mouseout', function() {
+        let all_total_count = 0;
+        while(all_total_count < all_total.length){
+            all_total[all_total_count].style.backgroundColor = '';
+            all_total_count++;
+        }
+    }, false)
+},false)
