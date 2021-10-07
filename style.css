@@ -43,8 +43,6 @@ h1 {
   border-top: none;
   border-right: none;
   border-left: none;
-  
-  
 }
 
 .category{
@@ -52,4 +50,12 @@ h1 {
   /* 共通教育，専門教育，とかのカテゴリー？のCSS */
   text-align: left;
   background-color: #ffd98a;
+}
+
+.warning{
+  color: red;
+}
+
+.success{
+  color:rgb(18, 209, 43)
 }
