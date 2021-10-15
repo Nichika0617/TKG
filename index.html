@@ -11,7 +11,6 @@
     <title>TKG</title>
 </head>
 <body>
-    
 
     <h1>TKG 〜TANNI KEISAN GAIDO〜</h1>
     <div class="useage">
@@ -90,7 +89,7 @@
                 </th>
                 <td>2</td>
                 <td>
-                    <input id="health" class="txt" type="number" onKeyDown="next_input('jinbun');calc();">
+                    <input id="health" class="txt" type="number" onKeyDown="next_input('jinbun');" onkeyup="calc();">
                 </td>
                 <td id="result_health">
                     <!-- 計算結果をjsから書き込む． -->
@@ -114,7 +113,7 @@
                     </th>
                     <td>2</td>
                     <td>
-                        <input type="number" class="txt" id="jinbun" onKeyDown="next_input('syakai');calc();">
+                        <input id="jinbun" type="number" class="txt"  onKeyDown="next_input('syakai');" onkeyup="calc();">
                     </td>
                     <td id="result_jinbun"></td>
                 </tr>
@@ -127,7 +126,7 @@
                     </th>
                     <td>2</td>
                     <td>
-                        <input id="syakai" class="txt" type="number" onKeyDown="next_input('sougou');calc();">
+                        <input id="syakai" class="txt" type="number" onKeyDown="next_input('sougou');" onkeyup="calc();">
                     </td>
                     <td id="result_syakai"></td>
                 </tr>
@@ -140,7 +139,7 @@
                     </th>
                     <td></td>
                     <td>
-                        <input id="sougou" class="txt" type="number" onKeyDown="next_input('career');calc();">
+                        <input id="sougou" class="txt" type="number" onKeyDown="next_input('career');calc();" onkeyup="calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -153,7 +152,7 @@
                     </th>
                     <td></td>
                     <td>
-                        <input id="career" class="txt" type="number" onKeyDown="next_input('ryudai');calc();">
+                        <input id="career" class="txt" type="number" onKeyDown="next_input('ryudai');" onkeyup="calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -166,7 +165,7 @@
                     </th>
                     <td></td>
                     <td>
-                        <input id="ryudai" class="txt" type="number" onKeyDown="next_input('Japanese');calc();">
+                        <input id="ryudai" class="txt" type="number" onKeyDown="next_input('Japanese');" onkeyup="calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -187,7 +186,7 @@
                     <th>日本語・日本語事情</th>
                     <td></td>
                     <td>
-                        <input id="Japanese" class="txt" type="number" onKeyDown="next_input('sizen');calc();">
+                        <input id="Japanese" class="txt" type="number" onKeyDown="next_input('sizen');" onkeyup="calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -218,7 +217,7 @@
                     </th>
                     <td></td>
                     <td>
-                        <input id="sizen" class="txt" type="number" onKeyDown="next_input('info');calc();">
+                        <input id="sizen" class="txt" type="number" onKeyDown="next_input('info');" onkeyup="calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -256,7 +255,7 @@
                     </th>
                     <td>2</td>
                     <td>
-                        <input id="info" class="txt" type="number" onKeyDown="next_input('English');calc();">
+                        <input id="info" class="txt" type="number" onKeyDown="next_input('English');" onkeyup="calc();">
                     </td>
                     <td id="result_info"></td>
                 </tr>
@@ -279,7 +278,7 @@
                     </th>
                     <td>8</td>
                     <td>
-                        <input id="English" class="txt" type="number" onKeyDown="next_input('German');calc();">
+                        <input id="English" class="txt" type="number" onKeyDown="next_input('German');" onkeyup="calc();">
                     </td>
                     <td id="result_eng"></td>
                 </tr>
@@ -293,7 +292,7 @@
                     </th>
                     <td>(4)</td>
                     <td>
-                        <input id="German" class="txt" type="number" onKeyDown="next_input('French');calc();">
+                        <input id="German" class="txt" type="number" onKeyDown="next_input('French');" onkeyup="calc();">
                     </td>
                     <td id="result_german"></td>
                 </tr>
@@ -308,7 +307,7 @@
                     </th>
                     <td>(4)</td>
                     <td>
-                        <input id="French" class="txt" type="number" onKeyDown="next_input('Spanish');calc();">
+                        <input id="French" class="txt" type="number" onKeyDown="next_input('Spanish');" onkeyup="calc();">
                     </td>
                     <td id="result_french"></td>
                 </tr>
@@ -323,7 +322,7 @@
                     </th>
                     <td>(4)</td>
                     <td>
-                        <input id="Spanish" class="txt" type="number" onKeyDown="next_input('Chinese');calc();">
+                        <input id="Spanish" class="txt" type="number" onKeyDown="next_input('Chinese');" onkeyup="calc();">
                     </td>
                     <td id="result_spanish"></td>
                 </tr>
@@ -337,7 +336,7 @@
                     </th>
                     <td>(4)</td>
                     <td>
-                        <input id="Chinese" class="txt" type="number" onKeyDown="next_input('etc');calc();">
+                        <input id="Chinese" class="txt" type="number" onKeyDown="next_input('etc');" onkeyup="calc();">
                     </td>
                     <td id="result_chinese"></td>
                 </tr>
@@ -346,7 +345,7 @@
                     <th>その他</th>
                     <td>(4)</td>
                     <td>
-                        <input id="etc" class="txt" type="number" onKeyDown="next_input('major_base');calc();">
+                        <input id="etc" class="txt" type="number" onKeyDown="next_input('major_base');" onkeyup="calc();">
                     </td>
                     <td id="result_etc"></td>
                 </tr>
@@ -449,7 +448,7 @@
                     <th>専門基礎</th>
                     <td>8</td>
                     <td>
-                        <input id="major_base" class="txt" type="number" onKeyDown="next_input('out_major_base');calc();">
+                        <input id="major_base" class="txt" type="number" onKeyDown="next_input('out_major_base');" onkeyup="calc();">
                     </td>
                     <td id="result_major_base"></td>
                 </tr>
@@ -458,7 +457,7 @@
                     <th>専門基礎指定外</th>
                     <td></td>
                     <td>
-                        <input id="out_major_base" class="txt" type="number" onKeyDown="next_input('info_tec');calc();">
+                        <input id="out_major_base" class="txt" type="number" onKeyDown="next_input('info_tec');" onkeyup="calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -489,7 +488,7 @@
                     </th>
                     <td>2</td>
                     <td>
-                        <input id="info_tec" class="txt" type="number" onKeyDown="next_input('ex');calc();">
+                        <input id="info_tec" class="txt" type="number" onKeyDown="next_input('ex');" onkeyup="calc();">
                     </td>
                     <td id="result_info_tec"></td>
                 </tr>
@@ -504,7 +503,7 @@
                     </th>
                     <td>7</td>
                     <td>
-                        <input id="ex" class="txt" type="number" onKeyDown="next_input('experiment');calc();">
+                        <input id="ex" class="txt" type="number" onKeyDown="next_input('experiment');" onkeyup="calc();">
                     </td>
                     <td id="result_ex"></td>
                 </tr>
@@ -519,7 +518,7 @@
                     </th>
                     <td>15</td>
                     <td>
-                        <input id="experiment" class="txt" type="number" onKeyDown="next_input('math_base');calc();">
+                        <input id="experiment" class="txt" type="number" onKeyDown="next_input('math_base');" onkeyup="calc();">
                     </td>
                     <td id="result_exp"></td>
                 </tr>
@@ -533,7 +532,7 @@
                     </th>
                     <td>6</td>
                     <td>
-                        <input id="math_base" class="txt" type="number" onKeyDown="next_input('core');calc();">
+                        <input id="math_base" class="txt" type="number" onKeyDown="next_input('core');" onkeyup="calc();">
                     </td>
                     <td id="result_math_base"></td>
                 </tr>
@@ -547,7 +546,7 @@
                     </th>
                     <td>26</td>
                     <td>
-                        <input id="core" class="txt" type="number" onKeyDown="next_input('fusion');calc();">
+                        <input id="core" class="txt" type="number" onKeyDown="next_input('fusion');" onkeyup="calc();">
                     </td>
                     <td id="result_core"></td>
                 </tr>
@@ -569,7 +568,7 @@
                     </th>
                     <td>4</td>
                     <td>
-                        <input id="fusion" class="txt" type="number" onKeyDown="next_input('math_base_select');calc();">
+                        <input id="fusion" class="txt" type="number" onKeyDown="next_input('math_base_select');" onkeyup="calc();">
                     </td>
                     <td id="result_fusion"></td>
                 </tr>
@@ -583,7 +582,7 @@
                     </th>
                     <td></td>
                     <td>
-                        <input id="math_base_select" class="txt" type="number" onKeyDown="next_input('adv');calc();">
+                        <input id="math_base_select" class="txt" type="number" onKeyDown="next_input('adv');" onkeyup="calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -597,7 +596,7 @@
                     </th>
                     <td></td>
                     <td>
-                        <input id="adv" class="txt" type="number" onKeyDown="next_input('relation');calc();">
+                        <input id="adv" class="txt" type="number" onKeyDown="next_input('relation');" onkeyup="calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -611,7 +610,7 @@
                     </th>
                     <td></td>
                     <td>
-                        <input id="relation" class="txt" type="number" onKeyDown="next_input('common_engineering');calc();">
+                        <input id="relation" class="txt" type="number" onKeyDown="next_input('common_engineering');" onkeyup="calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -640,7 +639,7 @@
                     </th>
                     <td></td>
                     <td>
-                        <input id="common_engineering" class="txt" type="number" onKeyDown="next_input('free'); calc();">
+                        <input id="common_engineering" class="txt" type="number" onKeyDown="next_input('free');" onkeyup="calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -654,7 +653,7 @@
                     </th>
                     <td></td>
                     <td>
-                        <input id="free" class="txt" type="number" onKeyDown="next_input('teacher');calc();">
+                        <input id="free" class="txt" type="number" onKeyDown="next_input('teacher');" onkeyup="calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -667,7 +666,7 @@
                     </th>
                     <td></td>
                     <td>
-                        <input id="teacher" class="txt" type="number" onkeydown="calc();">
+                        <input id="teacher" class="txt" type="number" onkeyup="calc();">
                     </td>
                     <td id="teacher_warning"></td>
                 </tr>
