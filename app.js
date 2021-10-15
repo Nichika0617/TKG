@@ -181,7 +181,7 @@ function calc() {
     }
 
     let exp_judge = false;
-    document.getElementById('result_exp').textContent=`${Math.max(15-experiment,0)}(10)`
+    document.getElementById('result_exp').innerHTML=`${Math.max(15-experiment,0)}<span class='warning'> (10)</span>`
     if(Math.max(15-experiment,0) == 0){
         // 研究実験の不足単位が0ならば
         exp_judge = true;
