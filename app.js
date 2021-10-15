@@ -1,6 +1,7 @@
 function convertNum(n){
-    n = n || '0'
-    return parseInt(n)
+    n = n || '0';//NaNを0にする。
+    n = Math.max(0,n); //マイナスを0として扱う。
+    return parseInt(n);
 }
 
 function calc() {
