@@ -60,6 +60,13 @@ h1 {
   background-color: #ffd98a;
 }
 
+.GoogleForm{
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  background-color: rgb(255, 251, 218);
+}
+
 .warning{
   color: red;
 }
