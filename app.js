@@ -15,6 +15,7 @@ let fusion_judge = false; // 工学融合を4単位取得したか．
 // 同じ科目群から取得しているかの判定はまだできていない(10/21)
 
 const all_calc = ()=>{
+    // 各合計を計算する関数を呼び，全て終わった後に最後の全ての合計さんを算出して出力する
     subtotal1_calc();
     subtotal2_calc();
     foreign_calc();    
@@ -26,11 +27,14 @@ const all_calc = ()=>{
     // これはどこに含まれる．．？ 専門基礎指定外
     const All_total = total1_calc() + total2_calc() + major_base;
     // 合計 共通30 + 専門計92 + 専門基礎8 = 130
+
+    document.getElementById('result_major_base').textContent=Math.max(8-major_base,0);
+    document.getElementById('result_out_major_base').textContent=Math.max(out_major_base,0);
     document.getElementById('all_total').textContent = All_total;
     document.getElementById('result_all_total').textContent = Math.max(130-All_total,0);
 }
 
-
+// 小計1の計算↓↓______________________________________________________________________
 const subtotal1_calc = ()=>{
     // 小計1の算出に必要なものを取得
     const jinbun = convertNum(document.getElementById('jinbun').value);
@@ -53,6 +57,7 @@ const subtotal1_calc = ()=>{
 
 }
 
+// 小計2の計算↓↓______________________________________________________________________
 const subtotal2_calc = ()=>{
     // 小計2の算出に必要なものを取得
     const jinbun = convertNum(document.getElementById('jinbun').value);
@@ -80,6 +85,7 @@ const subtotal2_calc = ()=>{
     document.getElementById('result_subtotal2').textContent=Math.max(14-subTotal2,0);
 }
 
+// 外国語，第二言語の計算↓↓______________________________________________________________________
 const foreign_calc = ()=>{
     // 第二言語，英語の算出に必要なものを取得
     const English = convertNum(document.getElementById('English').value);
@@ -140,6 +146,7 @@ const foreign_calc = ()=>{
 
 }
 
+// 共通計の計算↓↓______________________________________________________________________
 const total1_calc = () => {
     // 共通計の算出に必要なものを取得
     const health = convertNum(document.getElementById('health').value);
@@ -186,6 +193,7 @@ const total1_calc = () => {
     return total1;
 }
 
+// 数情計の計算↓↓______________________________________________________________________
 const subtotal3_calc = () => {
     // 数情計の算出に必要なものを取得
     const math_base_select = convertNum(document.getElementById('math_base_select').value);
@@ -198,6 +206,7 @@ const subtotal3_calc = () => {
     document.getElementById('result_sub_total3').textContent = Math.max(22-subTotal3,0);
 }
 
+// 数情等計の計算↓↓______________________________________________________________________
 const subtotal4_calc = () => {
     // 数情等計の算出に必要なものを取得
     const fusion = convertNum(document.getElementById('fusion').value);
@@ -252,6 +261,7 @@ const subtotal4_calc = () => {
     }
 }
 
+// 専門計の計算↓↓______________________________________________________________________
 const total2_calc = () => {
     // 専門計の算出に必要なものを取得
     const info_tec = convertNum(document.getElementById('info_tec').value);
@@ -259,8 +269,6 @@ const total2_calc = () => {
     const experiment = convertNum(document.getElementById('experiment').value);
     const math_base = convertNum(document.getElementById('math_base').value);
     const core = convertNum(document.getElementById('core').value);
-    
-    document.getElementById('result_major_base').textContent=Math.max(8-major_base,0);
     
     document.getElementById('result_info_tec').textContent=Math.max(2-info_tec,0); 
     if(Math.max(2-info_tec,0) == 0){
