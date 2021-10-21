@@ -15,7 +15,7 @@ let fusion_judge = false; // 工学融合を4単位取得したか．
 // 同じ科目群から取得しているかの判定はまだできていない(10/21)
 
 const all_calc = ()=>{
-    // 各合計を計算する関数を呼び，全て終わった後に最後の全ての合計さんを算出して出力する
+    // 各合計を計算する関数を呼び，全て終わった後に最後の全ての合計を算出して出力する
     subtotal1_calc();
     subtotal2_calc();
     foreign_calc();    
@@ -29,7 +29,6 @@ const all_calc = ()=>{
     // 合計 共通30 + 専門計92 + 専門基礎8 = 130
 
     document.getElementById('result_major_base').textContent=Math.max(8-major_base,0);
-    document.getElementById('result_out_major_base').textContent=Math.max(out_major_base,0);
     document.getElementById('all_total').textContent = All_total;
     document.getElementById('result_all_total').textContent = Math.max(130-All_total,0);
 }
@@ -174,16 +173,45 @@ const total1_calc = () => {
     
     if (total1 >= 30) {
         console.log(`ヘルス${document.getElementById('result_health').textContent} ,小計2${document.getElementById('result_subtotal2').textContent}, 情報${document.getElementById('result_info').textContent}, 外国語計${document.getElementById('result_foreignTotal').textContent}`)
-        if(Math.max(2-health,0) == 0 && Math.max(14-subTotal2,0) == 0 && Math.max(2-info,0) == 0 && Math.max(12-foreignTotal,0) == 0 && subtotal2_judge == true){
+        if(Math.max(2-health,0) == 0 && Math.max(14-subTotal2,0) == 0 && Math.max(2-info,0) == 0 && Math.max(12-foreignTotal,0) == 0 && subtotal2_judge == true && English >= 8 && second_foreign_judge == true){
             // 注意文とか追加したから document.getElementById == 0の比較はできなくなってしまった
             // 2 + 14 + 2 + 12 = 30 で条件を満たしているならば，
             document.getElementById('result_total1').innerHTML = "0 <span class='success'><br> 30単位の条件を満たしています</span>"
             console.log("共通30満たした．")
+            console.log(second_foreign_judge)
+        }else if(Math.max(2-health,0) != 0){
+            // 30単位は満たしたが，健康運動を取得していない
+            document.getElementById('result_total1').innerHTML = "0 <span class='warning'><br>健康運動を2単位以上取得する必要があります．</span>"
+        }else if(second_foreign_judge == false){
+            // 30単位は満たしたが，第二言語の取り方を間違っている．
+            document.getElementById('result_total1').innerHTML = "0 <span class='warning'><br>第二言語を確認してください．</span>"
+        }else if(Math.max(12-foreignTotal,0) != 0){
+            // 30単位は満たしたが，外国語計を満たしていない
+            document.getElementById('result_total1').innerHTML = "0 <span class='warning'><br>外国語を合計12単位取得する必要があります．</span>"
+        }else if(Math.max(2-info,0) != 0){
+            // 30単位は満たしたが，情報関係を取得していない
+                document.getElementById('result_total1').innerHTML = "0 <span class='warning'><br>情報関係を2単位以上取得する必要があります．</span>"
+        }else if(subtotal2_judge != true){
+            // 小計2の判定がfalseを吐いている時，
+            if(document.getElementById('result_jinbun').textContent != 0){
+                // 人文を満たしていない
+                document.getElementById('result_total1').innerHTML = "0 <span class='warning'><br>人文系科目を2単位以上取得する必要があります．</span>"
+            }else if(document.getElementById('result_syakai').textContent != 0){
+                // 社会を満たしていない
+                document.getElementById('result_total1').innerHTML = "0 <span class='warning'><br>社会系科目を2単位以上取得する必要があります．</span>"
+            }else if(document.getElementById('result_sougouryouiki').textContent != 0){
+                // 総合領域を満たしていない
+                document.getElementById('result_total1').innerHTML = "0 <span class='warning'><br>総合領域を2単位以上取得する必要があります．</span>"
+            }else if(Math.max(14-subTotal2,0) != 0){
+            // 30単位は満たしたが，小計2が満たされていない．(言語を取りすぎとか．)
+                document.getElementById('result_total1').innerHTML = "0 <span class='warning'><br>小計2を確認してください．</span>"
+            }
+        }else if(English < 8){
+            document.getElementById('result_total1').innerHTML = "0 <span class='warning'><br>外国語計を確認してください．</span>"
         }else{
             document.getElementById('result_total1').innerHTML = "0 <span class='warning'><br>上の各条件を確認してください．</span>"
             // マイナスにならないよう取得単位が30を超えたら0にしておくが，条件を満たせていないという注意を表示
             console.log("共通30の条件に合っていない")
-            
         }
     }else{
         document.getElementById('result_total1').innerHTML = ""
