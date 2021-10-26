@@ -171,7 +171,7 @@ const total1_calc = () => {
     const total1 = health + subTotal2 + info + foreignTotal;
     document.getElementById('total1').textContent=total1;
     
-    if (total1 >= 30) {
+    if (total1 >= 30){
         console.log(`ヘルス${document.getElementById('result_health').textContent} ,小計2${document.getElementById('result_subtotal2').textContent}, 情報${document.getElementById('result_info').textContent}, 外国語計${document.getElementById('result_foreignTotal').textContent}`)
         if(Math.max(2-health,0) == 0 && Math.max(14-subTotal2,0) == 0 && Math.max(2-info,0) == 0 && Math.max(12-foreignTotal,0) == 0 && subtotal2_judge == true && English >= 8 && second_foreign_judge == true){
             // 注意文とか追加したから document.getElementById == 0の比較はできなくなってしまった
