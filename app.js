@@ -1,6 +1,6 @@
 function convertNum(n){
     n = n || '0'
-    return parseInt(n)
+    return parseFloat(n)
 }
 
 function calc() {
