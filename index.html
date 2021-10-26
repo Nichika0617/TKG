@@ -504,6 +504,7 @@
                     <td>7</td>
                     <td>
                         <input id="ex" class="txt" type="number" onKeyDown="next_input('experiment');" onkeyup="all_calc();">
+                        <!-- プログラミング演習1単位のため，1単位 -->
                     </td>
                     <td id="result_ex"></td>
                 </tr>
@@ -612,6 +613,7 @@
                     <td></td>
                     <td>
                         <input id="relation" class="txt" type="number" onKeyDown="next_input('common_engineering');" onkeyup="all_calc();">
+                        <!-- インターンが1単位のため，1ずつ変化 -->
                     </td>
                     <td></td>
                 </tr>
@@ -640,7 +642,7 @@
                     </th>
                     <td></td>
                     <td>
-                        <input id="common_engineering" class="txt" type="number" onKeyDown="next_input('free');" onkeyup="all_calc();">
+                        <input id="common_engineering" class="txt" type="number" step="2" onKeyDown="next_input('free');" onkeyup="all_calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -668,6 +670,7 @@
                     <td></td>
                     <td>
                         <input id="teacher" class="txt" type="number" onkeyup="all_calc();">
+                        <!-- 教職単位対応のため，1ずつ変化 -->
                     </td>
                     <td id="teacher_warning"></td>
                 </tr>
