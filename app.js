@@ -216,6 +216,7 @@ const total1_calc = () => {
     }else{
         document.getElementById('result_total1').innerHTML = ""
         // innerHTMLのリセット
+        document.getElementById('result_total1').textContent=Math.max(30-total1,0)
     }
 
     return total1;
