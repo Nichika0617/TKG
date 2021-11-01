@@ -1,7 +1,7 @@
 function convertNum(n){
     n = n || '0';//NaNを0にする。
     n = Math.max(0,n); //マイナスを0として扱う。
-    return parseInt(n);
+    return parseFloat(n);
 }
 
 let subtotal2_judge = false; // 小計2の中で，人文社会総合を2単位取っているかの判定
