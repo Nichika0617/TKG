@@ -463,7 +463,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // 14個目(一番最後)が，共通計の欄
         let Total_1_count = 0;
         while(Total_1_count < Total_1.length){
-            Total_1[Total_1_count].style.backgroundColor = '#88f1db';
+            Total_1[Total_1_count].style.backgroundColor = '#cbfff4';
             Total_1_count++;
         }
     }, false)
@@ -491,7 +491,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // 3個目(一番最後)が，数情計の欄
         let subtotal3_count = 0;
         while(subtotal3_count < subtotal_3.length){
-            subtotal_3[subtotal3_count].style.backgroundColor = '#94aaf3';
+            subtotal_3[subtotal3_count].style.backgroundColor = '#cad4f7';
             subtotal3_count++;
         }
     }, false)
@@ -576,7 +576,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // 3個目(一番最後)が，合計の欄
         let all_total_count = 0;
         while(all_total_count < all_total.length){
-            all_total[all_total_count].style.backgroundColor = '#ffde4b';
+            all_total[all_total_count].style.backgroundColor = '#ffea8a';
             all_total_count++;
         }
     }, false)

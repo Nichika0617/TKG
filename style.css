@@ -25,6 +25,33 @@ jsの方からコントロールする． */
   transition: 0.5s;
 }
 
+.always_subtotal_1{
+  background-color: #ffd9d2;
+}
+
+.always_subtotal_2{
+  background-color: #c6f78e;
+}
+
+.always_total_1{
+  background-color: #cbfff4;
+}
+
+.always_subtotal_3{
+  background-color: #cad4f7;
+}
+
+.always_subtotal_4{
+  background-color: #e6ccf5;
+}
+
+.always_total_2{
+  background-color: #faffaf;
+}
+
+.always_alltotal{
+  background-color: #ffea8a;
+}
 
 
 h1 {
