@@ -15,7 +15,8 @@
     <h1>TKG 〜TANNI KEISAN GAIDO〜</h1>
     <div class="usage">
         <h3>〜使い方〜</h3>
-        <p>[取得単位]列に数値を入力してください。</p>
+        <p>単位計算をしたい学期を下のドロップダウンより選択してください。</p>
+        <p>その後，[取得単位]列に数値を入力してください。</p>
         <p>数字を入力後、エンターで次に移動できます。</p>
         <p>ボックス内の上下のボタンをクリックすることでも入力できます。</p>
         <p>キーボードの上下矢印キーでも値の変更ができます。</p>
@@ -26,6 +27,13 @@
             </svg>
             )のあるところを押すと、合計に含まれるものがハイライトされます。
         </p>
+
+        <label>
+            <select id="select_term">
+                <option value="value0">前期</option>
+                <option value="value1">後期</option>
+            </select>
+        </label>
         <!-- <p>例</p>
         
             <table align="center" border="1" class="mb-5">
