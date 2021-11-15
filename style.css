@@ -105,3 +105,11 @@ input:invalid{
 .success{
   color:rgb(18, 209, 43)
 }
+
+.image-vw {
+  width: 100%; 
+  max-width: 700px;
+}
+.SubjectClassificationImage {
+  text-align: center;
+}
