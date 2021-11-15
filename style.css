@@ -154,6 +154,15 @@ label:after{
   color:rgb(18, 209, 43)
 }
 
+ul{
+  list-style: disc;
+  padding-left: 15px;
+}
+.ul-align-center{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
 .image-vw {
   width: 100%; 
   max-width: 700px;
