@@ -98,6 +98,54 @@ input:invalid{
   border: solid 1px red;
 }
 
+label{
+  box-shadow:0 3px 5px rgba(0,0,0,.2);
+  padding:12px;
+  background:white;
+  width:200px;
+  display:inline-block;
+  position:relative;
+  margin-left:20px;
+}
+
+
+select{
+  border:none;
+  outline:none;
+  display: inline-block;
+  -webkit-appearance:none;
+  /* webkit系のモバイルブラウザを初期化 */
+  -moz-appearance:none;
+  /* Firefox や Edge を初期化 */
+  appearance:none;
+  /* それぞれのOSのUIスタイルを解除 */
+  cursor:pointer;
+  border-radius:0;
+  z-index:2;
+  font-size:16px;
+  color:#909090;
+  width:200px;
+  height: 20px;
+  background:transparent;
+}
+
+label:after{
+  content:"\25bc";
+  /* 下向きの三角形，Unicode番号U+25BC */
+  font-size:16px;
+  color:white;
+  background:#ffd98a;
+  width:42px;
+  text-align:center;
+  line-height:3.2em;
+  top:0;
+  right:0;
+  bottom:0;
+  position:absolute;
+  pointer-events:none;
+}
+
+
 .warning{
   color: red;
 }
