@@ -153,16 +153,15 @@ label:after{
 .success{
   color:rgb(18, 209, 43)
 }
-
-ul{
-  list-style: disc;
-  padding-left: 15px;
-}
 .ul-align-center{
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+  text-align: left;
+  display: inline-block;
 }
+
+li {
+  text-align: left;
+}
+
 .image-vw {
   width: 100%; 
   max-width: 700px;
