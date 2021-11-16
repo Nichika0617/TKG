@@ -598,6 +598,9 @@ const TableChange = () =>{
     let options = element.options;
     // その中のoptionsだけを取ってくる
     // options[0] が　前期 [1]が後期
+    let Compulsory_element = document.getElementById('Compulsory');    
+    let Second_Compulsory_element = document.getElementById('2nd_Compulsory');
+
     if(options[0].selected == true){
         // 前期がドロップダウンで選択された
         const experiment = convertNum(document.getElementById('experiment').value);
@@ -605,11 +608,24 @@ const TableChange = () =>{
         
         const ex = convertNum(document.getElementById('ex').value);
         document.getElementById('result_ex').innerHTML=`${Math.max(7-ex,0)}<span class='warning'>(2)</span>`
+
+        // 必修単位のvisibility
+        Second_Compulsory_element.style.display = 'none';
+        // 前期が選択されている時には後期を隠す
+
+        Compulsory_element.style.display = 'block';
+        // 前期を復元
+
     }else if(options[1].selected == true){
         const experiment = convertNum(document.getElementById('experiment').value);
         document.getElementById('result_exp').innerHTML=`${Math.max(15-experiment,0)}<span class='warning'>(10)</span>`
-        console.log(document.getElementById('result_exp').innerHTML=`${Math.max(15-experiment,0)}<span class='warning'>(10)</span>`)
+        
         const ex = convertNum(document.getElementById('ex').value);
         document.getElementById('result_ex').innerHTML=`${Math.max(7-ex,0)}`
+
+        Compulsory_element.style.display = 'none';
+        // 前期を消して
+        Second_Compulsory_element.style.display = 'block';
+        // 後期を復元
     }
 }
