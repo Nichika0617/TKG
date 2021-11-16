@@ -21,7 +21,6 @@ const all_calc = ()=>{
     foreign_calc();    
     subtotal3_calc();
     subtotal4_calc();
-
     const major_base = convertNum(document.getElementById('major_base').value);
     const out_major_base = convertNum(document.getElementById('out_major_base').value);
     // これはどこに含まれる．．？ 専門基礎指定外
@@ -31,6 +30,7 @@ const all_calc = ()=>{
     document.getElementById('result_major_base').textContent=Math.max(8-major_base,0);
     document.getElementById('all_total').textContent = All_total;
     document.getElementById('result_all_total').textContent = Math.max(130-All_total,0);
+    TableChange();
 }
 
 // 小計1の計算↓↓______________________________________________________________________
@@ -315,7 +315,7 @@ const total2_calc = () => {
         ex_judge = false;
     }
 
-    document.getElementById('result_exp').innerHTML=`${Math.max(15-experiment,0)}<span class='warning'> (10)</span>`
+    document.getElementById('result_exp').innerHTML=`${Math.max(15-experiment,0)}`
     if(Math.max(15-experiment,0) == 0){
         // 研究実験の不足単位が0ならば
         exp_judge = true;
@@ -591,3 +591,25 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }, false)
 },false)
+
+const TableChange = () =>{
+    let element = document.getElementById('select_term')
+    // セレクト要素を全部elementに
+    let options = element.options;
+    // その中のoptionsだけを取ってくる
+    // options[0] が　前期 [1]が後期
+    if(options[0].selected == true){
+        // 前期がドロップダウンで選択された
+        const experiment = convertNum(document.getElementById('experiment').value);
+        document.getElementById('result_exp').innerHTML=`${Math.max(15-experiment,0)}<span class='warning'>(12)</span>`
+        
+        const ex = convertNum(document.getElementById('ex').value);
+        document.getElementById('result_ex').innerHTML=`${Math.max(7-ex,0)}<span class='warning'>(2)</span>`
+    }else if(options[1].selected == true){
+        const experiment = convertNum(document.getElementById('experiment').value);
+        document.getElementById('result_exp').innerHTML=`${Math.max(15-experiment,0)}<span class='warning'>(10)</span>`
+        console.log(document.getElementById('result_exp').innerHTML=`${Math.max(15-experiment,0)}<span class='warning'>(10)</span>`)
+        const ex = convertNum(document.getElementById('ex').value);
+        document.getElementById('result_ex').innerHTML=`${Math.max(7-ex,0)}`
+    }
+}
