@@ -592,6 +592,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }, false)
 },false)
 
+// 表下の必修かもの表示非表示をコントロールするクラス
 const TableChange = () =>{
     let element = document.getElementById('select_term')
     // セレクト要素を全部elementに
@@ -601,7 +602,7 @@ const TableChange = () =>{
     let Compulsory_element = document.getElementById('Compulsory');    
     let Second_Compulsory_element = document.getElementById('2nd_Compulsory');
 
-    if(options[0].selected == true){
+    if(options[1].selected == true){
         // 前期がドロップダウンで選択された
         const experiment = convertNum(document.getElementById('experiment').value);
         document.getElementById('result_exp').innerHTML=`${Math.max(15-experiment,0)}<span class='warning'>(12)</span>`
@@ -612,11 +613,12 @@ const TableChange = () =>{
         // 必修単位のvisibility
         Second_Compulsory_element.style.display = 'none';
         // 前期が選択されている時には後期を隠す
+        console.log("後期を隠す");
 
         Compulsory_element.style.display = 'block';
         // 前期を復元
 
-    }else if(options[1].selected == true){
+    }else if(options[2].selected == true){
         const experiment = convertNum(document.getElementById('experiment').value);
         document.getElementById('result_exp').innerHTML=`${Math.max(15-experiment,0)}<span class='warning'>(10)</span>`
         
@@ -625,6 +627,7 @@ const TableChange = () =>{
 
         Compulsory_element.style.display = 'none';
         // 前期を消して
+        console.log("前期を隠す");
         Second_Compulsory_element.style.display = 'block';
         // 後期を復元
     }
