@@ -592,7 +592,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }, false)
 },false)
 
-// 表下の必修かもの表示非表示をコントロールするクラス
+// 表下の必修科目の表示非表示をコントロールするクラス
 const TableChange = () =>{
     let element = document.getElementById('select_term')
     // セレクト要素を全部elementに
