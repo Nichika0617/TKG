@@ -28,8 +28,8 @@
             )のあるところを押すと、合計に含まれるものがハイライトされます。
         </p>
 
-        <label>
-            <select id="select_term">
+        <label class="select-label">
+            <select id="select_term" onchange="TableChange();">
                 <option value="value0">前期</option>
                 <option value="value1">後期</option>
             </select>
@@ -610,8 +610,24 @@
                 <li>キャリアデザイン</li>
             </ul>
         </div>
+        
         <div class="SubjectClassificationImage">
             <img src="images/specialized_subject_classification_image.png" alt="専門科目分類表" title="専門科目分類表" class="image-vw">
+        </div>
+
+        <br /> 
+        <div class="req_lab" align="center"><!-- 研究室配属条件 -->
+            <h2>研究室配属条件</h2>
+            <label class="check_lb">
+                <input type="checkbox" id="more90Checkbox"> 取得単位数が90以上である
+            </label>
+            <label class="check_lb">
+                <input type="checkbox" id="more110Checkbox"> 取得単位数と登録単位数の合計が110以上である
+            </label>
+            <label class="check_lb">
+                <input type="checkbox" id="takeAllCheckbox"> ３年次後期までの専門必修科目の全ての単位を取得または登録している
+            </label>
+            <p class="check_lb" id="result_lab_req"></p>
         </div>
 
         <div class="GoogleForm">

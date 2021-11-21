@@ -591,3 +591,21 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }, false)
 },false)
+
+
+// 研究室配属条件を満たしているかを示すメッセージ部分＿＿＿＿＿＿＿＿＿＿
+
+function valueChange(event){
+    if (more90Checkbox.checked && more110Checkbox.checked && takeAllCheckbox.checked){
+        document.getElementById('result_lab_req').innerHTML = "<span class='success'>研究室配属条件を満たしています．</span>"
+    }else{
+        document.getElementById('result_lab_req').innerHTML = "<span class='warning'>研究室配属条件を満たしていません．</span>"
+    }
+  }
+  
+  let more90Checkbox = document.getElementById('more90Checkbox');
+  let more110Checkbox = document.getElementById('more110Checkbox');
+  let takeAllCheckbox = document.getElementById('takeAllCheckbox');
+  more90Checkbox.addEventListener('change', valueChange);
+  more110Checkbox.addEventListener('change', valueChange);
+  takeAllCheckbox.addEventListener('change', valueChange);
