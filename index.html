@@ -27,7 +27,6 @@
             </svg>
             )のあるところを押すと、合計に含まれるものがハイライトされます。
         </p>
-
         <label>
             <select id="select_term" onchange="all_calc();">
                 <option hidden>学期を選択</option>
@@ -610,16 +609,29 @@
                 <li>キャリアデザイン</li>
             </ul>
         </div>
-
         <div align="center" id="2nd_Compulsory"><!-- ３年後期の必修 -->
             <h2>3年後期の必須単位</h2>
             <ul class="ul-align-center">
                 <li>エンジニアリングデザイン演習</li>
             </ul>
         </div>
-
         <div class="SubjectClassificationImage">
             <img src="images/specialized_subject_classification_image.png" alt="専門科目分類表" title="専門科目分類表" class="image-vw">
+        </div>
+
+        <br /> 
+        <div class="req_lab" align="center"><!-- 研究室配属条件 -->
+            <h2>研究室配属条件</h2>
+            <label class="check_lb">
+                <input type="checkbox" id="more90Checkbox"> 取得単位数が90以上である
+            </label>
+            <label class="check_lb">
+                <input type="checkbox" id="more110Checkbox"> 取得単位数と登録単位数の合計が110以上である
+            </label>
+            <label class="check_lb">
+                <input type="checkbox" id="takeAllCheckbox"> ３年次後期までの専門必修科目の全ての単位を取得または登録している
+            </label>
+            <p class="check_lb" id="result_lab_req"></p>
         </div>
 
         <div class="GoogleForm">

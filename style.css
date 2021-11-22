@@ -98,7 +98,7 @@ input:invalid{
   border: solid 1px red;
 }
 
-label{
+.select-label{
   box-shadow:0 3px 5px rgba(0,0,0,.2);
   padding:12px;
   background:white;
@@ -109,7 +109,7 @@ label{
 }
 
 
-select{
+#select_term{
   border:none;
   outline:none;
   display: inline-block;
@@ -129,7 +129,7 @@ select{
   background:transparent;
 }
 
-label:after{
+.select-label:after{
   content:"\25bc";
   /* 下向きの三角形，Unicode番号U+25BC */
   font-size:16px;
@@ -168,4 +168,18 @@ li {
 }
 .SubjectClassificationImage {
   text-align: center;
+}
+
+.req_lab {
+  border: 2px solid orange;
+  margin: 0 auto;
+  width: 90%;
+  max-width: 650px;
+}
+
+.check_lb {
+  text-align: left;
+  display: block;
+  width: 90%;
+  max-width: 550px;
 }
