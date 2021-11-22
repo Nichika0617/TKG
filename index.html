@@ -27,16 +27,15 @@
             </svg>
             )のあるところを押すと、合計に含まれるものがハイライトされます。
         </p>
-
-        <label class="select-label">
-            <select id="select_term" onchange="TableChange();">
+        <label>
+            <select id="select_term" onchange="all_calc();">
+                <option hidden>学期を選択</option>
                 <option value="value0">前期</option>
                 <option value="value1">後期</option>
             </select>
         </label>
         
         <br><br>
-
         <!-- <p>例</p>
         
             <table align="center" border="1" class="mb-5">
@@ -603,14 +602,19 @@
                 </tr>
 <!--____________________________________________________________-->
             </table>
-        <div>
-            <h2 align="center">3年前期の必須単位</h2>
+        <div align="center" id="Compulsory"><!-- ３年前期の必修 -->
+            <h2>3年前期の必須単位</h2>
             <ul class="ul-align-center">
                 <li>知能情報実験III</li>
                 <li>キャリアデザイン</li>
             </ul>
         </div>
-        
+        <div align="center" id="2nd_Compulsory"><!-- ３年後期の必修 -->
+            <h2>3年後期の必須単位</h2>
+            <ul class="ul-align-center">
+                <li>エンジニアリングデザイン演習</li>
+            </ul>
+        </div>
         <div class="SubjectClassificationImage">
             <img src="images/specialized_subject_classification_image.png" alt="専門科目分類表" title="専門科目分類表" class="image-vw">
         </div>

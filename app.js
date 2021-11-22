@@ -21,7 +21,6 @@ const all_calc = ()=>{
     foreign_calc();    
     subtotal3_calc();
     subtotal4_calc();
-
     const major_base = convertNum(document.getElementById('major_base').value);
     const out_major_base = convertNum(document.getElementById('out_major_base').value);
     // これはどこに含まれる．．？ 専門基礎指定外
@@ -31,6 +30,7 @@ const all_calc = ()=>{
     document.getElementById('result_major_base').textContent=Math.max(8-major_base,0);
     document.getElementById('all_total').textContent = All_total;
     document.getElementById('result_all_total').textContent = Math.max(130-All_total,0);
+    TableChange();
 }
 
 // 小計1の計算↓↓______________________________________________________________________
@@ -315,7 +315,7 @@ const total2_calc = () => {
         ex_judge = false;
     }
 
-    document.getElementById('result_exp').innerHTML=`${Math.max(15-experiment,0)}<span class='warning'> (10)</span>`
+    document.getElementById('result_exp').innerHTML=`${Math.max(15-experiment,0)}`
     if(Math.max(15-experiment,0) == 0){
         // 研究実験の不足単位が0ならば
         exp_judge = true;
@@ -592,7 +592,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }, false)
 },false)
 
-
 // 研究室配属条件を満たしているかを示すメッセージ部分＿＿＿＿＿＿＿＿＿＿
 
 function valueChange(event){
@@ -609,3 +608,44 @@ function valueChange(event){
   more90Checkbox.addEventListener('change', valueChange);
   more110Checkbox.addEventListener('change', valueChange);
   takeAllCheckbox.addEventListener('change', valueChange);
+
+// 表下の必修科目の表示非表示をコントロールする関数
+const TableChange = () =>{
+    let element = document.getElementById('select_term')
+    // セレクト要素を全部elementに
+    let options = element.options;
+    // その中のoptionsだけを取ってくる
+    // options[0] が　前期 [1]が後期
+    let Compulsory_element = document.getElementById('Compulsory');    
+    let Second_Compulsory_element = document.getElementById('2nd_Compulsory');
+
+    if(options[1].selected == true){
+        // 前期がドロップダウンで選択された
+        const experiment = convertNum(document.getElementById('experiment').value);
+        document.getElementById('result_exp').innerHTML=`${Math.max(15-experiment,0)}<span class='warning'>(12)</span>`
+        
+        const ex = convertNum(document.getElementById('ex').value);
+        document.getElementById('result_ex').innerHTML=`${Math.max(7-ex,0)}<span class='warning'>(2)</span>`
+
+        // 必修単位のvisibility
+        Second_Compulsory_element.style.display = 'none';
+        // 前期が選択されている時には後期を隠す
+        console.log("後期を隠す");
+
+        Compulsory_element.style.display = 'block';
+        // 前期を復元
+
+    }else if(options[2].selected == true){
+        const experiment = convertNum(document.getElementById('experiment').value);
+        document.getElementById('result_exp').innerHTML=`${Math.max(15-experiment,0)}<span class='warning'>(10)</span>`
+        
+        const ex = convertNum(document.getElementById('ex').value);
+        document.getElementById('result_ex').innerHTML=`${Math.max(7-ex,0)}`
+
+        Compulsory_element.style.display = 'none';
+        // 前期を消して
+        console.log("前期を隠す");
+        Second_Compulsory_element.style.display = 'block';
+        // 後期を復元
+    }
+}
