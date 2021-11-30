@@ -111,7 +111,7 @@ input:invalid{
 }
 
 
-#select_term{
+.select_condition{
   border:none;
   outline:none;
   display: inline-block;
