@@ -7,11 +7,15 @@ let math_base_judge = false; // 数学基礎を6単位取得したか．
 let core_judge = false; // 知能情報コアを26単位取得したか．
 let fusion_judge = false; // 工学融合を4単位取得したか．
 // 同じ科目群から取得しているかの判定はまだできていない(10/21)
+// 全てのinputにつけられたidのリスト
 const idList = ["health","jinbun","syakai","sougou","career","ryudai","Japanese","sizen","info","English","German","French","Spanish","Chinese","etc","major_base","out_major_base","info_tec","ex","experiment","math_base","core","fusion","math_base_select","adv","relation","common_engineering","free","teacher"];
+// 表下の前期後期の必修科目につけられたidのリスト
+const compulsoryIdList = ['third_year_Compulsory','third_year_2nd_Compulsory','fourth_year_Compulsory','fourth_year_2nd_Compulsory']
 
 //ロード時に実行
 window.onload = () =>{
-    setValue();
+    setValue(); // 値の復元
+    all_calc(); // 初期化，前回の入力が復元された場合はその計算結果を出力．
 }
 
 // ＿＿＿＿＿＿＿＿＿＿小計1のハイライト↓↓
@@ -235,7 +239,6 @@ const all_calc = ()=>{
     document.getElementById('all_total').textContent = All_total;
     document.getElementById('result_all_total').textContent = Math.max(130-All_total,0);
     
-    TableChange();
     saveValue();
 }
 
@@ -616,8 +619,8 @@ function valueChange(event){
   more110Checkbox.addEventListener('change', valueChange);
   takeAllCheckbox.addEventListener('change', valueChange);
 
-// 表下の必修科目の表示非表示をコントロールする関数
-const TableChange = () =>{
+// セレクトボックスの値のによって表示を変更する関数をまとめて発火するための関数
+const ChangeBySelect = () =>{
     let element = document.getElementById('select_grade');
     let options = element.options;
     if(options[1].selected == true){
@@ -627,23 +630,21 @@ const TableChange = () =>{
     }else if(options[3].selected == true){
         // 3年
         thirdTableChange();
+        hidingCompulsorySubjects(options)
     }else if(options[4].selected == true){
         fourthTableChange();
+        hidingCompulsorySubjects(options)
     }
     
 
 }
 
 const thirdTableChange = () =>{
-    let element = document.getElementById('select_term')
+    const element = document.getElementById('select_term')
     // セレクト要素を全部elementに
-    let options = element.options;
+    const options = element.options;
     // その中のoptionsだけを取ってくる
     // options[1] が前期 [2]が後期
-    let Compulsory_element = document.getElementById('Compulsory');
-    // 前期の必修
-    let Second_Compulsory_element = document.getElementById('2nd_Compulsory');
-    // 後期の必修
     if(options[1].selected == true){
         // 前期がドロップダウンで選択された
         const experiment = convertNum(document.getElementById('experiment').value);
@@ -654,14 +655,6 @@ const thirdTableChange = () =>{
         // 総合力演習
         document.getElementById('result_ex').innerHTML=`${Math.max(7-ex,0)}<span class='warning'>(2)</span>`
 
-        // 必修単位のvisibility
-        Second_Compulsory_element.style.display = 'none';
-        // 前期が選択されている時には後期を隠す
-        console.log("後期を隠す");
-
-        Compulsory_element.style.display = 'block';
-        // 前期を復元
-
     }else if(options[2].selected == true){
         const experiment = convertNum(document.getElementById('experiment').value);
         document.getElementById('result_exp').innerHTML=`${Math.max(15-experiment,0)}<span class='warning'>(10)</span>`
@@ -669,11 +662,6 @@ const thirdTableChange = () =>{
         const ex = convertNum(document.getElementById('ex').value);
         document.getElementById('result_ex').innerHTML=`${Math.max(7-ex,0)}`
 
-        Compulsory_element.style.display = 'none';
-        // 前期を消して
-        console.log("前期を隠す");
-        Second_Compulsory_element.style.display = 'block';
-        // 後期を復元
     }
 }
 
@@ -681,8 +669,6 @@ const fourthTableChange = () =>{
     let element = document.getElementById('select_term')
     let options = element.options;
     // options[1] が前期 [2]が後期
-    let Compulsory_element = document.getElementById('Compulsory');    
-    let Second_Compulsory_element = document.getElementById('2nd_Compulsory');
 
     if(options[1].selected == true){
         // 前期がドロップダウンで選択された
@@ -690,22 +676,63 @@ const fourthTableChange = () =>{
         // 研究実験
         document.getElementById('result_exp').innerHTML=`${Math.max(15-experiment,0)}<span class='warning'>(8)</span>`
         
-        // 必修単位のvisibility
-        Second_Compulsory_element.style.display = 'none';
-        // 前期が選択されている時には後期を隠す
-
-        Compulsory_element.style.display = 'block';
-        // 前期を復元
-
     }else if(options[2].selected == true){
         const experiment = convertNum(document.getElementById('experiment').value);
         document.getElementById('result_exp').innerHTML=`${Math.max(15-experiment,0)}<span class='warning'>(4)</span>`
+    }
+}
 
-        Compulsory_element.style.display = 'none';
-        // 前期を消して
-        console.log("前期を隠す");
-        Second_Compulsory_element.style.display = 'block';
-        // 後期を復元
+const hidingCompulsorySubjects = (select_year) => {
+    // ドロップダウンで選択されたものに該当しない年次の必修科目を非表示にする関数
+    for(let i=0;i<compulsoryIdList.length;i++){
+        id = compulsoryIdList[i]
+        document.getElementById(id).style.display = 'none';
+        // まず全部非表示に．
+    }
+    const element = document.getElementById('select_term')
+    // セレクト要素を全部elementに格納
+    const options = element.options;
+    // その中のoptions要素だけを取ってくる
+    // options[1]が前期 [2]が後期を指す
+    // 引数select_year : 1 ~ 4年のどれがドロップダウンで選択されたか
+    if(select_year[1].selected == true){
+        // 一年
+        if(options[1].selected == true){
+        // 前期
+            console.log('まだ');
+        }else if(options[2].selected == true){
+            console.log('まだ');
+        }
+    }else if(select_year[2].selected == true){
+        // 二年
+        if(options[1].selected == true){
+        // 前期
+            console.log('まだ');
+        }else if(options[2].selected == true){
+            console.log('まだ');
+        }
+    }else if(select_year[3].selected == true){
+        // 三年
+        let Compulsory_element = document.getElementById('third_year_Compulsory');    
+        let Second_Compulsory_element = document.getElementById('third_year_2nd_Compulsory');
+        if(options[1].selected == true){
+        // 前期
+            Compulsory_element.style.display = 'block';
+        }else if(options[2].selected == true){
+            // 後期
+            Second_Compulsory_element.style.display = 'block';
+        }
+    }else if(select_year[4].selected == true){
+        // 四年
+        let Compulsory_element = document.getElementById('fourth_year_Compulsory');    
+        let Second_Compulsory_element = document.getElementById('fourth_year_2nd_Compulsory');
+        if(options[1].selected == true){
+        // 前期
+            Compulsory_element.style.display = 'block';
+        }else if(options[2].selected == true){
+            // 後期
+            Second_Compulsory_element.style.display = 'block';
+        }
     }
 }
 const saveValue = () =>{
