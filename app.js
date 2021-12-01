@@ -234,8 +234,8 @@ const all_calc = ()=>{
     document.getElementById('result_major_base').textContent=Math.max(8-major_base,0);
     document.getElementById('all_total').textContent = All_total;
     document.getElementById('result_all_total').textContent = Math.max(130-All_total,0);
+    
     TableChange();
-
     saveValue();
 }
 
@@ -618,20 +618,40 @@ function valueChange(event){
 
 // 表下の必修科目の表示非表示をコントロールする関数
 const TableChange = () =>{
+    let element = document.getElementById('select_grade');
+    let options = element.options;
+    if(options[1].selected == true){
+        // 1年
+    }else if(options[2].selected == true){
+        // 2年
+    }else if(options[3].selected == true){
+        // 3年
+        thirdTableChange();
+    }else if(options[4].selected == true){
+        fourthTableChange();
+    }
+    
+
+}
+
+const thirdTableChange = () =>{
     let element = document.getElementById('select_term')
     // セレクト要素を全部elementに
     let options = element.options;
     // その中のoptionsだけを取ってくる
-    // options[0] が　前期 [1]が後期
-    let Compulsory_element = document.getElementById('Compulsory');    
+    // options[1] が前期 [2]が後期
+    let Compulsory_element = document.getElementById('Compulsory');
+    // 前期の必修
     let Second_Compulsory_element = document.getElementById('2nd_Compulsory');
-
+    // 後期の必修
     if(options[1].selected == true){
         // 前期がドロップダウンで選択された
         const experiment = convertNum(document.getElementById('experiment').value);
+        // 研究実験
         document.getElementById('result_exp').innerHTML=`${Math.max(15-experiment,0)}<span class='warning'>(12)</span>`
         
         const ex = convertNum(document.getElementById('ex').value);
+        // 総合力演習
         document.getElementById('result_ex').innerHTML=`${Math.max(7-ex,0)}<span class='warning'>(2)</span>`
 
         // 必修単位のvisibility
@@ -657,6 +677,37 @@ const TableChange = () =>{
     }
 }
 
+const fourthTableChange = () =>{
+    let element = document.getElementById('select_term')
+    let options = element.options;
+    // options[1] が前期 [2]が後期
+    let Compulsory_element = document.getElementById('Compulsory');    
+    let Second_Compulsory_element = document.getElementById('2nd_Compulsory');
+
+    if(options[1].selected == true){
+        // 前期がドロップダウンで選択された
+        const experiment = convertNum(document.getElementById('experiment').value);
+        // 研究実験
+        document.getElementById('result_exp').innerHTML=`${Math.max(15-experiment,0)}<span class='warning'>(8)</span>`
+        
+        // 必修単位のvisibility
+        Second_Compulsory_element.style.display = 'none';
+        // 前期が選択されている時には後期を隠す
+
+        Compulsory_element.style.display = 'block';
+        // 前期を復元
+
+    }else if(options[2].selected == true){
+        const experiment = convertNum(document.getElementById('experiment').value);
+        document.getElementById('result_exp').innerHTML=`${Math.max(15-experiment,0)}<span class='warning'>(4)</span>`
+
+        Compulsory_element.style.display = 'none';
+        // 前期を消して
+        console.log("前期を隠す");
+        Second_Compulsory_element.style.display = 'block';
+        // 後期を復元
+    }
+}
 const saveValue = () =>{
     json = generateJson();
     localStorage.setItem("TKG",JSON.stringify(json));
