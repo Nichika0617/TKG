@@ -10,7 +10,7 @@ let fusion_judge = false; // 工学融合を4単位取得したか．
 // 全てのinputにつけられたidのリスト
 const idList = ["health","jinbun","syakai","sougou","career","ryudai","Japanese","sizen","info","English","German","French","Spanish","Chinese","etc","major_base","out_major_base","info_tec","ex","experiment","math_base","core","fusion","math_base_select","adv","relation","common_engineering","free","teacher"];
 // 表下の前期後期の必修科目につけられたidのリスト
-const compulsoryIdList = ['second_year_Compulsory','second_year_2nd_Compulsory','third_year_Compulsory','third_year_2nd_Compulsory','fourth_year_Compulsory','fourth_year_2nd_Compulsory']
+const compulsoryIdList = ['first_year_Compulsory','first_year_2nd_Compulsory','second_year_Compulsory','second_year_2nd_Compulsory','third_year_Compulsory','third_year_2nd_Compulsory','fourth_year_Compulsory','fourth_year_2nd_Compulsory']
 
 //ロード時に実行
 window.onload = () =>{
@@ -702,11 +702,20 @@ const hidingCompulsorySubjects = () => {
 
 const displayedFirstCompulsorySubjects = () =>{
     // 一年次の必修科目を表下に表示する関数
+    let Compulsory_element = document.getElementById('first_year_Compulsory');    
+    let Second_Compulsory_element = document.getElementById('first_year_2nd_Compulsory');
     const element = document.getElementById('select_term')
     // セレクト要素を全部elementに格納
     const options = element.options;
     // その中のoptions要素だけを取ってくる
     // options[1]が前期 [2]が後期を指す
+    if(options[1].selected == true){
+        // 前期
+        Compulsory_element.style.display = 'block';
+    }else if(options[2].selected == true){
+        // 後期
+        Second_Compulsory_element.style.display = 'block';
+    }
 }
 
 const displayedSecondCompulsorySubjects = () =>{
