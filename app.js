@@ -619,26 +619,36 @@ function valueChange(event){
   more110Checkbox.addEventListener('change', valueChange);
   takeAllCheckbox.addEventListener('change', valueChange);
 
-// セレクトボックスの値のによって表示を変更する関数をまとめて発火するための関数
+// セレクトボックスの値の変化によって表示を変更する関数をまとめて発火するための関数
 const ChangeBySelect = () =>{
+    hidingCompulsorySubjects() // まず表下の必修科目は全部非表示に．
     let element = document.getElementById('select_grade');
     let options = element.options;
     if(options[1].selected == true){
         // 1年
+        firstTableChange();
+        displayedFirstCompulsorySubjects();
     }else if(options[2].selected == true){
         // 2年
+        secondTableChange();
+        displayedSecondCompulsorySubjects();
     }else if(options[3].selected == true){
         // 3年
         thirdTableChange();
-        hidingCompulsorySubjects(options)
+        displayedThirdCompulsorySubjects();
     }else if(options[4].selected == true){
+        // 4年
         fourthTableChange();
-        hidingCompulsorySubjects(options)
+        displayedFourthCompulsorySubjects();
     }
-    
-
 }
 
+const firstTableChange = () =>{
+}
+
+const secondTableChange = () =>{
+
+}
 const thirdTableChange = () =>{
     const element = document.getElementById('select_term')
     // セレクト要素を全部elementに
@@ -682,59 +692,68 @@ const fourthTableChange = () =>{
     }
 }
 
-const hidingCompulsorySubjects = (select_year) => {
-    // ドロップダウンで選択されたものに該当しない年次の必修科目を非表示にする関数
+const hidingCompulsorySubjects = () => {
+    // 表下の必修科目を"全て"非表示にする関数
     for(let i=0;i<compulsoryIdList.length;i++){
         id = compulsoryIdList[i]
         document.getElementById(id).style.display = 'none';
-        // まず全部非表示に．
     }
+}
+
+const displayedFirstCompulsorySubjects = () =>{
+    // 一年次の必修科目を表下に表示する関数
     const element = document.getElementById('select_term')
     // セレクト要素を全部elementに格納
     const options = element.options;
     // その中のoptions要素だけを取ってくる
     // options[1]が前期 [2]が後期を指す
-    // 引数select_year : 1 ~ 4年のどれがドロップダウンで選択されたか
-    if(select_year[1].selected == true){
-        // 一年
-        if(options[1].selected == true){
+}
+
+const displayedSecondCompulsorySubjects = () =>{
+    // 二年次の必修科目を表下に表示する関数
+    const element = document.getElementById('select_term')
+    // セレクト要素を全部elementに格納
+    const options = element.options;
+    // その中のoptions要素だけを取ってくる
+    // options[1]が前期 [2]が後期を指す
+}
+
+const displayedThirdCompulsorySubjects = () =>{
+    // 三年次の必修科目を表下に表示する関数
+    let Compulsory_element = document.getElementById('third_year_Compulsory');    
+    let Second_Compulsory_element = document.getElementById('third_year_2nd_Compulsory');
+    const element = document.getElementById('select_term')
+    // セレクト要素を全部elementに格納
+    const options = element.options;
+    // その中のoptions要素だけを取ってくる
+    // options[1]が前期 [2]が後期を指す
+    if(options[1].selected == true){
         // 前期
-            console.log('まだ');
-        }else if(options[2].selected == true){
-            console.log('まだ');
-        }
-    }else if(select_year[2].selected == true){
-        // 二年
-        if(options[1].selected == true){
-        // 前期
-            console.log('まだ');
-        }else if(options[2].selected == true){
-            console.log('まだ');
-        }
-    }else if(select_year[3].selected == true){
-        // 三年
-        let Compulsory_element = document.getElementById('third_year_Compulsory');    
-        let Second_Compulsory_element = document.getElementById('third_year_2nd_Compulsory');
-        if(options[1].selected == true){
-        // 前期
-            Compulsory_element.style.display = 'block';
-        }else if(options[2].selected == true){
-            // 後期
-            Second_Compulsory_element.style.display = 'block';
-        }
-    }else if(select_year[4].selected == true){
-        // 四年
-        let Compulsory_element = document.getElementById('fourth_year_Compulsory');    
-        let Second_Compulsory_element = document.getElementById('fourth_year_2nd_Compulsory');
-        if(options[1].selected == true){
-        // 前期
-            Compulsory_element.style.display = 'block';
-        }else if(options[2].selected == true){
-            // 後期
-            Second_Compulsory_element.style.display = 'block';
-        }
+        Compulsory_element.style.display = 'block';
+    }else if(options[2].selected == true){
+        // 後期
+        Second_Compulsory_element.style.display = 'block';
     }
 }
+
+const displayedFourthCompulsorySubjects = () =>{
+    // 四年次の必修科目を表下に表示する関数
+    let Compulsory_element = document.getElementById('fourth_year_Compulsory');    
+    let Second_Compulsory_element = document.getElementById('fourth_year_2nd_Compulsory');
+    const element = document.getElementById('select_term')
+    // セレクト要素を全部elementに格納
+    const options = element.options;
+    // その中のoptions要素だけを取ってくる
+    // options[1]が前期 [2]が後期を指す
+    if(options[1].selected == true){
+        // 前期
+        Compulsory_element.style.display = 'block';
+    }else if(options[2].selected == true){
+        // 後期
+        Second_Compulsory_element.style.display = 'block';
+    }
+}
+
 const saveValue = () =>{
     json = generateJson();
     localStorage.setItem("TKG",JSON.stringify(json));
