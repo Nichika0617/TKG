@@ -238,7 +238,8 @@ const all_calc = ()=>{
     document.getElementById('result_major_base').textContent=Math.max(8-major_base,0);
     document.getElementById('all_total').textContent = All_total;
     document.getElementById('result_all_total').textContent = Math.max(130-All_total,0);
-    
+    TableChangeReqLab();
+
     saveValue();
 }
 
@@ -605,19 +606,33 @@ const next_input = (id) => {
 // 研究室配属条件を満たしているかを示すメッセージ部分＿＿＿＿＿＿＿＿＿＿
 
 function valueChange(event){
-    if (more90Checkbox.checked && more110Checkbox.checked && takeAllCheckbox.checked){
-        document.getElementById('result_lab_req').innerHTML = "<span class='success'>研究室配属条件を満たしています．</span>"
+    // y18 y19 y20
+    if (more90Checkbox_y18_y19_y20.checked && more110Checkbox_y18_y19_y20.checked && takeAllCheckbox_y18_y19_y20.checked){
+        document.getElementById('result_lab_req_y18_y19_y20').innerHTML = "<span class='success'>研究室配属条件を満たしています．</span>"
     }else{
-        document.getElementById('result_lab_req').innerHTML = "<span class='warning'>研究室配属条件を満たしていません．</span>"
+        document.getElementById('result_lab_req_y18_y19_y20').innerHTML = "<span class='warning'>研究室配属条件を満たしていません．</span>"
+    }
+    // y21
+    if (more90Checkbox_y21.checked && more110Checkbox_y21.checked && takeAllCheckbox_y21.checked){
+        document.getElementById('result_lab_req_y21').innerHTML = "<span class='success'>研究室配属条件を満たしています．</span>"
+    }else{
+        document.getElementById('result_lab_req_y21').innerHTML = "<span class='warning'>研究室配属条件を満たしていません．</span>"
     }
   }
-  
-  let more90Checkbox = document.getElementById('more90Checkbox');
-  let more110Checkbox = document.getElementById('more110Checkbox');
-  let takeAllCheckbox = document.getElementById('takeAllCheckbox');
-  more90Checkbox.addEventListener('change', valueChange);
-  more110Checkbox.addEventListener('change', valueChange);
-  takeAllCheckbox.addEventListener('change', valueChange);
+  // y18 y19 y20
+  let more90Checkbox_y18_y19_y20 = document.getElementById('more90Checkbox_y18_y19_y20');
+  let more110Checkbox_y18_y19_y20 = document.getElementById('more110Checkbox_y18_y19_y20');
+  let takeAllCheckbox_y18_y19_y20 = document.getElementById('takeAllCheckbox_y18_y19_y20');
+  more90Checkbox_y18_y19_y20.addEventListener('change', valueChange);
+  more110Checkbox_y18_y19_y20.addEventListener('change', valueChange);
+  takeAllCheckbox_y18_y19_y20.addEventListener('change', valueChange);
+  // y21
+  let more90Checkbox_y21 = document.getElementById('more90Checkbox_y21');
+  let more110Checkbox_y21 = document.getElementById('more110Checkbox_y21');
+  let takeAllCheckbox_y21 = document.getElementById('takeAllCheckbox_y21');
+  more90Checkbox_y21.addEventListener('change', valueChange);
+  more110Checkbox_y21.addEventListener('change', valueChange);
+  takeAllCheckbox_y21.addEventListener('change', valueChange);
 
 // セレクトボックスの値の変化によって表示を変更する関数をまとめて発火するための関数
 const ChangeBySelect = () =>{
@@ -1065,4 +1080,26 @@ const generateJson = () =>{
         obj[id] = value;
     }
     return obj
+}
+const TableChangeReqLab = () =>{
+    // 研究室配属条件の表示非表示切り替え
+    let element_admission_year = document.getElementById('select_admission_year')
+    let options_admission_year = element_admission_year.options;
+
+    let req_lab_y18_y19_y20_element = document.getElementById('req_lab_y18_y19_y20')
+    let req_lab_y21_element = document.getElementById('req_lab_y21')
+
+    if(options_admission_year[1].selected == true){
+        req_lab_y18_y19_y20_element.style.display = 'block';
+        req_lab_y21_element.style.display = 'none';
+    }else if(options_admission_year[2].selected == true){
+        req_lab_y18_y19_y20_element.style.display = 'block';
+        req_lab_y21_element.style.display = 'none';
+    }else if(options_admission_year[3].selected == true){
+        req_lab_y18_y19_y20_element.style.display = 'block';
+        req_lab_y21_element.style.display = 'none';
+    }else if(options_admission_year[4].selected == true){
+        req_lab_y18_y19_y20_element.style.display = 'none';
+        req_lab_y21_element.style.display = 'block';
+    }
 }
