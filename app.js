@@ -238,7 +238,6 @@ const all_calc = ()=>{
     document.getElementById('result_major_base').textContent=Math.max(8-major_base,0);
     document.getElementById('all_total').textContent = All_total;
     document.getElementById('result_all_total').textContent = Math.max(130-All_total,0);
-    TableChangeReqLab();
 
     saveValue();
 }
@@ -636,7 +635,8 @@ function valueChange(event){
 
 // セレクトボックスの値の変化によって表示を変更する関数をまとめて発火するための関数
 const ChangeBySelect = () =>{
-    hidingCompulsorySubjects() // まず表下の必修科目は全部非表示に．
+    hidingCompulsorySubjects(); // まず表下の必修科目は全部非表示に．
+    TableChangeReqLab();
     let element = document.getElementById('select_grade');
     let options = element.options;
     if(options[1].selected == true){
