@@ -603,23 +603,11 @@ const next_input = (id) => {
 // 研究室配属条件を満たしているかを示すメッセージ部分＿＿＿＿＿＿＿＿＿＿
 
 function valueChange(event){
-    // y18
-    if (more90Checkbox_y18.checked && more110Checkbox_y18.checked && takeAllCheckbox_y18.checked){
-        document.getElementById('result_lab_req_y18').innerHTML = "<span class='success'>研究室配属条件を満たしています．</span>"
+    // y18 y19 y20
+    if (more90Checkbox_y18_y19_y20.checked && more110Checkbox_y18_y19_y20.checked && takeAllCheckbox_y18_y19_y20.checked){
+        document.getElementById('result_lab_req_y18_y19_y20').innerHTML = "<span class='success'>研究室配属条件を満たしています．</span>"
     }else{
-        document.getElementById('result_lab_req_y18').innerHTML = "<span class='warning'>研究室配属条件を満たしていません．</span>"
-    }
-    // y19
-    if (more90Checkbox_y19.checked && more110Checkbox_y19.checked && takeAllCheckbox_y19.checked){
-        document.getElementById('result_lab_req_y19').innerHTML = "<span class='success'>研究室配属条件を満たしています．</span>"
-    }else{
-        document.getElementById('result_lab_req_y19').innerHTML = "<span class='warning'>研究室配属条件を満たしていません．</span>"
-    }
-    // y20
-    if (more90Checkbox_y20.checked && more110Checkbox_y20.checked && takeAllCheckbox_y20.checked){
-        document.getElementById('result_lab_req_y20').innerHTML = "<span class='success'>研究室配属条件を満たしています．</span>"
-    }else{
-        document.getElementById('result_lab_req_y20').innerHTML = "<span class='warning'>研究室配属条件を満たしていません．</span>"
+        document.getElementById('result_lab_req_y18_y19_y20').innerHTML = "<span class='warning'>研究室配属条件を満たしていません．</span>"
     }
     // y21
     if (more90Checkbox_y21.checked && more110Checkbox_y21.checked && takeAllCheckbox_y21.checked){
@@ -628,30 +616,13 @@ function valueChange(event){
         document.getElementById('result_lab_req_y21').innerHTML = "<span class='warning'>研究室配属条件を満たしていません．</span>"
     }
   }
-  // y18
-  let more90Checkbox_y18 = document.getElementById('more90Checkbox_y18');
-  let more110Checkbox_y18 = document.getElementById('more110Checkbox_y18');
-  let takeAllCheckbox_y18 = document.getElementById('takeAllCheckbox_y18');
-  more90Checkbox_y18.addEventListener('change', valueChange);
-  more110Checkbox_y18.addEventListener('change', valueChange);
-  takeAllCheckbox_y18.addEventListener('change', valueChange);
-
-  // y19
-  let more90Checkbox_y19 = document.getElementById('more90Checkbox_y19');
-  let more110Checkbox_y19 = document.getElementById('more110Checkbox_y19');
-  let takeAllCheckbox_y19 = document.getElementById('takeAllCheckbox_y19');
-  more90Checkbox_y19.addEventListener('change', valueChange);
-  more110Checkbox_y19.addEventListener('change', valueChange);
-  takeAllCheckbox_y19.addEventListener('change', valueChange);
-
-  // y20
-  let more90Checkbox_y20 = document.getElementById('more90Checkbox_y20');
-  let more110Checkbox_y20 = document.getElementById('more110Checkbox_y20');
-  let takeAllCheckbox_y20 = document.getElementById('takeAllCheckbox_y20');
-  more90Checkbox_y20.addEventListener('change', valueChange);
-  more110Checkbox_y20.addEventListener('change', valueChange);
-  takeAllCheckbox_y20.addEventListener('change', valueChange);
-
+  // y18 y19 y20
+  let more90Checkbox_y18_y19_y20 = document.getElementById('more90Checkbox_y18_y19_y20');
+  let more110Checkbox_y18_y19_y20 = document.getElementById('more110Checkbox_y18_y19_y20');
+  let takeAllCheckbox_y18_y19_y20 = document.getElementById('takeAllCheckbox_y18_y19_y20');
+  more90Checkbox_y18_y19_y20.addEventListener('change', valueChange);
+  more110Checkbox_y18_y19_y20.addEventListener('change', valueChange);
+  takeAllCheckbox_y18_y19_y20.addEventListener('change', valueChange);
   // y21
   let more90Checkbox_y21 = document.getElementById('more90Checkbox_y21');
   let more110Checkbox_y21 = document.getElementById('more110Checkbox_y21');
@@ -728,33 +699,24 @@ const generateJson = () =>{
 }
 
 const TableChangeReqLab = () =>{
+    // 研究室配属条件の表示非表示切り替え
     let element_admission_year = document.getElementById('select_admission_year')
     let options_admission_year = element_admission_year.options;
 
-    let req_lab_y18_element = document.getElementById('req_lab_y18')
-    let req_lab_y19_element = document.getElementById('req_lab_y19')
-    let req_lab_y20_element = document.getElementById('req_lab_y20')
+    let req_lab_y18_y19_y20_element = document.getElementById('req_lab_y18_y19_y20')
     let req_lab_y21_element = document.getElementById('req_lab_y21')
 
     if(options_admission_year[1].selected == true){
-        req_lab_y18_element.style.display = 'block';
-        req_lab_y19_element.style.display = 'none';
-        req_lab_y20_element.style.display = 'none';
+        req_lab_y18_y19_y20_element.style.display = 'block';
         req_lab_y21_element.style.display = 'none';
     }else if(options_admission_year[2].selected == true){
-        req_lab_y18_element.style.display = 'none';
-        req_lab_y19_element.style.display = 'block';
-        req_lab_y20_element.style.display = 'none';
+        req_lab_y18_y19_y20_element.style.display = 'block';
         req_lab_y21_element.style.display = 'none';
     }else if(options_admission_year[3].selected == true){
-        req_lab_y18_element.style.display = 'none';
-        req_lab_y19_element.style.display = 'none';
-        req_lab_y20_element.style.display = 'block';
+        req_lab_y18_y19_y20_element.style.display = 'block';
         req_lab_y21_element.style.display = 'none';
     }else if(options_admission_year[4].selected == true){
-        req_lab_y18_element.style.display = 'none';
-        req_lab_y19_element.style.display = 'none';
-        req_lab_y20_element.style.display = 'none';
+        req_lab_y18_y19_y20_element.style.display = 'none';
         req_lab_y21_element.style.display = 'block';
     }
 }
