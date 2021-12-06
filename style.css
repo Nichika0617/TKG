@@ -177,6 +177,7 @@ li {
   margin: 0 auto;
   width: 90%;
   max-width: 650px;
+  display: none;
 }
 
 .check_lb {
