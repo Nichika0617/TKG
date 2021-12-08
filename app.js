@@ -1149,16 +1149,23 @@ const before2021DisplayedFirstCompulsorySubjects = () =>{
     // 一年次の必修科目を表下に表示する関数
     let Compulsory_element = document.getElementById('first_year_Compulsory');    
     let Second_Compulsory_element = document.getElementById('first_year_2nd_Compulsory');
+    
+    Compulsory_element.style.display = 'block';
+    Second_Compulsory_element.style.display = 'block';
+    // 前期後期未選択時には前期後期の必修科目どちらも表示するように
     const element = document.getElementById('select_term')
     // セレクト要素を全部elementに格納
     const options = element.options;
     // その中のoptions要素だけを取ってくる
     // options[1]が前期 [2]が後期を指す
+
     if(options[1].selected == true){
         // 前期
         Compulsory_element.style.display = 'block';
+        Second_Compulsory_element.style.display = 'none';
     }else if(options[2].selected == true){
         // 後期
+        Compulsory_element.style.display = 'none';
         Second_Compulsory_element.style.display = 'block';
     }
 }
@@ -1167,16 +1174,23 @@ const befor2021DisplayedSecondCompulsorySubjects = () =>{
     // 二年次の必修科目を表下に表示する関数
     let Compulsory_element = document.getElementById('second_year_Compulsory');    
     let Second_Compulsory_element = document.getElementById('second_year_2nd_Compulsory');
+    
+    Compulsory_element.style.display = 'block';
+    Second_Compulsory_element.style.display = 'block';
+    // 前期後期未選択時には前期後期の必修科目どちらも表示するように
     const element = document.getElementById('select_term')
     // セレクト要素を全部elementに格納
     const options = element.options;
     // その中のoptions要素だけを取ってくる
     // options[1]が前期 [2]が後期を指す
+
     if(options[1].selected == true){
         // 前期
         Compulsory_element.style.display = 'block';
+        Second_Compulsory_element.style.display = 'none';
     }else if(options[2].selected == true){
         // 後期
+        Compulsory_element.style.display = 'none';
         Second_Compulsory_element.style.display = 'block';
     }
 }
@@ -1185,16 +1199,23 @@ const befor2021DisplayedThirdCompulsorySubjects = () =>{
     // 三年次の必修科目を表下に表示する関数
     let Compulsory_element = document.getElementById('third_year_Compulsory');    
     let Second_Compulsory_element = document.getElementById('third_year_2nd_Compulsory');
+    
+    Compulsory_element.style.display = 'block';
+    Second_Compulsory_element.style.display = 'block';
+    // 前期後期未選択時には前期後期の必修科目どちらも表示するように
     const element = document.getElementById('select_term')
     // セレクト要素を全部elementに格納
     const options = element.options;
     // その中のoptions要素だけを取ってくる
     // options[1]が前期 [2]が後期を指す
+
     if(options[1].selected == true){
         // 前期
         Compulsory_element.style.display = 'block';
+        Second_Compulsory_element.style.display = 'none';
     }else if(options[2].selected == true){
         // 後期
+        Compulsory_element.style.display = 'none';
         Second_Compulsory_element.style.display = 'block';
     }
 }
@@ -1203,16 +1224,23 @@ const befor2021DisplayedFourthCompulsorySubjects = () =>{
     // 四年次の必修科目を表下に表示する関数
     let Compulsory_element = document.getElementById('fourth_year_Compulsory');    
     let Second_Compulsory_element = document.getElementById('fourth_year_2nd_Compulsory');
+    
+    Compulsory_element.style.display = 'block';
+    Second_Compulsory_element.style.display = 'block';
+    // 前期後期未選択時には前期後期の必修科目どちらも表示するように
     const element = document.getElementById('select_term')
     // セレクト要素を全部elementに格納
     const options = element.options;
     // その中のoptions要素だけを取ってくる
     // options[1]が前期 [2]が後期を指す
+
     if(options[1].selected == true){
         // 前期
         Compulsory_element.style.display = 'block';
+        Second_Compulsory_element.style.display = 'none';
     }else if(options[2].selected == true){
         // 後期
+        Compulsory_element.style.display = 'none';
         Second_Compulsory_element.style.display = 'block';
     }
 }
@@ -1221,16 +1249,23 @@ const onAndAfter2021DisplayedFirstCompulsorySubjects = () =>{
     // y21以降入学の1年次の必修科目を表下に表示する関数
     let Compulsory_element = document.getElementById('y21_first_year_Compulsory');    
     let Second_Compulsory_element = document.getElementById('y21_first_year_2nd_Compulsory');
+    
+    Compulsory_element.style.display = 'block';
+    Second_Compulsory_element.style.display = 'block';
+    // 前期後期未選択時には前期後期の必修科目どちらも表示するように
     const element = document.getElementById('select_term')
     // セレクト要素を全部elementに格納
     const options = element.options;
     // その中のoptions要素だけを取ってくる
     // options[1]が前期 [2]が後期を指す
+
     if(options[1].selected == true){
         // 前期
         Compulsory_element.style.display = 'block';
+        Second_Compulsory_element.style.display = 'none';
     }else if(options[2].selected == true){
         // 後期
+        Compulsory_element.style.display = 'none';
         Second_Compulsory_element.style.display = 'block';
     }
 }
@@ -1239,16 +1274,23 @@ const onAndAfter2021DisplayedSecondCompulsorySubjects = () =>{
     // y21以降入学の1年次の必修科目を表下に表示する関数
     let Compulsory_element = document.getElementById('y21_second_year_Compulsory');    
     let Second_Compulsory_element = document.getElementById('y21_second_year_2nd_Compulsory');
+    
+    Compulsory_element.style.display = 'block';
+    Second_Compulsory_element.style.display = 'block';
+    // 前期後期未選択時には前期後期の必修科目どちらも表示するように
     const element = document.getElementById('select_term')
     // セレクト要素を全部elementに格納
     const options = element.options;
     // その中のoptions要素だけを取ってくる
     // options[1]が前期 [2]が後期を指す
+
     if(options[1].selected == true){
         // 前期
         Compulsory_element.style.display = 'block';
+        Second_Compulsory_element.style.display = 'none';
     }else if(options[2].selected == true){
         // 後期
+        Compulsory_element.style.display = 'none';
         Second_Compulsory_element.style.display = 'block';
     }
 }
@@ -1258,16 +1300,23 @@ const onAndAfter2021DisplayedThirdCompulsorySubjects = () =>{
     // y21以降入学の1年次の必修科目を表下に表示する関数
     let Compulsory_element = document.getElementById('y21_third_year_Compulsory');    
     let Second_Compulsory_element = document.getElementById('y21_third_year_2nd_Compulsory');
+    
+    Compulsory_element.style.display = 'block';
+    Second_Compulsory_element.style.display = 'block';
+    // 前期後期未選択時には前期後期の必修科目どちらも表示するように
     const element = document.getElementById('select_term')
     // セレクト要素を全部elementに格納
     const options = element.options;
     // その中のoptions要素だけを取ってくる
     // options[1]が前期 [2]が後期を指す
+
     if(options[1].selected == true){
         // 前期
         Compulsory_element.style.display = 'block';
+        Second_Compulsory_element.style.display = 'none';
     }else if(options[2].selected == true){
         // 後期
+        Compulsory_element.style.display = 'none';
         Second_Compulsory_element.style.display = 'block';
     }
 }
@@ -1276,16 +1325,23 @@ const onAndAfter2021DisplayedFourthCompulsorySubjects = () =>{
     // y21以降入学の1年次の必修科目を表下に表示する関数
     let Compulsory_element = document.getElementById('y21_fourth_year_Compulsory');    
     let Second_Compulsory_element = document.getElementById('y21_fourth_year_2nd_Compulsory');
+    
+    Compulsory_element.style.display = 'block';
+    Second_Compulsory_element.style.display = 'block';
+    // 前期後期未選択時には前期後期の必修科目どちらも表示するように
     const element = document.getElementById('select_term')
     // セレクト要素を全部elementに格納
     const options = element.options;
     // その中のoptions要素だけを取ってくる
     // options[1]が前期 [2]が後期を指す
+
     if(options[1].selected == true){
         // 前期
         Compulsory_element.style.display = 'block';
+        Second_Compulsory_element.style.display = 'none';
     }else if(options[2].selected == true){
         // 後期
+        Compulsory_element.style.display = 'none';
         Second_Compulsory_element.style.display = 'block';
     }
 }
