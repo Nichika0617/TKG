@@ -391,7 +391,7 @@
 <!--____________________________________________________________-->
                 <tr class="all_total">
                     <th>専門基礎</th>
-                    <td>8</td>
+                    <td id="req_major_base">8</td>
                     <td>
                         <input id="major_base" class="txt" type="number" step="2" onKeyDown="next_input('out_major_base');" min='0' oninput="all_calc(); ChangeBySelect();">
                     </td>
@@ -444,7 +444,7 @@
 <!--____________________________________________________________-->
                 <tr class="Total_2">
                     <th>研究実験</th>
-                    <td>15</td>
+                    <td id="req_experiment">15</td>
                     <td>
                         <input id="experiment" class="txt" type="number" step="0.5" onKeyDown="next_input('math_base');" min='0' oninput="all_calc(); ChangeBySelect();">
                         <!-- 実験だけstep="0.5" -->
@@ -563,7 +563,7 @@
                         </svg>
                     (数情等計)
                     </th>
-                    <td>36</td>
+                    <td id="req_sub_total4">36</td>
                     <td id="sub_total4"></td>
                     <td id="result_sub_total4"></td>
                 </tr>
