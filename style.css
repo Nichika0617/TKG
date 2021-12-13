@@ -170,6 +170,7 @@ li {
 }
 .SubjectClassificationImage {
   text-align: center;
+  display: none;
 }
 
 .req_lab {
