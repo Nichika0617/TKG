@@ -54,51 +54,6 @@
         </label>
         
         <br><br>
-        <!-- <p>例</p>
-        
-            <table align="center" border="1" class="mb-5">
-                <tr>
-                    <th>人文
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark" viewBox="0 0 16 16">
-                            <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
-                        </svg>
-                        ←同じアイコンが右についている科目
-                    </th>
-                    <th>2</th>
-                </tr>
-
-                <tr>
-                    <th>社会
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark" viewBox="0 0 16 16">
-                            <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
-                        </svg>
-                        ←同じアイコンが右についている科目
-                    </th>
-                    <th>4</th>
-                </tr>
-
-                <tr>
-                    <th>総合
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark" viewBox="0 0 16 16">
-                            <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
-                        </svg>
-                        ←同じアイコンが右についている科目
-                    </th>
-                    <th>2</th>
-                </tr>
-
-                <tr>
-                    <th>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark" viewBox="0 0 16 16">
-                            <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
-                        </svg>
-                        ←小計を表示する列名の左のアイコン
-                        <br>
-                        小計(人文+社会+総合)
-                    </th>
-                    <th>2+4+2 = 8 </th>
-                </tr>
-                 -->
     </div>
 <!--____________________________________________________________-->
         <table align="center" border="1" class="mb-5">
@@ -391,7 +346,7 @@
 <!--____________________________________________________________-->
                 <tr class="all_total">
                     <th>専門基礎</th>
-                    <td>8</td>
+                    <td id="req_major_base">8</td>
                     <td>
                         <input id="major_base" class="txt" type="number" step="2" onKeyDown="next_input('out_major_base');" min='0' oninput="all_calc(); ChangeBySelect();">
                     </td>
@@ -444,7 +399,7 @@
 <!--____________________________________________________________-->
                 <tr class="Total_2">
                     <th>研究実験</th>
-                    <td>15</td>
+                    <td id="req_experiment">15</td>
                     <td>
                         <input id="experiment" class="txt" type="number" step="0.5" onKeyDown="next_input('math_base');" min='0' oninput="all_calc(); ChangeBySelect();">
                         <!-- 実験だけstep="0.5" -->
@@ -563,7 +518,7 @@
                         </svg>
                     (数情等計)
                     </th>
-                    <td>36</td>
+                    <td id="req_sub_total4">36</td>
                     <td id="sub_total4"></td>
                     <td id="result_sub_total4"></td>
                 </tr>
@@ -620,7 +575,7 @@
                 </tr>
 <!--____________________________________________________________-->
             </table>
-        <div align="center" id="first_year_Compulsory"><!-- 1年前期の必修 -->
+        <div align="center" class="req_sub" id="first_year_Compulsory"><!-- 1年前期の必修 -->
             <h2>1年前期の必修科目</h2>
             <ul class="ul-align-center">
                 <li>大学英語</li>
@@ -634,7 +589,7 @@
                 <li>微分積分ST I</li>
             </ul>
         </div>
-        <div align="center" id="first_year_2nd_Compulsory"><!-- 1年後期の必修 -->
+        <div align="center" class="req_sub" id="first_year_2nd_Compulsory"><!-- 1年後期の必修 -->
             <h2>1年後期の必修科目</h2>
             <ul class="ul-align-center">
                 <li>英語講読演習中級</li>
@@ -647,19 +602,19 @@
                 <li>微分積分ST II</li>
             </ul>
         </div>
-        <div align="center" id="second_year_Compulsory"><!-- 2年前期の必修 -->
+        <div align="center" class="req_sub" id="second_year_Compulsory"><!-- 2年前期の必修 -->
             <h2>2年前期の必修科目</h2>
             <ul class="ul-align-center">
                 <li>英語プレゼンテーション演習</li>
                 <li>知能情報実験 I</li>
                 <li>コンピュータシステム</li>
                 <li>データサイエンス基礎</li>
-                <li>情報ネットワーク</li>
+                <li>情報ネットワークI</li>
                 <li>アルゴリズムとデータ構造</li>
                 <li>プロジェクトデザイン</li>
             </ul>
         </div>
-        <div align="center" id="second_year_2nd_Compulsory"><!-- 2年後期の必修 -->
+        <div align="center" class="req_sub" id="second_year_2nd_Compulsory"><!-- 2年後期の必修 -->
             <h2>2年後期の必修科目</h2>
             <ul class="ul-align-center">
                 <li>知能情報実験 II</li>
@@ -670,36 +625,124 @@
                 <li>コンピュータアーキテクチャ</li>
             </ul>
         </div>
-        <div align="center" id="third_year_Compulsory"><!-- ３年前期の必修 -->
+        <div align="center" class="req_sub" id="third_year_Compulsory"><!-- ３年前期の必修 -->
             <h2>3年前期の必修科目</h2>
             <ul class="ul-align-center">
                 <li>知能情報実験 III</li>
                 <li>キャリアデザイン</li>
             </ul>
         </div>
-        <div align="center" id="third_year_2nd_Compulsory"><!-- ３年後期の必修 -->
+        <div align="center" class="req_sub" id="third_year_2nd_Compulsory"><!-- ３年後期の必修 -->
             <h2>3年後期の必修科目</h2>
             <ul class="ul-align-center">
                 <li>エンジニアリングデザイン演習</li>
             </ul>
         </div>
 
-        <div align="center" id="fourth_year_Compulsory"><!-- 4年前期の必修 -->
+        <div align="center" class="req_sub" id="fourth_year_Compulsory"><!-- 4年前期の必修 -->
             <h2>4年前期の必修科目</h2>
             <ul class="ul-align-center">
                 <li>卒業研究 I</li>
                 <li>セミナー I</li>
             </ul>
         </div>
-        <div align="center" id="fourth_year_2nd_Compulsory"><!-- 4年後期の必修 -->
+        <div align="center" class="req_sub" id="fourth_year_2nd_Compulsory"><!-- 4年後期の必修 -->
             <h2>4年後期の必修科目</h2>
             <ul class="ul-align-center">
                 <li>卒業研究 II</li>
                 <li>セミナー II</li>
             </ul>
         </div>
-        <div class="SubjectClassificationImage">
-            <img src="images/specialized_subject_classification_image.png" alt="専門科目分類表" title="専門科目分類表" class="image-vw">
+
+        <!-- 2021年度以降↓↓ -->
+
+        <div align="center" class="req_sub" id="y21_first_year_Compulsory"><!-- y21_1年前期の必修 -->
+            <h2>1年前期の必修科目</h2>
+            <ul class="ul-align-center">
+                <li>大学英語</li>
+                <li>微分積分ST I</li>
+                <li>物理学 I</li>
+                <li>キャリアデザイン入門</li>
+                <li>工学基礎演習</li>
+                <li>技術者の倫理</li>
+                <li>工業数学 I</li>
+                <li>プログラミング I</li>
+                <li>プログラミング演習 I</li>
+            </ul>
+        </div>
+        <div align="center" class="req_sub" id="y21_first_year_2nd_Compulsory"><!-- y21_1年後期の必修 -->
+            <h2>1年後期の必修科目</h2>
+            <ul class="ul-align-center">
+                <li>微分積分ST II</li>
+                <li>工業数学 II</li>
+                <li>プログラミング II</li>
+                <li>プログラミング演習 II</li>
+                <li>離散数学</li>
+                <li>日本語表現入門</li>
+                <li>英語講読演習中級</li>
+            </ul>
+        </div>
+        <div align="center" class="req_sub" id="y21_second_year_Compulsory"><!-- y21_2年前期の必修 -->
+            <h2>2年前期の必修科目</h2>
+            <ul class="ul-align-center">
+                <li>アルゴリズムとデータ構造</li>
+                <li>情報ネットワークI</li>
+                <li>コンピュータシステム</li>
+                <li>データサイエンス基礎</li>
+                <li>プロジェクトデザイン</li>
+                <li>知能情報基礎演習I</li>
+                <li>知能情報基礎演習II</li>
+                <li>英語プレゼンテーション演習</li>
+            </ul>
+        </div>
+        <div align="center" class="req_sub" id="y21_second_year_2nd_Compulsory"><!-- y21_2年後期の必修 -->
+            <h2>2年後期の必修科目</h2>
+            <ul class="ul-align-center">
+                <li>人工知能</li>
+                <li>知能情報基礎演習III</li>
+                <li>知能情報基礎演習IV</li>
+                <li>オペレーティングシステム</li>
+                <li>ソフトウェア開発演習</li>
+                <li>データベースシステム</li>
+                <li>コンピュータアーキテクチャ</li>
+            </ul>
+        </div>
+        <div align="center" class="req_sub" id="y21_third_year_Compulsory"><!-- y21_３年前期の必修 -->
+            <h2>3年前期の必修科目</h2>
+            <ul class="ul-align-center">
+                <li>知能情報総合実験</li>
+                <li>キャリアデザイン</li>
+            </ul>
+        </div>
+        <div align="center" class="req_sub" id="y21_third_year_2nd_Compulsory"><!-- y21_３年後期の必修 -->
+            <h2>3年後期の必修科目</h2>
+            <ul class="ul-align-center">
+                <li>エンジニアリングデザイン演習</li>
+            </ul>
+        </div>
+
+        <div align="center" class="req_sub" id="y21_fourth_year_Compulsory"><!-- y21_4年前期の必修 -->
+            <h2>4年前期の必修科目</h2>
+            <ul class="ul-align-center">
+                <li>卒業研究 I</li>
+                <li>セミナー I</li>
+            </ul>
+        </div>
+        <div align="center" class="req_sub" id="y21_fourth_year_2nd_Compulsory"><!-- y21_4年後期の必修 -->
+            <h2>4年後期の必修科目</h2>
+            <ul class="ul-align-center">
+                <li>卒業研究 II</li>
+                <li>セミナー II</li>
+            </ul>
+        </div>
+        <br /> 
+        <div class="SubjectClassificationImage" id="y19_subject_classification_image">
+            <img src="images/y19_specialized_subject_classification_image.png" alt="専門科目分類表" title="専門科目分類表" class="image-vw">
+        </div>
+
+        <br /> 
+        <div class="SubjectClassificationImage" id="y21_subject_classification_image">
+            <img src="images/y21_specialized_subject_classification_image.png" alt="専門科目分類表" title="専門科目分類表" class="image-vw">
         </div>
 
         <br /> 
