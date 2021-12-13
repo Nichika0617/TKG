@@ -169,7 +169,8 @@ width: 100%;
 max-width: 700px;
 }
 .SubjectClassificationImage {
-text-align: center;
+  text-align: center;
+  display: none;
 }
 
 .req_lab {
