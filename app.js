@@ -9,13 +9,15 @@ let fusion_judge = false; // 工学融合を4単位取得したか．
 // 同じ科目群から取得しているかの判定はまだできていない(10/21)
 // 全てのinputにつけられたidのリスト
 const idList = ["health","jinbun","syakai","sougou","career","ryudai","Japanese","sizen","info","English","German","French","Spanish","Chinese","etc","major_base","out_major_base","info_tec","ex","experiment","math_base","core","fusion","math_base_select","adv","relation","common_engineering","free","teacher"];
+//pdfで取得するリスト(上のidListと同期しなければならない)
+const pdfIdList = ["健康運動","人文","社会","総合","キャリア関係","琉大特色・地域創生","日本語・日本語事情","自然","情報関係","英語","ドイツ語","フランス語","スペイン語","中国語","その他","専門基礎","専門基礎指定外","情報技術","総合力演習","研究実験","数学基礎","知能情報コア","工学融合（選択）","数学基礎（選択）","知能情報アドバンスト","知能情報関連","選択（工学共通）","自由","教職"]
 // 表下の前期後期の必修科目につけられたidのリスト
-                            
+                        
 const compulsoryIdList = ['first_year_Compulsory','first_year_2nd_Compulsory','second_year_Compulsory','second_year_2nd_Compulsory','third_year_Compulsory','third_year_2nd_Compulsory','fourth_year_Compulsory','fourth_year_2nd_Compulsory','y21_first_year_Compulsory','y21_first_year_2nd_Compulsory','y21_second_year_Compulsory','y21_second_year_2nd_Compulsory','y21_third_year_Compulsory','y21_third_year_2nd_Compulsory','y21_fourth_year_Compulsory','y21_fourth_year_2nd_Compulsory']
 
 //ロード時に実行
 window.onload = () =>{
-    setValue(); // 値の復元
+    setValue(JSON.parse(localStorage.getItem("TKG"))); // 値の復元
     all_calc(); // 初期化，前回の入力が復元された場合はその計算結果を出力．
 }
 
@@ -1594,9 +1596,8 @@ const saveValue = () =>{
     console.log("saveValue");
 }
 
-const setValue = () =>{
-    json = JSON.parse(localStorage.getItem("TKG"));
-    console.log(json)
+const setValue = (json) =>{
+    console.log(json);
     for(let i=0;i<idList.length;i++){
         id=idList[i]
         document.getElementById(id).value=json[id]
@@ -1658,4 +1659,79 @@ const TableChangeSubjectClassificationImage = () =>{
         y19_subject_classification_image_element.style.display = 'none';
         y21_subject_classification_image_element.style.display = 'block';
     }
+}
+
+const PDFWIDTHMIN = 100;
+const PDFWIDTHMAX = 118;
+
+const setValuesFromPdfObject = (textContent) => {
+    /*
+    pdfObject has page objects
+    page object has textContent() 
+    textContent return has items and styles
+    pdfobject.items is object array
+    theobject has str, transform[], etc...  
+    */
+    const objectArray = textContent.items
+    console.log(objectArray)
+    let target = 0;
+    obj={}
+    for (let i=0;i<objectArray.length;i++){
+        let baseObject = objectArray[i];
+        //console.log("object:"+baseObject.str+",x:"+baseObject.transform[4]+",y:"+baseObject.transform[5])
+        if(baseObject.str==pdfIdList[target]){//スタートを探す
+            console.log("match:"+baseObject.str);
+            const basePos = baseObject.transform.slice(4);
+            let value = 0;
+            for(let j = i+1;j<objectArray.length;j++){
+                const targetObject = objectArray[j];
+                const targetPos = targetObject.transform.slice(4);
+                /*
+                545.4788          :左側の科目名
+                628.2959 82.8171  :必修単位
+                662.3119 116.8331 :取得単位
+                667.8221 122.3433 :右側の科目名
+                */
+
+                const posDiff = targetPos[0]-basePos[0];
+                if(Math.abs(basePos[1]-targetPos[1])<4){
+                    console.log(posDiff);
+                    if(PDFWIDTHMAX>posDiff&&posDiff>PDFWIDTHMIN){
+                        console.log("value changed");
+                        value = targetObject.str
+                        break;
+                    }
+                }
+            }
+            //keyとvalueがそろう。
+            console.log(pdfIdList[target]+":"+value)
+            obj[idList[target]] = value;
+            target++;
+        }
+    }
+    setValue(obj);
+    all_calc();
+}
+              
+document.getElementById("pdfInput").onchange = function(event) {
+
+    var file = event.target.files[0];
+    var fileReader = new FileReader();  
+
+    fileReader.onload = function() {
+
+        var typedarray = new Uint8Array(this.result);
+
+        const loadingTask = pdfjsLib.getDocument(typedarray);
+        loadingTask.promise.then(pdf => {
+            console.log("pdf loaded");
+            pdf.getPage(1).then(page =>{
+                console.log("page loaded");
+                page.getTextContent().then(textContent =>{
+                    setValuesFromPdfObject(textContent);
+                });
+            });
+        });
+    };
+    fileReader.readAsArrayBuffer(file);
 }
