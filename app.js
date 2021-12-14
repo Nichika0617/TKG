@@ -1659,3 +1659,29 @@ const TableChangeSubjectClassificationImage = () =>{
         y21_subject_classification_image_element.style.display = 'block';
     }
 }
+
+const DisplayTable = () =>{
+    // let below_the_select = document.getElementById("below_the_select")
+    // below_the_select.display = 'block';
+ 
+    // let table_below_the_select = document.getElementById("table_below_the_select")
+    // table_below_the_select.style.display = 'table-row';
+    // // 年次選択以外のドロップダウンを表示↓↓
+    let below_the_select = document.getElementById("below_the_select");
+    below_the_select.style.opacity = 1;
+    
+    
+    // Tableを表示↓↓
+    let tableElement = document.querySelector('table');
+    // querySelector()指定されたセレクターまたはセレクターのグループに一致する
+    // 文書内の最初の Elementを返す
+    console.log(tableElement)
+    tableElement.className -= 'd-none';
+    // // 全部消しているd-noneクラスを取ることでいろいろ表示させる
+
+    // 年次選択のドロップダウンを削除↓↓
+    let aboveTheTableElement = document.querySelector('#Above_the_table');
+    console.log(aboveTheTableElement)
+    aboveTheTableElement.className += 'd-none';
+    
+}

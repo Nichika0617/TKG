@@ -27,8 +27,9 @@
             </svg>
             )のあるところを押すと、合計に含まれるものがハイライトされます。
         </p>
+    <div id="Above_the_table">
         <label class="select-label">
-            <select id="select_admission_year" class="select_condition" onchange="ChangeBySelect();">
+            <select id="select_admission_year" class="select_condition" onchange="ChangeBySelect(); DisplayTable();">
                 <option hidden>入学年度を選択</option>
                 <option value="value0">2018</option>
                 <option value="value1">2019</option>
@@ -36,6 +37,10 @@
                 <option value="value1">2021</option>
             </select>
         </label>
+    </div>
+
+    <div class="below_the_select" id="below_the_select">
+
         <label class="select-label">
             <select id="select_grade" class="select_condition" onchange="ChangeBySelect();">
                 <option hidden>学年を選択</option>
@@ -56,7 +61,7 @@
         <br><br>
     </div>
 <!--____________________________________________________________-->
-        <table align="center" border="1" class="mb-5">
+        <table align="center" border="1" class="mb-5 table_below_the_select"　id="table_below_the_select">
             <tr>
                 <th> </th>
                 <th>必須単位</th>
@@ -774,7 +779,7 @@
             </label>
             <p class="check_lb" id="result_lab_req_y21"></p>
         </div>
-
+    </div>
         <div class="GoogleForm">
             <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdhJZ7SYRqws55JNyk4GHUK2D8T-fLEFrm8Cn1jVu25PlrL6A/viewform?embedded=true" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0">読み込んでいます…</iframe>
         </div>
