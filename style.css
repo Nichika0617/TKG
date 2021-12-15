@@ -185,3 +185,9 @@ li {
   width: 90%;
   max-width: 550px;
 }
+
+.ol_portal_usage{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
