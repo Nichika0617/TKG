@@ -28,7 +28,25 @@
             )のあるところを押すと、合計に含まれるものがハイライトされます。
         </p>
         <label class="select-label">
-            <select id="select_term" onchange="all_calc();">
+            <select id="select_admission_year" class="select_condition" onchange="ChangeBySelect();">
+                <option hidden>入学年度を選択</option>
+                <option value="value0">2018</option>
+                <option value="value1">2019</option>
+                <option value="value0">2020</option>
+                <option value="value1">2021</option>
+            </select>
+        </label>
+        <label class="select-label">
+            <select id="select_grade" class="select_condition" onchange="ChangeBySelect();">
+                <option hidden>学年を選択</option>
+                <option value="value0">１年</option>
+                <option value="value1">２年</option>
+                <option value="value0">３年</option>
+                <option value="value1">４年</option>
+            </select>
+        </label>
+        <label class="select-label">
+            <select id="select_term" class="select_condition" onchange="ChangeBySelect();">
                 <option hidden>学期を選択</option>
                 <option value="value0">前期</option>
                 <option value="value1">後期</option>
@@ -36,51 +54,6 @@
         </label>
         
         <br><br>
-        <!-- <p>例</p>
-        
-            <table align="center" border="1" class="mb-5">
-                <tr>
-                    <th>人文
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark" viewBox="0 0 16 16">
-                            <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
-                        </svg>
-                        ←同じアイコンが右についている科目
-                    </th>
-                    <th>2</th>
-                </tr>
-
-                <tr>
-                    <th>社会
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark" viewBox="0 0 16 16">
-                            <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
-                        </svg>
-                        ←同じアイコンが右についている科目
-                    </th>
-                    <th>4</th>
-                </tr>
-
-                <tr>
-                    <th>総合
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark" viewBox="0 0 16 16">
-                            <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
-                        </svg>
-                        ←同じアイコンが右についている科目
-                    </th>
-                    <th>2</th>
-                </tr>
-
-                <tr>
-                    <th>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark" viewBox="0 0 16 16">
-                            <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
-                        </svg>
-                        ←小計を表示する列名の左のアイコン
-                        <br>
-                        小計(人文+社会+総合)
-                    </th>
-                    <th>2+4+2 = 8 </th>
-                </tr>
-                 -->
     </div>
 <!--____________________________________________________________-->
         <table align="center" border="1" class="mb-5">
@@ -102,7 +75,7 @@
                 <th>健康運動</th>
                 <td>2</td>
                 <td>
-                    <input id="health" class="txt" type="number" step="2" onKeyDown="next_input('jinbun');" min='0' oninput="all_calc();">
+                    <input id="health" class="txt" type="number" step="2" onKeyDown="next_input('jinbun');" min='0' oninput="all_calc(); ChangeBySelect();">
                 </td>
                 <td id="result_health">
                     <!-- 計算結果をjsから書き込む． -->
@@ -122,7 +95,7 @@
                 <th>人文</th>
                     <td>2</td>
                     <td>
-                        <input id="jinbun" type="number" class="txt" step="2" onKeyDown="next_input('syakai');" min='0' oninput="all_calc();">
+                        <input id="jinbun" type="number" class="txt" step="2" onKeyDown="next_input('syakai');" min='0' oninput="all_calc(); ChangeBySelect();">
                     </td>
                     <td id="result_jinbun"></td>
                 </tr>
@@ -131,7 +104,7 @@
                     <th>社会</th>
                     <td>2</td>
                     <td>
-                        <input id="syakai" class="txt" type="number" step="2" onKeyDown="next_input('sougou');" min='0' oninput="all_calc();">
+                        <input id="syakai" class="txt" type="number" step="2" onKeyDown="next_input('sougou');" min='0' oninput="all_calc(); ChangeBySelect();">
                     </td>
                     <td id="result_syakai"></td>
                 </tr>
@@ -140,7 +113,7 @@
                     <th>総合</th>
                     <td></td>
                     <td>
-                        <input id="sougou" class="txt" type="number" step="2" onKeyDown="next_input('career');all_calc();" min='0' oninput="all_calc();">
+                        <input id="sougou" class="txt" type="number" step="2" onKeyDown="next_input('career');" min='0' oninput="all_calc(); ChangeBySelect();">
                     </td>
                     <td></td>
                 </tr>
@@ -149,7 +122,7 @@
                     <th>キャリア関係</th>
                     <td></td>
                     <td>
-                        <input id="career" class="txt" type="number" step="2" onKeyDown="next_input('ryudai');" min='0' oninput="all_calc();">
+                        <input id="career" class="txt" type="number" step="2" onKeyDown="next_input('ryudai');" min='0' oninput="all_calc(); ChangeBySelect();">
                     </td>
                     <td></td>
                 </tr>
@@ -158,7 +131,7 @@
                     <th class="hover_subtotal1">琉大特色・地域創生</th>
                     <td></td>
                     <td>
-                        <input id="ryudai" class="txt" type="number" step="2" onKeyDown="next_input('Japanese');" min='0' oninput="all_calc();">
+                        <input id="ryudai" class="txt" type="number" step="2" onKeyDown="next_input('Japanese');" min='0' oninput="all_calc(); ChangeBySelect();">
                     </td>
                     <td></td>
                 </tr>
@@ -179,7 +152,7 @@
                     <th>日本語・日本語事情</th>
                     <td></td>
                     <td>
-                        <input id="Japanese" class="txt" type="number" step="2" onKeyDown="next_input('sizen');" min='0' oninput="all_calc();">
+                        <input id="Japanese" class="txt" type="number" step="2" onKeyDown="next_input('sizen');" min='0' oninput="all_calc(); ChangeBySelect();">
                     </td>
                     <td></td>
                 </tr>
@@ -200,7 +173,7 @@
                     <th>自然</th>
                     <td></td>
                     <td>
-                        <input id="sizen" class="txt" type="number" step="2" onKeyDown="next_input('info');" min='0' oninput="all_calc();">
+                        <input id="sizen" class="txt" type="number" step="2" onKeyDown="next_input('info');" min='0' oninput="all_calc(); ChangeBySelect();">
                     </td>
                     <td></td>
                 </tr>
@@ -230,7 +203,7 @@
                     <th>情報関係</th>
                     <td>2</td>
                     <td>
-                        <input id="info" class="txt" type="number" step="2" onKeyDown="next_input('English');" min='0' oninput="all_calc();">
+                        <input id="info" class="txt" type="number" step="2" onKeyDown="next_input('English');" min='0' oninput="all_calc(); ChangeBySelect();">
                     </td>
                     <td id="result_info"></td>
                 </tr>
@@ -248,7 +221,7 @@
                     <th>英語</th>
                     <td>8</td>
                     <td>
-                        <input id="English" class="txt" type="number" step="2" onKeyDown="next_input('German');" min='0' oninput="all_calc();">
+                        <input id="English" class="txt" type="number" step="2" onKeyDown="next_input('German');" min='0' oninput="all_calc(); ChangeBySelect();">
                     </td>
                     <td id="result_eng"></td>
                 </tr>
@@ -257,7 +230,7 @@
                     <th>ドイツ語</th>
                     <td>(4)</td>
                     <td>
-                        <input id="German" class="txt" type="number" step="2" onKeyDown="next_input('French');" min='0' oninput="all_calc();">
+                        <input id="German" class="txt" type="number" step="2" onKeyDown="next_input('French');" min='0' oninput="all_calc(); ChangeBySelect();">
                     </td>
                     <td id="result_german"></td>
                 </tr>
@@ -266,7 +239,7 @@
                     <th>フランス語</th>
                     <td>(4)</td>
                     <td>
-                        <input id="French" class="txt" type="number" step="2" onKeyDown="next_input('Spanish');" min='0' oninput="all_calc();">
+                        <input id="French" class="txt" type="number" step="2" onKeyDown="next_input('Spanish');" min='0' oninput="all_calc(); ChangeBySelect();">
                     </td>
                     <td id="result_french"></td>
                 </tr>
@@ -275,7 +248,7 @@
                     <th>スペイン語</th>
                     <td>(4)</td>
                     <td>
-                        <input id="Spanish" class="txt" type="number" step="2" onKeyDown="next_input('Chinese');" min='0' oninput="all_calc();">
+                        <input id="Spanish" class="txt" type="number" step="2" onKeyDown="next_input('Chinese');" min='0' oninput="all_calc(); ChangeBySelect();">
                     </td>
                     <td id="result_spanish"></td>
                 </tr>
@@ -284,7 +257,7 @@
                     <th>中国語</th>
                     <td>(4)</td>
                     <td>
-                        <input id="Chinese" class="txt" type="number" step="2" onKeyDown="next_input('etc');" min='0' oninput="all_calc();">
+                        <input id="Chinese" class="txt" type="number" step="2" onKeyDown="next_input('etc');" min='0' oninput="all_calc(); ChangeBySelect();">
                     </td>
                     <td id="result_chinese"></td>
                 </tr>
@@ -293,7 +266,7 @@
                     <th>その他</th>
                     <td>(4)</td>
                     <td>
-                        <input id="etc" class="txt" type="number" step="2" onKeyDown="next_input('major_base');" min='0' oninput="all_calc();">
+                        <input id="etc" class="txt" type="number" step="2" onKeyDown="next_input('major_base');" min='0' oninput="all_calc(); ChangeBySelect();">
                     </td>
                     <td id="result_etc"></td>
                 </tr>
@@ -373,9 +346,9 @@
 <!--____________________________________________________________-->
                 <tr class="all_total">
                     <th>専門基礎</th>
-                    <td>8</td>
+                    <td id="req_major_base">8</td>
                     <td>
-                        <input id="major_base" class="txt" type="number" step="2" onKeyDown="next_input('out_major_base');" min='0' oninput="all_calc();">
+                        <input id="major_base" class="txt" type="number" step="2" onKeyDown="next_input('out_major_base');" min='0' oninput="all_calc(); ChangeBySelect();">
                     </td>
                     <td id="result_major_base"></td>
                 </tr>
@@ -384,7 +357,7 @@
                     <th>専門基礎指定外</th>
                     <td></td>
                     <td>
-                        <input id="out_major_base" class="txt" type="number" step="2" onKeyDown="next_input('info_tec');" min='0' oninput="all_calc();">
+                        <input id="out_major_base" class="txt" type="number" step="2" onKeyDown="next_input('info_tec');" min='0' oninput="all_calc(); ChangeBySelect();">
                     </td>
                     <td></td>
                 </tr>
@@ -409,7 +382,7 @@
                     <th>情報技術</th>
                     <td>2</td>
                     <td>
-                        <input id="info_tec" class="txt" type="number" step="2" onKeyDown="next_input('ex');" min='0' oninput="all_calc();">
+                        <input id="info_tec" class="txt" type="number" step="2" onKeyDown="next_input('ex');" min='0' oninput="all_calc(); ChangeBySelect();">
                     </td>
                     <td id="result_info_tec"></td>
                 </tr>
@@ -418,7 +391,7 @@
                     <th>総合力演習</th>
                     <td>7</td>
                     <td>
-                        <input id="ex" class="txt" type="number" onKeyDown="next_input('experiment');" min='0' oninput="all_calc();">
+                        <input id="ex" class="txt" type="number" onKeyDown="next_input('experiment');" min='0' oninput="all_calc(); ChangeBySelect();">
                         <!-- プログラミング演習1単位のため，1単位 -->
                     </td>
                     <td id="result_ex"></td>
@@ -426,9 +399,9 @@
 <!--____________________________________________________________-->
                 <tr class="Total_2">
                     <th>研究実験</th>
-                    <td>15</td>
+                    <td id="req_experiment">15</td>
                     <td>
-                        <input id="experiment" class="txt" type="number" step="0.5" onKeyDown="next_input('math_base');" min='0' oninput="all_calc();">
+                        <input id="experiment" class="txt" type="number" step="0.5" onKeyDown="next_input('math_base');" min='0' oninput="all_calc(); ChangeBySelect();">
                         <!-- 実験だけstep="0.5" -->
                     </td>
                     <td id="result_exp"></td>
@@ -438,7 +411,7 @@
                     <th>数学基礎</th>
                     <td>6</td>
                     <td>
-                        <input id="math_base" class="txt" type="number" step="2" onKeyDown="next_input('core');" min='0' oninput="all_calc();">
+                        <input id="math_base" class="txt" type="number" step="2" onKeyDown="next_input('core');" min='0' oninput="all_calc(); ChangeBySelect();">
                     </td>
                     <td id="result_math_base"></td>
                 </tr>
@@ -447,7 +420,7 @@
                     <th>知能情報コア</th>
                     <td>26</td>
                     <td>
-                        <input id="core" class="txt" type="number" step="2" onKeyDown="next_input('fusion');" min='0' oninput="all_calc();">
+                        <input id="core" class="txt" type="number" step="2" onKeyDown="next_input('fusion');" min='0' oninput="all_calc(); ChangeBySelect();">
                     </td>
                     <td id="result_core"></td>
                 </tr>
@@ -465,7 +438,7 @@
                     <th>工学融合(選択)</th>
                     <td>4</td>
                     <td>
-                        <input id="fusion" class="txt" type="number" step="2" onKeyDown="next_input('math_base_select');" min='0' oninput="all_calc();">
+                        <input id="fusion" class="txt" type="number" step="2" onKeyDown="next_input('math_base_select');" min='0' oninput="all_calc(); ChangeBySelect();">
                     </td>
                     <td id="result_fusion"></td>
                 </tr>
@@ -474,7 +447,7 @@
                     <th>数学基礎(選択)</th>
                     <td></td>
                     <td>
-                        <input id="math_base_select" class="txt" type="number" step="2" onKeyDown="next_input('adv');" min='0' oninput="all_calc();">
+                        <input id="math_base_select" class="txt" type="number" step="2" onKeyDown="next_input('adv');" min='0' oninput="all_calc(); ChangeBySelect();">
                     </td>
                     <td></td>
                 </tr>
@@ -483,7 +456,7 @@
                     <th>知能情報アドバンスト</th>
                     <td></td>
                     <td>
-                        <input id="adv" class="txt" type="number" step="2" onKeyDown="next_input('relation');" min='0' oninput="all_calc();">
+                        <input id="adv" class="txt" type="number" step="2" onKeyDown="next_input('relation');" min='0' oninput="all_calc(); ChangeBySelect();">
                     </td>
                     <td></td>
                 </tr>
@@ -492,7 +465,7 @@
                     <th>知能情報関連</th>
                     <td></td>
                     <td>
-                        <input id="relation" class="txt" type="number" onKeyDown="next_input('common_engineering');" min='0' oninput="all_calc();">
+                        <input id="relation" class="txt" type="number" onKeyDown="next_input('common_engineering');" min='0' oninput="all_calc(); ChangeBySelect();">
                         <!-- インターンが1単位のため，1ずつ変化 -->
                     </td>
                     <td></td>
@@ -514,7 +487,7 @@
                     <th>選択(工学共通)</th>
                     <td></td>
                     <td>
-                        <input id="common_engineering" class="txt" type="number" step="2" onKeyDown="next_input('free');" min='0' oninput="all_calc();">
+                        <input id="common_engineering" class="txt" type="number" step="2" onKeyDown="next_input('free');" min='0' oninput="all_calc(); ChangeBySelect();">
                     </td>
                     <td></td>
                 </tr>
@@ -523,7 +496,7 @@
                     <th>自由</th>
                     <td></td>
                     <td>
-                        <input id="free" class="txt" type="number" step="2" onKeyDown="next_input('teacher');" min='0' oninput="all_calc();">
+                        <input id="free" class="txt" type="number" step="2" onKeyDown="next_input('teacher');" min='0' oninput="all_calc(); ChangeBySelect();">
                     </td>
                     <td></td>
                 </tr>
@@ -532,7 +505,7 @@
                     <th>教職</th>
                     <td></td>
                     <td>
-                        <input id="teacher" class="txt" type="number" min='0' oninput="all_calc();">
+                        <input id="teacher" class="txt" type="number" min='0' oninput="all_calc(); ChangeBySelect();">
                         <!-- 教職単位対応のため，1ずつ変化 -->
                     </td>
                     <td id="teacher_warning"></td>
@@ -545,7 +518,7 @@
                         </svg>
                     (数情等計)
                     </th>
-                    <td>36</td>
+                    <td id="req_sub_total4">36</td>
                     <td id="sub_total4"></td>
                     <td id="result_sub_total4"></td>
                 </tr>
@@ -602,36 +575,204 @@
                 </tr>
 <!--____________________________________________________________-->
             </table>
-        <div align="center" id="Compulsory"><!-- ３年前期の必修 -->
-            <h2>3年前期の必須単位</h2>
+        <div align="center" class="req_sub" id="first_year_Compulsory"><!-- 1年前期の必修 -->
+            <h2>1年前期の必修科目</h2>
             <ul class="ul-align-center">
-                <li>知能情報実験III</li>
+                <li>大学英語</li>
+                <li>技術者の倫理</li>
+                <li>工業数学 I</li>
+                <li>工学基礎演習</li>
+                <li>キャリアデザイン入門</li>
+                <li>プログラミング I</li>
+                <li>プログラミング演習 I</li>
+                <li>物理学 I</li>
+                <li>微分積分ST I</li>
+            </ul>
+        </div>
+        <div align="center" class="req_sub" id="first_year_2nd_Compulsory"><!-- 1年後期の必修 -->
+            <h2>1年後期の必修科目</h2>
+            <ul class="ul-align-center">
+                <li>英語講読演習中級</li>
+                <li>日本語表現入門</li>
+                <li>工業数学 II</li>
+                <li>プログラミング II</li>
+                <li>プログラミング演習 II</li>
+                <li>離散数学</li>
+                <li>物理学 II</li>
+                <li>微分積分ST II</li>
+            </ul>
+        </div>
+        <div align="center" class="req_sub" id="second_year_Compulsory"><!-- 2年前期の必修 -->
+            <h2>2年前期の必修科目</h2>
+            <ul class="ul-align-center">
+                <li>英語プレゼンテーション演習</li>
+                <li>知能情報実験 I</li>
+                <li>コンピュータシステム</li>
+                <li>データサイエンス基礎</li>
+                <li>情報ネットワークI</li>
+                <li>アルゴリズムとデータ構造</li>
+                <li>プロジェクトデザイン</li>
+            </ul>
+        </div>
+        <div align="center" class="req_sub" id="second_year_2nd_Compulsory"><!-- 2年後期の必修 -->
+            <h2>2年後期の必修科目</h2>
+            <ul class="ul-align-center">
+                <li>知能情報実験 II</li>
+                <li>人工知能</li>
+                <li>オペレーティングシステム</li>
+                <li>ソフトウェア開発演習</li>
+                <li>データベースシステム</li>
+                <li>コンピュータアーキテクチャ</li>
+            </ul>
+        </div>
+        <div align="center" class="req_sub" id="third_year_Compulsory"><!-- ３年前期の必修 -->
+            <h2>3年前期の必修科目</h2>
+            <ul class="ul-align-center">
+                <li>知能情報実験 III</li>
                 <li>キャリアデザイン</li>
             </ul>
         </div>
-        <div align="center" id="2nd_Compulsory"><!-- ３年後期の必修 -->
-            <h2>3年後期の必須単位</h2>
+        <div align="center" class="req_sub" id="third_year_2nd_Compulsory"><!-- ３年後期の必修 -->
+            <h2>3年後期の必修科目</h2>
             <ul class="ul-align-center">
                 <li>エンジニアリングデザイン演習</li>
             </ul>
         </div>
-        <div class="SubjectClassificationImage">
-            <img src="images/specialized_subject_classification_image.png" alt="専門科目分類表" title="専門科目分類表" class="image-vw">
+
+        <div align="center" class="req_sub" id="fourth_year_Compulsory"><!-- 4年前期の必修 -->
+            <h2>4年前期の必修科目</h2>
+            <ul class="ul-align-center">
+                <li>卒業研究 I</li>
+                <li>セミナー I</li>
+            </ul>
+        </div>
+        <div align="center" class="req_sub" id="fourth_year_2nd_Compulsory"><!-- 4年後期の必修 -->
+            <h2>4年後期の必修科目</h2>
+            <ul class="ul-align-center">
+                <li>卒業研究 II</li>
+                <li>セミナー II</li>
+            </ul>
+        </div>
+
+        <!-- 2021年度以降↓↓ -->
+
+        <div align="center" class="req_sub" id="y21_first_year_Compulsory"><!-- y21_1年前期の必修 -->
+            <h2>1年前期の必修科目</h2>
+            <ul class="ul-align-center">
+                <li>大学英語</li>
+                <li>微分積分ST I</li>
+                <li>物理学 I</li>
+                <li>キャリアデザイン入門</li>
+                <li>工学基礎演習</li>
+                <li>技術者の倫理</li>
+                <li>工業数学 I</li>
+                <li>プログラミング I</li>
+                <li>プログラミング演習 I</li>
+            </ul>
+        </div>
+        <div align="center" class="req_sub" id="y21_first_year_2nd_Compulsory"><!-- y21_1年後期の必修 -->
+            <h2>1年後期の必修科目</h2>
+            <ul class="ul-align-center">
+                <li>微分積分ST II</li>
+                <li>工業数学 II</li>
+                <li>プログラミング II</li>
+                <li>プログラミング演習 II</li>
+                <li>離散数学</li>
+                <li>日本語表現入門</li>
+                <li>英語講読演習中級</li>
+            </ul>
+        </div>
+        <div align="center" class="req_sub" id="y21_second_year_Compulsory"><!-- y21_2年前期の必修 -->
+            <h2>2年前期の必修科目</h2>
+            <ul class="ul-align-center">
+                <li>アルゴリズムとデータ構造</li>
+                <li>情報ネットワークI</li>
+                <li>コンピュータシステム</li>
+                <li>データサイエンス基礎</li>
+                <li>プロジェクトデザイン</li>
+                <li>知能情報基礎演習I</li>
+                <li>知能情報基礎演習II</li>
+                <li>英語プレゼンテーション演習</li>
+            </ul>
+        </div>
+        <div align="center" class="req_sub" id="y21_second_year_2nd_Compulsory"><!-- y21_2年後期の必修 -->
+            <h2>2年後期の必修科目</h2>
+            <ul class="ul-align-center">
+                <li>人工知能</li>
+                <li>知能情報基礎演習III</li>
+                <li>知能情報基礎演習IV</li>
+                <li>オペレーティングシステム</li>
+                <li>ソフトウェア開発演習</li>
+                <li>データベースシステム</li>
+                <li>コンピュータアーキテクチャ</li>
+            </ul>
+        </div>
+        <div align="center" class="req_sub" id="y21_third_year_Compulsory"><!-- y21_３年前期の必修 -->
+            <h2>3年前期の必修科目</h2>
+            <ul class="ul-align-center">
+                <li>知能情報総合実験</li>
+                <li>キャリアデザイン</li>
+            </ul>
+        </div>
+        <div align="center" class="req_sub" id="y21_third_year_2nd_Compulsory"><!-- y21_３年後期の必修 -->
+            <h2>3年後期の必修科目</h2>
+            <ul class="ul-align-center">
+                <li>エンジニアリングデザイン演習</li>
+            </ul>
+        </div>
+
+        <div align="center" class="req_sub" id="y21_fourth_year_Compulsory"><!-- y21_4年前期の必修 -->
+            <h2>4年前期の必修科目</h2>
+            <ul class="ul-align-center">
+                <li>卒業研究 I</li>
+                <li>セミナー I</li>
+            </ul>
+        </div>
+        <div align="center" class="req_sub" id="y21_fourth_year_2nd_Compulsory"><!-- y21_4年後期の必修 -->
+            <h2>4年後期の必修科目</h2>
+            <ul class="ul-align-center">
+                <li>卒業研究 II</li>
+                <li>セミナー II</li>
+            </ul>
+        </div>
+        <br /> 
+        <div class="SubjectClassificationImage" id="y19_subject_classification_image">
+            <img src="images/y19_specialized_subject_classification_image.png" alt="専門科目分類表" title="専門科目分類表" class="image-vw">
         </div>
 
         <br /> 
-        <div class="req_lab" align="center"><!-- 研究室配属条件 -->
+        <div class="SubjectClassificationImage" id="y21_subject_classification_image">
+            <img src="images/y21_specialized_subject_classification_image.png" alt="専門科目分類表" title="専門科目分類表" class="image-vw">
+        </div>
+
+        <br /> 
+        <div class="req_lab" align="center" id="req_lab_y18_y19_y20"><!-- y18 y19 y20研究室配属条件 -->
             <h2>研究室配属条件</h2>
             <label class="check_lb">
-                <input type="checkbox" id="more90Checkbox"> 取得単位数が90以上である
+                <input type="checkbox" id="more90Checkbox_y18_y19_y20"> 取得単位数が90以上である
             </label>
             <label class="check_lb">
-                <input type="checkbox" id="more110Checkbox"> 取得単位数と登録単位数の合計が110以上である
+                <input type="checkbox" id="more110Checkbox_y18_y19_y20"> 取得単位数と登録単位数の合計が110以上である
             </label>
             <label class="check_lb">
-                <input type="checkbox" id="takeAllCheckbox"> ３年次後期までの専門必修科目の全ての単位を取得または登録している
+                <input type="checkbox" id="takeAllCheckbox_y18_y19_y20"> ３年次後期までの専門必修科目の全ての単位を取得または登録している
             </label>
-            <p class="check_lb" id="result_lab_req"></p>
+            <p class="check_lb" id="result_lab_req_y18_y19_y20"></p>
+        </div>
+
+        <br /> 
+        <div class="req_lab" align="center" id=req_lab_y21><!-- y21研究室配属条件 -->
+            <h2>研究室配属条件</h2>
+            <label class="check_lb">
+                <input type="checkbox" id="more90Checkbox_y21"> 取得単位数が80以上である
+            </label>
+            <label class="check_lb">
+                <input type="checkbox" id="more110Checkbox_y21"> 取得単位数と登録単位数の合計が100以上である
+            </label>
+            <label class="check_lb">
+                <input type="checkbox" id="takeAllCheckbox_y21"> ３年次後期までの専門必修科目の全ての単位を取得または登録している
+            </label>
+            <p class="check_lb" id="result_lab_req_y21"></p>
         </div>
 
         <div class="portal_usage" align="center" id=portal_usage>

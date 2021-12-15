@@ -7,11 +7,16 @@ let math_base_judge = false; // 数学基礎を6単位取得したか．
 let core_judge = false; // 知能情報コアを26単位取得したか．
 let fusion_judge = false; // 工学融合を4単位取得したか．
 // 同じ科目群から取得しているかの判定はまだできていない(10/21)
+// 全てのinputにつけられたidのリスト
 const idList = ["health","jinbun","syakai","sougou","career","ryudai","Japanese","sizen","info","English","German","French","Spanish","Chinese","etc","major_base","out_major_base","info_tec","ex","experiment","math_base","core","fusion","math_base_select","adv","relation","common_engineering","free","teacher"];
+// 表下の前期後期の必修科目につけられたidのリスト
+                            
+const compulsoryIdList = ['first_year_Compulsory','first_year_2nd_Compulsory','second_year_Compulsory','second_year_2nd_Compulsory','third_year_Compulsory','third_year_2nd_Compulsory','fourth_year_Compulsory','fourth_year_2nd_Compulsory','y21_first_year_Compulsory','y21_first_year_2nd_Compulsory','y21_second_year_Compulsory','y21_second_year_2nd_Compulsory','y21_third_year_Compulsory','y21_third_year_2nd_Compulsory','y21_fourth_year_Compulsory','y21_fourth_year_2nd_Compulsory']
 
 //ロード時に実行
 window.onload = () =>{
-    setValue();
+    setValue(); // 値の復元
+    all_calc(); // 初期化，前回の入力が復元された場合はその計算結果を出力．
 }
 
 // ＿＿＿＿＿＿＿＿＿＿小計1のハイライト↓↓
@@ -234,7 +239,6 @@ const all_calc = ()=>{
     document.getElementById('result_major_base').textContent=Math.max(8-major_base,0);
     document.getElementById('all_total').textContent = All_total;
     document.getElementById('result_all_total').textContent = Math.max(130-All_total,0);
-    TableChange();
 
     saveValue();
 }
@@ -602,58 +606,985 @@ const next_input = (id) => {
 // 研究室配属条件を満たしているかを示すメッセージ部分＿＿＿＿＿＿＿＿＿＿
 
 function valueChange(event){
-    if (more90Checkbox.checked && more110Checkbox.checked && takeAllCheckbox.checked){
-        document.getElementById('result_lab_req').innerHTML = "<span class='success'>研究室配属条件を満たしています．</span>"
+    // y18 y19 y20
+    if (more90Checkbox_y18_y19_y20.checked && more110Checkbox_y18_y19_y20.checked && takeAllCheckbox_y18_y19_y20.checked){
+        document.getElementById('result_lab_req_y18_y19_y20').innerHTML = "<span class='success'>研究室配属条件を満たしています．</span>"
     }else{
-        document.getElementById('result_lab_req').innerHTML = "<span class='warning'>研究室配属条件を満たしていません．</span>"
+        document.getElementById('result_lab_req_y18_y19_y20').innerHTML = "<span class='warning'>研究室配属条件を満たしていません．</span>"
+    }
+    // y21
+    if (more90Checkbox_y21.checked && more110Checkbox_y21.checked && takeAllCheckbox_y21.checked){
+        document.getElementById('result_lab_req_y21').innerHTML = "<span class='success'>研究室配属条件を満たしています．</span>"
+    }else{
+        document.getElementById('result_lab_req_y21').innerHTML = "<span class='warning'>研究室配属条件を満たしていません．</span>"
     }
   }
-  
-  let more90Checkbox = document.getElementById('more90Checkbox');
-  let more110Checkbox = document.getElementById('more110Checkbox');
-  let takeAllCheckbox = document.getElementById('takeAllCheckbox');
-  more90Checkbox.addEventListener('change', valueChange);
-  more110Checkbox.addEventListener('change', valueChange);
-  takeAllCheckbox.addEventListener('change', valueChange);
+  // y18 y19 y20
+  let more90Checkbox_y18_y19_y20 = document.getElementById('more90Checkbox_y18_y19_y20');
+  let more110Checkbox_y18_y19_y20 = document.getElementById('more110Checkbox_y18_y19_y20');
+  let takeAllCheckbox_y18_y19_y20 = document.getElementById('takeAllCheckbox_y18_y19_y20');
+  more90Checkbox_y18_y19_y20.addEventListener('change', valueChange);
+  more110Checkbox_y18_y19_y20.addEventListener('change', valueChange);
+  takeAllCheckbox_y18_y19_y20.addEventListener('change', valueChange);
+  // y21
+  let more90Checkbox_y21 = document.getElementById('more90Checkbox_y21');
+  let more110Checkbox_y21 = document.getElementById('more110Checkbox_y21');
+  let takeAllCheckbox_y21 = document.getElementById('takeAllCheckbox_y21');
+  more90Checkbox_y21.addEventListener('change', valueChange);
+  more110Checkbox_y21.addEventListener('change', valueChange);
+  takeAllCheckbox_y21.addEventListener('change', valueChange);
 
-// 表下の必修科目の表示非表示をコントロールする関数
-const TableChange = () =>{
-    let element = document.getElementById('select_term')
-    // セレクト要素を全部elementに
+// セレクトボックスの値の変化によって表示を変更する関数をまとめて発火するための関数
+const ChangeBySelect = () =>{
+    TableChangeReqLab();
+    admissionYearTableChange();
+    TableChangeSubjectClassificationImage();
+}
+
+const admissionYearTableChange = () =>{
+    // 入学年度選択による分岐
+    const element = document.getElementById('select_admission_year');
+    const options = element.options;
+    hidingCompulsorySubjects(); // 表下の必修科目は全部非表示に．
+    if(options[1].selected == true){
+        // 2018年度入学
+        befor2021ChengeGraduationReq();
+        before2021GradeTableChange();
+    }else if(options[2].selected == true){
+        // 2019年度入学
+        befor2021ChengeGraduationReq();
+        before2021GradeTableChange();
+    }else if(options[3].selected == true){
+        // 2020年度入学
+        befor2021ChengeGraduationReq();
+        before2021GradeTableChange();
+    }else if(options[4].selected == true){
+        // 2021年度入学
+        console.log("2021年度以降入学に対する処理")
+        onAndAfter2021ChengeGraduationReq();
+        onAndAfter2021GradeTableChange();
+    }
+}
+
+const befor2021ChengeGraduationReq = () =>{
+    // 必須単位数を2021年度より前の卒業要件に合わせる
+    // 専門基礎
+    document.getElementById('req_major_base').innerHTML = "8";
+    const major_base = convertNum(document.getElementById('major_base').value);
+    document.getElementById('result_major_base').innerHTML=`${Math.max(8-major_base,0)}`
+    // 研究実験
+    document.getElementById('req_experiment').innerHTML = "15";
+    const experiment = convertNum(document.getElementById('experiment').value);
+    document.getElementById('result_exp').innerHTML=`${Math.max(15-experiment,0)}`
+    // 数情等計
+    document.getElementById('req_sub_total4').innerHTML = "36";
+    const sub_total4 = convertNum(document.getElementById('sub_total4').value);
+    document.getElementById('result_sub_total4').innerHTML=`${Math.max(36-sub_total4,0)}`
+}
+
+const onAndAfter2021ChengeGraduationReq = () =>{
+    // 必須単位数を2021年度以降の卒業要件に合わせる
+    // 専門基礎
+    document.getElementById('req_major_base').innerHTML = "6";
+    const major_base = convertNum(document.getElementById('major_base').value);
+    document.getElementById('result_major_base').innerHTML=`${Math.max(6-major_base,0)}`
+    // 研究実験
+    document.getElementById('req_experiment').innerHTML = "16";
+    const experiment = convertNum(document.getElementById('experiment').value);
+    document.getElementById('result_exp').innerHTML=`${Math.max(16-experiment,0)}`
+    // 数情等計
+    document.getElementById('req_sub_total4').innerHTML = "37";
+    const sub_total4 = convertNum(document.getElementById('sub_total4').value);
+    document.getElementById('result_sub_total4').innerHTML=`${Math.max(37-sub_total4,0)}`
+}
+
+const before2021GradeTableChange = () =>{
+    // 2021年度より前に入学した学生対象の計算
+    let element = document.getElementById('select_grade');
     let options = element.options;
+    if(options[1].selected == true){
+        // 1年
+        before2021FirstTableChange();
+        before2021DisplayedFirstCompulsorySubjects();
+    }else if(options[2].selected == true){
+        // 2年
+        befor2021SecondTableChange();
+        befor2021DisplayedSecondCompulsorySubjects();
+    }else if(options[3].selected == true){
+        // 3年
+        befor2021ThirdTableChange();
+        befor2021DisplayedThirdCompulsorySubjects();
+    }else if(options[4].selected == true){
+        // 4年
+        befor2021FourthTableChange();
+        befor2021DisplayedFourthCompulsorySubjects();
+    }
+}
+
+const onAndAfter2021GradeTableChange = () =>{
+    // 2021年度入学以降に入学した学生対象の計算
+    let element = document.getElementById('select_grade');
+    let options = element.options;
+    if(options[1].selected == true){
+        // 1年
+        onAndAfter2021FirstTableChange();
+        onAndAfter2021DisplayedFirstCompulsorySubjects();
+    }else if(options[2].selected == true){
+        // 2年
+        onAndAfter2021SecondTableChange();
+        onAndAfter2021DisplayedSecondCompulsorySubjects();
+    }else if(options[3].selected == true){
+        // 3年
+        onAndAfter2021ThirdTableChange();
+        onAndAfter2021DisplayedThirdCompulsorySubjects();
+    }else if(options[4].selected == true){
+        // 4年
+        onAndAfter2021FourthTableChange();
+        onAndAfter2021DisplayedFourthCompulsorySubjects();
+    }
+} 
+
+const before2021FirstTableChange = () =>{
+    const element = document.getElementById('select_term')
+    // セレクト要素を全部elementに
+    const options = element.options;
     // その中のoptionsだけを取ってくる
-    // options[0] が　前期 [1]が後期
-    let Compulsory_element = document.getElementById('Compulsory');    
-    let Second_Compulsory_element = document.getElementById('2nd_Compulsory');
+    // options[1] が前期 [2]が後期
+    
+    if(options[1].selected == true){
+        // 前期がドロップダウンで選択された
+        const experiment = convertNum(document.getElementById('experiment').value);
+        // 研究実験
+        document.getElementById('result_exp').innerHTML=`${Math.max(15-experiment,0)}<span class='warning'>(15)</span>`
+
+        const ex = convertNum(document.getElementById('ex').value);
+        // 総合力演習
+        document.getElementById('result_ex').innerHTML=`${Math.max(7-ex,0)}<span class='warning'>(7)</span>`
+
+        const core = convertNum(document.getElementById('core').value);
+        // 知能情報コア
+        document.getElementById('result_core').innerHTML = `${Math.max(26-core,0)}<span class='warning'>(26)</span>`
+
+        const English = convertNum(document.getElementById('English').value);
+        // 英語
+        document.getElementById('result_eng').innerHTML=`${Math.max(8-English,0)}<span class='warning'>(8)</span>`
+
+        const math_base = convertNum(document.getElementById('math_base').value);
+        // 数学基礎
+        document.getElementById('result_math_base').innerHTML=`${Math.max(6-math_base,0)}<span class='warning'>(6)</span>`
+
+        const info = convertNum(document.getElementById('info').value);
+        // 情報関係
+        document.getElementById('result_info').innerHTML= `${Math.max(2-info,0)}<span class='warning'>(2)</span>`
+
+        const info_tec = convertNum(document.getElementById('info_tec').value);
+        // 情報技術
+        document.getElementById('result_info_tec').innerHTML=`${Math.max(2-info_tec,0)}<span class='warning'>(2)</span>`
+
+        const major_base = convertNum(document.getElementById('major_base').value);
+        // 専門基礎
+        document.getElementById('result_major_base').innerHTML=`${Math.max(8-major_base,0)}<span class='warning'>(8)</span>`
+
+    }else if(options[2].selected == true){
+        const experiment = convertNum(document.getElementById('experiment').value);
+        // 研究実験
+        document.getElementById('result_exp').innerHTML=`${Math.max(15-experiment,0)}<span class='warning'>(15)</span>`
+
+        const ex = convertNum(document.getElementById('ex').value);
+        // 総合力演習
+        document.getElementById('result_ex').innerHTML=`${Math.max(7-ex,0)}<span class='warning'>(4)</span>`
+
+        const core = convertNum(document.getElementById('core').value);
+        // 知能情報コア
+        document.getElementById('result_core').innerHTML = `${Math.max(26-core,0)}<span class='warning'>(22)</span>`
+
+        const English = convertNum(document.getElementById('English').value);
+        // 英語
+        document.getElementById('result_eng').innerHTML=`${Math.max(8-English,0)}<span class='warning'>(4)</span>`
+
+        const math_base = convertNum(document.getElementById('math_base').value);
+        // 数学基礎
+        document.getElementById('result_math_base').innerHTML=`${Math.max(6-math_base,0)}<span class='warning'>(4)</span>`
+
+        const info = convertNum(document.getElementById('info').value);
+        // 情報関係
+        document.getElementById('result_info').innerHTML= `${Math.max(2-info,0)}<span class='warning'>(2)</span>`
+
+        const info_tec = convertNum(document.getElementById('info_tec').value);
+        // 情報技術
+        document.getElementById('result_info_tec').innerHTML=`${Math.max(2-info_tec,0)}<span class='warning'>(1)</span>`
+
+        const major_base = convertNum(document.getElementById('major_base').value);
+        // 専門基礎
+        document.getElementById('result_major_base').innerHTML=`${Math.max(8-major_base,0)}<span class='warning'>(4)</span>`
+
+    }
+}
+
+const befor2021SecondTableChange = () =>{
+    const element = document.getElementById('select_term')
+    // セレクト要素を全部elementに
+    const options = element.options;
+    // その中のoptionsだけを取ってくる
+    // options[1] が前期 [2]が後期
+    
+    if(options[1].selected == true){
+        // 前期がドロップダウンで選択された
+        const experiment = convertNum(document.getElementById('experiment').value);
+        // 研究実験
+        document.getElementById('result_exp').innerHTML=`${Math.max(15-experiment,0)}<span class='warning'>(15)</span>`
+
+        const ex = convertNum(document.getElementById('ex').value);
+        // 総合力演習
+        document.getElementById('result_ex').innerHTML=`${Math.max(7-ex,0)}<span class='warning'>(4)</span>`
+
+        const core = convertNum(document.getElementById('core').value);
+        // 知能情報コア
+        document.getElementById('result_core').innerHTML = `${Math.max(26-core,0)}<span class='warning'>(20)</span>`
+
+        const English = convertNum(document.getElementById('English').value);
+        // 英語
+        document.getElementById('result_eng').innerHTML=`${Math.max(8-English,0)}<span class='warning'>(2)</span>`
+
+        // __以下，全て今後の必修は無し．()を消して数字のみに．
+
+        const math_base = convertNum(document.getElementById('math_base').value);
+        // 数学基礎
+        document.getElementById('result_math_base').innerHTML=`${Math.max(6-math_base,0)}`
+
+        const major_base = convertNum(document.getElementById('major_base').value);
+        // 専門基礎
+        document.getElementById('result_major_base').innerHTML=`${Math.max(8-major_base,0)}`
+
+        const info = convertNum(document.getElementById('info').value);
+        // 情報関係
+        document.getElementById('result_info').innerHTML= `${Math.max(2-info,0)}`
+
+        const info_tec = convertNum(document.getElementById('info_tec').value);
+        // 情報技術
+        document.getElementById('result_info_tec').innerHTML=`${Math.max(2-info_tec,0)}`
+
+    }else if(options[2].selected == true){
+        const experiment = convertNum(document.getElementById('experiment').value);
+        // 研究実験
+        document.getElementById('result_exp').innerHTML=`${Math.max(15-experiment,0)}<span class='warning'>(13.5)</span>`
+
+        const ex = convertNum(document.getElementById('ex').value);
+        // 総合力演習
+        document.getElementById('result_ex').innerHTML=`${Math.max(7-ex,0)}<span class='warning'>(2)</span>`
+
+        const core = convertNum(document.getElementById('core').value);
+        // 知能情報コア
+        document.getElementById('result_core').innerHTML = `${Math.max(26-core,0)}<span class='warning'>(10)</span>`
+
+        // __以下，全て今後の必修は無し．()を消して数字のみに．
+
+        const English = convertNum(document.getElementById('English').value);
+        // 英語
+        document.getElementById('result_eng').innerHTML=`${Math.max(8-English,0)}`
+
+        const math_base = convertNum(document.getElementById('math_base').value);
+        // 数学基礎
+        document.getElementById('result_math_base').innerHTML=`${Math.max(6-math_base,0)}`
+
+        const major_base = convertNum(document.getElementById('major_base').value);
+        // 専門基礎
+        document.getElementById('result_major_base').innerHTML=`${Math.max(8-major_base,0)}`
+
+        const info = convertNum(document.getElementById('info').value);
+        // 情報関係
+        document.getElementById('result_info').innerHTML= `${Math.max(2-info,0)}`
+
+        const info_tec = convertNum(document.getElementById('info_tec').value);
+        // 情報技術
+        document.getElementById('result_info_tec').innerHTML=`${Math.max(2-info_tec,0)}`
+
+    }
+}
+
+const befor2021ThirdTableChange = () =>{
+    const element = document.getElementById('select_term')
+    // セレクト要素を全部elementに
+    const options = element.options;
+    // その中のoptionsだけを取ってくる
+    // options[1] が前期 [2]が後期
+    if(options[1].selected == true){
+        // 前期がドロップダウンで選択された
+        const experiment = convertNum(document.getElementById('experiment').value);
+        // 研究実験
+        document.getElementById('result_exp').innerHTML=`${Math.max(15-experiment,0)}<span class='warning'>(12)</span>`
+
+        const ex = convertNum(document.getElementById('ex').value);
+        // 総合力演習
+        document.getElementById('result_ex').innerHTML=`${Math.max(7-ex,0)}<span class='warning'>(2)</span>`
+        
+        // __以下，全て今後の必修は無し．()を消して数字のみに．
+
+        const core = convertNum(document.getElementById('core').value);
+        // 知能情報コア
+        document.getElementById('result_core').innerHTML = `${Math.max(26-core,0)}`
+
+        const English = convertNum(document.getElementById('English').value);
+        // 英語
+        document.getElementById('result_eng').innerHTML=`${Math.max(8-English,0)}`
+
+        const math_base = convertNum(document.getElementById('math_base').value);
+        // 数学基礎
+        document.getElementById('result_math_base').innerHTML=`${Math.max(6-math_base,0)}`
+
+        const major_base = convertNum(document.getElementById('major_base').value);
+        // 専門基礎
+        document.getElementById('result_major_base').innerHTML=`${Math.max(8-major_base,0)}`
+
+        const info = convertNum(document.getElementById('info').value);
+        // 情報関係
+        document.getElementById('result_info').innerHTML= `${Math.max(2-info,0)}`
+
+        const info_tec = convertNum(document.getElementById('info_tec').value);
+        // 情報技術
+        document.getElementById('result_info_tec').innerHTML=`${Math.max(2-info_tec,0)}`
+
+    }else if(options[2].selected == true){
+        const experiment = convertNum(document.getElementById('experiment').value);
+        // 研究実験
+        document.getElementById('result_exp').innerHTML=`${Math.max(15-experiment,0)}<span class='warning'>(10)</span>`
+        
+        // __以下，全て今後の必修は無し．()を消して数字のみに．
+
+        const ex = convertNum(document.getElementById('ex').value);
+        // 総合力演習
+        document.getElementById('result_ex').innerHTML=`${Math.max(7-ex,0)}`
+
+        const core = convertNum(document.getElementById('core').value);
+        // 知能情報コア
+        document.getElementById('result_core').innerHTML = `${Math.max(26-core,0)}`
+
+        const English = convertNum(document.getElementById('English').value);
+        // 英語
+        document.getElementById('result_eng').innerHTML=`${Math.max(8-English,0)}`
+
+        const math_base = convertNum(document.getElementById('math_base').value);
+        // 数学基礎
+        document.getElementById('result_math_base').innerHTML=`${Math.max(6-math_base,0)}`
+
+        const major_base = convertNum(document.getElementById('major_base').value);
+        // 専門基礎
+        document.getElementById('result_major_base').innerHTML=`${Math.max(8-major_base,0)}`
+
+        const info = convertNum(document.getElementById('info').value);
+        // 情報関係
+        document.getElementById('result_info').innerHTML= `${Math.max(2-info,0)}`
+
+        const info_tec = convertNum(document.getElementById('info_tec').value);
+        // 情報技術
+        document.getElementById('result_info_tec').innerHTML=`${Math.max(2-info_tec,0)}`
+
+    }
+}
+
+const befor2021FourthTableChange = () =>{
+    let element = document.getElementById('select_term')
+    let options = element.options;
+    // options[1] が前期 [2]が後期
 
     if(options[1].selected == true){
         // 前期がドロップダウンで選択された
         const experiment = convertNum(document.getElementById('experiment').value);
-        document.getElementById('result_exp').innerHTML=`${Math.max(15-experiment,0)}<span class='warning'>(12)</span>`
+        // 研究実験
+        document.getElementById('result_exp').innerHTML=`${Math.max(15-experiment,0)}<span class='warning'>(8)</span>`
         
+        // __以下，全て今後の必修は無し．()を消して数字のみに．
+
         const ex = convertNum(document.getElementById('ex').value);
-        document.getElementById('result_ex').innerHTML=`${Math.max(7-ex,0)}<span class='warning'>(2)</span>`
+        // 総合力演習
+        document.getElementById('result_ex').innerHTML=`${Math.max(7-ex,0)}`
 
-        // 必修単位のvisibility
-        Second_Compulsory_element.style.display = 'none';
-        // 前期が選択されている時には後期を隠す
-        console.log("後期を隠す");
+        const core = convertNum(document.getElementById('core').value);
+        // 知能情報コア
+        document.getElementById('result_core').innerHTML = `${Math.max(26-core,0)}`
 
-        Compulsory_element.style.display = 'block';
-        // 前期を復元
+        const English = convertNum(document.getElementById('English').value);
+        // 英語
+        document.getElementById('result_eng').innerHTML=`${Math.max(8-English,0)}`
+
+        const math_base = convertNum(document.getElementById('math_base').value);
+        // 数学基礎
+        document.getElementById('result_math_base').innerHTML=`${Math.max(6-math_base,0)}`
+
+        const major_base = convertNum(document.getElementById('major_base').value);
+        // 専門基礎
+        document.getElementById('result_major_base').innerHTML=`${Math.max(8-major_base,0)}`
+
+        const info = convertNum(document.getElementById('info').value);
+        // 情報関係
+        document.getElementById('result_info').innerHTML= `${Math.max(2-info,0)}`
+
+        const info_tec = convertNum(document.getElementById('info_tec').value);
+        // 情報技術
+        document.getElementById('result_info_tec').innerHTML=`${Math.max(2-info_tec,0)}`
 
     }else if(options[2].selected == true){
         const experiment = convertNum(document.getElementById('experiment').value);
-        document.getElementById('result_exp').innerHTML=`${Math.max(15-experiment,0)}<span class='warning'>(10)</span>`
-        
+        // 研究実験
+        document.getElementById('result_exp').innerHTML=`${Math.max(15-experiment,0)}<span class='warning'>(4)</span>`
+
+        // __以下，全て今後の必修は無し．()を消して数字のみに．
+
         const ex = convertNum(document.getElementById('ex').value);
+        // 総合力演習
         document.getElementById('result_ex').innerHTML=`${Math.max(7-ex,0)}`
 
+        const core = convertNum(document.getElementById('core').value);
+        // 知能情報コア
+        document.getElementById('result_core').innerHTML = `${Math.max(26-core,0)}`
+
+        const English = convertNum(document.getElementById('English').value);
+        // 英語
+        document.getElementById('result_eng').innerHTML=`${Math.max(8-English,0)}`
+
+        const math_base = convertNum(document.getElementById('math_base').value);
+        // 数学基礎
+        document.getElementById('result_math_base').innerHTML=`${Math.max(6-math_base,0)}`
+
+        const major_base = convertNum(document.getElementById('major_base').value);
+        // 専門基礎
+        document.getElementById('result_major_base').innerHTML=`${Math.max(8-major_base,0)}`
+
+        const info = convertNum(document.getElementById('info').value);
+        // 情報関係
+        document.getElementById('result_info').innerHTML= `${Math.max(2-info,0)}`
+
+        const info_tec = convertNum(document.getElementById('info_tec').value);
+        // 情報技術
+        document.getElementById('result_info_tec').innerHTML=`${Math.max(2-info_tec,0)}`
+
+    }
+}
+
+const onAndAfter2021FirstTableChange = () =>{
+    // 2021年度入学以降の1年の計算式
+    const element = document.getElementById('select_term')
+    // セレクト要素を全部elementに
+    const options = element.options;
+    // その中のoptionsだけを取ってくる
+    // options[1] が前期 [2]が後期
+    
+    if(options[1].selected == true){
+        // 前期がドロップダウンで選択された
+        const info = convertNum(document.getElementById('info').value);
+        // 情報関係
+        document.getElementById('result_info').innerHTML= `${Math.max(2-info,0)}<span class='warning'>(2)</span>`
+
+        const English = convertNum(document.getElementById('English').value);
+        // 英語
+        document.getElementById('result_eng').innerHTML=`${Math.max(8-English,0)}<span class='warning'>(8)</span>`
+
+        const major_base = convertNum(document.getElementById('major_base').value);
+        // 専門基礎 変更済み
+        document.getElementById('result_major_base').innerHTML=`${Math.max(6-major_base,0)}<span class='warning'>(6)</span>`
+        const info_tec = convertNum(document.getElementById('info_tec').value);
+        // 情報技術
+        document.getElementById('result_info_tec').innerHTML=`${Math.max(2-info_tec,0)}<span class='warning'>(2)</span>`
+
+        const ex = convertNum(document.getElementById('ex').value);
+        // 総合力演習
+        document.getElementById('result_ex').innerHTML=`${Math.max(7-ex,0)}<span class='warning'>(7)</span>`
+
+        const experiment = convertNum(document.getElementById('experiment').value);
+        // 研究実験
+        document.getElementById('result_exp').innerHTML=`${Math.max(16-experiment,0)}<span class='warning'>(16)</span>`
+
+        const math_base = convertNum(document.getElementById('math_base').value);
+        // 数学基礎
+        document.getElementById('result_math_base').innerHTML=`${Math.max(6-math_base,0)}<span class='warning'>(6)</span>`
+
+        const core = convertNum(document.getElementById('core').value);
+        // 知能情報コア
+        document.getElementById('result_core').innerHTML = `${Math.max(26-core,0)}<span class='warning'>(26)</span>`
+
+    }else if(options[2].selected == true){
+        const experiment = convertNum(document.getElementById('experiment').value);
+        // 研究実験
+        document.getElementById('result_exp').innerHTML=`${Math.max(16-experiment,0)}<span class='warning'>(16)</span>`
+
+        const ex = convertNum(document.getElementById('ex').value);
+        // 総合力演習
+        document.getElementById('result_ex').innerHTML=`${Math.max(7-ex,0)}<span class='warning'>(4)</span>`
+
+        const core = convertNum(document.getElementById('core').value);
+        // 知能情報コア
+        document.getElementById('result_core').innerHTML = `${Math.max(26-core,0)}<span class='warning'>(22)</span>`
+
+        const English = convertNum(document.getElementById('English').value);
+        // 英語
+        document.getElementById('result_eng').innerHTML=`${Math.max(8-English,0)}<span class='warning'>(4)</span>`
+
+        const math_base = convertNum(document.getElementById('math_base').value);
+        // 数学基礎
+        document.getElementById('result_math_base').innerHTML=`${Math.max(6-math_base,0)}<span class='warning'>(4)</span>`
+
+        const info = convertNum(document.getElementById('info').value);
+        // 情報関係
+        document.getElementById('result_info').innerHTML= `${Math.max(2-info,0)}<span class='warning'>(2)</span>`
+
+        const info_tec = convertNum(document.getElementById('info_tec').value);
+        // 情報技術
+        document.getElementById('result_info_tec').innerHTML=`${Math.max(2-info_tec,0)}<span class='warning'>(1)</span>`
+
+        const major_base = convertNum(document.getElementById('major_base').value);
+        // 専門基礎
+        document.getElementById('result_major_base').innerHTML=`${Math.max(6-major_base,0)}<span class='warning'>(2)</span>`
+
+    }
+}
+
+const onAndAfter2021SecondTableChange = () =>{
+    const element = document.getElementById('select_term')
+    // セレクト要素を全部elementに
+    const options = element.options;
+    // その中のoptionsだけを取ってくる
+    // options[1] が前期 [2]が後期
+    
+    if(options[1].selected == true){
+        // 前期がドロップダウンで選択された
+        const experiment = convertNum(document.getElementById('experiment').value);
+        // 研究実験
+        document.getElementById('result_exp').innerHTML=`${Math.max(16-experiment,0)}<span class='warning'>(16)</span>`
+
+        const ex = convertNum(document.getElementById('ex').value);
+        // 総合力演習
+        document.getElementById('result_ex').innerHTML=`${Math.max(7-ex,0)}<span class='warning'>(4)</span>`
+
+        const core = convertNum(document.getElementById('core').value);
+        // 知能情報コア
+        document.getElementById('result_core').innerHTML = `${Math.max(26-core,0)}<span class='warning'>(20)</span>`
+
+        const English = convertNum(document.getElementById('English').value);
+        // 英語
+        document.getElementById('result_eng').innerHTML=`${Math.max(8-English,0)}<span class='warning'>(2)</span>`
+
+        const math_base = convertNum(document.getElementById('math_base').value);
+        // 数学基礎
+        document.getElementById('result_math_base').innerHTML=`${Math.max(6-math_base,0)}`
+
+        const major_base = convertNum(document.getElementById('major_base').value);
+        // 専門基礎
+        document.getElementById('result_major_base').innerHTML=`${Math.max(6-major_base,0)}`
+
+        const info = convertNum(document.getElementById('info').value);
+        // 情報関係
+        document.getElementById('result_info').innerHTML= `${Math.max(2-info,0)}`
+
+        const info_tec = convertNum(document.getElementById('info_tec').value);
+        // 情報技術
+        document.getElementById('result_info_tec').innerHTML=`${Math.max(2-info_tec,0)}`
+
+    }else if(options[2].selected == true){
+        const experiment = convertNum(document.getElementById('experiment').value);
+        // 研究実験
+        document.getElementById('result_exp').innerHTML=`${Math.max(16-experiment,0)}<span class='warning'>(14)</span>`
+
+        const ex = convertNum(document.getElementById('ex').value);
+        // 総合力演習
+        document.getElementById('result_ex').innerHTML=`${Math.max(7-ex,0)}<span class='warning'>(2)</span>`
+
+        const core = convertNum(document.getElementById('core').value);
+        // 知能情報コア
+        document.getElementById('result_core').innerHTML = `${Math.max(26-core,0)}<span class='warning'>(10)</span>`
+
+        const English = convertNum(document.getElementById('English').value);
+        // 英語
+        document.getElementById('result_eng').innerHTML=`${Math.max(8-English,0)}`
+
+        const math_base = convertNum(document.getElementById('math_base').value);
+        // 数学基礎
+        document.getElementById('result_math_base').innerHTML=`${Math.max(6-math_base,0)}`
+
+        const major_base = convertNum(document.getElementById('major_base').value);
+        // 専門基礎
+        document.getElementById('result_major_base').innerHTML=`${Math.max(6-major_base,0)}`
+
+        const info = convertNum(document.getElementById('info').value);
+        // 情報関係
+        document.getElementById('result_info').innerHTML= `${Math.max(2-info,0)}`
+
+        const info_tec = convertNum(document.getElementById('info_tec').value);
+        // 情報技術
+        document.getElementById('result_info_tec').innerHTML=`${Math.max(2-info_tec,0)}`
+
+    }
+}
+
+const onAndAfter2021ThirdTableChange = () =>{
+    const element = document.getElementById('select_term')
+    // セレクト要素を全部elementに
+    const options = element.options;
+    // その中のoptionsだけを取ってくる
+    // options[1] が前期 [2]が後期
+    if(options[1].selected == true){
+        // 前期がドロップダウンで選択された
+        const experiment = convertNum(document.getElementById('experiment').value);
+        // 研究実験
+        document.getElementById('result_exp').innerHTML=`${Math.max(16-experiment,0)}<span class='warning'>(12)</span>`
+
+        const ex = convertNum(document.getElementById('ex').value);
+        // 総合力演習
+        document.getElementById('result_ex').innerHTML=`${Math.max(7-ex,0)}<span class='warning'>(2)</span>`
+        
+        // __以下，全て今後の必修は無し．()を消して数字のみに．
+
+        const core = convertNum(document.getElementById('core').value);
+        // 知能情報コア
+        document.getElementById('result_core').innerHTML = `${Math.max(26-core,0)}`
+
+        const English = convertNum(document.getElementById('English').value);
+        // 英語
+        document.getElementById('result_eng').innerHTML=`${Math.max(8-English,0)}`
+
+        const math_base = convertNum(document.getElementById('math_base').value);
+        // 数学基礎
+        document.getElementById('result_math_base').innerHTML=`${Math.max(6-math_base,0)}`
+
+        const major_base = convertNum(document.getElementById('major_base').value);
+        // 専門基礎
+        document.getElementById('result_major_base').innerHTML=`${Math.max(6-major_base,0)}`
+
+        const info = convertNum(document.getElementById('info').value);
+        // 情報関係
+        document.getElementById('result_info').innerHTML= `${Math.max(2-info,0)}`
+
+        const info_tec = convertNum(document.getElementById('info_tec').value);
+        // 情報技術
+        document.getElementById('result_info_tec').innerHTML=`${Math.max(2-info_tec,0)}`
+
+    }else if(options[2].selected == true){
+        const experiment = convertNum(document.getElementById('experiment').value);
+        // 研究実験
+        document.getElementById('result_exp').innerHTML=`${Math.max(16-experiment,0)}<span class='warning'>(10)</span>`
+        
+        // __以下，全て今後の必修は無し．()を消して数字のみに．
+
+        const ex = convertNum(document.getElementById('ex').value);
+        // 総合力演習
+        document.getElementById('result_ex').innerHTML=`${Math.max(7-ex,0)}`
+
+        const core = convertNum(document.getElementById('core').value);
+        // 知能情報コア
+        document.getElementById('result_core').innerHTML = `${Math.max(26-core,0)}`
+
+        const English = convertNum(document.getElementById('English').value);
+        // 英語
+        document.getElementById('result_eng').innerHTML=`${Math.max(8-English,0)}`
+
+        const math_base = convertNum(document.getElementById('math_base').value);
+        // 数学基礎
+        document.getElementById('result_math_base').innerHTML=`${Math.max(6-math_base,0)}`
+
+        const major_base = convertNum(document.getElementById('major_base').value);
+        // 専門基礎
+        document.getElementById('result_major_base').innerHTML=`${Math.max(6-major_base,0)}`
+
+        const info = convertNum(document.getElementById('info').value);
+        // 情報関係
+        document.getElementById('result_info').innerHTML= `${Math.max(2-info,0)}`
+
+        const info_tec = convertNum(document.getElementById('info_tec').value);
+        // 情報技術
+        document.getElementById('result_info_tec').innerHTML=`${Math.max(2-info_tec,0)}`
+
+    }
+}
+
+const onAndAfter2021FourthTableChange = () =>{
+    let element = document.getElementById('select_term')
+    let options = element.options;
+    // options[1] が前期 [2]が後期
+
+    if(options[1].selected == true){
+        // 前期がドロップダウンで選択された
+        const experiment = convertNum(document.getElementById('experiment').value);
+        // 研究実験
+        document.getElementById('result_exp').innerHTML=`${Math.max(16-experiment,0)}<span class='warning'>(8)</span>`
+        
+        // __以下，全て今後の必修は無し．()を消して数字のみに．
+
+        const ex = convertNum(document.getElementById('ex').value);
+        // 総合力演習
+        document.getElementById('result_ex').innerHTML=`${Math.max(7-ex,0)}`
+
+        const core = convertNum(document.getElementById('core').value);
+        // 知能情報コア
+        document.getElementById('result_core').innerHTML = `${Math.max(26-core,0)}`
+
+        const English = convertNum(document.getElementById('English').value);
+        // 英語
+        document.getElementById('result_eng').innerHTML=`${Math.max(8-English,0)}`
+
+        const math_base = convertNum(document.getElementById('math_base').value);
+        // 数学基礎
+        document.getElementById('result_math_base').innerHTML=`${Math.max(6-math_base,0)}`
+
+        const major_base = convertNum(document.getElementById('major_base').value);
+        // 専門基礎
+        document.getElementById('result_major_base').innerHTML=`${Math.max(6-major_base,0)}`
+
+        const info = convertNum(document.getElementById('info').value);
+        // 情報関係
+        document.getElementById('result_info').innerHTML= `${Math.max(2-info,0)}`
+
+        const info_tec = convertNum(document.getElementById('info_tec').value);
+        // 情報技術
+        document.getElementById('result_info_tec').innerHTML=`${Math.max(2-info_tec,0)}`
+
+    }else if(options[2].selected == true){
+        const experiment = convertNum(document.getElementById('experiment').value);
+        // 研究実験
+        document.getElementById('result_exp').innerHTML=`${Math.max(16-experiment,0)}<span class='warning'>(4)</span>`
+
+        // __以下，全て今後の必修は無し．()を消して数字のみに．
+
+        const ex = convertNum(document.getElementById('ex').value);
+        // 総合力演習
+        document.getElementById('result_ex').innerHTML=`${Math.max(7-ex,0)}`
+
+        const core = convertNum(document.getElementById('core').value);
+        // 知能情報コア
+        document.getElementById('result_core').innerHTML = `${Math.max(26-core,0)}`
+
+        const English = convertNum(document.getElementById('English').value);
+        // 英語
+        document.getElementById('result_eng').innerHTML=`${Math.max(8-English,0)}`
+
+        const math_base = convertNum(document.getElementById('math_base').value);
+        // 数学基礎
+        document.getElementById('result_math_base').innerHTML=`${Math.max(6-math_base,0)}`
+
+        const major_base = convertNum(document.getElementById('major_base').value);
+        // 専門基礎
+        document.getElementById('result_major_base').innerHTML=`${Math.max(6-major_base,0)}`
+
+        const info = convertNum(document.getElementById('info').value);
+        // 情報関係
+        document.getElementById('result_info').innerHTML= `${Math.max(2-info,0)}`
+
+        const info_tec = convertNum(document.getElementById('info_tec').value);
+        // 情報技術
+        document.getElementById('result_info_tec').innerHTML=`${Math.max(2-info_tec,0)}`
+
+    }
+}
+
+
+
+const hidingCompulsorySubjects = () => {
+    // 表下の必修科目を"全て"非表示にする関数
+    for(let i=0;i<compulsoryIdList.length;i++){
+        id = compulsoryIdList[i]
+        if(document.getElementById(id).style.display != 'none'){
+            // noneでないものをnoneに
+            document.getElementById(id).style.display = 'none';
+        }
+    }
+}
+
+const before2021DisplayedFirstCompulsorySubjects = () =>{
+    // 一年次の必修科目を表下に表示する関数
+    let Compulsory_element = document.getElementById('first_year_Compulsory');    
+    let Second_Compulsory_element = document.getElementById('first_year_2nd_Compulsory');
+    
+    Compulsory_element.style.display = 'block';
+    Second_Compulsory_element.style.display = 'block';
+    // 前期後期未選択時には前期後期の必修科目どちらも表示するように
+    const element = document.getElementById('select_term')
+    // セレクト要素を全部elementに格納
+    const options = element.options;
+    // その中のoptions要素だけを取ってくる
+    // options[1]が前期 [2]が後期を指す
+
+    if(options[1].selected == true){
+        // 前期
+        Compulsory_element.style.display = 'block';
+        Second_Compulsory_element.style.display = 'none';
+    }else if(options[2].selected == true){
+        // 後期
         Compulsory_element.style.display = 'none';
-        // 前期を消して
-        console.log("前期を隠す");
         Second_Compulsory_element.style.display = 'block';
-        // 後期を復元
+    }
+}
+
+const befor2021DisplayedSecondCompulsorySubjects = () =>{
+    // 二年次の必修科目を表下に表示する関数
+    let Compulsory_element = document.getElementById('second_year_Compulsory');    
+    let Second_Compulsory_element = document.getElementById('second_year_2nd_Compulsory');
+    
+    Compulsory_element.style.display = 'block';
+    Second_Compulsory_element.style.display = 'block';
+    // 前期後期未選択時には前期後期の必修科目どちらも表示するように
+    const element = document.getElementById('select_term')
+    // セレクト要素を全部elementに格納
+    const options = element.options;
+    // その中のoptions要素だけを取ってくる
+    // options[1]が前期 [2]が後期を指す
+
+    if(options[1].selected == true){
+        // 前期
+        Compulsory_element.style.display = 'block';
+        Second_Compulsory_element.style.display = 'none';
+    }else if(options[2].selected == true){
+        // 後期
+        Compulsory_element.style.display = 'none';
+        Second_Compulsory_element.style.display = 'block';
+    }
+}
+
+const befor2021DisplayedThirdCompulsorySubjects = () =>{
+    // 三年次の必修科目を表下に表示する関数
+    let Compulsory_element = document.getElementById('third_year_Compulsory');    
+    let Second_Compulsory_element = document.getElementById('third_year_2nd_Compulsory');
+    
+    Compulsory_element.style.display = 'block';
+    Second_Compulsory_element.style.display = 'block';
+    // 前期後期未選択時には前期後期の必修科目どちらも表示するように
+    const element = document.getElementById('select_term')
+    // セレクト要素を全部elementに格納
+    const options = element.options;
+    // その中のoptions要素だけを取ってくる
+    // options[1]が前期 [2]が後期を指す
+
+    if(options[1].selected == true){
+        // 前期
+        Compulsory_element.style.display = 'block';
+        Second_Compulsory_element.style.display = 'none';
+    }else if(options[2].selected == true){
+        // 後期
+        Compulsory_element.style.display = 'none';
+        Second_Compulsory_element.style.display = 'block';
+    }
+}
+
+const befor2021DisplayedFourthCompulsorySubjects = () =>{
+    // 四年次の必修科目を表下に表示する関数
+    let Compulsory_element = document.getElementById('fourth_year_Compulsory');    
+    let Second_Compulsory_element = document.getElementById('fourth_year_2nd_Compulsory');
+    
+    Compulsory_element.style.display = 'block';
+    Second_Compulsory_element.style.display = 'block';
+    // 前期後期未選択時には前期後期の必修科目どちらも表示するように
+    const element = document.getElementById('select_term')
+    // セレクト要素を全部elementに格納
+    const options = element.options;
+    // その中のoptions要素だけを取ってくる
+    // options[1]が前期 [2]が後期を指す
+
+    if(options[1].selected == true){
+        // 前期
+        Compulsory_element.style.display = 'block';
+        Second_Compulsory_element.style.display = 'none';
+    }else if(options[2].selected == true){
+        // 後期
+        Compulsory_element.style.display = 'none';
+        Second_Compulsory_element.style.display = 'block';
+    }
+}
+
+const onAndAfter2021DisplayedFirstCompulsorySubjects = () =>{
+    // y21以降入学の1年次の必修科目を表下に表示する関数
+    let Compulsory_element = document.getElementById('y21_first_year_Compulsory');    
+    let Second_Compulsory_element = document.getElementById('y21_first_year_2nd_Compulsory');
+    
+    Compulsory_element.style.display = 'block';
+    Second_Compulsory_element.style.display = 'block';
+    // 前期後期未選択時には前期後期の必修科目どちらも表示するように
+    const element = document.getElementById('select_term')
+    // セレクト要素を全部elementに格納
+    const options = element.options;
+    // その中のoptions要素だけを取ってくる
+    // options[1]が前期 [2]が後期を指す
+
+    if(options[1].selected == true){
+        // 前期
+        Compulsory_element.style.display = 'block';
+        Second_Compulsory_element.style.display = 'none';
+    }else if(options[2].selected == true){
+        // 後期
+        Compulsory_element.style.display = 'none';
+        Second_Compulsory_element.style.display = 'block';
+    }
+}
+
+const onAndAfter2021DisplayedSecondCompulsorySubjects = () =>{
+    // y21以降入学の1年次の必修科目を表下に表示する関数
+    let Compulsory_element = document.getElementById('y21_second_year_Compulsory');    
+    let Second_Compulsory_element = document.getElementById('y21_second_year_2nd_Compulsory');
+    
+    Compulsory_element.style.display = 'block';
+    Second_Compulsory_element.style.display = 'block';
+    // 前期後期未選択時には前期後期の必修科目どちらも表示するように
+    const element = document.getElementById('select_term')
+    // セレクト要素を全部elementに格納
+    const options = element.options;
+    // その中のoptions要素だけを取ってくる
+    // options[1]が前期 [2]が後期を指す
+
+    if(options[1].selected == true){
+        // 前期
+        Compulsory_element.style.display = 'block';
+        Second_Compulsory_element.style.display = 'none';
+    }else if(options[2].selected == true){
+        // 後期
+        Compulsory_element.style.display = 'none';
+        Second_Compulsory_element.style.display = 'block';
+    }
+}
+
+
+const onAndAfter2021DisplayedThirdCompulsorySubjects = () =>{
+    // y21以降入学の1年次の必修科目を表下に表示する関数
+    let Compulsory_element = document.getElementById('y21_third_year_Compulsory');    
+    let Second_Compulsory_element = document.getElementById('y21_third_year_2nd_Compulsory');
+    
+    Compulsory_element.style.display = 'block';
+    Second_Compulsory_element.style.display = 'block';
+    // 前期後期未選択時には前期後期の必修科目どちらも表示するように
+    const element = document.getElementById('select_term')
+    // セレクト要素を全部elementに格納
+    const options = element.options;
+    // その中のoptions要素だけを取ってくる
+    // options[1]が前期 [2]が後期を指す
+
+    if(options[1].selected == true){
+        // 前期
+        Compulsory_element.style.display = 'block';
+        Second_Compulsory_element.style.display = 'none';
+    }else if(options[2].selected == true){
+        // 後期
+        Compulsory_element.style.display = 'none';
+        Second_Compulsory_element.style.display = 'block';
+    }
+}
+
+const onAndAfter2021DisplayedFourthCompulsorySubjects = () =>{
+    // y21以降入学の1年次の必修科目を表下に表示する関数
+    let Compulsory_element = document.getElementById('y21_fourth_year_Compulsory');    
+    let Second_Compulsory_element = document.getElementById('y21_fourth_year_2nd_Compulsory');
+    
+    Compulsory_element.style.display = 'block';
+    Second_Compulsory_element.style.display = 'block';
+    // 前期後期未選択時には前期後期の必修科目どちらも表示するように
+    const element = document.getElementById('select_term')
+    // セレクト要素を全部elementに格納
+    const options = element.options;
+    // その中のoptions要素だけを取ってくる
+    // options[1]が前期 [2]が後期を指す
+
+    if(options[1].selected == true){
+        // 前期
+        Compulsory_element.style.display = 'block';
+        Second_Compulsory_element.style.display = 'none';
+    }else if(options[2].selected == true){
+        // 後期
+        Compulsory_element.style.display = 'none';
+        Second_Compulsory_element.style.display = 'block';
     }
 }
 
@@ -681,4 +1612,50 @@ const generateJson = () =>{
         obj[id] = value;
     }
     return obj
+}
+
+const TableChangeReqLab = () =>{
+    // 研究室配属条件の表示非表示切り替え
+    let element_admission_year = document.getElementById('select_admission_year')
+    let options_admission_year = element_admission_year.options;
+
+    let req_lab_y18_y19_y20_element = document.getElementById('req_lab_y18_y19_y20')
+    let req_lab_y21_element = document.getElementById('req_lab_y21')
+
+    if(options_admission_year[1].selected == true){
+        req_lab_y18_y19_y20_element.style.display = 'block';
+        req_lab_y21_element.style.display = 'none';
+    }else if(options_admission_year[2].selected == true){
+        req_lab_y18_y19_y20_element.style.display = 'block';
+        req_lab_y21_element.style.display = 'none';
+    }else if(options_admission_year[3].selected == true){
+        req_lab_y18_y19_y20_element.style.display = 'block';
+        req_lab_y21_element.style.display = 'none';
+    }else if(options_admission_year[4].selected == true){
+        req_lab_y18_y19_y20_element.style.display = 'none';
+        req_lab_y21_element.style.display = 'block';
+    }
+}
+
+const TableChangeSubjectClassificationImage = () =>{
+    // 専門科目分類表の表示非表示切り替え
+    let element_admission_year = document.getElementById('select_admission_year')
+    let options_admission_year = element_admission_year.options;
+
+    let y19_subject_classification_image_element = document.getElementById('y19_subject_classification_image')
+    let y21_subject_classification_image_element = document.getElementById('y21_subject_classification_image')
+
+    if(options_admission_year[1].selected == true){
+        y19_subject_classification_image_element.style.display = 'block';
+        y21_subject_classification_image_element.style.display = 'none';
+    }else if(options_admission_year[2].selected == true){
+        y19_subject_classification_image_element.style.display = 'block';
+        y21_subject_classification_image_element.style.display = 'none';
+    }else if(options_admission_year[3].selected == true){
+        y19_subject_classification_image_element.style.display = 'block';
+        y21_subject_classification_image_element.style.display = 'none';
+    }else if(options_admission_year[4].selected == true){
+        y19_subject_classification_image_element.style.display = 'none';
+        y21_subject_classification_image_element.style.display = 'block';
+    }
 }
