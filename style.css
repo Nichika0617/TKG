@@ -181,6 +181,12 @@ li {
   max-width: 550px;
 }
 
+.ol_portal_usage{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
 .req_sub{
   display: none;
 }
