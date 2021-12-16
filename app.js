@@ -20,23 +20,43 @@ window.onload = () =>{
     setValue(JSON.parse(localStorage.getItem("TKG"))); // 値の復元
     all_calc(); // 初期化，前回の入力が復元された場合はその計算結果を出力．
 }
+const DEBUG = false;//コンソール出力をするか否か
+
+const log = (log) => {
+    if(DEBUG==true){
+        console.log(log);
+    }
+}
+
+const addHighLightEventListner = (id,className,highLightColor) => {
+    const targetElement = document.getElementById(id);
+    const HightLightElements = document.getElementsByClassName(className);
+    targetElement.addEventListener('mouseover', () => {
+        for(let i=0;i<HightLightElements.length;i++){
+            HightLightElements[i].style.backgroundColor = highLightColor;
+        }
+    },false);
+    targetElement.addEventListener('mouseout',() => {
+        for(let i=0;i<HightLightElements.length;i++){
+            HightLightElements[i].style.backgroundColor = '';
+        }
+    },false);
+};
 
 // ＿＿＿＿＿＿＿＿＿＿小計1のハイライト↓↓
 document.addEventListener('DOMContentLoaded', function() {
     // DOMContentLoaded = HTMLが読み込まれた時，functionを実行
     let subtotal_1 = document.getElementsByClassName("subtotal_1");
-    console.log(subtotal_1);
 
     //マウスポインターが乗ったタイミングで背景色を変更
     subtotal_1[5].addEventListener('mouseover', function() {
         // 5個目(一番最後)が，小計1の欄
-        // console.log("小計1マウスオーバー")
         let subtotal1_count = 0;
         while(subtotal1_count < subtotal_1.length){
             subtotal_1[subtotal1_count].style.backgroundColor = '#ffd9d2';
             subtotal1_count++;
         }
-    }, false)
+    }, false);
     // getElementsByClassNameで同じクラス名のタグの配列を取り，その配列の中身ひとつひとつにbackgroundの処理を行なっていくという方法で，全部塗る
     
     // マウスポインターが外れたタイミングで背景色を戻す
@@ -46,8 +66,8 @@ document.addEventListener('DOMContentLoaded', function() {
             subtotal_1[subtotal1_count].style.backgroundColor = '';
             subtotal1_count++;
         }
-    }, false)
-},false)
+    }, false);
+},false);
 
 
 // ＿＿＿＿＿＿＿＿＿＿小計2のハイライト↓↓
@@ -55,7 +75,6 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
     // DOMContentLoaded = HTMLが読み込まれた時，functionを実行
     let subtotal_2 = document.getElementsByClassName("subtotal_2");
-    console.log(subtotal_2);
     
     //マウスポインターが乗ったタイミングで背景色を変更
     subtotal_2[6].addEventListener('mouseover', function() {
@@ -83,7 +102,6 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
     // DOMContentLoaded = HTMLが読み込まれた時，functionを実行
     let Total_1 = document.getElementsByClassName("Total_1");
-    console.log(Total_1);
 
     //マウスポインターが乗ったタイミングで背景色を変更
     Total_1[14].addEventListener('mouseover', function() {
@@ -111,7 +129,6 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
     // DOMContentLoaded = HTMLが読み込まれた時，functionを実行
     let subtotal_3 = document.getElementsByClassName("subtotal_3");
-    console.log(subtotal_3);
     
     //マウスポインターが乗ったタイミングで背景色を変更
     subtotal_3[3].addEventListener('mouseover', function() {
@@ -139,7 +156,6 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
     // DOMContentLoaded = HTMLが読み込まれた時，functionを実行
     let subtotal_4 = document.getElementsByClassName("subtotal_4");
-    console.log(subtotal_4);
 
     //マウスポインターが乗ったタイミングで背景色を変更
     subtotal_4[7].addEventListener('mouseover', function() {
@@ -168,7 +184,6 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
     // DOMContentLoaded = HTMLが読み込まれた時，functionを実行
     let Total_2 = document.getElementsByClassName("Total_2");
-    console.log(Total_2);
 
     //マウスポインターが乗ったタイミングで背景色を変更
     Total_2[12].addEventListener('mouseover', function() {
@@ -196,7 +211,6 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
     // DOMContentLoaded = HTMLが読み込まれた時，functionを実行
     let all_total = document.getElementsByClassName("all_total");
-    console.log(all_total);
 
     //マウスポインターが乗ったタイミングで背景色を変更
     all_total[3].addEventListener('mouseover', function() {
@@ -323,7 +337,7 @@ const foreign_calc = ()=>{
         // 合計で4ではなく，一つの言語を4単位以上あるかを確かめる
         second_foreign_judge = true; // 第二言語の条件を満たした．
         document.getElementById('result_second').textContent = 0;
-        console.log("第二言語満たした")
+        log("第二言語満たした")
     }else{
         if (sum_second >= 4){
             // 一つの科目群から4単位以上でなかったとしても，とりあえずマイナスにならないように合計が4超えた時も0とする
@@ -338,17 +352,15 @@ const foreign_calc = ()=>{
     document.getElementById('foreignTotal').textContent=foreignTotal;
     document.getElementById('result_foreignTotal').textContent=Math.max(12-foreignTotal,0);
     
-    console.log(English);
-    console.log(second_foreign_judge);
     // foreignTotalが英語12か英語8と外国語4かどうか出力する
     if(foreignTotal >= 12){
         if(English >= 12){
             document.getElementById('result_foreignTotal').innerHTML = "0 <span class='success'><br> 英語12単位で満たされています，</span>";
-            console.log("英語12");
+            log("英語12");
         }else if(English >= 8 && second_foreign_judge == true){
         // 英語8単位以上かつ，第二言語1つを4単位以上とっているならば
             document.getElementById('result_foreignTotal').innerHTML = "0 <span class='success'><br> 英語8単位，第二言語4単位で満たされています．</span>"
-            console.log("英語8と第二言語4")
+            log("英語8と第二言語4")
         }else{
             document.getElementById('result_foreignTotal').innerHTML = "0 <span class='warning'><br> 言語の取得条件を満たしていません．</span>"
             
@@ -384,13 +396,11 @@ const total1_calc = () => {
     document.getElementById('total1').textContent=total1;
     
     if (total1 >= 30){
-        console.log(`ヘルス${document.getElementById('result_health').textContent} ,小計2${document.getElementById('result_subtotal2').textContent}, 情報${document.getElementById('result_info').textContent}, 外国語計${document.getElementById('result_foreignTotal').textContent}`)
         if(Math.max(2-health,0) == 0 && Math.max(14-subTotal2,0) == 0 && Math.max(2-info,0) == 0 && Math.max(12-foreignTotal,0) == 0 && subtotal2_judge == true && English >= 8 && second_foreign_judge == true){
             // 注意文とか追加したから document.getElementById == 0の比較はできなくなってしまった
             // 2 + 14 + 2 + 12 = 30 で条件を満たしているならば，
             document.getElementById('result_total1').innerHTML = "0 <span class='success'><br> 30単位の条件を満たしています</span>"
-            console.log("共通30満たした．")
-            console.log(second_foreign_judge)
+            log("共通30満たした．")
         }else if(Math.max(2-health,0) != 0){
             // 30単位は満たしたが，健康運動を取得していない
             document.getElementById('result_total1').innerHTML = "0 <span class='warning'><br>健康運動を2単位以上取得する必要があります．</span>"
@@ -423,7 +433,7 @@ const total1_calc = () => {
         }else{
             document.getElementById('result_total1').innerHTML = "0 <span class='warning'><br>上の各条件を確認してください．</span>"
             // マイナスにならないよう取得単位が30を超えたら0にしておくが，条件を満たせていないという注意を表示
-            console.log("共通30の条件に合っていない")
+            log("共通30の条件に合っていない")
         }
     }else{
         document.getElementById('result_total1').innerHTML = ""
@@ -662,7 +672,7 @@ const admissionYearTableChange = () =>{
         before2021GradeTableChange();
     }else if(options[4].selected == true){
         // 2021年度入学
-        console.log("2021年度以降入学に対する処理")
+        log("2021年度以降入学に対する処理")
         onAndAfter2021ChengeGraduationReq();
         onAndAfter2021GradeTableChange();
     }
@@ -1593,16 +1603,15 @@ const onAndAfter2021DisplayedFourthCompulsorySubjects = () =>{
 const saveValue = () =>{
     json = generateJson();
     localStorage.setItem("TKG",JSON.stringify(json));
-    console.log("saveValue");
+    log("saveValue");
 }
 
 const setValue = (json) =>{
-    console.log(json);
     for(let i=0;i<idList.length;i++){
         id=idList[i]
         document.getElementById(id).value=json[id]
     }
-    console.log("setValue");
+    log("setValue");
 }
 
 const generateJson = () =>{
@@ -1673,14 +1682,12 @@ const setValuesFromPdfObject = (textContent) => {
     theobject has str, transform[], etc...  
     */
     const objectArray = textContent.items
-    console.log(objectArray)
     let target = 0;
     obj={}
     for (let i=0;i<objectArray.length;i++){
         let baseObject = objectArray[i];
-        //console.log("object:"+baseObject.str+",x:"+baseObject.transform[4]+",y:"+baseObject.transform[5])
         if(baseObject.str==pdfIdList[target]){//スタートを探す
-            console.log("match:"+baseObject.str);
+            log("match:"+baseObject.str);
             const basePos = baseObject.transform.slice(4);
             let value = 0;
             for(let j = i+1;j<objectArray.length;j++){
@@ -1695,16 +1702,13 @@ const setValuesFromPdfObject = (textContent) => {
 
                 const posDiff = targetPos[0]-basePos[0];
                 if(Math.abs(basePos[1]-targetPos[1])<4){
-                    console.log(posDiff);
                     if(PDFWIDTHMAX>posDiff&&posDiff>PDFWIDTHMIN){
-                        console.log("value changed");
                         value = targetObject.str
                         break;
                     }
                 }
             }
             //keyとvalueがそろう。
-            console.log(pdfIdList[target]+":"+value)
             obj[idList[target]] = value;
             target++;
         }
@@ -1715,18 +1719,18 @@ const setValuesFromPdfObject = (textContent) => {
               
 document.getElementById("pdfInput").onchange = function(event) {
 
-    var file = event.target.files[0];
-    var fileReader = new FileReader();  
+    let file = event.target.files[0];
+    let fileReader = new FileReader();  
 
     fileReader.onload = function() {
 
-        var typedarray = new Uint8Array(this.result);
+        let typedarray = new Uint8Array(this.result);
 
         const loadingTask = pdfjsLib.getDocument(typedarray);
         loadingTask.promise.then(pdf => {
-            console.log("pdf loaded");
+            log("pdf loaded");
             pdf.getPage(1).then(page =>{
-                console.log("page loaded");
+                log("page loaded");
                 page.getTextContent().then(textContent =>{
                     setValuesFromPdfObject(textContent);
                 });
@@ -1751,13 +1755,11 @@ const DisplayTable = () =>{
     let tableElement = document.querySelector('table');
     // querySelector()指定されたセレクターまたはセレクターのグループに一致する
     // 文書内の最初の Elementを返す
-    console.log(tableElement)
     tableElement.className -= 'd-none';
     // // 全部消しているd-noneクラスを取ることでいろいろ表示させる
 
     // 年次選択のドロップダウンを削除↓↓
     let aboveTheTableElement = document.querySelector('#Above_the_table');
-    console.log(aboveTheTableElement)
     aboveTheTableElement.className += 'd-none';
     
 }
