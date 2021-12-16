@@ -3,9 +3,9 @@ td{
 }
 
 table {
-font-family: "MSゴシック" ;
-border-collapse: collapse;    
-border: solid 2px orange;/*表全体を線で囲う*/
+  font-family: "MSゴシック" ;
+  border-collapse: collapse;    
+  border: solid 2px orange;/*表全体を線で囲う*/
 }
 
 table th, table td {
@@ -14,159 +14,152 @@ table th, table td {
   /*破線 1px オレンジ*/
 }
 
-/* .subtotal_1 th:hover{
-background-color: #ffd9d2;
-}
-マウスオーバーされたものしか変化しない，
-同じclass全てを変化させる方法わからなかった，
-jsの方からコントロールする． */
-
 .subtotal_1, .subtotal_2, .Total_1, .subtotal_3, .subtotal_4, .Total_2, .all_total{
-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .always_subtotal_1{
-background-color: #ffd9d2;
+  background-color: #ffd9d2;
 }
 
 .always_subtotal_2{
-background-color: #c6f78e;
+  background-color: #c6f78e;
 }
 
 .always_total_1{
-background-color: #cbfff4;
+  background-color: #cbfff4;
 }
 
 .always_subtotal_3{
-background-color: #cad4f7;
+  background-color: #cad4f7;
 }
 
 .always_subtotal_4{
-background-color: #e6ccf5;
+  background-color: #e6ccf5;
 }
 
 .always_total_2{
-background-color: #faffaf;
+  background-color: #faffaf;
 }
 
 .always_alltotal{
-background-color: #ffea8a;
+  background-color: #ffea8a;
 }
 
 
 h1 {
 /* タイトルTLGのCSS */
-font-family: "MSゴシック" ;
-text-align: center;
-background: #ffd98a;
-padding: 2px 5px 2px 25px;
-font-size: 30px;
-color: #474747;
-border-radius: 100px 100px 10px 10px;
-color: #ffffff;
+  font-family: "MSゴシック" ;
+  text-align: center;
+  background: #ffd98a;
+  padding: 2px 5px 2px 25px;
+  font-size: 30px;
+  color: #474747;
+  border-radius: 100px 100px 10px 10px;
+  color: #ffffff;
 }
 
 .usage{
 /* 上の使い方説明のcss */
-text-align: center;
-margin: 10px 10px;
+  text-align: center;
+  margin: 10px 10px;
 }
 
 .txt{
 /* 入力してもらうinputのCSS */
-width: 50%;
-border-top: none;
-border-right: none;
-border-left: none;
-background-color:transparent
+  width: 50%;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  background-color:transparent
 /* ハイライトした時に入力欄の長方形が白く目立つので，背景を透明(transparent)に */
 }
 
 .category{
-font-size: 20px;
+  font-size: 20px;
 /* 共通教育，専門教育，とかのカテゴリー？のCSS */
-text-align: left;
-background-color: #ffd98a;
+  text-align: left;
+  background-color: #ffd98a;
 }
 
 .GoogleForm{
-text-align: center;
-margin-top: 100px;
-margin-bottom: 100px;
-background-color: rgb(255, 251, 218);
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  background-color: rgb(255, 251, 218);
 }
 
 input:invalid{
-border: solid 1px red;
+  border: solid 1px red;
 }
 
 .select-label{
-box-shadow:0 3px 5px rgba(0,0,0,.2);
-padding:12px;
-background:white;
-width:200px;
-display:inline-block;
-position:relative;
-margin-left:20px;
+  box-shadow:0 3px 5px rgba(0,0,0,.2);
+  padding:12px;
+  background:white;
+  width:200px;
+  display:inline-block;
+  position:relative;
+  margin-left:20px;
 }
 
 
 .select_condition{
-border:none;
-outline:none;
-display: inline-block;
--webkit-appearance:none;
-/* webkit系のモバイルブラウザを初期化 */
--moz-appearance:none;
-/* Firefox や Edge を初期化 */
-appearance:none;
-/* それぞれのOSのUIスタイルを解除 */
-cursor:pointer;
-border-radius:0;
-z-index:2;
-font-size:16px;
-color:#909090;
-width:200px;
-height: 20px;
-background:transparent;
+  border:none;
+  outline:none;
+  display: inline-block;
+  -webkit-appearance:none;
+  /* webkit系のモバイルブラウザを初期化 */
+  -moz-appearance:none;
+  /* Firefox や Edge を初期化 */
+  appearance:none;
+  /* それぞれのOSのUIスタイルを解除 */
+  cursor:pointer;
+  border-radius:0;
+  z-index:2;
+  font-size:16px;
+  color:#909090;
+  width:200px;
+  height: 20px;
+  background:transparent;
 }
 
 .select-label:after{
-content:"\25bc";
+  content:"\25bc";
 /* 下向きの三角形，Unicode番号U+25BC */
-font-size:16px;
-color:white;
-background:#ffd98a;
-width:42px;
-text-align:center;
-line-height:3.2em;
-top:0;
-right:0;
-bottom:0;
-position:absolute;
-pointer-events:none;
+  font-size:16px;
+  color:white;
+  background:#ffd98a;
+  width:42px;
+  text-align:center;
+  line-height:3.2em;
+  top:0;
+  right:0;
+  bottom:0;
+  position:absolute;
+  pointer-events:none;
 }
 
 
 .warning{
-color: red;
+  color: red;
 }
 
 .success{
-color:rgb(18, 209, 43)
+  color:rgb(18, 209, 43)
 }
 .ul-align-center{
-text-align: left;
-display: inline-block;
+  text-align: left;
+  display: inline-block;
 }
 
 li {
-text-align: left;
+  text-align: left;
 }
 
 .image-vw {
-width: 100%; 
-max-width: 700px;
+  width: 100%; 
+  max-width: 700px;
 }
 .SubjectClassificationImage {
   text-align: center;
@@ -174,18 +167,18 @@ max-width: 700px;
 }
 
 .req_lab {
-border: 2px solid orange;
-margin: 0 auto;
-width: 90%;
-max-width: 650px;
-display: none;
+  border: 2px solid orange;
+  margin: 0 auto;
+  width: 90%;
+  max-width: 650px;
+  display: none;
 }
 
 .check_lb {
-text-align: left;
-display: block;
-width: 90%;
-max-width: 550px;
+  text-align: left;
+  display: block;
+  width: 90%;
+  max-width: 550px;
 }
 
 .ol_portal_usage{
@@ -195,5 +188,15 @@ max-width: 550px;
 }
 
 .req_sub{
-display: none;
+  display: none;
 }
+
+.below_the_select{
+  opacity: 0;
+  transition: 2s;
+}
+
+/* .table_below_the_select{
+  display: "none";
+}  */
+/* bootstrapのd-noneで解決
