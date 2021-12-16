@@ -29,13 +29,6 @@
         </p>
     </div>
     <div id="Above_the_table">
-        <div>
-            <label class="select-label" style="text-align: left;">
-                <span>PDFファイルを選択</span>
-                <input type="file" onchange="onChangePdfInput()" accept=".pdf" id="pdfInput" class="select_condition" style="display: none;">
-            </label>
-        </div>
-        <br>
         <label class="select-label">
             <select id="select_admission_year" class="select_condition" onchange="ChangeBySelect(); DisplayTable();">
                 <option hidden>入学年度を選択</option>
@@ -47,7 +40,13 @@
         </label>
     </div>
     <div class="below_the_select" id="below_the_select">
-
+        <div>
+            <label class="select-label" style="text-align: left;">
+                <span>PDFファイルを選択</span>
+                <input type="file" onchange="onChangePdfInput()" accept=".pdf" id="pdfInput" class="select_condition" style="display: none;">
+            </label>
+        </div>
+        <br>
         <label class="select-label">
             <select id="select_grade" class="select_condition" onchange="ChangeBySelect();">
                 <option hidden>学年を選択</option>
