@@ -31,12 +31,12 @@
     <div id="Above_the_table">
         <div style="text-align: center;">
             <label class="select-label">
-                <select id="select_admission_year" class="select_condition" onchange="ChangeBySelect(); DisplayTable();">
+                <select id="select_admission_year" class="select_condition" onchange="ChangeBySelect(); DisplayTable(); saveValue()">
                     <option hidden>入学年度を選択</option>
-                    <option value="value0">2018</option>
-                    <option value="value1">2019</option>
-                    <option value="value0">2020</option>
-                    <option value="value1">2021</option>
+                    <option value="2018">2018</option>
+                    <option value="2019">2019</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
                 </select>
             </label>
         </div>

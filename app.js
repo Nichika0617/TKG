@@ -1602,17 +1602,30 @@ const setValue = (json) =>{
         id=idList[i]
         document.getElementById(id).value=json[id]
     }
+    const options = document.getElementById("select_admission_year").options;
+    options[json["admission_year"]].selected = true;//入学年度の復元
+    document.getElementById("select_admission_year").onchange();
     console.log("setValue");
 }
 
 const generateJson = () =>{
     obj={}
+    //入学年度の追加
+    const options = document.getElementById("select_admission_year").options;
+    console.log(options.length);
+    for(let i=0;i<options.length;i++){
+        console.log(options[i])
+        if(options[i].selected==true){
+            obj["admission_year"] = i;
+        }
+    }
+    //単位要素の追加
     for(let i=0;i<idList.length;i++){
         id=idList[i]
         value=document.getElementById(id).value
         obj[id] = value;
     }
-    return obj
+    return obj;
 }
 
 const TableChangeReqLab = () =>{
