@@ -29,40 +29,44 @@
         </p>
     </div>
     <div id="Above_the_table">
-        <label class="select-label">
-            <select id="select_admission_year" class="select_condition" onchange="ChangeBySelect(); DisplayTable();">
-                <option hidden>入学年度を選択</option>
-                <option value="value0">2018</option>
-                <option value="value1">2019</option>
-                <option value="value0">2020</option>
-                <option value="value1">2021</option>
-            </select>
-        </label>
+        <div style="text-align: center;">
+            <label class="select-label">
+                <select id="select_admission_year" class="select_condition" onchange="ChangeBySelect(); DisplayTable();">
+                    <option hidden>入学年度を選択</option>
+                    <option value="value0">2018</option>
+                    <option value="value1">2019</option>
+                    <option value="value0">2020</option>
+                    <option value="value1">2021</option>
+                </select>
+            </label>
+        </div>
     </div>
     <div class="below_the_select" id="below_the_select">
-        <div>
+        <div style="text-align: center;">
             <label class="select-label" style="text-align: left;">
                 <span>PDFファイルを選択</span>
                 <input type="file" onchange="onChangePdfInput()" accept=".pdf" id="pdfInput" class="select_condition" style="display: none;">
             </label>
         </div>
         <br>
-        <label class="select-label">
-            <select id="select_grade" class="select_condition" onchange="ChangeBySelect();">
-                <option hidden>学年を選択</option>
-                <option value="value0">１年</option>
-                <option value="value1">２年</option>
-                <option value="value0">３年</option>
-                <option value="value1">４年</option>
-            </select>
-        </label>
-        <label class="select-label">
-            <select id="select_term" class="select_condition" onchange="ChangeBySelect();">
-                <option hidden>学期を選択</option>
-                <option value="value0">前期</option>
-                <option value="value1">後期</option>
-            </select>
-        </label>
+        <div style="text-align: center;">
+            <label class="select-label">
+                <select id="select_grade" class="select_condition" onchange="ChangeBySelect();">
+                    <option hidden>学年を選択</option>
+                    <option value="value0">１年</option>
+                    <option value="value1">２年</option>
+                    <option value="value0">３年</option>
+                    <option value="value1">４年</option>
+                </select>
+            </label>
+            <label class="select-label">
+                <select id="select_term" class="select_condition" onchange="ChangeBySelect();">
+                    <option hidden>学期を選択</option>
+                    <option value="value0">前期</option>
+                    <option value="value1">後期</option>
+                </select>
+            </label>
+        </div>
         
         <br><br>
 
