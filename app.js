@@ -15,12 +15,41 @@ const pdfIdList = ["健康運動","人文","社会","総合","キャリア関係
                         
 const compulsoryIdList = ['first_year_Compulsory','first_year_2nd_Compulsory','second_year_Compulsory','second_year_2nd_Compulsory','third_year_Compulsory','third_year_2nd_Compulsory','fourth_year_Compulsory','fourth_year_2nd_Compulsory','y21_first_year_Compulsory','y21_first_year_2nd_Compulsory','y21_second_year_Compulsory','y21_second_year_2nd_Compulsory','y21_third_year_Compulsory','y21_third_year_2nd_Compulsory','y21_fourth_year_Compulsory','y21_fourth_year_2nd_Compulsory']
 
-//ロード時に実行
-window.onload = () =>{
-    setValue(JSON.parse(localStorage.getItem("TKG"))); // 値の復元
-    all_calc(); // 初期化，前回の入力が復元された場合はその計算結果を出力．
-}
-const DEBUG = false;//コンソール出力をするか否か
+const highLightObjects = //イベントリスナー追加対象のid,ハイライトの対象のクラス名,ハイライトクラス
+[
+    [
+        "high_light_subtotal1",
+        "subtotal1",
+        "subtotal1_bgcolor"
+    ],
+    [
+        "high_light_subtotal2",
+        "subtotal2",
+        "subtotal2_bgcolor"
+    ],
+    [
+        "high_light_subtotal3",
+        "subtotal3",
+        "subtotal3_bgcolor"
+    ],
+    [
+        "high_light_total1",
+        "total1",
+        "total1_bgcolor"
+    ],
+    [
+        "high_light_total2",
+        "total2",
+        "total2_bgcolor"
+    ],
+    [
+        "high_light_all_total",
+        "all_total",
+        "all_total_bgcolor"
+    ]
+]
+
+const DEBUG = true;//コンソール出力をするか否か
 
 const log = (log) => {
     if(DEBUG==true){
@@ -28,210 +57,37 @@ const log = (log) => {
     }
 }
 
+//ロード時に実行
+window.onload = () =>{
+    log("on load");
+    setValue(JSON.parse(localStorage.getItem("TKG"))); // 値の復元
+    all_calc(); // 初期化，前回の入力が復元された場合はその計算結果を出力．
+    addHithLightEventListeners(highLightObjects);
+}
+
+const addHithLightEventListeners = (obj) =>{
+    log("add high light enent listeners");
+    for(let i=0;i<obj.length;i++){
+        target = obj[i];
+        addHighLightEventListner(target[0],target[1],target[2]);
+    }
+}
+
 const addHighLightEventListner = (id,className,highLightColor) => {
+    log("add high light event listener"+": "+id+", "+className+", "+highLightColor);
     const targetElement = document.getElementById(id);
     const HightLightElements = document.getElementsByClassName(className);
     targetElement.addEventListener('mouseover', () => {
         for(let i=0;i<HightLightElements.length;i++){
-            HightLightElements[i].style.backgroundColor = highLightColor;
+            HightLightElements[i].classList.add(highLightColor);
         }
     },false);
     targetElement.addEventListener('mouseout',() => {
         for(let i=0;i<HightLightElements.length;i++){
-            HightLightElements[i].style.backgroundColor = '';
+            HightLightElements[i].classList.remove(highLightColor);
         }
     },false);
 };
-
-// ＿＿＿＿＿＿＿＿＿＿小計1のハイライト↓↓
-document.addEventListener('DOMContentLoaded', function() {
-    // DOMContentLoaded = HTMLが読み込まれた時，functionを実行
-    let subtotal_1 = document.getElementsByClassName("subtotal_1");
-
-    //マウスポインターが乗ったタイミングで背景色を変更
-    subtotal_1[5].addEventListener('mouseover', function() {
-        // 5個目(一番最後)が，小計1の欄
-        let subtotal1_count = 0;
-        while(subtotal1_count < subtotal_1.length){
-            subtotal_1[subtotal1_count].style.backgroundColor = '#ffd9d2';
-            subtotal1_count++;
-        }
-    }, false);
-    // getElementsByClassNameで同じクラス名のタグの配列を取り，その配列の中身ひとつひとつにbackgroundの処理を行なっていくという方法で，全部塗る
-    
-    // マウスポインターが外れたタイミングで背景色を戻す
-    subtotal_1[5].addEventListener('mouseout', function() {
-        let subtotal1_count = 0;
-        while(subtotal1_count < subtotal_1.length){
-            subtotal_1[subtotal1_count].style.backgroundColor = '';
-            subtotal1_count++;
-        }
-    }, false);
-},false);
-
-
-// ＿＿＿＿＿＿＿＿＿＿小計2のハイライト↓↓
-
-document.addEventListener('DOMContentLoaded', function() {
-    // DOMContentLoaded = HTMLが読み込まれた時，functionを実行
-    let subtotal_2 = document.getElementsByClassName("subtotal_2");
-    
-    //マウスポインターが乗ったタイミングで背景色を変更
-    subtotal_2[6].addEventListener('mouseover', function() {
-        // 6個目(一番最後)が，小計2の欄
-        let subtotal2_count = 0;
-        while(subtotal2_count < subtotal_2.length){
-            subtotal_2[subtotal2_count].style.backgroundColor = '#c6f78e';
-            subtotal2_count++;
-        }
-    }, false)
-    // getElementsByClassNameで同じクラス名のタグの配列を取り，その配列の中身ひとつひとつにbackgroundの処理を行なっていくという方法で，全部塗る
-    
-    // マウスポインターが外れたタイミングで背景色を戻す
-    subtotal_2[6].addEventListener('mouseout', function() {
-        let subtotal2_count = 0;
-        while(subtotal2_count < subtotal_2.length){
-            subtotal_2[subtotal2_count].style.backgroundColor = '';
-            subtotal2_count++;
-        }
-    }, false)
-},false)
-
-// ＿＿＿＿＿＿＿＿＿＿共通計のハイライト↓↓
-
-document.addEventListener('DOMContentLoaded', function() {
-    // DOMContentLoaded = HTMLが読み込まれた時，functionを実行
-    let Total_1 = document.getElementsByClassName("Total_1");
-
-    //マウスポインターが乗ったタイミングで背景色を変更
-    Total_1[14].addEventListener('mouseover', function() {
-        // 14個目(一番最後)が，共通計の欄
-        let Total_1_count = 0;
-        while(Total_1_count < Total_1.length){
-            Total_1[Total_1_count].style.backgroundColor = '#cbfff4';
-            Total_1_count++;
-        }
-    }, false)
-    // getElementsByClassNameで同じクラス名のタグの配列を取り，その配列の中身ひとつひとつにbackgroundの処理を行なっていくという方法で，全部塗る
-    
-    // マウスポインターが外れたタイミングで背景色を戻す
-    Total_1[14].addEventListener('mouseout', function() {
-        let Total_1_count = 0;
-        while(Total_1_count < Total_1.length){
-            Total_1[Total_1_count].style.backgroundColor = '';
-            Total_1_count++;
-        }
-    }, false)
-},false)
-
-// ＿＿＿＿＿＿＿＿＿＿数情計のハイライト↓↓
-
-document.addEventListener('DOMContentLoaded', function() {
-    // DOMContentLoaded = HTMLが読み込まれた時，functionを実行
-    let subtotal_3 = document.getElementsByClassName("subtotal_3");
-    
-    //マウスポインターが乗ったタイミングで背景色を変更
-    subtotal_3[3].addEventListener('mouseover', function() {
-        // 3個目(一番最後)が，数情計の欄
-        let subtotal3_count = 0;
-        while(subtotal3_count < subtotal_3.length){
-            subtotal_3[subtotal3_count].style.backgroundColor = '#cad4f7';
-            subtotal3_count++;
-        }
-    }, false)
-    // getElementsByClassNameで同じクラス名のタグの配列を取り，その配列の中身ひとつひとつにbackgroundの処理を行なっていくという方法で，全部塗る
-    
-    // マウスポインターが外れたタイミングで背景色を戻す
-    subtotal_3[3].addEventListener('mouseout', function() {
-        let subtotal3_count = 0;
-        while(subtotal3_count < subtotal_3.length){
-            subtotal_3[subtotal3_count].style.backgroundColor = '';
-            subtotal3_count++;
-        }
-    }, false)
-},false)
-
-// ＿＿＿＿＿＿＿＿＿＿数情等計のハイライト↓↓
-
-document.addEventListener('DOMContentLoaded', function() {
-    // DOMContentLoaded = HTMLが読み込まれた時，functionを実行
-    let subtotal_4 = document.getElementsByClassName("subtotal_4");
-
-    //マウスポインターが乗ったタイミングで背景色を変更
-    subtotal_4[7].addEventListener('mouseover', function() {
-        // 7個目(一番最後)が，数情等計の欄
-        let subtotal4_count = 0;
-        while(subtotal4_count < subtotal_4.length){
-            subtotal_4[subtotal4_count].style.backgroundColor = '#e6ccf5';
-            subtotal4_count++;
-        }
-    }, false)
-    // getElementsByClassNameで同じクラス名のタグの配列を取り，その配列の中身ひとつひとつにbackgroundの処理を行なっていくという方法で，全部塗る
-    
-    // マウスポインターが外れたタイミングで背景色を戻す
-    subtotal_4[7].addEventListener('mouseout', function() {
-        let subtotal4_count = 0;
-        while(subtotal4_count < subtotal_4.length){
-            subtotal_4[subtotal4_count].style.backgroundColor = '';
-            subtotal4_count++;
-        }
-    }, false)
-},false)
-
-
-// ＿＿＿＿＿＿＿＿＿＿専門計のハイライト↓↓
-
-document.addEventListener('DOMContentLoaded', function() {
-    // DOMContentLoaded = HTMLが読み込まれた時，functionを実行
-    let Total_2 = document.getElementsByClassName("Total_2");
-
-    //マウスポインターが乗ったタイミングで背景色を変更
-    Total_2[12].addEventListener('mouseover', function() {
-        // 12個目(一番最後)が，専門計の欄
-        let Total_2_count = 0;
-        while(Total_2_count < Total_2.length){
-            Total_2[Total_2_count].style.backgroundColor = '#faffaf';
-            Total_2_count++;
-        }
-    }, false)
-    // getElementsByClassNameで同じクラス名のタグの配列を取り，その配列の中身ひとつひとつにbackgroundの処理を行なっていくという方法で，全部塗る
-    
-    // マウスポインターが外れたタイミングで背景色を戻す
-    Total_2[12].addEventListener('mouseout', function() {
-        let Total_2_count = 0;
-        while(Total_2_count < Total_2.length){
-            Total_2[Total_2_count].style.backgroundColor = '';
-            Total_2_count++;
-        }
-    }, false)
-},false)
-
-// ＿＿＿＿＿＿＿＿＿＿最後の合計のハイライト↓↓
-
-document.addEventListener('DOMContentLoaded', function() {
-    // DOMContentLoaded = HTMLが読み込まれた時，functionを実行
-    let all_total = document.getElementsByClassName("all_total");
-
-    //マウスポインターが乗ったタイミングで背景色を変更
-    all_total[3].addEventListener('mouseover', function() {
-        // 3個目(一番最後)が，合計の欄
-        let all_total_count = 0;
-        while(all_total_count < all_total.length){
-            all_total[all_total_count].style.backgroundColor = '#ffea8a';
-            all_total_count++;
-        }
-    }, false)
-    // getElementsByClassNameで同じクラス名のタグの配列を取り，その配列の中身ひとつひとつにbackgroundの処理を行なっていくという方法で，全部塗る
-    
-    // マウスポインターが外れたタイミングで背景色を戻す
-    all_total[3].addEventListener('mouseout', function() {
-        let all_total_count = 0;
-        while(all_total_count < all_total.length){
-            all_total[all_total_count].style.backgroundColor = '';
-            all_total_count++;
-        }
-    }, false)
-},false)
 
 function convertNum(n){
     n = n || '0';//NaNを0にする。

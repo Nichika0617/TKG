@@ -9,43 +9,42 @@ table {
 }
 
 table th, table td {
-  border: dashed 1px orange;/**/
+  border: dashed 1px orange;
   text-align: center;
   /*破線 1px オレンジ*/
 }
 
-.subtotal_1, .subtotal_2, .Total_1, .subtotal_3, .subtotal_4, .Total_2, .all_total{
-  transition: 0.5s;
-}
-
-.always_subtotal_1{
+.subtotal1_bgcolor{
   background-color: #ffd9d2;
 }
 
-.always_subtotal_2{
+.subtotal2_bgcolor{
   background-color: #c6f78e;
 }
 
-.always_total_1{
-  background-color: #cbfff4;
-}
-
-.always_subtotal_3{
+.subtotal3_bgcolor{
   background-color: #cad4f7;
 }
 
-.always_subtotal_4{
+.subtotal4_bgcoclor{
   background-color: #e6ccf5;
 }
 
-.always_total_2{
+.total1_bgcolor{
+  background-color: #cbfff4;
+}
+
+.total2_bgcolor{
   background-color: #faffaf;
 }
 
-.always_alltotal{
+.all_total_bgcolor{
   background-color: #ffea8a;
 }
 
+.subtotal1, .subtotal2, .subtotal3, .subtotal4, .total1, .total2, .all_total{
+  transition: 0.5s;
+}
 
 h1 {
 /* タイトルTLGのCSS */
