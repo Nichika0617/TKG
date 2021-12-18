@@ -73,7 +73,7 @@ const addHithLightEventListeners = (obj) =>{
     }
 }
 
-const addHighLightEventListner = (id,className,highLightColor) => {
+const addHighLightEventListner = (id,className,highLightColor) => {//イベントリスナー追加対象のid,ハイライトの対象のクラス名,ハイライトクラス
     log("add high light event listener"+": "+id+", "+className+", "+highLightColor);
     const targetElement = document.getElementById(id);
     const HightLightElements = document.getElementsByClassName(className);
@@ -462,13 +462,12 @@ const total2_calc = () => {
 }
 
 
-const next_input = (id) => {
+const nextInput = (id) => {
     // エンターキーで次のテキストボックスへ飛ばす処理
     if( window.event.keyCode == 13 ){        // 13は0x0d(CRキー)
         // window.alert('エンター押された')
         document.getElementById(id).focus();
     }
-    
 }
 
 // 研究室配属条件を満たしているかを示すメッセージ部分＿＿＿＿＿＿＿＿＿＿
