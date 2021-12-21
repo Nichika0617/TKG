@@ -5,13 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" content="SameSite=None;">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    
-    <link rel="stylesheet" href="style.css">
-    
+    <link href="style.css" rel="stylesheet" >
     <title>TKG</title>
 </head>
 <body>
-
     <h1>TKG 〜TANNI KEISAN GAIDO〜</h1>
     <div class="usage">
         <h3>〜使い方〜</h3>
@@ -68,10 +65,10 @@
             </label>
         </div>
         
-        <br><br>
+        <br>
 
 <!--____________________________________________________________-->
-        <table align="center" border="1" class="mb-5 table_below_the_select d-none"　id="table_below_the_select">
+        <table align="center" border="1" class="credits_table mb-5 table_below_the_select d-none" id="table_below_the_select">
             <tr>
                 <th> </th>
                 <th>必須単位</th>
@@ -80,17 +77,17 @@
             </tr>
 <!--____________________________________________________________-->
             <tr>
-                <th class="category">■共通教育</th>
+                <td class="category">■共通教育</td>
                 <td></td>
                 <td></td>
                 <td></td>
             </tr>
 <!--____________________________________________________________-->
-            <tr class="Total_1">
-                <th>健康運動</th>
+            <tr class="total1">
+                <td>健康運動</td>
                 <td>2</td>
                 <td>
-                    <input id="health" class="txt" type="number" step="2" onKeyDown="next_input('jinbun');" min='0' oninput="all_calc(); ChangeBySelect();">
+                    <input id="health" class="txt" type="number" step="2" onKeyDown="nextInput('jinbun');" min='0' oninput="all_calc(); ChangeBySelect();">
                 </td>
                 <td id="result_health">
                     <!-- 計算結果をjsから書き込む． -->
@@ -98,498 +95,496 @@
             </tr>
 <!--____________________________________________________________-->
             <tr>
-                <th>　
+                <td>　
                     <!-- 1行開けるための空欄 -->
-                </th>
+                </td>
                 <td></td>
                 <td></td>
                 <td></td>
             </tr>
 <!--____________________________________________________________-->
-            <tr class="subtotal_1 subtotal_2 Total_1">
-                <th>人文</th>
-                    <td>2</td>
-                    <td>
-                        <input id="jinbun" type="number" class="txt" step="2" onKeyDown="next_input('syakai');" min='0' oninput="all_calc(); ChangeBySelect();">
-                    </td>
-                    <td id="result_jinbun"></td>
-                </tr>
+            <tr class="subtotal1 subtotal2 total1">
+                <td>人文</td>
+                <td>2</td>
+                <td>
+                    <input id="jinbun" type="number" class="txt" step="2" onKeyDown="nextInput('syakai');" min='0' oninput="all_calc(); ChangeBySelect();">
+                </td>
+                <td id="result_jinbun"></td>
+            </tr>
 <!--____________________________________________________________-->
-                <tr class="subtotal_1 subtotal_2 Total_1">
-                    <th>社会</th>
-                    <td>2</td>
-                    <td>
-                        <input id="syakai" class="txt" type="number" step="2" onKeyDown="next_input('sougou');" min='0' oninput="all_calc(); ChangeBySelect();">
-                    </td>
-                    <td id="result_syakai"></td>
-                </tr>
+            <tr class="subtotal1 subtotal2 total1">
+                <td>社会</td>
+                <td>2</td>
+                <td>
+                    <input id="syakai" class="txt" type="number" step="2" onKeyDown="nextInput('sougou');" min='0' oninput="all_calc(); ChangeBySelect();">
+                </td>
+                <td id="result_syakai"></td>
+            </tr>
 <!--____________________________________________________________-->
-                <tr class="subtotal_1 subtotal_2 Total_1">
-                    <th>総合</th>
-                    <td></td>
-                    <td>
-                        <input id="sougou" class="txt" type="number" step="2" onKeyDown="next_input('career');" min='0' oninput="all_calc(); ChangeBySelect();">
-                    </td>
-                    <td></td>
-                </tr>
+            <tr class="subtotal1 subtotal2 total1">
+                <td>総合</td>
+                <td></td>
+                <td>
+                    <input id="sougou" class="txt" type="number" step="2" onKeyDown="nextInput('career');" min='0' oninput="all_calc(); ChangeBySelect();">
+                </td>
+                <td></td>
+            </tr>
 <!--____________________________________________________________-->
-                <tr class="subtotal_1 subtotal_2 Total_1">
-                    <th>キャリア関係</th>
-                    <td></td>
-                    <td>
-                        <input id="career" class="txt" type="number" step="2" onKeyDown="next_input('ryudai');" min='0' oninput="all_calc(); ChangeBySelect();">
-                    </td>
-                    <td></td>
-                </tr>
+            <tr class="subtotal1 subtotal2 total1">
+                <td>キャリア関係</td>
+                <td></td>
+                <td>
+                    <input id="career" class="txt" type="number" step="2" onKeyDown="nextInput('ryudai');" min='0' oninput="all_calc(); ChangeBySelect();">
+                </td>
+                <td></td>
+            </tr>
 <!--____________________________________________________________-->
-                <tr class="subtotal_1 subtotal_2 Total_1">
-                    <th class="hover_subtotal1">琉大特色・地域創生</th>
-                    <td></td>
-                    <td>
-                        <input id="ryudai" class="txt" type="number" step="2" onKeyDown="next_input('Japanese');" min='0' oninput="all_calc(); ChangeBySelect();">
-                    </td>
-                    <td></td>
-                </tr>
+            <tr class="subtotal1 subtotal2 total1">
+                <td class="hover_subtotal1">琉大特色・地域創生</td>
+                <td></td>
+                <td>
+                    <input id="ryudai" class="txt" type="number" step="2" onKeyDown="nextInput('Japanese');" min='0' oninput="all_calc(); ChangeBySelect();">
+                </td>
+                <td></td>
+            </tr>
 <!--____________________________________________________________-->
-                <tr>
-                    <th>(総合領域計)
-                        <br>
-                          総合 キャリア関係 琉大特色・地域創生
-                    </th>
-                    <td>2</td>
-                    <td id="sougouryouiki"></td> 
-                    
-                    <td id="result_sougouryouiki"></td>
-                    
-                </tr>
+            <tr>
+                <td>(総合領域計)
+                    <br>
+                        総合 キャリア関係 琉大特色・地域創生
+                </td>
+                <td>2</td>
+                <td id="sougouryouiki"></td> 
+                <td id="result_sougouryouiki"></td>
+            </tr>
 <!--____________________________________________________________-->
-                <tr>
-                    <th>日本語・日本語事情</th>
-                    <td></td>
-                    <td>
-                        <input id="Japanese" class="txt" type="number" step="2" onKeyDown="next_input('sizen');" min='0' oninput="all_calc(); ChangeBySelect();">
-                    </td>
-                    <td></td>
-                </tr>
+            <tr>
+                <td>日本語・日本語事情</td>
+                <td></td>
+                <td>
+                    <input id="Japanese" class="txt" type="number" step="2" onKeyDown="nextInput('sizen');" min='0' oninput="all_calc(); ChangeBySelect();">
+                </td>
+                <td></td>
+            </tr>
 
-                <tr class="subtotal_1 always_subtotal_1">
-                    <th>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lightbulb" viewBox="0 0 16 16">
+            <tr id="high_light_subtotal1" class="subtotal1_bgcolor">
+                <td>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lightbulb" viewBox="0 0 16 16">
+                    <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z"/>
+                    </svg>
+                    小計1
+                </td>
+                <td>12</td>
+                <td id="subtotal1"></td>
+                <td id ="result_subtotal1"></td>
+            </tr>
+<!--____________________________________________________________-->
+            <tr  class="subtotal2 total1">
+                <td>自然</td>
+                <td></td>
+                <td>
+                    <input id="sizen" class="txt" type="number" step="2" onKeyDown="nextInput('info');" min='0' oninput="all_calc(); ChangeBySelect();">
+                </td>
+                <td></td>
+            </tr>
+<!--____________________________________________________________-->
+            <tr id="high_light_subtotal2" class="subtotal2_bgcolor">
+                <td>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lightbulb" viewBox="0 0 16 16">
                         <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z"/>
-                      </svg>
-                      小計1
-                    </th>
-                    <td>12</td>
-                    <td id="subtotal1"></td>
-                    <td id ="result_subtotal1"></td>
-                </tr>
-<!--____________________________________________________________-->
-                <tr  class="subtotal_2 Total_1">
-                    <th>自然</th>
-                    <td></td>
-                    <td>
-                        <input id="sizen" class="txt" type="number" step="2" onKeyDown="next_input('info');" min='0' oninput="all_calc(); ChangeBySelect();">
-                    </td>
-                    <td></td>
-                </tr>
-<!--____________________________________________________________-->
-                <tr class="subtotal_2 always_subtotal_2">
-                    <th>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lightbulb" viewBox="0 0 16 16">
-                            <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z"/>
-                        </svg>
-                    小計2
-                    </th>
-                    <td>14</td>
-                    <td id="subtotal2"></td>
-                    <td id="result_subtotal2"></td>
-                </tr>
+                    </svg>
+                小計2
+                </td>
+                <td>14</td>
+                <td id="subtotal2"></td>
+                <td id="result_subtotal2"></td>
+            </tr>
 
-                <tr>
-                    <th>　
-                        <!-- 1行開けるための空欄 -->
-                    </th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+            <tr>
+                <td>　
+                    <!-- 1行開けるための空欄 -->
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
 <!--____________________________________________________________-->
-                <tr class="Total_1">
-                    <th>情報関係</th>
-                    <td>2</td>
-                    <td>
-                        <input id="info" class="txt" type="number" step="2" onKeyDown="next_input('English');" min='0' oninput="all_calc(); ChangeBySelect();">
-                    </td>
-                    <td id="result_info"></td>
-                </tr>
+            <tr class="total1">
+                <td>情報関係</td>
+                <td>2</td>
+                <td>
+                    <input id="info" class="txt" type="number" step="2" onKeyDown="nextInput('English');" min='0' oninput="all_calc(); ChangeBySelect();">
+                </td>
+                <td id="result_info"></td>
+            </tr>
 
-                <tr>
-                    <th>　
-                        <!-- 1行開けるための空欄 -->
-                    </th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+            <tr>
+                <td>　
+                    <!-- 1行開けるための空欄 -->
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
 <!--____________________________________________________________-->
-                <tr class="Total_1">
-                    <th>英語</th>
-                    <td>8</td>
-                    <td>
-                        <input id="English" class="txt" type="number" step="2" onKeyDown="next_input('German');" min='0' oninput="all_calc(); ChangeBySelect();">
-                    </td>
-                    <td id="result_eng"></td>
-                </tr>
+            <tr class="total1">
+                <td>英語</td>
+                <td>8</td>
+                <td>
+                    <input id="English" class="txt" type="number" step="2" onKeyDown="nextInput('German');" min='0' oninput="all_calc(); ChangeBySelect();">
+                </td>
+                <td id="result_eng"></td>
+            </tr>
 <!--____________________________________________________________-->
-                <tr class="Total_1">
-                    <th>ドイツ語</th>
-                    <td>(4)</td>
-                    <td>
-                        <input id="German" class="txt" type="number" step="2" onKeyDown="next_input('French');" min='0' oninput="all_calc(); ChangeBySelect();">
-                    </td>
-                    <td id="result_german"></td>
-                </tr>
+            <tr class="total1">
+                <td>ドイツ語</td>
+                <td>(4)</td>
+                <td>
+                    <input id="German" class="txt" type="number" step="2" onKeyDown="nextInput('French');" min='0' oninput="all_calc(); ChangeBySelect();">
+                </td>
+                <td id="result_german"></td>
+            </tr>
 <!--____________________________________________________________-->
-                <tr class="Total_1">
-                    <th>フランス語</th>
-                    <td>(4)</td>
-                    <td>
-                        <input id="French" class="txt" type="number" step="2" onKeyDown="next_input('Spanish');" min='0' oninput="all_calc(); ChangeBySelect();">
-                    </td>
-                    <td id="result_french"></td>
-                </tr>
+            <tr class="total1">
+                <td>フランス語</td>
+                <td>(4)</td>
+                <td>
+                    <input id="French" class="txt" type="number" step="2" onKeyDown="nextInput('Spanish');" min='0' oninput="all_calc(); ChangeBySelect();">
+                </td>
+                <td id="result_french"></td>
+            </tr>
 <!--____________________________________________________________-->
-                <tr class="Total_1">
-                    <th>スペイン語</th>
-                    <td>(4)</td>
-                    <td>
-                        <input id="Spanish" class="txt" type="number" step="2" onKeyDown="next_input('Chinese');" min='0' oninput="all_calc(); ChangeBySelect();">
-                    </td>
-                    <td id="result_spanish"></td>
-                </tr>
+            <tr class="total1">
+                <td>スペイン語</td>
+                <td>(4)</td>
+                <td>
+                    <input id="Spanish" class="txt" type="number" step="2" onKeyDown="nextInput('Chinese');" min='0' oninput="all_calc(); ChangeBySelect();">
+                </td>
+                <td id="result_spanish"></td>
+            </tr>
 <!--____________________________________________________________-->
-                <tr class="Total_1">
-                    <th>中国語</th>
-                    <td>(4)</td>
-                    <td>
-                        <input id="Chinese" class="txt" type="number" step="2" onKeyDown="next_input('etc');" min='0' oninput="all_calc(); ChangeBySelect();">
-                    </td>
-                    <td id="result_chinese"></td>
-                </tr>
+            <tr class="total1">
+                <td>中国語</td>
+                <td>(4)</td>
+                <td>
+                    <input id="Chinese" class="txt" type="number" step="2" onKeyDown="nextInput('etc');" min='0' oninput="all_calc(); ChangeBySelect();">
+                </td>
+                <td id="result_chinese"></td>
+            </tr>
 <!--____________________________________________________________-->
-                <tr class="Total_1">
-                    <th>その他</th>
-                    <td>(4)</td>
-                    <td>
-                        <input id="etc" class="txt" type="number" step="2" onKeyDown="next_input('major_base');" min='0' oninput="all_calc(); ChangeBySelect();">
-                    </td>
-                    <td id="result_etc"></td>
-                </tr>
+            <tr class="total1">
+                <td>その他</td>
+                <td>(4)</td>
+                <td>
+                    <input id="etc" class="txt" type="number" step="2" onKeyDown="nextInput('major_base');" min='0' oninput="all_calc(); ChangeBySelect();">
+                </td>
+                <td id="result_etc"></td>
+            </tr>
 <!--____________________________________________________________-->
+            
+            <tr>
+                <td>(第二言語計)
+                    <br>英語以外の1外国語を4単位
+                </td>
+                <td>4</td>
+                <td id="sum_second"></td> 
                 
-                <tr>
-                    <th>(第二言語計)
-                        <br>英語以外の1外国語を4単位
-                    </th>
-                    <td>4</td>
-                    <td id="sum_second"></td> 
-                    
-                    <td id="result_second"></td>
-                </tr>
+                <td id="result_second"></td>
+            </tr>
 <!--____________________________________________________________-->
-                <tr>
-                    <th>(外国語計)
-                        <br>英語12または英語8と1つの外国語4
-                    </th>
-                    <td>12</td>
-                    <td id="foreignTotal"></td>
-                    <td id="result_foreignTotal"></td>
-                </tr>
+            <tr>
+                <td>(外国語計)
+                    <br>英語12または英語8と1つの外国語4
+                </td>
+                <td>12</td>
+                <td id="foreignTotal"></td>
+                <td id="result_foreignTotal"></td>
+            </tr>
 
-                <tr>
-                    <th>　</th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+            <tr>
+                <td>　</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
 <!--____________________________________________________________-->
-                <tr>
-                    <th>　
-                        <!-- 1行開けるための空欄 -->
-                    </th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+            <tr>
+                <td>　
+                    <!-- 1行開けるための空欄 -->
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
 <!--____________________________________________________________-->
-                <tr class="Total_1 all_total always_total_1">
-                    <th>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lightbulb" viewBox="0 0 16 16">
-                            <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z"/>
-                        </svg>
-                    【共通計】
-                    </th>
-                    <td>30</td>
-                    <td id="total1"></td>
-                    <td id="result_total1"></td>
-                </tr>
+            <tr id="high_light_total1" class="total1_bgcolor all_total">
+                <td>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lightbulb" viewBox="0 0 16 16">
+                        <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z"/>
+                    </svg>
+                【共通計】
+                </td>
+                <td>30</td>
+                <td id="total1"></td>
+                <td id="result_total1"></td>
+            </tr>
 <!--____________________________________________________________-->
-                <tr>
-                    <th>　
-                        <!-- 1行開けるための空欄 -->
-                    </th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+            <tr>
+                <td>　
+                    <!-- 1行開けるための空欄 -->
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
 <!--____________________________________________________________-->
-                <tr>
-                    <th>　
-                        <!-- 1行開けるための空欄 -->
-                    </th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+            <tr>
+                <td>　
+                    <!-- 1行開けるための空欄 -->
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
 <!--____________________________________________________________-->
-                <tr>
-                    <th>■専門基礎教育</th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+            <tr>
+                <td>■専門基礎教育</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
 <!--____________________________________________________________-->
-                <tr class="all_total">
-                    <th>専門基礎</th>
-                    <td id="req_major_base">8</td>
-                    <td>
-                        <input id="major_base" class="txt" type="number" step="2" onKeyDown="next_input('out_major_base');" min='0' oninput="all_calc(); ChangeBySelect();">
-                    </td>
-                    <td id="result_major_base"></td>
-                </tr>
+            <tr class="all_total">
+                <td>専門基礎</td>
+                <td id="req_major_base">8</td>
+                <td>
+                    <input id="major_base" class="txt" type="number" step="2" onKeyDown="nextInput('out_major_base');" min='0' oninput="all_calc(); ChangeBySelect();">
+                </td>
+                <td id="result_major_base"></td>
+            </tr>
 <!--____________________________________________________________-->
-                <tr>
-                    <th>専門基礎指定外</th>
-                    <td></td>
-                    <td>
-                        <input id="out_major_base" class="txt" type="number" step="2" onKeyDown="next_input('info_tec');" min='0' oninput="all_calc(); ChangeBySelect();">
-                    </td>
-                    <td></td>
-                </tr>
+            <tr>
+                <td>専門基礎指定外</td>
+                <td></td>
+                <td>
+                    <input id="out_major_base" class="txt" type="number" step="2" onKeyDown="nextInput('info_tec');" min='0' oninput="all_calc(); ChangeBySelect();">
+                </td>
+                <td></td>
+            </tr>
 <!--____________________________________________________________-->
-                <tr>
-                    <th>　
-                        <!-- 1行開けるための空欄 -->
-                    </th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+            <tr>
+                <td>　
+                    <!-- 1行開けるための空欄 -->
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
 <!--____________________________________________________________-->
-                <tr>
-                    <th class="category">■専門教育</th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+            <tr>
+                <td class="category">■専門教育</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
 <!--____________________________________________________________-->
-                <tr class="Total_2">
-                    <th>情報技術</th>
-                    <td>2</td>
-                    <td>
-                        <input id="info_tec" class="txt" type="number" step="2" onKeyDown="next_input('ex');" min='0' oninput="all_calc(); ChangeBySelect();">
-                    </td>
-                    <td id="result_info_tec"></td>
-                </tr>
+            <tr class="total2">
+                <td>情報技術</td>
+                <td>2</td>
+                <td>
+                    <input id="info_tec" class="txt" type="number" step="2" onKeyDown="nextInput('ex');" min='0' oninput="all_calc(); ChangeBySelect();">
+                </td>
+                <td id="result_info_tec"></td>
+            </tr>
 <!--____________________________________________________________-->
-                <tr class="Total_2">
-                    <th>総合力演習</th>
-                    <td>7</td>
-                    <td>
-                        <input id="ex" class="txt" type="number" onKeyDown="next_input('experiment');" min='0' oninput="all_calc(); ChangeBySelect();">
-                        <!-- プログラミング演習1単位のため，1単位 -->
-                    </td>
-                    <td id="result_ex"></td>
-                </tr>
+            <tr class="total2">
+                <td>総合力演習</td>
+                <td>7</td>
+                <td>
+                    <input id="ex" class="txt" type="number" onKeyDown="nextInput('experiment');" min='0' oninput="all_calc(); ChangeBySelect();">
+                    <!-- プログラミング演習1単位のため，1単位 -->
+                </td>
+                <td id="result_ex"></td>
+            </tr>
 <!--____________________________________________________________-->
-                <tr class="Total_2">
-                    <th>研究実験</th>
-                    <td id="req_experiment">15</td>
-                    <td>
-                        <input id="experiment" class="txt" type="number" step="0.5" onKeyDown="next_input('math_base');" min='0' oninput="all_calc(); ChangeBySelect();">
-                        <!-- 実験だけstep="0.5" -->
-                    </td>
-                    <td id="result_exp"></td>
-                </tr>
+            <tr class="total2">
+                <td>研究実験</td>
+                <td id="req_experiment">15</td>
+                <td>
+                    <input id="experiment" class="txt" type="number" step="0.5" onKeyDown="nextInput('math_base');" min='0' oninput="all_calc(); ChangeBySelect();">
+                    <!-- 実験だけstep="0.5" -->
+                </td>
+                <td id="result_exp"></td>
+            </tr>
 <!--____________________________________________________________-->
-                <tr class="Total_2">
-                    <th>数学基礎</th>
-                    <td>6</td>
-                    <td>
-                        <input id="math_base" class="txt" type="number" step="2" onKeyDown="next_input('core');" min='0' oninput="all_calc(); ChangeBySelect();">
-                    </td>
-                    <td id="result_math_base"></td>
-                </tr>
+            <tr class="total2">
+                <td>数学基礎</td>
+                <td>6</td>
+                <td>
+                    <input id="math_base" class="txt" type="number" step="2" onKeyDown="nextInput('core');" min='0' oninput="all_calc(); ChangeBySelect();">
+                </td>
+                <td id="result_math_base"></td>
+            </tr>
 <!--____________________________________________________________-->
-                <tr class="Total_2">
-                    <th>知能情報コア</th>
-                    <td>26</td>
-                    <td>
-                        <input id="core" class="txt" type="number" step="2" onKeyDown="next_input('fusion');" min='0' oninput="all_calc(); ChangeBySelect();">
-                    </td>
-                    <td id="result_core"></td>
-                </tr>
+            <tr class="total2">
+                <td>知能情報コア</td>
+                <td>26</td>
+                <td>
+                    <input id="core" class="txt" type="number" step="2" onKeyDown="nextInput('fusion');" min='0' oninput="all_calc(); ChangeBySelect();">
+                </td>
+                <td id="result_core"></td>
+            </tr>
 <!--____________________________________________________________-->
-                <tr>
-                    <th>　
-                        <!-- 1行開けるための空欄 -->
-                    </th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+            <tr>
+                <td>　
+                    <!-- 1行開けるための空欄 -->
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
 <!--____________________________________________________________-->
-                <tr  class="subtotal_4 Total_2">
-                    <th>工学融合(選択)</th>
-                    <td>4</td>
-                    <td>
-                        <input id="fusion" class="txt" type="number" step="2" onKeyDown="next_input('math_base_select');" min='0' oninput="all_calc(); ChangeBySelect();">
-                    </td>
-                    <td id="result_fusion"></td>
-                </tr>
+            <tr  class="subtotal4 total2">
+                <td>工学融合(選択)</td>
+                <td>4</td>
+                <td>
+                    <input id="fusion" class="txt" type="number" step="2" onKeyDown="nextInput('math_base_select');" min='0' oninput="all_calc(); ChangeBySelect();">
+                </td>
+                <td id="result_fusion"></td>
+            </tr>
 <!--____________________________________________________________-->
-                <tr class="subtotal_3 subtotal_4 Total_2">
-                    <th>数学基礎(選択)</th>
-                    <td></td>
-                    <td>
-                        <input id="math_base_select" class="txt" type="number" step="2" onKeyDown="next_input('adv');" min='0' oninput="all_calc(); ChangeBySelect();">
-                    </td>
-                    <td></td>
-                </tr>
+            <tr class="subtotal3 subtotal4 total2">
+                <td>数学基礎(選択)</td>
+                <td></td>
+                <td>
+                    <input id="math_base_select" class="txt" type="number" step="2" onKeyDown="nextInput('adv');" min='0' oninput="all_calc(); ChangeBySelect();">
+                </td>
+                <td></td>
+            </tr>
 <!--____________________________________________________________-->
-                <tr class="subtotal_3 subtotal_4 Total_2">
-                    <th>知能情報アドバンスト</th>
-                    <td></td>
-                    <td>
-                        <input id="adv" class="txt" type="number" step="2" onKeyDown="next_input('relation');" min='0' oninput="all_calc(); ChangeBySelect();">
-                    </td>
-                    <td></td>
-                </tr>
+            <tr class="subtotal3 subtotal4 total2">
+                <td>知能情報アドバンスト</td>
+                <td></td>
+                <td>
+                    <input id="adv" class="txt" type="number" step="2" onKeyDown="nextInput('relation');" min='0' oninput="all_calc(); ChangeBySelect();">
+                </td>
+                <td></td>
+            </tr>
 <!--____________________________________________________________-->
-                <tr class="subtotal_3 subtotal_4 Total_2">
-                    <th>知能情報関連</th>
-                    <td></td>
-                    <td>
-                        <input id="relation" class="txt" type="number" onKeyDown="next_input('common_engineering');" min='0' oninput="all_calc(); ChangeBySelect();">
-                        <!-- インターンが1単位のため，1ずつ変化 -->
-                    </td>
-                    <td></td>
-                </tr>
+            <tr class="subtotal3 subtotal4 total2">
+                <td>知能情報関連</td>
+                <td></td>
+                <td>
+                    <input id="relation" class="txt" type="number" onKeyDown="nextInput('common_engineering');" min='0' oninput="all_calc(); ChangeBySelect();">
+                    <!-- インターンが1単位のため，1ずつ変化 -->
+                </td>
+                <td></td>
+            </tr>
 <!--____________________________________________________________-->
-                <tr class="subtotal_3 always_subtotal_3">
-                    <th>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lightbulb" viewBox="0 0 16 16">
-                            <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z"/>
-                        </svg>
-                    (数情計)
-                    </th>
-                    <td>22</td>
-                    <td id="sub_total3"></td>
-                    <td id="result_sub_total3"></td>
-                </tr>
+            <tr id="high_light_subtotal3" class="subtotal3_bgcolor">
+                <td>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lightbulb" viewBox="0 0 16 16">
+                        <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z"/>
+                    </svg>
+                (数情計)
+                </td>
+                <td>22</td>
+                <td id="sub_total3"></td>
+                <td id="result_sub_total3"></td>
+            </tr>
 <!--____________________________________________________________-->
-                <tr class="subtotal_4 Total_2">
-                    <th>選択(工学共通)</th>
-                    <td></td>
-                    <td>
-                        <input id="common_engineering" class="txt" type="number" step="2" onKeyDown="next_input('free');" min='0' oninput="all_calc(); ChangeBySelect();">
-                    </td>
-                    <td></td>
-                </tr>
+            <tr class="subtotal4 total2">
+                <td>選択(工学共通)</td>
+                <td></td>
+                <td>
+                    <input id="common_engineering" class="txt" type="number" step="2" onKeyDown="nextInput('free');" min='0' oninput="all_calc(); ChangeBySelect();">
+                </td>
+                <td></td>
+            </tr>
 <!--____________________________________________________________-->
-                <tr class="subtotal_4 Total_2">
-                    <th>自由</th>
-                    <td></td>
-                    <td>
-                        <input id="free" class="txt" type="number" step="2" onKeyDown="next_input('teacher');" min='0' oninput="all_calc(); ChangeBySelect();">
-                    </td>
-                    <td></td>
-                </tr>
+            <tr class="subtotal4 total2">
+                <td>自由</td>
+                <td></td>
+                <td>
+                    <input id="free" class="txt" type="number" step="2" onKeyDown="nextInput('teacher');" min='0' oninput="all_calc(); ChangeBySelect();">
+                </td>
+                <td></td>
+            </tr>
 <!--____________________________________________________________-->
-                <tr class="subtotal_4 Total_2">
-                    <th>教職</th>
-                    <td></td>
-                    <td>
-                        <input id="teacher" class="txt" type="number" min='0' oninput="all_calc(); ChangeBySelect();">
-                        <!-- 教職単位対応のため，1ずつ変化 -->
-                    </td>
-                    <td id="teacher_warning"></td>
-                </tr>
+            <tr class="subtotal4 total2">
+                <td>教職</td>
+                <td></td>
+                <td>
+                    <input id="teacher" class="txt" type="number" min='0' oninput="all_calc(); ChangeBySelect();">
+                    <!-- 教職単位対応のため，1ずつ変化 -->
+                </td>
+                <td id="teacher_warning"></td>
+            </tr>
 <!--____________________________________________________________-->
-                <tr class="subtotal_4 always_subtotal_4">
-                    <th>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lightbulb" viewBox="0 0 16 16">
-                            <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z"/>
-                        </svg>
-                    (数情等計)
-                    </th>
-                    <td id="req_sub_total4">36</td>
-                    <td id="sub_total4"></td>
-                    <td id="result_sub_total4"></td>
-                </tr>
+            <tr id="high_light_subtotal4" class="subtotal4_bgcolor">
+                <td>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lightbulb" viewBox="0 0 16 16">
+                        <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z"/>
+                    </svg>
+                (数情等計)
+                </td>
+                <td id="req_sub_total4">36</td>
+                <td id="sub_total4"></td>
+                <td id="result_sub_total4"></td>
+            </tr>
 <!--____________________________________________________________-->
-                <tr>
-                    <th>　
-                        <!-- 1行開けるための空欄 -->
-                    </th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+            <tr>
+                <td>　
+                    <!-- 1行開けるための空欄 -->
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
 <!--____________________________________________________________-->
-                <tr class="Total_2 all_total always_total_2">
-                    <th>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lightbulb" viewBox="0 0 16 16">
-                            <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z"/>
-                        </svg>
-                    【専門計】
-                    </th>
-                    <td>92</td>
-                    <td id="total2"></td>
-                    <td id='result_total2'></td>
-                </tr>
+            <tr id="high_light_total2" class="total2_bgcolor all_total">
+                <td>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lightbulb" viewBox="0 0 16 16">
+                        <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z"/>
+                    </svg>
+                【専門計】
+                </td>
+                <td>92</td>
+                <td id="total2"></td>
+                <td id='result_total2'></td>
+            </tr>
 <!--____________________________________________________________-->
-                <tr>
-                    <th>　
-                        <!-- 1行開けるための空欄 -->
-                    </th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+            <tr>
+                <td>　
+                    <!-- 1行開けるための空欄 -->
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
 <!--____________________________________________________________-->
-                <tr>
-                    <th>　
-                        <!-- 1行開けるための空欄 -->
-                    </th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+            <tr>
+                <td>　
+                    <!-- 1行開けるための空欄 -->
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
 <!--____________________________________________________________-->
-                <tr class="all_total always_alltotal">
-                    <th>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lightbulb" viewBox="0 0 16 16">
-                            <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z"/>
-                        </svg>
-                    【合計】
-                    </th>
-                    <td>130</td>
-                    <td id="all_total"></td>
-                    <td id="result_all_total"></td>
-                </tr>
+            <tr id="high_light_all_total" class="all_total_bgcolor">
+                <td>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lightbulb" viewBox="0 0 16 16">
+                        <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z"/>
+                    </svg>
+                【合計】
+                </td>
+                <td>130</td>
+                <td id="all_total"></td>
+                <td id="result_all_total"></td>
+            </tr>
 <!--____________________________________________________________-->
-            </table>
+        </table>
         <div align="center" class="req_sub" id="first_year_Compulsory"><!-- 1年前期の必修 -->
             <h2>1年前期の必修科目</h2>
             <ul class="ul-align-center">
