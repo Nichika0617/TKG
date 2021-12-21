@@ -680,7 +680,7 @@ const befor2021ChengeGraduationReq = () =>{
     document.getElementById('result_exp').innerHTML=`${Math.max(15-experiment,0)}`
     // 数情等計
     document.getElementById('req_sub_total4').innerHTML = "36";
-    const sub_total4 = convertNum(document.getElementById('sub_total4').value);
+    const sub_total4 = convertNum(document.getElementById('sub_total4').textContent);
     document.getElementById('result_sub_total4').innerHTML=`${Math.max(36-sub_total4,0)}`
 }
 
@@ -696,7 +696,7 @@ const onAndAfter2021ChengeGraduationReq = () =>{
     document.getElementById('result_exp').innerHTML=`${Math.max(16-experiment,0)}`
     // 数情等計
     document.getElementById('req_sub_total4').innerHTML = "37";
-    const sub_total4 = convertNum(document.getElementById('sub_total4').value);
+    const sub_total4 = convertNum(document.getElementById('sub_total4').textContent);
     document.getElementById('result_sub_total4').innerHTML=`${Math.max(37-sub_total4,0)}`
 }
 
