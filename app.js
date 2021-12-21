@@ -1460,6 +1460,12 @@ const onAndAfter2021DisplayedFourthCompulsorySubjects = () =>{
     }
 }
 
+const deleteValue = () =>{
+    localStorage.clear();
+    // localStorageの値を全削除
+    location.reload();
+    // ページを再読み込みし，入学年度選択画面へ
+}
 const saveValue = () =>{
     json = generateJson();
     localStorage.setItem("TKG",JSON.stringify(json));
@@ -1636,3 +1642,4 @@ const DisplayTable = () =>{
     aboveTheTableElement.className += 'd-none';
     
 }
+

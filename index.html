@@ -28,7 +28,7 @@
     <div id="Above_the_table">
         <div style="text-align: center;">
             <label class="select-label">
-                <select id="select_admission_year" class="select_condition" onchange="ChangeBySelect(); DisplayTable(); saveValue()">
+                <select id="select_admission_year" class="select_condition" onchange="ChangeBySelect(); DisplayTable(); saveValue();">
                     <option hidden>入学年度を選択</option>
                     <option value="2018">2018</option>
                     <option value="2019">2019</option>
@@ -66,7 +66,9 @@
         </div>
         
         <br>
-
+        <div style="text-align: center;">
+        <button type="button" class="btn btn-danger mb-2" onclick="deleteValue()">保存した値を削除</button>
+        </div>
 <!--____________________________________________________________-->
         <table align="center" border="1" class="credits_table mb-5 table_below_the_select d-none" id="table_below_the_select">
             <tr>
