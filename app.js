@@ -15,209 +15,84 @@ const pdfIdList = ["健康運動","人文","社会","総合","キャリア関係
                         
 const compulsoryIdList = ['first_year_Compulsory','first_year_2nd_Compulsory','second_year_Compulsory','second_year_2nd_Compulsory','third_year_Compulsory','third_year_2nd_Compulsory','fourth_year_Compulsory','fourth_year_2nd_Compulsory','y21_first_year_Compulsory','y21_first_year_2nd_Compulsory','y21_second_year_Compulsory','y21_second_year_2nd_Compulsory','y21_third_year_Compulsory','y21_third_year_2nd_Compulsory','y21_fourth_year_Compulsory','y21_fourth_year_2nd_Compulsory']
 
+const highLightObjects = //イベントリスナー追加対象のid,ハイライトの対象のクラス名,ハイライトクラス
+[
+    [
+        "high_light_subtotal1",
+        "subtotal1",
+        "subtotal1_bgcolor"
+    ],
+    [
+        "high_light_subtotal2",
+        "subtotal2",
+        "subtotal2_bgcolor"
+    ],
+    [
+        "high_light_subtotal3",
+        "subtotal3",
+        "subtotal3_bgcolor"
+    ],
+    [
+        "high_light_subtotal4",
+        "subtotal4",
+        "subtotal4_bgcolor"
+    ],
+    [
+        "high_light_total1",
+        "total1",
+        "total1_bgcolor"
+    ],
+    [
+        "high_light_total2",
+        "total2",
+        "total2_bgcolor"
+    ],
+    [
+        "high_light_all_total",
+        "all_total",
+        "all_total_bgcolor"
+    ]
+]
+
+const DEBUG = true;//コンソール出力をするか否か
+
+const log = (log) => {
+    if(DEBUG==true){
+        console.log(log);
+    }
+}
+
 //ロード時に実行
 window.onload = () =>{
+    log("on load");
+    addHithLightEventListeners(highLightObjects);
     setValue(JSON.parse(localStorage.getItem("TKG"))); // 値の復元
     all_calc(); // 初期化，前回の入力が復元された場合はその計算結果を出力．
 }
 
-// ＿＿＿＿＿＿＿＿＿＿小計1のハイライト↓↓
-document.addEventListener('DOMContentLoaded', function() {
-    // DOMContentLoaded = HTMLが読み込まれた時，functionを実行
-    let subtotal_1 = document.getElementsByClassName("subtotal_1");
-    console.log(subtotal_1);
+const addHithLightEventListeners = (obj) =>{
+    log("add high light enent listeners");
+    for(let i=0;i<obj.length;i++){
+        target = obj[i];
+        addHighLightEventListner(target[0],target[1],target[2]);
+    }
+}
 
-    //マウスポインターが乗ったタイミングで背景色を変更
-    subtotal_1[5].addEventListener('mouseover', function() {
-        // 5個目(一番最後)が，小計1の欄
-        // console.log("小計1マウスオーバー")
-        let subtotal1_count = 0;
-        while(subtotal1_count < subtotal_1.length){
-            subtotal_1[subtotal1_count].style.backgroundColor = '#ffd9d2';
-            subtotal1_count++;
+const addHighLightEventListner = (id,className,highLightColor) => {//イベントリスナー追加対象のid,ハイライトの対象のクラス名,ハイライトクラス
+    log("add high light event listener"+": "+id+", "+className+", "+highLightColor);
+    const targetElement = document.getElementById(id);
+    const HightLightElements = document.getElementsByClassName(className);
+    targetElement.addEventListener('mouseover', () => {
+        for(let i=0;i<HightLightElements.length;i++){
+            HightLightElements[i].classList.add(highLightColor);
         }
-    }, false)
-    // getElementsByClassNameで同じクラス名のタグの配列を取り，その配列の中身ひとつひとつにbackgroundの処理を行なっていくという方法で，全部塗る
-    
-    // マウスポインターが外れたタイミングで背景色を戻す
-    subtotal_1[5].addEventListener('mouseout', function() {
-        let subtotal1_count = 0;
-        while(subtotal1_count < subtotal_1.length){
-            subtotal_1[subtotal1_count].style.backgroundColor = '';
-            subtotal1_count++;
+    },false);
+    targetElement.addEventListener('mouseout',() => {
+        for(let i=0;i<HightLightElements.length;i++){
+            HightLightElements[i].classList.remove(highLightColor);
         }
-    }, false)
-},false)
-
-
-// ＿＿＿＿＿＿＿＿＿＿小計2のハイライト↓↓
-
-document.addEventListener('DOMContentLoaded', function() {
-    // DOMContentLoaded = HTMLが読み込まれた時，functionを実行
-    let subtotal_2 = document.getElementsByClassName("subtotal_2");
-    console.log(subtotal_2);
-    
-    //マウスポインターが乗ったタイミングで背景色を変更
-    subtotal_2[6].addEventListener('mouseover', function() {
-        // 6個目(一番最後)が，小計2の欄
-        let subtotal2_count = 0;
-        while(subtotal2_count < subtotal_2.length){
-            subtotal_2[subtotal2_count].style.backgroundColor = '#c6f78e';
-            subtotal2_count++;
-        }
-    }, false)
-    // getElementsByClassNameで同じクラス名のタグの配列を取り，その配列の中身ひとつひとつにbackgroundの処理を行なっていくという方法で，全部塗る
-    
-    // マウスポインターが外れたタイミングで背景色を戻す
-    subtotal_2[6].addEventListener('mouseout', function() {
-        let subtotal2_count = 0;
-        while(subtotal2_count < subtotal_2.length){
-            subtotal_2[subtotal2_count].style.backgroundColor = '';
-            subtotal2_count++;
-        }
-    }, false)
-},false)
-
-// ＿＿＿＿＿＿＿＿＿＿共通計のハイライト↓↓
-
-document.addEventListener('DOMContentLoaded', function() {
-    // DOMContentLoaded = HTMLが読み込まれた時，functionを実行
-    let Total_1 = document.getElementsByClassName("Total_1");
-    console.log(Total_1);
-
-    //マウスポインターが乗ったタイミングで背景色を変更
-    Total_1[14].addEventListener('mouseover', function() {
-        // 14個目(一番最後)が，共通計の欄
-        let Total_1_count = 0;
-        while(Total_1_count < Total_1.length){
-            Total_1[Total_1_count].style.backgroundColor = '#cbfff4';
-            Total_1_count++;
-        }
-    }, false)
-    // getElementsByClassNameで同じクラス名のタグの配列を取り，その配列の中身ひとつひとつにbackgroundの処理を行なっていくという方法で，全部塗る
-    
-    // マウスポインターが外れたタイミングで背景色を戻す
-    Total_1[14].addEventListener('mouseout', function() {
-        let Total_1_count = 0;
-        while(Total_1_count < Total_1.length){
-            Total_1[Total_1_count].style.backgroundColor = '';
-            Total_1_count++;
-        }
-    }, false)
-},false)
-
-// ＿＿＿＿＿＿＿＿＿＿数情計のハイライト↓↓
-
-document.addEventListener('DOMContentLoaded', function() {
-    // DOMContentLoaded = HTMLが読み込まれた時，functionを実行
-    let subtotal_3 = document.getElementsByClassName("subtotal_3");
-    console.log(subtotal_3);
-    
-    //マウスポインターが乗ったタイミングで背景色を変更
-    subtotal_3[3].addEventListener('mouseover', function() {
-        // 3個目(一番最後)が，数情計の欄
-        let subtotal3_count = 0;
-        while(subtotal3_count < subtotal_3.length){
-            subtotal_3[subtotal3_count].style.backgroundColor = '#cad4f7';
-            subtotal3_count++;
-        }
-    }, false)
-    // getElementsByClassNameで同じクラス名のタグの配列を取り，その配列の中身ひとつひとつにbackgroundの処理を行なっていくという方法で，全部塗る
-    
-    // マウスポインターが外れたタイミングで背景色を戻す
-    subtotal_3[3].addEventListener('mouseout', function() {
-        let subtotal3_count = 0;
-        while(subtotal3_count < subtotal_3.length){
-            subtotal_3[subtotal3_count].style.backgroundColor = '';
-            subtotal3_count++;
-        }
-    }, false)
-},false)
-
-// ＿＿＿＿＿＿＿＿＿＿数情等計のハイライト↓↓
-
-document.addEventListener('DOMContentLoaded', function() {
-    // DOMContentLoaded = HTMLが読み込まれた時，functionを実行
-    let subtotal_4 = document.getElementsByClassName("subtotal_4");
-    console.log(subtotal_4);
-
-    //マウスポインターが乗ったタイミングで背景色を変更
-    subtotal_4[7].addEventListener('mouseover', function() {
-        // 7個目(一番最後)が，数情等計の欄
-        let subtotal4_count = 0;
-        while(subtotal4_count < subtotal_4.length){
-            subtotal_4[subtotal4_count].style.backgroundColor = '#e6ccf5';
-            subtotal4_count++;
-        }
-    }, false)
-    // getElementsByClassNameで同じクラス名のタグの配列を取り，その配列の中身ひとつひとつにbackgroundの処理を行なっていくという方法で，全部塗る
-    
-    // マウスポインターが外れたタイミングで背景色を戻す
-    subtotal_4[7].addEventListener('mouseout', function() {
-        let subtotal4_count = 0;
-        while(subtotal4_count < subtotal_4.length){
-            subtotal_4[subtotal4_count].style.backgroundColor = '';
-            subtotal4_count++;
-        }
-    }, false)
-},false)
-
-
-// ＿＿＿＿＿＿＿＿＿＿専門計のハイライト↓↓
-
-document.addEventListener('DOMContentLoaded', function() {
-    // DOMContentLoaded = HTMLが読み込まれた時，functionを実行
-    let Total_2 = document.getElementsByClassName("Total_2");
-    console.log(Total_2);
-
-    //マウスポインターが乗ったタイミングで背景色を変更
-    Total_2[12].addEventListener('mouseover', function() {
-        // 12個目(一番最後)が，専門計の欄
-        let Total_2_count = 0;
-        while(Total_2_count < Total_2.length){
-            Total_2[Total_2_count].style.backgroundColor = '#faffaf';
-            Total_2_count++;
-        }
-    }, false)
-    // getElementsByClassNameで同じクラス名のタグの配列を取り，その配列の中身ひとつひとつにbackgroundの処理を行なっていくという方法で，全部塗る
-    
-    // マウスポインターが外れたタイミングで背景色を戻す
-    Total_2[12].addEventListener('mouseout', function() {
-        let Total_2_count = 0;
-        while(Total_2_count < Total_2.length){
-            Total_2[Total_2_count].style.backgroundColor = '';
-            Total_2_count++;
-        }
-    }, false)
-},false)
-
-// ＿＿＿＿＿＿＿＿＿＿最後の合計のハイライト↓↓
-
-document.addEventListener('DOMContentLoaded', function() {
-    // DOMContentLoaded = HTMLが読み込まれた時，functionを実行
-    let all_total = document.getElementsByClassName("all_total");
-    console.log(all_total);
-
-    //マウスポインターが乗ったタイミングで背景色を変更
-    all_total[3].addEventListener('mouseover', function() {
-        // 3個目(一番最後)が，合計の欄
-        let all_total_count = 0;
-        while(all_total_count < all_total.length){
-            all_total[all_total_count].style.backgroundColor = '#ffea8a';
-            all_total_count++;
-        }
-    }, false)
-    // getElementsByClassNameで同じクラス名のタグの配列を取り，その配列の中身ひとつひとつにbackgroundの処理を行なっていくという方法で，全部塗る
-    
-    // マウスポインターが外れたタイミングで背景色を戻す
-    all_total[3].addEventListener('mouseout', function() {
-        let all_total_count = 0;
-        while(all_total_count < all_total.length){
-            all_total[all_total_count].style.backgroundColor = '';
-            all_total_count++;
-        }
-    }, false)
-},false)
+    },false);
+};
 
 function convertNum(n){
     n = n || '0';//NaNを0にする。
@@ -323,7 +198,7 @@ const foreign_calc = ()=>{
         // 合計で4ではなく，一つの言語を4単位以上あるかを確かめる
         second_foreign_judge = true; // 第二言語の条件を満たした．
         document.getElementById('result_second').textContent = 0;
-        console.log("第二言語満たした")
+        log("第二言語満たした")
     }else{
         if (sum_second >= 4){
             // 一つの科目群から4単位以上でなかったとしても，とりあえずマイナスにならないように合計が4超えた時も0とする
@@ -338,17 +213,15 @@ const foreign_calc = ()=>{
     document.getElementById('foreignTotal').textContent=foreignTotal;
     document.getElementById('result_foreignTotal').textContent=Math.max(12-foreignTotal,0);
     
-    console.log(English);
-    console.log(second_foreign_judge);
     // foreignTotalが英語12か英語8と外国語4かどうか出力する
     if(foreignTotal >= 12){
         if(English >= 12){
             document.getElementById('result_foreignTotal').innerHTML = "0 <span class='success'><br> 英語12単位で満たされています，</span>";
-            console.log("英語12");
+            log("英語12");
         }else if(English >= 8 && second_foreign_judge == true){
         // 英語8単位以上かつ，第二言語1つを4単位以上とっているならば
             document.getElementById('result_foreignTotal').innerHTML = "0 <span class='success'><br> 英語8単位，第二言語4単位で満たされています．</span>"
-            console.log("英語8と第二言語4")
+            log("英語8と第二言語4")
         }else{
             document.getElementById('result_foreignTotal').innerHTML = "0 <span class='warning'><br> 言語の取得条件を満たしていません．</span>"
             
@@ -384,13 +257,11 @@ const total1_calc = () => {
     document.getElementById('total1').textContent=total1;
     
     if (total1 >= 30){
-        console.log(`ヘルス${document.getElementById('result_health').textContent} ,小計2${document.getElementById('result_subtotal2').textContent}, 情報${document.getElementById('result_info').textContent}, 外国語計${document.getElementById('result_foreignTotal').textContent}`)
         if(Math.max(2-health,0) == 0 && Math.max(14-subTotal2,0) == 0 && Math.max(2-info,0) == 0 && Math.max(12-foreignTotal,0) == 0 && subtotal2_judge == true && English >= 8 && second_foreign_judge == true){
             // 注意文とか追加したから document.getElementById == 0の比較はできなくなってしまった
             // 2 + 14 + 2 + 12 = 30 で条件を満たしているならば，
             document.getElementById('result_total1').innerHTML = "0 <span class='success'><br> 30単位の条件を満たしています</span>"
-            console.log("共通30満たした．")
-            console.log(second_foreign_judge)
+            log("共通30満たした．")
         }else if(Math.max(2-health,0) != 0){
             // 30単位は満たしたが，健康運動を取得していない
             document.getElementById('result_total1').innerHTML = "0 <span class='warning'><br>健康運動を2単位以上取得する必要があります．</span>"
@@ -423,7 +294,7 @@ const total1_calc = () => {
         }else{
             document.getElementById('result_total1').innerHTML = "0 <span class='warning'><br>上の各条件を確認してください．</span>"
             // マイナスにならないよう取得単位が30を超えたら0にしておくが，条件を満たせていないという注意を表示
-            console.log("共通30の条件に合っていない")
+            log("共通30の条件に合っていない")
         }
     }else{
         document.getElementById('result_total1').innerHTML = ""
@@ -596,13 +467,12 @@ const total2_calc = () => {
 }
 
 
-const next_input = (id) => {
+const nextInput = (id) => {
     // エンターキーで次のテキストボックスへ飛ばす処理
     if( window.event.keyCode == 13 ){        // 13は0x0d(CRキー)
         // window.alert('エンター押された')
         document.getElementById(id).focus();
     }
-    
 }
 
 // 研究室配属条件を満たしているかを示すメッセージ部分＿＿＿＿＿＿＿＿＿＿
@@ -662,7 +532,7 @@ const admissionYearTableChange = () =>{
         before2021GradeTableChange();
     }else if(options[4].selected == true){
         // 2021年度入学
-        console.log("2021年度以降入学に対する処理")
+        log("2021年度以降入学に対する処理")
         onAndAfter2021ChengeGraduationReq();
         onAndAfter2021GradeTableChange();
     }
@@ -680,7 +550,7 @@ const befor2021ChengeGraduationReq = () =>{
     document.getElementById('result_exp').innerHTML=`${Math.max(15-experiment,0)}`
     // 数情等計
     document.getElementById('req_sub_total4').innerHTML = "36";
-    const sub_total4 = convertNum(document.getElementById('sub_total4').value);
+    const sub_total4 = convertNum(document.getElementById('sub_total4').textContent);
     document.getElementById('result_sub_total4').innerHTML=`${Math.max(36-sub_total4,0)}`
 }
 
@@ -696,7 +566,7 @@ const onAndAfter2021ChengeGraduationReq = () =>{
     document.getElementById('result_exp').innerHTML=`${Math.max(16-experiment,0)}`
     // 数情等計
     document.getElementById('req_sub_total4').innerHTML = "37";
-    const sub_total4 = convertNum(document.getElementById('sub_total4').value);
+    const sub_total4 = convertNum(document.getElementById('sub_total4').textContent);
     document.getElementById('result_sub_total4').innerHTML=`${Math.max(37-sub_total4,0)}`
 }
 
@@ -1593,19 +1463,18 @@ const onAndAfter2021DisplayedFourthCompulsorySubjects = () =>{
 const saveValue = () =>{
     json = generateJson();
     localStorage.setItem("TKG",JSON.stringify(json));
-    console.log("saveValue");
+    log("saveValue");
 }
 
 const setValue = (json) =>{
-    console.log(json);
     for(let i=0;i<idList.length;i++){
         id=idList[i]
         document.getElementById(id).value=json[id]
     }
+    log("setValue");
     const options = document.getElementById("select_admission_year").options;
     options[json["admission_year"]].selected = true;//入学年度の復元
     document.getElementById("select_admission_year").onchange();
-    console.log("setValue");
 }
 
 const generateJson = () =>{
@@ -1686,14 +1555,12 @@ const setValuesFromPdfObject = (textContent) => {
     theobject has str, transform[], etc...  
     */
     const objectArray = textContent.items
-    console.log(objectArray)
     let target = 0;
     obj={}
     for (let i=0;i<objectArray.length;i++){
         let baseObject = objectArray[i];
-        //console.log("object:"+baseObject.str+",x:"+baseObject.transform[4]+",y:"+baseObject.transform[5])
         if(baseObject.str==pdfIdList[target]){//スタートを探す
-            console.log("match:"+baseObject.str);
+            log("match:"+baseObject.str);
             const basePos = baseObject.transform.slice(4);
             let value = 0;
             for(let j = i+1;j<objectArray.length;j++){
@@ -1708,16 +1575,13 @@ const setValuesFromPdfObject = (textContent) => {
 
                 const posDiff = targetPos[0]-basePos[0];
                 if(Math.abs(basePos[1]-targetPos[1])<4){
-                    console.log(posDiff);
                     if(PDFWIDTHMAX>posDiff&&posDiff>PDFWIDTHMIN){
-                        console.log("value changed");
                         value = targetObject.str
                         break;
                     }
                 }
             }
             //keyとvalueがそろう。
-            console.log(pdfIdList[target]+":"+value)
             obj[idList[target]] = value;
             target++;
         }
@@ -1728,18 +1592,18 @@ const setValuesFromPdfObject = (textContent) => {
               
 document.getElementById("pdfInput").onchange = function(event) {
 
-    var file = event.target.files[0];
-    var fileReader = new FileReader();  
+    let file = event.target.files[0];
+    let fileReader = new FileReader();  
 
     fileReader.onload = function() {
 
-        var typedarray = new Uint8Array(this.result);
+        let typedarray = new Uint8Array(this.result);
 
         const loadingTask = pdfjsLib.getDocument(typedarray);
         loadingTask.promise.then(pdf => {
-            console.log("pdf loaded");
+            log("pdf loaded");
             pdf.getPage(1).then(page =>{
-                console.log("page loaded");
+                log("page loaded");
                 page.getTextContent().then(textContent =>{
                     setValuesFromPdfObject(textContent);
                 });
@@ -1764,13 +1628,11 @@ const DisplayTable = () =>{
     let tableElement = document.querySelector('table');
     // querySelector()指定されたセレクターまたはセレクターのグループに一致する
     // 文書内の最初の Elementを返す
-    console.log(tableElement)
     tableElement.className -= 'd-none';
     // // 全部消しているd-noneクラスを取ることでいろいろ表示させる
 
     // 年次選択のドロップダウンを削除↓↓
     let aboveTheTableElement = document.querySelector('#Above_the_table');
-    console.log(aboveTheTableElement)
     aboveTheTableElement.className += 'd-none';
     
 }
