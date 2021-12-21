@@ -1480,6 +1480,7 @@ const setValue = (json) =>{
     log("setValue");
     const options = document.getElementById("select_admission_year").options;
     options[json["admission_year"]].selected = true;//入学年度の復元
+    // 値を削除した後，pdfを読み込もうとすると，このadmission_yearでエラー起きます．未解決
     document.getElementById("select_admission_year").onchange();
 }
 
