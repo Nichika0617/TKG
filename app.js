@@ -65,9 +65,9 @@ const log = (log) => {
 //ロード時に実行
 window.onload = () =>{
     log("on load");
+    addHithLightEventListeners(highLightObjects);
     setValue(JSON.parse(localStorage.getItem("TKG"))); // 値の復元
     all_calc(); // 初期化，前回の入力が復元された場合はその計算結果を出力．
-    addHithLightEventListeners(highLightObjects);
 }
 
 const addHithLightEventListeners = (obj) =>{
