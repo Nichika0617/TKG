@@ -33,6 +33,11 @@ const highLightObjects = //イベントリスナー追加対象のid,ハイラ�
         "subtotal3_bgcolor"
     ],
     [
+        "high_light_subtotal4",
+        "subtotal4",
+        "subtotal4_bgcolor"
+    ],
+    [
         "high_light_total1",
         "total1",
         "total1_bgcolor"
