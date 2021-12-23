@@ -1473,18 +1473,21 @@ const saveValue = () =>{
 }
 
 const setValue = (json) =>{
-    for(let i=0;i<idList.length;i++){
-        id=idList[i]
-        document.getElementById(id).value=json[id]
-    }
     log("setValue");
-    const options = document.getElementById("select_admission_year").options;
-    if(options[json["admission_year"]] != undefined){
-        options[json["admission_year"]].selected = true;//入学年度の復元
-        // 値を削除した後，pdfを読み込もうとすると，このadmission_yearでエラー起きます．
-        // setValuesFromPdfObject でadmission_year抜きの科目群だけのobjが引数で渡されるから，
-        // undefinedになる．だからadmission_yearがないときは
-        document.getElementById("select_admission_year").onchange();
+    // log(json == null)
+    if(json != null){
+        for(let i=0;i<idList.length;i++){
+            id=idList[i]
+            document.getElementById(id).value=json[id]
+        }
+        const options = document.getElementById("select_admission_year").options;
+        if(options[json["admission_year"]] != undefined){
+            options[json["admission_year"]].selected = true;//入学年度の復元
+            // 値を削除した後，pdfを読み込もうとすると，このadmission_yearでエラー起きます．
+            // setValuesFromPdfObject でadmission_year抜きの科目群だけのobjが引数で渡されるから，
+            // undefinedになる．だからadmission_yearがないときは
+            document.getElementById("select_admission_year").onchange();
+        }
     }
 }
 
