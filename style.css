@@ -4,14 +4,37 @@ td{
 
 table {
   font-family: "MSゴシック" ;
-  border-collapse: collapse;    
+  border-collapse: collapse;
+  /*border: none;  */  
   border: solid 2px orange;/*表全体を線で囲う*/
+  margin: 0px;
 }
 
 table th, table td {
   border: dashed 1px orange;
   text-align: center;
   /*破線 1px オレンジ*/
+}
+
+.credits_table{
+  display: inline-block;
+  vertical-align: top;
+}
+
+.credits_table .tc_subject{
+  width: 286px;
+}
+
+.credits_table .tc_credit_req{
+  width: 67px;
+}
+
+.credits_table .tc_credit_got{
+  width: 223px;
+}
+
+.credits_table .tc_credit_insufficient{
+  width: 115px;
 }
 
 table input{
@@ -195,7 +218,7 @@ li {
 }
 
 .below_the_select{
-  opacity: 0;
+  opacity: 1;
   transition: 2s;
 }
 
