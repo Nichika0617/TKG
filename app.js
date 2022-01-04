@@ -1460,6 +1460,11 @@ const onAndAfter2021DisplayedFourthCompulsorySubjects = () =>{
     }
 }
 
+const confirmDeleteValue = () => {
+    if(window.confirm("本当に削除しますか？")){
+        deleteValue();
+    }
+}
 const deleteValue = () =>{
     localStorage.clear();
     // localStorageの値を全削除
