@@ -1460,6 +1460,12 @@ const onAndAfter2021DisplayedFourthCompulsorySubjects = () =>{
     }
 }
 
+const deleteValue = () =>{
+    localStorage.clear();
+    // localStorageの値を全削除
+    location.reload();
+    // ページを再読み込みし，入学年度選択画面へ
+}
 const saveValue = () =>{
     json = generateJson();
     localStorage.setItem("TKG",JSON.stringify(json));
@@ -1467,14 +1473,22 @@ const saveValue = () =>{
 }
 
 const setValue = (json) =>{
-    for(let i=0;i<idList.length;i++){
-        id=idList[i]
-        document.getElementById(id).value=json[id]
-    }
     log("setValue");
-    const options = document.getElementById("select_admission_year").options;
-    options[json["admission_year"]].selected = true;//入学年度の復元
-    document.getElementById("select_admission_year").onchange();
+    // log(json == null)
+    if(json != null){
+        for(let i=0;i<idList.length;i++){
+            id=idList[i]
+            document.getElementById(id).value=json[id]
+        }
+        const options = document.getElementById("select_admission_year").options;
+        if(options[json["admission_year"]] != undefined){
+            options[json["admission_year"]].selected = true;//入学年度の復元
+            // 値を削除した後，pdfを読み込もうとすると，このadmission_yearでエラー起きます．
+            // setValuesFromPdfObject でadmission_year抜きの科目群だけのobjが引数で渡されるから，
+            // undefinedになる．だからadmission_yearがないときは
+            document.getElementById("select_admission_year").onchange();
+        }
+    }
 }
 
 const generateJson = () =>{
@@ -1483,9 +1497,10 @@ const generateJson = () =>{
     const options = document.getElementById("select_admission_year").options;
     console.log(options.length);
     for(let i=0;i<options.length;i++){
-        console.log(options[i])
+        log(options[i])
         if(options[i].selected==true){
             obj["admission_year"] = i;
+            log(`選択された学年の番号(admission_year)は${obj["admission_year"]}`)
         }
     }
     //単位要素の追加
@@ -1636,3 +1651,4 @@ const DisplayTable = () =>{
     aboveTheTableElement.className += 'd-none';
     
 }
+
