@@ -1636,9 +1636,12 @@ const DisplayTable = () =>{
     // table_below_the_select.style.display = 'table-row';
     // // 年次選択以外のドロップダウンを表示↓↓
     let below_the_select = document.getElementById("below_the_select");
-    below_the_select.style.opacity = 1;
-    
-    
+    //below_the_select.style.opacity = 1;
+    below_the_select.style.display = "";
+    let aboveTheTableElement = document.getElementById("Above_the_table");
+    aboveTheTableElement.style.display = "none";
+    log("DisplayTable()");
+    /*
     // Tableを表示↓↓
     let tableElement = document.querySelector('table');
     // querySelector()指定されたセレクターまたはセレクターのグループに一致する
@@ -1649,6 +1652,7 @@ const DisplayTable = () =>{
     // 年次選択のドロップダウンを削除↓↓
     let aboveTheTableElement = document.querySelector('#Above_the_table');
     aboveTheTableElement.className += 'd-none';
+    */
     
 }
 
