@@ -110,7 +110,7 @@ const all_calc = ()=>{
     const major_base = convertNum(document.getElementById('major_base').value);
     const out_major_base = convertNum(document.getElementById('out_major_base').value);
     // これはどこに含まれる．．？ 専門基礎指定外
-    const All_total = total1_calc() + total2_calc() + major_base;
+    const All_total = total1_calc() + total2_calc() + major_base + out_major_base;
     // 合計 共通30 + 専門計92 + 専門基礎8 = 130
 
     document.getElementById('result_major_base').textContent=Math.max(8-major_base,0);
