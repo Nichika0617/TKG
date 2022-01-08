@@ -222,3 +222,10 @@ li {
   transition: 2s;
 }
 
+.course_model{
+  margin: 0 auto;
+  width: 90%;
+  max-width: 650px;
+  display: none;
+}
+
