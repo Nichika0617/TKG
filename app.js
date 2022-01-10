@@ -341,9 +341,9 @@ const subtotal4_calc = () => {
     
     const teacher = convertNum(document.getElementById('teacher').value);
     if(teacher > 10){
-        document.getElementById('teacher_warning').textContent = "教職科目は10単位までしか卒業単位に含まれません";
+        document.getElementById('teacher_warning').innerHTML = "<span title='教職科目は10単位までしか卒業単位に含まれません'>&#x1f4a1</span>";;
     }else{
-        document.getElementById('teacher_warning').textContent = "";
+        document.getElementById('teacher_warning').innerHTML = "";
     }
 
     const subTotal4 = fusion + subTotal3 + common_engineering + free + teacher; 
