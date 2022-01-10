@@ -221,7 +221,6 @@ li {
   opacity: 1;
   transition: 2s;
 }
-
 /* アコーディオンメニュー */
 
 .usage :last-child {
@@ -269,4 +268,10 @@ li {
   color: #333; /* 中身の文字色 */
   font-size: 17px; /* 中身の文字サイズ */
   line-height: 2; /* 行間 */
+}
+.course_model{
+  margin: 0 auto;
+  width: 90%;
+  max-width: 650px;
+  display: none;
 }
