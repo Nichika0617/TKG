@@ -11,7 +11,10 @@
 <body>
     <h1>TKG 〜TANNI KEISAN GAIDO〜</h1>
     <div class="usage">
-        <h3>〜使い方〜</h3>
+        <input id="ac-1" type="checkbox">
+        <label for="ac-1">使い方</label>
+        <div class="ac_usage_inside">
+        <!-- <h3>〜使い方〜</h3> -->
         <p>単位計算をしたい学期を下のドロップダウンより選択してください。</p>
         <p>その後，[取得単位]列に数値を入力してください。</p>
         <p>数字を入力後、エンターで次に移動できます。</p>
@@ -24,7 +27,9 @@
             </svg>
             )のあるところを押すと、合計に含まれるものがハイライトされます。
         </p>
+        </div>
     </div>
+
     <div id="Above_the_table">
         <div style="text-align: center;">
             <label class="select-label">
@@ -38,7 +43,7 @@
             </label>
         </div>
     </div>
-    <div class="below_the_select" id="below_the_select">
+    <div class="below_the_select" id="below_the_select" style="display: none;">
         <div style="text-align: center;">
             <label class="select-label" style="text-align: left;">
                 <span>PDFファイルを選択</span>
@@ -67,140 +72,146 @@
         
         <br>
         <div style="text-align: center;">
-        <button type="button" class="btn btn-danger mb-2" onclick="deleteValue()">保存した値を削除</button>
+        <button type="button" class="btn btn-danger mb-2" onclick="confirmDeleteValue()">保存した値を削除</button>
         </div>
-<!--____________________________________________________________-->
-        <table align="center" border="1" class="credits_table mb-5 table_below_the_select d-none" id="table_below_the_select">
-            <tr>
-                <th> </th>
-                <th>必須単位</th>
-                <th>取得単位</th>
-                <th>不足単位(必修)</th>
-            </tr>
-<!--____________________________________________________________-->
-            <tr>
-                <td class="category">■共通教育</td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-<!--____________________________________________________________-->
-            <tr class="total1">
-                <td>健康運動</td>
-                <td>2</td>
-                <td>
-                    <input id="health" class="txt" type="number" step="2" onKeyDown="nextInput('jinbun');" min='0' oninput="all_calc(); ChangeBySelect();">
-                </td>
-                <td id="result_health">
-                    <!-- 計算結果をjsから書き込む． -->
-                </td>
-            </tr>
-<!--____________________________________________________________-->
-            <tr>
-                <td>&nbsp;<!-- 1行開けるための処理 -->
-                </td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-<!--____________________________________________________________-->
-            <tr class="subtotal1 subtotal2 total1">
-                <td>人文</td>
-                <td>2</td>
-                <td>
-                    <input id="jinbun" type="number" class="txt" step="2" onKeyDown="nextInput('syakai');" min='0' oninput="all_calc(); ChangeBySelect();">
-                </td>
-                <td id="result_jinbun"></td>
-            </tr>
-<!--____________________________________________________________-->
-            <tr class="subtotal1 subtotal2 total1">
-                <td>社会</td>
-                <td>2</td>
-                <td>
-                    <input id="syakai" class="txt" type="number" step="2" onKeyDown="nextInput('sougou');" min='0' oninput="all_calc(); ChangeBySelect();">
-                </td>
-                <td id="result_syakai"></td>
-            </tr>
-<!--____________________________________________________________-->
-            <tr class="subtotal1 subtotal2 total1">
-                <td>総合</td>
-                <td></td>
-                <td>
-                    <input id="sougou" class="txt" type="number" step="2" onKeyDown="nextInput('career');" min='0' oninput="all_calc(); ChangeBySelect();">
-                </td>
-                <td></td>
-            </tr>
-<!--____________________________________________________________-->
-            <tr class="subtotal1 subtotal2 total1">
-                <td>キャリア関係</td>
-                <td></td>
-                <td>
-                    <input id="career" class="txt" type="number" step="2" onKeyDown="nextInput('ryudai');" min='0' oninput="all_calc(); ChangeBySelect();">
-                </td>
-                <td></td>
-            </tr>
-<!--____________________________________________________________-->
-            <tr class="subtotal1 subtotal2 total1">
-                <td class="hover_subtotal1">琉大特色・地域創生</td>
-                <td></td>
-                <td>
-                    <input id="ryudai" class="txt" type="number" step="2" onKeyDown="nextInput('Japanese');" min='0' oninput="all_calc(); ChangeBySelect();">
-                </td>
-                <td></td>
-            </tr>
-<!--____________________________________________________________-->
-            <tr>
-                <td>(総合領域計)
-                    <br>
-                        総合 キャリア関係 琉大特色・地域創生
-                </td>
-                <td>2</td>
-                <td id="sougouryouiki"></td> 
-                <td id="result_sougouryouiki"></td>
-            </tr>
-<!--____________________________________________________________-->
-            <tr>
-                <td>日本語・日本語事情</td>
-                <td></td>
-                <td>
-                    <input id="Japanese" class="txt" type="number" step="2" onKeyDown="nextInput('sizen');" min='0' oninput="all_calc(); ChangeBySelect();">
-                </td>
-                <td></td>
-            </tr>
+        <div style="text-align: center; ">
+            <table align="center" border="1" class="credits_table table_below_the_select " id="table_below_the_select">
+                <colgroup>
+                    <col class="tc_subject">
+                    <col class="tc_credit_req">
+                    <col class="tc_credit_got">
+                    <col class="tc_credit_insufficient">
+                </colgroup>
+                <tr>
+                    <th> </th>
+                    <th>必須単位</th>
+                    <th>取得単位</th>
+                    <th>不足単位(必修)</th>
+                </tr>
+    <!--____________________________________________________________-->
+                <tr>
+                    <td class="category">■共通教育</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+    <!--____________________________________________________________-->
+                <tr class="total1">
+                    <td>健康運動</td>
+                    <td>2</td>
+                    <td>
+                        <input id="health" class="txt" type="number" step="2" onKeyDown="nextInput('jinbun');" min='0' oninput="all_calc(); ChangeBySelect();">
+                    </td>
+                    <td id="result_health">
+                        <!-- 計算結果をjsから書き込む． -->
+                    </td>
+                </tr>
+    <!--____________________________________________________________-->
+                <tr>
+                    <td>　
+                        <!-- 1行開けるための空欄 -->
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+    <!--____________________________________________________________-->
+                <tr class="subtotal1 subtotal2 total1">
+                    <td>人文</td>
+                    <td>2</td>
+                    <td>
+                        <input id="jinbun" type="number" class="txt" step="2" onKeyDown="nextInput('syakai');" min='0' oninput="all_calc(); ChangeBySelect();">
+                    </td>
+                    <td id="result_jinbun"></td>
+                </tr>
+    <!--____________________________________________________________-->
+                <tr class="subtotal1 subtotal2 total1">
+                    <td>社会</td>
+                    <td>2</td>
+                    <td>
+                        <input id="syakai" class="txt" type="number" step="2" onKeyDown="nextInput('sougou');" min='0' oninput="all_calc(); ChangeBySelect();">
+                    </td>
+                    <td id="result_syakai"></td>
+                </tr>
+    <!--____________________________________________________________-->
+                <tr class="subtotal1 subtotal2 total1">
+                    <td>総合</td>
+                    <td></td>
+                    <td>
+                        <input id="sougou" class="txt" type="number" step="2" onKeyDown="nextInput('career');" min='0' oninput="all_calc(); ChangeBySelect();">
+                    </td>
+                    <td></td>
+                </tr>
+    <!--____________________________________________________________-->
+                <tr class="subtotal1 subtotal2 total1">
+                    <td>キャリア関係</td>
+                    <td></td>
+                    <td>
+                        <input id="career" class="txt" type="number" step="2" onKeyDown="nextInput('ryudai');" min='0' oninput="all_calc(); ChangeBySelect();">
+                    </td>
+                    <td></td>
+                </tr>
+    <!--____________________________________________________________-->
+                <tr class="subtotal1 subtotal2 total1">
+                    <td class="hover_subtotal1">琉大特色・地域創生</td>
+                    <td></td>
+                    <td>
+                        <input id="ryudai" class="txt" type="number" step="2" onKeyDown="nextInput('Japanese');" min='0' oninput="all_calc(); ChangeBySelect();">
+                    </td>
+                    <td></td>
+                </tr>
+    <!--____________________________________________________________-->
+                <tr>
+                    <td>(総合領域計)
+                        <br>
+                            総合 キャリア関係 琉大特色・地域創生
+                    </td>
+                    <td>2</td>
+                    <td id="sougouryouiki"></td> 
+                    <td id="result_sougouryouiki"></td>
+                </tr>
+    <!--____________________________________________________________-->
+                <tr>
+                    <td>日本語・日本語事情</td>
+                    <td></td>
+                    <td>
+                        <input id="Japanese" class="txt" type="number" step="2" onKeyDown="nextInput('sizen');" min='0' oninput="all_calc(); ChangeBySelect();">
+                    </td>
+                    <td></td>
+                </tr>
 
-            <tr id="high_light_subtotal1" class="subtotal1_bgcolor">
-                <td>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lightbulb" viewBox="0 0 16 16">
-                    <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z"/>
-                    </svg>
-                    小計1
-                </td>
-                <td>12</td>
-                <td id="subtotal1"></td>
-                <td id ="result_subtotal1"></td>
-            </tr>
-<!--____________________________________________________________-->
-            <tr  class="subtotal2 total1">
-                <td>自然</td>
-                <td></td>
-                <td>
-                    <input id="sizen" class="txt" type="number" step="2" onKeyDown="nextInput('info');" min='0' oninput="all_calc(); ChangeBySelect();">
-                </td>
-                <td></td>
-            </tr>
-<!--____________________________________________________________-->
-            <tr id="high_light_subtotal2" class="subtotal2_bgcolor">
-                <td>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lightbulb" viewBox="0 0 16 16">
+                <tr id="high_light_subtotal1" class="subtotal1_bgcolor">
+                    <td>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lightbulb" viewBox="0 0 16 16">
                         <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z"/>
-                    </svg>
-                小計2
-                </td>
-                <td>14</td>
-                <td id="subtotal2"></td>
-                <td id="result_subtotal2"></td>
-            </tr>
-
+                        </svg>
+                        小計1
+                    </td>
+                    <td>12</td>
+                    <td id="subtotal1"></td>
+                    <td id ="result_subtotal1"></td>
+                </tr>
+    <!--____________________________________________________________-->
+                <tr  class="subtotal2 total1">
+                    <td>自然</td>
+                    <td></td>
+                    <td>
+                        <input id="sizen" class="txt" type="number" step="2" onKeyDown="nextInput('info');" min='0' oninput="all_calc(); ChangeBySelect();">
+                    </td>
+                    <td></td>
+                </tr>
+    <!--____________________________________________________________-->
+                <tr id="high_light_subtotal2" class="subtotal2_bgcolor">
+                    <td>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lightbulb" viewBox="0 0 16 16">
+                            <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z"/>
+                        </svg>
+                    小計2
+                    </td>
+                    <td>14</td>
+                    <td id="subtotal2"></td>
+                    <td id="result_subtotal2"></td>
+                </tr>
             <tr>
                 <td>&nbsp;<!-- 1行開けるための処理 -->
                 </td>
@@ -279,27 +290,25 @@
                 </td>
                 <td id="result_etc"></td>
             </tr>
-<!--____________________________________________________________-->
-            
-            <tr>
-                <td>(第二言語計)
-                    <br>英語以外の1外国語を4単位
-                </td>
-                <td>4</td>
-                <td id="sum_second"></td> 
-                
-                <td id="result_second"></td>
-            </tr>
-<!--____________________________________________________________-->
-            <tr>
-                <td>(外国語計)
-                    <br>英語12または英語8と1つの外国語4
-                </td>
-                <td>12</td>
-                <td id="foreignTotal"></td>
-                <td id="result_foreignTotal"></td>
-            </tr>
-
+<!--____________________________________________________________-->    
+                <tr>
+                    <td>(第二言語計)
+                        <br>英語以外の1外国語を4単位
+                    </td>
+                    <td>4</td>
+                    <td id="sum_second"></td> 
+                    
+                    <td id="result_second"></td>
+                </tr>
+    <!--____________________________________________________________-->
+                <tr>
+                    <td>(外国語計)
+                        <br>英語12または英語8と1つの外国語4
+                    </td>
+                    <td>12</td>
+                    <td id="foreignTotal"></td>
+                    <td id="result_foreignTotal"></td>
+                </tr>
 <!--____________________________________________________________-->
             <tr>
                 <td>&nbsp;<!-- 1行開けるための処理 -->
@@ -361,6 +370,14 @@
                 </td>
                 <td></td>
             </tr>
+        </table>
+        <table align="center" border="1" class="credits_table table_below_the_select " id="table_below_the_select1">
+            <colgroup>
+                <col class="tc_subject">
+                <col class="tc_credit_req">
+                <col class="tc_credit_got">
+                <col class="tc_credit_insufficient">
+            </colgroup>
 <!--____________________________________________________________-->
             <tr>
                 <td>&nbsp;<!-- 1行開けるための処理 -->
@@ -756,7 +773,6 @@
             <p class="check_lb" id="result_lab_req_y18_y19_y20"></p>
         </div>
 
-        <br /> 
         <div class="req_lab" align="center" id=req_lab_y21><!-- y21研究室配属条件 -->
             <h2>研究室配属条件</h2>
             <label class="check_lb">
@@ -770,6 +786,8 @@
             </label>
             <p class="check_lb" id="result_lab_req_y21"></p>
         </div>
+
+        <br />
         <div class="portal_usage" align="center" id=portal_usage>
             <h4>〜教務システムから成績表を取得する方法〜</h4>
             <div class="ol_portal_usage" id=ol_portal_usage>
@@ -782,6 +800,27 @@
             </div>
             <p>※学内環境に接続する必要があります。学外から成績表を見たい場合はVPNに接続してください。</p>
             <p>VPNへの接続方法がわからない方は<a href="http://www.cnc.u-ryukyu.ac.jp/ssl-vpn3/" target="_blank">こちら</a>をご覧ください。</p>
+        </div>
+
+        <br />
+        <div class="course_model" align="center" id="course_model_y18"><!-- y18履修モデル -->
+            <h4>〜2018年度入学生履修モデル〜</h4>
+            <a href="https://ie.u-ryukyu.ac.jp/files/2008/12/tebiki2018.pdf#page=15" target="_blank">修学の手引き15ページ</a>にて閲覧できます。
+        </div>
+
+        <div class="course_model" align="center" id="course_model_y19"><!-- y19履修モデル -->
+            <h4>〜2019年度入学生履修モデル〜</h4>
+            <a href="https://ie.u-ryukyu.ac.jp/files/2019/04/tebiki2019-0401.pdf#page=15" target="_blank">修学の手引き15ページ</a>にて閲覧できます。
+        </div>
+
+        <div class="course_model" align="center" id="course_model_y20"><!-- y20履修モデル -->
+            <h4>〜2020年度入学生履修モデル〜</h4>
+            <a href="https://ie.u-ryukyu.ac.jp/files/2020/04/tebiki2020.pdf#page=14" target="_blank">修学の手引き14ページ</a>にて閲覧できます。
+        </div>
+
+        <div class="course_model" align="center" id="course_model_y21"><!-- y21履修モデル -->
+            <h4>〜2021年度入学生履修モデル〜</h4>
+            <a href="https://docs.google.com/spreadsheets/d/1thX222NozMjtfNzIjyXSEu5MDZiWeXb0f4rP95vvURQ/edit#gid=770653021" target="_blank">こちら</a>から閲覧できます。
         </div>
     </div>
         <div class="GoogleForm">

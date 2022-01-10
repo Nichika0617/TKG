@@ -4,14 +4,37 @@ td{
 
 table {
   font-family: "MSゴシック" ;
-  border-collapse: collapse;    
+  border-collapse: collapse;
+  /*border: none;  */  
   border: solid 2px orange;/*表全体を線で囲う*/
+  margin: 0px;
 }
 
 table th, table td {
   border: dashed 1px orange;
   text-align: center;
   /*破線 1px オレンジ*/
+}
+
+.credits_table{
+  display: inline-block;
+  vertical-align: top;
+}
+
+.credits_table .tc_subject{
+  width: 286px;
+}
+
+.credits_table .tc_credit_req{
+  width: 67px;
+}
+
+.credits_table .tc_credit_got{
+  width: 223px;
+}
+
+.credits_table .tc_credit_insufficient{
+  width: 115px;
 }
 
 table input{
@@ -195,6 +218,60 @@ li {
 }
 
 .below_the_select{
-  opacity: 0;
+  opacity: 1;
   transition: 2s;
+}
+/* アコーディオンメニュー */
+
+.usage :last-child {
+  margin-bottom: 20px; /* 最後の要素の下にだけ余白 */
+}
+.usage input {
+  display: none;
+}
+.usage label {
+  color: #474747; /* 文字色 */
+  font-size: 25px; /* 文字サイズ */
+  line-height: 2; /* 行間 */
+  font-weight: bold; /* 文字を太く */
+  text-align: center; /* 文字を中央に */
+  background:  #ffd98a; /* グラデーションの背景色 */
+  padding: 10px; /* 内側の余白 */
+  cursor: pointer;
+  position: relative;
+  display: block;
+}
+.usage label:after {
+  position: absolute;
+  right: 20px; /* 左からの距離 */
+  top: 50%; /* 上下中央配置 */
+  -webkit-transform : translateY(-50%);
+  transform : translateY(-50%);
+  content: "+"; /* アイコン */
+}
+.usage input:checked ~ label::after {
+  content: "-"; /* クリック後のアイコン */
+}
+.usage div {
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: 0.3s; /* 開閉スピード */
+}
+.usage input:checked ~ div {
+  height: auto;
+  opacity: 1;
+  padding: 20px; /* 中身の枠内の余白 */
+  background: #FAFAFA; /* 中身の背景色 */
+}
+.ac-menu-inside {
+  color: #333; /* 中身の文字色 */
+  font-size: 17px; /* 中身の文字サイズ */
+  line-height: 2; /* 行間 */
+}
+.course_model{
+  margin: 0 auto;
+  width: 90%;
+  max-width: 650px;
+  display: none;
 }
