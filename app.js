@@ -512,6 +512,7 @@ const ChangeBySelect = () =>{
     TableChangeReqLab();
     admissionYearTableChange();
     TableChangeSubjectClassificationImage();
+    TableChangeCourseModel();
 }
 
 const admissionYearTableChange = () =>{
@@ -1660,5 +1661,38 @@ const DisplayTable = () =>{
     aboveTheTableElement.className += 'd-none';
     */
     
+}
+
+const TableChangeCourseModel = () =>{
+    // 履修モデルの切り替え
+    let element_admission_year = document.getElementById('select_admission_year')
+    let options_admission_year = element_admission_year.options;
+
+    let course_model_y18_element = document.getElementById('course_model_y18')
+    let course_model_y19_element = document.getElementById('course_model_y19')
+    let course_model_y20_element = document.getElementById('course_model_y20')
+    let course_model_y21_element = document.getElementById('course_model_y21')
+
+    if(options_admission_year[1].selected == true){
+        course_model_y18_element.style.display = 'block';
+        course_model_y19_element.style.display = 'none';
+        course_model_y20_element.style.display = 'none';
+        course_model_y21_element.style.display = 'none';
+    }else if(options_admission_year[2].selected == true){
+        course_model_y18_element.style.display = 'none';
+        course_model_y19_element.style.display = 'block';
+        course_model_y20_element.style.display = 'none';
+        course_model_y21_element.style.display = 'none';
+    }else if(options_admission_year[3].selected == true){
+        course_model_y18_element.style.display = 'none';
+        course_model_y19_element.style.display = 'none';
+        course_model_y20_element.style.display = 'block';
+        course_model_y21_element.style.display = 'none';
+    }else if(options_admission_year[4].selected == true){
+        course_model_y18_element.style.display = 'none';
+        course_model_y19_element.style.display = 'none';
+        course_model_y20_element.style.display = 'none';
+        course_model_y21_element.style.display = 'block';
+    }
 }
 
