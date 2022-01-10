@@ -110,7 +110,7 @@ const all_calc = ()=>{
     const major_base = convertNum(document.getElementById('major_base').value);
     const out_major_base = convertNum(document.getElementById('out_major_base').value);
     // これはどこに含まれる．．？ 専門基礎指定外
-    const All_total = total1_calc() + total2_calc() + major_base;
+    const All_total = total1_calc() + total2_calc() + major_base + out_major_base;
     // 合計 共通30 + 専門計92 + 専門基礎8 = 130
 
     document.getElementById('result_major_base').textContent=Math.max(8-major_base,0);
@@ -202,7 +202,7 @@ const foreign_calc = ()=>{
     }else{
         if (sum_second >= 4){
             // 一つの科目群から4単位以上でなかったとしても，とりあえずマイナスにならないように合計が4超えた時も0とする
-            document.getElementById('result_second').innerHTML = "0 <br> <span class='warning'>第二言語は合計で4単位以上ではなく，<br> 1つの言語から4単位取得する必要があります．</span>"
+            document.getElementById('result_second').innerHTML = "<span class='warning' title='第二言語は合計で4単位以上ではなく，\n 1つの言語から4単位取得する必要があります．'>0</span>";
             second_foreign_judge = false; // 第二言語の条件を満たしていない
         }else{
             document.getElementById('result_second').textContent = Math.max(4-sum_second,0)
@@ -216,14 +216,15 @@ const foreign_calc = ()=>{
     // foreignTotalが英語12か英語8と外国語4かどうか出力する
     if(foreignTotal >= 12){
         if(English >= 12){
-            document.getElementById('result_foreignTotal').innerHTML = "0 <span class='success'><br> 英語12単位で満たされています，</span>";
+            second_foreign_judge = true
+            document.getElementById('result_foreignTotal').innerHTML = document.getElementById('result_foreignTotal').innerHTML = "<span class='success' title='英語12単位で満たされています．'>0</span>";
             log("英語12");
         }else if(English >= 8 && second_foreign_judge == true){
         // 英語8単位以上かつ，第二言語1つを4単位以上とっているならば
-            document.getElementById('result_foreignTotal').innerHTML = "0 <span class='success'><br> 英語8単位，第二言語4単位で満たされています．</span>"
+            document.getElementById('result_foreignTotal').innerHTML = "<span class='success' title='英語8単位，第二言語4単位で満たされています．'>0</span>";
             log("英語8と第二言語4")
         }else{
-            document.getElementById('result_foreignTotal').innerHTML = "0 <span class='warning'><br> 言語の取得条件を満たしていません．</span>"
+            document.getElementById('result_foreignTotal').innerHTML = "<span class='warning' title='言語の取得条件を満たしていません．'>0</span>";
             
         }
     }
@@ -260,40 +261,40 @@ const total1_calc = () => {
         if(Math.max(2-health,0) == 0 && Math.max(14-subTotal2,0) == 0 && Math.max(2-info,0) == 0 && Math.max(12-foreignTotal,0) == 0 && subtotal2_judge == true && English >= 8 && second_foreign_judge == true){
             // 注意文とか追加したから document.getElementById == 0の比較はできなくなってしまった
             // 2 + 14 + 2 + 12 = 30 で条件を満たしているならば，
-            document.getElementById('result_total1').innerHTML = "0 <span class='success'><br> 30単位の条件を満たしています</span>"
+            document.getElementById('result_total1').innerHTML = "<span class='success' title='30単位の条件を満たしています．'>0</span>";
             log("共通30満たした．")
         }else if(Math.max(2-health,0) != 0){
             // 30単位は満たしたが，健康運動を取得していない
-            document.getElementById('result_total1').innerHTML = "0 <span class='warning'><br>健康運動を2単位以上取得する必要があります．</span>"
+            document.getElementById('result_total1').innerHTML = "<span class='warning' title='健康運動を2単位以上取得する必要があります．'>0</span>";
         }else if(second_foreign_judge == false){
             // 30単位は満たしたが，第二言語の取り方を間違っている．
-            document.getElementById('result_total1').innerHTML = "0 <span class='warning'><br>第二言語を確認してください．</span>"
+            document.getElementById('result_total1').innerHTML = "<span class='warning' title='第二言語計を確認してください．'>0</span>";
         }else if(Math.max(12-foreignTotal,0) != 0){
             // 30単位は満たしたが，外国語計を満たしていない
-            document.getElementById('result_total1').innerHTML = "0 <span class='warning'><br>外国語を合計12単位取得する必要があります．</span>"
+            document.getElementById('result_total1').innerHTML = "<span class='warning' title='外国語を合計12単位取得する必要があります．'>0</span>";
         }else if(Math.max(2-info,0) != 0){
             // 30単位は満たしたが，情報関係を取得していない
-                document.getElementById('result_total1').innerHTML = "0 <span class='warning'><br>情報関係を2単位以上取得する必要があります．</span>"
+                document.getElementById('result_total1').innerHTML = "<span class='warning' title='情報関係を2単位以上取得する必要があります．'>0</span>";
         }else if(subtotal2_judge != true){
             // 小計2の判定がfalseを吐いている時，
             if(document.getElementById('result_jinbun').textContent != 0){
                 // 人文を満たしていない
-                document.getElementById('result_total1').innerHTML = "0 <span class='warning'><br>人文系科目を2単位以上取得する必要があります．</span>"
+                document.getElementById('result_total1').innerHTML = "<span class='warning' title='人文系科目を2単位以上取得する必要があります．'>0</span>";
             }else if(document.getElementById('result_syakai').textContent != 0){
                 // 社会を満たしていない
-                document.getElementById('result_total1').innerHTML = "0 <span class='warning'><br>社会系科目を2単位以上取得する必要があります．</span>"
+                document.getElementById('result_total1').innerHTML = "<span class='warning' title='社会系科目を2単位以上取得する必要があります．'>0</span>";
             }else if(document.getElementById('result_sougouryouiki').textContent != 0){
                 // 総合領域を満たしていない
-                document.getElementById('result_total1').innerHTML = "0 <span class='warning'><br>総合領域を2単位以上取得する必要があります．</span>"
+                document.getElementById('result_total1').innerHTML = "<span class='warning' title='総合領域を2単位以上取得する必要があります．'>0</span>";
             }else if(Math.max(14-subTotal2,0) != 0){
             // 30単位は満たしたが，小計2が満たされていない．(言語を取りすぎとか．)
-                document.getElementById('result_total1').innerHTML = "0 <span class='warning'><br>小計2を確認してください．</span>"
+                document.getElementById('result_total1').innerHTML = "<span class='warning' title='小計2を確認してください．'>0</span>";
             }
         }else if(English < 8){
-            document.getElementById('result_total1').innerHTML = "0 <span class='warning'><br>外国語計を確認してください．</span>"
+            document.getElementById('result_total1').innerHTML = "<span class='warning' title='外国語計を確認してください．'>0</span>";
         }else{
-            document.getElementById('result_total1').innerHTML = "0 <span class='warning'><br>上の各条件を確認してください．</span>"
-            // マイナスにならないよう取得単位が30を超えたら0にしておくが，条件を満たせていないという注意を表示
+            document.getElementById('result_total1').innerHTML = "<span class='warning' title='上の各条件を確認してください．'>0</span>";
+            // マイナスにならないよう取得単位が30を超えたら0にしておくが，どこかの条件を満たせていないという注意を表示
             log("共通30の条件に合っていない")
         }
     }else{
@@ -355,14 +356,14 @@ const subtotal4_calc = () => {
         if(subTotal3 >= 22){
             if(fusion_judge == true){
             //数情計が22単位以上かつ，工学融合を4単位以上取得しているならば
-                document.getElementById('result_sub_total4').innerHTML = `${Math.max(36-subTotal4,0)} <span class='success'><br> 36単位の条件を満たしています．</span>`
+                document.getElementById('result_sub_total4').innerHTML = `<span class='success' title='36単位の条件を満たしています．'>${Math.max(36-subTotal4,0)}</span>`;
             }else{
                 // 数は満たしているが，工学融合をとっていない
-                document.getElementById('result_sub_total4').innerHTML = `${Math.max(36-subTotal4,0)} <span class='warning'><br> 工学融合科目を4単位以上取得する必要があります．</span>`
+                document.getElementById('result_sub_total4').innerHTML = `<span class='warning' title='工学融合科目を4単位以上取得する必要があります．'>${Math.max(36-subTotal4,0)}</span>`;
             }
         }else{
             // 36は超えてるが，数情計を22単位取っていない 融合と自由取りすぎ？
-            document.getElementById('result_sub_total4').innerHTML = `${Math.max(36-subTotal4,0)} <span class='warning'><br> 数情計を22単位取得する必要があります．</span>`
+            document.getElementById('result_sub_total4').innerHTML = `<span class='warning' title='数情計を22単位取得する必要があります．'>${Math.max(36-subTotal4,0)}</span>`;
         }
     }else{
         // 36超えてない値に戻した時は，一度警告を全部消すため，
@@ -440,27 +441,27 @@ const total2_calc = () => {
     if(total2 >= 92){
         if(info_tec_judge != true){
             // 92超えてるが，情報技術を満たしていない
-            document.getElementById('result_total2').innerHTML = "0 <span class='warning'><br>情報技術の単位が不足しています．</span>"
+            document.getElementById('result_total2').innerHTML = `<span class='warning' title='情報技術の単位が不足しています．'>0</span>`;
         }else if(ex_judge != true){
             // 92超えてるが，総合力演習を満たしていない
-            document.getElementById('result_total2').innerHTML = "0 <span class='warning'><br>総合力演習の単位が不足しています．</span>"
+            document.getElementById('result_total2').innerHTML = `<span class='warning' title='総合力演習の単位が不足しています．'>0</span>`;
         }else if(exp_judge != true){
             // 92超えてるが，研究実験を満たしていない
-            document.getElementById('result_total2').innerHTML = "0 <span class='warning'><br>研究実験の単位が不足しています．</span>"
+            document.getElementById('result_total2').innerHTML = `<span class='warning' title='研究実験の単位が不足しています．'>0</span>`;
         }else if(math_base_judge != true){
             // 92超えてるが，数学基礎を満たしていない
-            document.getElementById('result_total2').innerHTML = "0 <span class='warning'><br>数学基礎の単位が不足しています．</span>"
+            document.getElementById('result_total2').innerHTML = `<span class='warning' title='数学基礎の単位が不足しています．'>0</span>`;
         }else if(core_judge != true){
             // 92超えてるが，知能情報コアを満たしていない
-            document.getElementById('result_total2').innerHTML = "0 <span class='warning'><br>知能情報コアの単位が不足しています．</span>"
+            document.getElementById('result_total2').innerHTML = `<span class='warning' title='知能情報コアの単位が不足しています．'>0</span>`;
         }else if(fusion_judge != true){
-            document.getElementById('result_total2').innerHTML = "0 <span class='warning'><br>工学融合の単位が不足しています．</span>"
+            document.getElementById('result_total2').innerHTML = `<span class='warning' title='工学融合の単位が不足しています．'>0</span>`;
         }else if(subTotal4 < 36){
             // 92超えてるが，数情等計36単位を満たしていない または，数情等計36満たしているが，工学融合を満たしていない．
-            document.getElementById('result_total2').innerHTML = "0 <span class='warning'><br>数情統計の単位が不足しています．</span>"
+            document.getElementById('result_total2').innerHTML = `<span class='warning' title='数情統計の単位が不足しています．'>0</span>`;
         }else{
             // おそらく全部満たしている．．？
-            document.getElementById('result_total2').innerHTML = "0 <span class='success'> <br>92単位の条件を満たしています．</span>"
+            document.getElementById('result_total2').innerHTML = `<span class='success' title='92単位の条件を満たしています．'>0</span>`;
         }
     }
     return total2;
