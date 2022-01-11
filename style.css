@@ -275,3 +275,41 @@ li {
   max-width: 650px;
   display: none;
 }
+
+
+.table_tooltip{
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+}
+.table_tooltip p{
+    margin:0;
+    padding:0;
+}
+.description {
+    display: none;
+    position: absolute;
+    padding: 10px;
+    font-size: 15px;
+    line-height: 1.6em;
+    color: #000;
+    border-radius: 5px;
+    background: #fce6b8;
+    width: 120px;
+}
+.description:before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 130px;
+    border: 15px solid transparent;
+    border-top: 15px solid #fce6b8;
+    margin-left: -15px;
+    transform: rotateZ(270deg);
+}
+
+.table_tooltip:hover .description{
+    display: inline-block;
+    top: 0px;
+    left: -130px;
+}
