@@ -115,6 +115,7 @@ h1 {
   background-color: rgb(255, 251, 218);
 }
 
+/*単位数入力蘭を赤枠にするために使用していた*/
 input:invalid{
   border: solid 1px red;
 }
