@@ -100,7 +100,7 @@
                     <td>健康運動</td>
                     <td>2</td>
                     <td>
-                        <input id="health" class="txt" type="number" step='0.5' onKeyDown="nextInput('jinbun');" min='0' oninput="all_calc(); ChangeBySelect();">
+                        <input id="health" class="txt" type="number" step="0.5" onKeyDown="nextInput('jinbun');" min='0' oninput="ChangeBySelect(); all_calc();">
                     </td>
                     <td id="result_health">
                         <!-- 計算結果をjsから書き込む． -->
@@ -108,7 +108,7 @@
                 </tr>
     <!--____________________________________________________________-->
                 <tr>
-                    <td>　
+                    <td>&nbsp;
                         <!-- 1行開けるための空欄 -->
                     </td>
                     <td></td>
@@ -120,7 +120,7 @@
                     <td>人文</td>
                     <td>2</td>
                     <td>
-                        <input id="jinbun" type="number" class="txt" step='0.5' onKeyDown="nextInput('syakai');" min='0' oninput="all_calc(); ChangeBySelect();">
+                        <input id="jinbun" type="number" class="txt" step="0.5" onKeyDown="nextInput('syakai');" min='0' oninput="ChangeBySelect(); all_calc();">
                     </td>
                     <td id="result_jinbun"></td>
                 </tr>
@@ -129,7 +129,7 @@
                     <td>社会</td>
                     <td>2</td>
                     <td>
-                        <input id="syakai" class="txt" type="number" step='0.5' onKeyDown="nextInput('sougou');" min='0' oninput="all_calc(); ChangeBySelect();">
+                        <input id="syakai" class="txt" type="number" step="0.5" onKeyDown="nextInput('sougou');" min='0' oninput="ChangeBySelect(); all_calc();">
                     </td>
                     <td id="result_syakai"></td>
                 </tr>
@@ -138,7 +138,7 @@
                     <td>総合</td>
                     <td></td>
                     <td>
-                        <input id="sougou" class="txt" type="number" step='0.5' onKeyDown="nextInput('career');" min='0' oninput="all_calc(); ChangeBySelect();">
+                        <input id="sougou" class="txt" type="number" step="0.5" onKeyDown="nextInput('career');" min='0' oninput="ChangeBySelect(); all_calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -147,7 +147,7 @@
                     <td>キャリア関係</td>
                     <td></td>
                     <td>
-                        <input id="career" class="txt" type="number" step='0.5' onKeyDown="nextInput('ryudai');" min='0' oninput="all_calc(); ChangeBySelect();">
+                        <input id="career" class="txt" type="number" step="0.5" onKeyDown="nextInput('ryudai');" min='0' oninput="ChangeBySelect(); all_calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -156,7 +156,7 @@
                     <td class="hover_subtotal1">琉大特色・地域創生</td>
                     <td></td>
                     <td>
-                        <input id="ryudai" class="txt" type="number" step='0.5' onKeyDown="nextInput('Japanese');" min='0' oninput="all_calc(); ChangeBySelect();">
+                        <input id="ryudai" class="txt" type="number" step="0.5" onKeyDown="nextInput('Japanese');" min='0' oninput="ChangeBySelect(); all_calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -175,7 +175,7 @@
                     <td>日本語・日本語事情</td>
                     <td></td>
                     <td>
-                        <input id="Japanese" class="txt" type="number" step='0.5' onKeyDown="nextInput('sizen');" min='0' oninput="all_calc(); ChangeBySelect();">
+                        <input id="Japanese" class="txt" type="number" step="0.5" onKeyDown="nextInput('sizen');" min='0' oninput="ChangeBySelect(); all_calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -196,7 +196,7 @@
                     <td>自然</td>
                     <td></td>
                     <td>
-                        <input id="sizen" class="txt" type="number" step='0.5' onKeyDown="nextInput('info');" min='0' oninput="all_calc(); ChangeBySelect();">
+                        <input id="sizen" class="txt" type="number" step="0.5" onKeyDown="nextInput('info');" min='0' oninput="ChangeBySelect(); all_calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -224,7 +224,7 @@
                 <td>情報関係</td>
                 <td>2</td>
                 <td>
-                    <input id="info" class="txt" type="number" step='0.5' onKeyDown="nextInput('English');" min='0' oninput="all_calc(); ChangeBySelect();">
+                    <input id="info" class="txt" type="number" step="0.5" onKeyDown="nextInput('English');" min='0' oninput="ChangeBySelect(); all_calc();">
                 </td>
                 <td id="result_info"></td>
             </tr>
@@ -241,7 +241,7 @@
                 <td>英語</td>
                 <td>8</td>
                 <td>
-                    <input id="English" class="txt" type="number" step='0.5' onKeyDown="nextInput('German');" min='0' oninput="all_calc(); ChangeBySelect();">
+                    <input id="English" class="txt" type="number" step="0.5" onKeyDown="nextInput('German');" min='0' oninput="ChangeBySelect(); all_calc();">
                 </td>
                 <td id="result_eng"></td>
             </tr>
@@ -250,7 +250,7 @@
                 <td>ドイツ語</td>
                 <td>(4)</td>
                 <td>
-                    <input id="German" class="txt" type="number" step='0.5' onKeyDown="nextInput('French');" min='0' oninput="all_calc(); ChangeBySelect();">
+                    <input id="German" class="txt" type="number" step="0.5" onKeyDown="nextInput('French');" min='0' oninput="ChangeBySelect(); all_calc();">
                 </td>
                 <td id="result_german"></td>
             </tr>
@@ -259,7 +259,7 @@
                 <td>フランス語</td>
                 <td>(4)</td>
                 <td>
-                    <input id="French" class="txt" type="number" step='0.5' onKeyDown="nextInput('Spanish');" min='0' oninput="all_calc(); ChangeBySelect();">
+                    <input id="French" class="txt" type="number" step="0.5" onKeyDown="nextInput('Spanish');" min='0' oninput="ChangeBySelect(); all_calc();">
                 </td>
                 <td id="result_french"></td>
             </tr>
@@ -268,7 +268,7 @@
                 <td>スペイン語</td>
                 <td>(4)</td>
                 <td>
-                    <input id="Spanish" class="txt" type="number" step='0.5' onKeyDown="nextInput('Chinese');" min='0' oninput="all_calc(); ChangeBySelect();">
+                    <input id="Spanish" class="txt" type="number" step="0.5" onKeyDown="nextInput('Chinese');" min='0' oninput="ChangeBySelect(); all_calc();">
                 </td>
                 <td id="result_spanish"></td>
             </tr>
@@ -277,7 +277,7 @@
                 <td>中国語</td>
                 <td>(4)</td>
                 <td>
-                    <input id="Chinese" class="txt" type="number" step='0.5' onKeyDown="nextInput('etc');" min='0' oninput="all_calc(); ChangeBySelect();">
+                    <input id="Chinese" class="txt" type="number" step="0.5" onKeyDown="nextInput('etc');" min='0' oninput="ChangeBySelect(); all_calc();">
                 </td>
                 <td id="result_chinese"></td>
             </tr>
@@ -286,7 +286,7 @@
                 <td>その他</td>
                 <td>(4)</td>
                 <td>
-                    <input id="etc" class="txt" type="number" step='0.5' onKeyDown="nextInput('major_base');" min='0' oninput="all_calc(); ChangeBySelect();">
+                    <input id="etc" class="txt" type="number" step="0.5" onKeyDown="nextInput('major_base');" min='0' oninput="ChangeBySelect(); all_calc();">
                 </td>
                 <td id="result_etc"></td>
             </tr>
@@ -357,7 +357,7 @@
                 <td>専門基礎</td>
                 <td id="req_major_base">8</td>
                 <td>
-                    <input id="major_base" class="txt" type="number" step='0.5' onKeyDown="nextInput('out_major_base');" min='0' oninput="all_calc(); ChangeBySelect();">
+                    <input id="major_base" class="txt" type="number" step="0.5" onKeyDown="nextInput('out_major_base');" min='0' oninput="ChangeBySelect(); all_calc();">
                 </td>
                 <td id="result_major_base"></td>
             </tr>
@@ -366,7 +366,7 @@
                 <td>専門基礎指定外</td>
                 <td></td>
                 <td>
-                    <input id="out_major_base" class="txt" type="number" step='0.5' onKeyDown="nextInput('info_tec');" min='0' oninput="all_calc(); ChangeBySelect();">
+                    <input id="out_major_base" class="txt" type="number" step="0.5" onKeyDown="nextInput('info_tec');" min='0' oninput="ChangeBySelect(); all_calc();">
                 </td>
                 <td></td>
             </tr>
@@ -398,7 +398,7 @@
                 <td>情報技術</td>
                 <td>2</td>
                 <td>
-                    <input id="info_tec" class="txt" type="number" step='0.5' onKeyDown="nextInput('ex');" min='0' oninput="all_calc(); ChangeBySelect();">
+                    <input id="info_tec" class="txt" type="number" step="0.5" onKeyDown="nextInput('ex');" min='0' oninput="ChangeBySelect(); all_calc();">
                 </td>
                 <td id="result_info_tec"></td>
             </tr>
@@ -407,7 +407,7 @@
                 <td>総合力演習</td>
                 <td>7</td>
                 <td>
-                    <input id="ex" class="txt" type="number" step='0.5' onKeyDown="nextInput('experiment');" min='0' oninput="all_calc(); ChangeBySelect();">
+                    <input id="ex" class="txt" type="number" step="0.5" onKeyDown="nextInput('experiment');" min='0' oninput="ChangeBySelect(); all_calc();">
                     <!-- プログラミング演習1単位のため，1単位 -->
                 </td>
                 <td id="result_ex"></td>
@@ -417,7 +417,8 @@
                 <td>研究実験</td>
                 <td id="req_experiment">15</td>
                 <td>
-                    <input id="experiment" class="txt" type="number" step='0.5' onKeyDown="nextInput('math_base');" min='0' oninput="all_calc(); ChangeBySelect();">
+                    <input id="experiment" class="txt" type="number" step="0.5" onKeyDown="nextInput('math_base');" min='0' oninput="ChangeBySelect(); all_calc();">
+                    <!-- 実験だけstep="0.5" -->
                 </td>
                 <td id="result_exp"></td>
             </tr>
@@ -426,7 +427,7 @@
                 <td>数学基礎</td>
                 <td>6</td>
                 <td>
-                    <input id="math_base" class="txt" type="number" step='0.5' onKeyDown="nextInput('core');" min='0' oninput="all_calc(); ChangeBySelect();">
+                    <input id="math_base" class="txt" type="number" step="0.5" onKeyDown="nextInput('core');" min='0' oninput="ChangeBySelect(); all_calc();">
                 </td>
                 <td id="result_math_base"></td>
             </tr>
@@ -435,7 +436,7 @@
                 <td>知能情報コア</td>
                 <td>26</td>
                 <td>
-                    <input id="core" class="txt" type="number" step='0.5' onKeyDown="nextInput('fusion');" min='0' oninput="all_calc(); ChangeBySelect();">
+                    <input id="core" class="txt" type="number" step="0.5" onKeyDown="nextInput('fusion');" min='0' oninput="ChangeBySelect(); all_calc();">
                 </td>
                 <td id="result_core"></td>
             </tr>
@@ -452,7 +453,7 @@
                 <td>工学融合(選択)</td>
                 <td>4</td>
                 <td>
-                    <input id="fusion" class="txt" type="number" step='0.5' onKeyDown="nextInput('math_base_select');" min='0' oninput="all_calc(); ChangeBySelect();">
+                    <input id="fusion" class="txt" type="number" step="0.5" onKeyDown="nextInput('math_base_select');" min='0' oninput="ChangeBySelect(); all_calc();">
                 </td>
                 <td id="result_fusion"></td>
             </tr>
@@ -461,7 +462,7 @@
                 <td>数学基礎(選択)</td>
                 <td></td>
                 <td>
-                    <input id="math_base_select" class="txt" type="number" step='0.5' onKeyDown="nextInput('adv');" min='0' oninput="all_calc(); ChangeBySelect();">
+                    <input id="math_base_select" class="txt" type="number" step="0.5" onKeyDown="nextInput('adv');" min='0' oninput="ChangeBySelect(); all_calc();">
                 </td>
                 <td></td>
             </tr>
@@ -470,7 +471,7 @@
                 <td>知能情報アドバンスト</td>
                 <td></td>
                 <td>
-                    <input id="adv" class="txt" type="number" step='0.5' onKeyDown="nextInput('relation');" min='0' oninput="all_calc(); ChangeBySelect();">
+                    <input id="adv" class="txt" type="number" step="0.5" onKeyDown="nextInput('relation');" min='0' oninput="ChangeBySelect(); all_calc();">
                 </td>
                 <td></td>
             </tr>
@@ -479,7 +480,7 @@
                 <td>知能情報関連</td>
                 <td></td>
                 <td>
-                    <input id="relation" class="txt" type="number" step='0.5' onKeyDown="nextInput('common_engineering');" min='0' oninput="all_calc(); ChangeBySelect();">
+                    <input id="relation" class="txt" type="number" step="0.5" onKeyDown="nextInput('common_engineering');" min='0' oninput="ChangeBySelect(); all_calc();">
                     <!-- インターンが1単位のため，1ずつ変化 -->
                 </td>
                 <td></td>
@@ -501,7 +502,7 @@
                 <td>選択(工学共通)</td>
                 <td></td>
                 <td>
-                    <input id="common_engineering" class="txt" type="number" step='0.5' onKeyDown="nextInput('free');" min='0' oninput="all_calc(); ChangeBySelect();">
+                    <input id="common_engineering" class="txt" type="number" step="0.5" onKeyDown="nextInput('free');" min='0' oninput="ChangeBySelect(); all_calc();">
                 </td>
                 <td></td>
             </tr>
@@ -510,7 +511,7 @@
                 <td>自由</td>
                 <td></td>
                 <td>
-                    <input id="free" class="txt" type="number" step='0.5' onKeyDown="nextInput('teacher');" min='0' oninput="all_calc(); ChangeBySelect();">
+                    <input id="free" class="txt" type="number" step="0.5" onKeyDown="nextInput('teacher');" min='0' oninput="ChangeBySelect(); all_calc();">
                 </td>
                 <td></td>
             </tr>
@@ -519,7 +520,8 @@
                 <td>教職</td>
                 <td></td>
                 <td>
-                    <input id="teacher" class="txt" type="number" step='0.5' min='0' oninput="all_calc(); ChangeBySelect();">
+                    <input id="teacher" class="txt" type="number" step="0.5" min='0' oninput="ChangeBySelect(); all_calc();">
+                    <!-- 教職単位対応のため，1ずつ変化 -->
                 </td>
                 <td id="teacher_warning"></td>
             </tr>
