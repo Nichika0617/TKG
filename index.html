@@ -10,25 +10,58 @@
 </head>
 <body>
     <h1>TKG 〜TANNI KEISAN GAIDO〜</h1>
-    <div class="usage">
-        <input id="ac-1" type="checkbox">
-        <label for="ac-1">使い方</label>
-        <div class="ac_usage_inside">
-        <!-- <h3>〜使い方〜</h3> -->
-        <p>単位計算をしたい学期を下のドロップダウンより選択してください。</p>
-        <p>その後，[取得単位]列に数値を入力してください。</p>
-        <p>数字を入力後、エンターで次に移動できます。</p>
-        <p>ボックス内の上下のボタンをクリックすることでも入力できます。</p>
-        <p>キーボードの上下矢印キーでも値の変更ができます。</p>
-        <p>不足単位の右の()は必修を示しています。</p>
-        <p>アイコン(
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lightbulb" viewBox="0 0 16 16">
-                <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z"/>
-            </svg>
-            )のあるところを押すと、合計に含まれるものがハイライトされます。
-        </p>
+        <div id="acd_menu">
+            <div class="usage">
+            <input id="ac-1" type="checkbox">
+            <label for="ac-1">使い方</label>
+            <div class="ac_usage_inside">
+            <!-- <h3>〜使い方〜</h3> -->
+            <p>琉球大学知能情報コース生向け履修登録サポートサービス「TKG〜単位計算ガイド〜」へようこそ ! </p>
+            <p>推奨環境 : Google Chrome</p>
+            <ol>
+                <li>入学年度を選択してください。単位計算表が出現します。</li>
+                <li>単位計算したい学年および学期を選択してください。</li>
+                <li>下の表の「取得単位列」に数値を入力してください。「PDFファイルを選択」ボタンを押すと、成績表のPDFから自動で単位数を入力することもできます。
+                    成績表の取得方法は「教務システムから成績表を取得する方法」を参照してください。</li>
+            </ol>
+            <p>※下表の不足単位列の（）内の値は，不足単位数中の必須単位数を表しています。</p>
+            <p>※下表の色がついている（
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lightbulb" viewBox="0 0 16 16">
+                    <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z"/>
+                </svg>
+                がある）部分を押すと，その合計に含まれるものがハイライトされます。</p>
+            <p>※計算結果に
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-left-text" viewBox="0 0 16 16">
+                    <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                    <path d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+                </svg>
+                のアイコンがある場合、そこにマウスカーソルを合わせると履修登録に関するメッセージが表示されます。</p>
+            <p>※ウィンドウの幅を狭くするとパソコンでも表を縦長でみることができます</p>
+            <p> <機能> </p>
+            <ul>
+                <li>PDFファイルを選択 : 成績表PDFから単位数を自動入力することができます。</li>
+                <li>専門科目分類表 : 知能情報コースの専門科目の分類が確認できます。</li>
+                <li>研究室配属条件 : 研究室に配属される条件が確認できます。</li>
+                <li>履修モデル : 各入学年度生向けの履修モデルが確認できるページに行くことができます。</li>
+            </ul>
+            </div>
+            </div>
+
+            <div class="usage">
+                <input id="ac-2" type="checkbox">
+                <label for="ac-2">教務システムから成績表を取得する方法</label>
+                <div class="ac_usage_inside">
+                <ol>
+                    <li><a href="https://tiglon.jim.u-ryukyu.ac.jp/portal/Login.aspx" target="_blank">教務情報システム</a>にログインします。</li>
+                    <li>履修・成績情報をクリックし、成績参照をクリックします。</li>
+                    <li>「個別成績表の表示」の「表示する」をクリックしてください。</li>
+                    <li>成績一覧が表示され、PDF形式の成績表をダウンロードすることができます。</li>
+                </ol>
+                <p>※学内環境に接続する必要があります。学外から成績表を見たい場合はVPNに接続してください。</p>
+                <p>VPNへの接続方法がわからない方は<a href="http://www.cnc.u-ryukyu.ac.jp/ssl-vpn3/" target="_blank">こちら</a>をご覧ください。</p>
+                </div>
+            </div>
         </div>
-    </div>
 
     <div id="Above_the_table">
         <div style="text-align: center;">
@@ -100,7 +133,7 @@
                     <td>健康運動</td>
                     <td>2</td>
                     <td>
-                        <input id="health" class="txt" type="number" step="2" onKeyDown="nextInput('jinbun');" min='0' oninput="all_calc(); ChangeBySelect();">
+                        <input id="health" class="txt" type="number" step="0.5" onKeyDown="nextInput('jinbun');" min='0' oninput="ChangeBySelect(); all_calc();">
                     </td>
                     <td id="result_health">
                         <!-- 計算結果をjsから書き込む． -->
@@ -108,7 +141,7 @@
                 </tr>
     <!--____________________________________________________________-->
                 <tr>
-                    <td>　
+                    <td>&nbsp;
                         <!-- 1行開けるための空欄 -->
                     </td>
                     <td></td>
@@ -120,7 +153,7 @@
                     <td>人文</td>
                     <td>2</td>
                     <td>
-                        <input id="jinbun" type="number" class="txt" step="2" onKeyDown="nextInput('syakai');" min='0' oninput="all_calc(); ChangeBySelect();">
+                        <input id="jinbun" type="number" class="txt" step="0.5" onKeyDown="nextInput('syakai');" min='0' oninput="ChangeBySelect(); all_calc();">
                     </td>
                     <td id="result_jinbun"></td>
                 </tr>
@@ -129,7 +162,7 @@
                     <td>社会</td>
                     <td>2</td>
                     <td>
-                        <input id="syakai" class="txt" type="number" step="2" onKeyDown="nextInput('sougou');" min='0' oninput="all_calc(); ChangeBySelect();">
+                        <input id="syakai" class="txt" type="number" step="0.5" onKeyDown="nextInput('sougou');" min='0' oninput="ChangeBySelect(); all_calc();">
                     </td>
                     <td id="result_syakai"></td>
                 </tr>
@@ -138,7 +171,7 @@
                     <td>総合</td>
                     <td></td>
                     <td>
-                        <input id="sougou" class="txt" type="number" step="2" onKeyDown="nextInput('career');" min='0' oninput="all_calc(); ChangeBySelect();">
+                        <input id="sougou" class="txt" type="number" step="0.5" onKeyDown="nextInput('career');" min='0' oninput="ChangeBySelect(); all_calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -147,7 +180,7 @@
                     <td>キャリア関係</td>
                     <td></td>
                     <td>
-                        <input id="career" class="txt" type="number" step="2" onKeyDown="nextInput('ryudai');" min='0' oninput="all_calc(); ChangeBySelect();">
+                        <input id="career" class="txt" type="number" step="0.5" onKeyDown="nextInput('ryudai');" min='0' oninput="ChangeBySelect(); all_calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -156,7 +189,7 @@
                     <td class="hover_subtotal1">琉大特色・地域創生</td>
                     <td></td>
                     <td>
-                        <input id="ryudai" class="txt" type="number" step="2" onKeyDown="nextInput('Japanese');" min='0' oninput="all_calc(); ChangeBySelect();">
+                        <input id="ryudai" class="txt" type="number" step="0.5" onKeyDown="nextInput('Japanese');" min='0' oninput="ChangeBySelect(); all_calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -175,7 +208,7 @@
                     <td>日本語・日本語事情</td>
                     <td></td>
                     <td>
-                        <input id="Japanese" class="txt" type="number" step="2" onKeyDown="nextInput('sizen');" min='0' oninput="all_calc(); ChangeBySelect();">
+                        <input id="Japanese" class="txt" type="number" step="0.5" onKeyDown="nextInput('sizen');" min='0' oninput="ChangeBySelect(); all_calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -196,7 +229,7 @@
                     <td>自然</td>
                     <td></td>
                     <td>
-                        <input id="sizen" class="txt" type="number" step="2" onKeyDown="nextInput('info');" min='0' oninput="all_calc(); ChangeBySelect();">
+                        <input id="sizen" class="txt" type="number" step="0.5" onKeyDown="nextInput('info');" min='0' oninput="ChangeBySelect(); all_calc();">
                     </td>
                     <td></td>
                 </tr>
@@ -224,7 +257,7 @@
                 <td>情報関係</td>
                 <td>2</td>
                 <td>
-                    <input id="info" class="txt" type="number" step="2" onKeyDown="nextInput('English');" min='0' oninput="all_calc(); ChangeBySelect();">
+                    <input id="info" class="txt" type="number" step="0.5" onKeyDown="nextInput('English');" min='0' oninput="ChangeBySelect(); all_calc();">
                 </td>
                 <td id="result_info"></td>
             </tr>
@@ -241,7 +274,7 @@
                 <td>英語</td>
                 <td>8</td>
                 <td>
-                    <input id="English" class="txt" type="number" step="2" onKeyDown="nextInput('German');" min='0' oninput="all_calc(); ChangeBySelect();">
+                    <input id="English" class="txt" type="number" step="0.5" onKeyDown="nextInput('German');" min='0' oninput="ChangeBySelect(); all_calc();">
                 </td>
                 <td id="result_eng"></td>
             </tr>
@@ -250,7 +283,7 @@
                 <td>ドイツ語</td>
                 <td>(4)</td>
                 <td>
-                    <input id="German" class="txt" type="number" step="2" onKeyDown="nextInput('French');" min='0' oninput="all_calc(); ChangeBySelect();">
+                    <input id="German" class="txt" type="number" step="0.5" onKeyDown="nextInput('French');" min='0' oninput="ChangeBySelect(); all_calc();">
                 </td>
                 <td id="result_german"></td>
             </tr>
@@ -259,7 +292,7 @@
                 <td>フランス語</td>
                 <td>(4)</td>
                 <td>
-                    <input id="French" class="txt" type="number" step="2" onKeyDown="nextInput('Spanish');" min='0' oninput="all_calc(); ChangeBySelect();">
+                    <input id="French" class="txt" type="number" step="0.5" onKeyDown="nextInput('Spanish');" min='0' oninput="ChangeBySelect(); all_calc();">
                 </td>
                 <td id="result_french"></td>
             </tr>
@@ -268,7 +301,7 @@
                 <td>スペイン語</td>
                 <td>(4)</td>
                 <td>
-                    <input id="Spanish" class="txt" type="number" step="2" onKeyDown="nextInput('Chinese');" min='0' oninput="all_calc(); ChangeBySelect();">
+                    <input id="Spanish" class="txt" type="number" step="0.5" onKeyDown="nextInput('Chinese');" min='0' oninput="ChangeBySelect(); all_calc();">
                 </td>
                 <td id="result_spanish"></td>
             </tr>
@@ -277,7 +310,7 @@
                 <td>中国語</td>
                 <td>(4)</td>
                 <td>
-                    <input id="Chinese" class="txt" type="number" step="2" onKeyDown="nextInput('etc');" min='0' oninput="all_calc(); ChangeBySelect();">
+                    <input id="Chinese" class="txt" type="number" step="0.5" onKeyDown="nextInput('etc');" min='0' oninput="ChangeBySelect(); all_calc();">
                 </td>
                 <td id="result_chinese"></td>
             </tr>
@@ -286,7 +319,7 @@
                 <td>その他</td>
                 <td>(4)</td>
                 <td>
-                    <input id="etc" class="txt" type="number" step="2" onKeyDown="nextInput('major_base');" min='0' oninput="all_calc(); ChangeBySelect();">
+                    <input id="etc" class="txt" type="number" step="0.5" onKeyDown="nextInput('major_base');" min='0' oninput="ChangeBySelect(); all_calc();">
                 </td>
                 <td id="result_etc"></td>
             </tr>
@@ -357,7 +390,7 @@
                 <td>専門基礎</td>
                 <td id="req_major_base">8</td>
                 <td>
-                    <input id="major_base" class="txt" type="number" step="2" onKeyDown="nextInput('out_major_base');" min='0' oninput="all_calc(); ChangeBySelect();">
+                    <input id="major_base" class="txt" type="number" step="0.5" onKeyDown="nextInput('out_major_base');" min='0' oninput="ChangeBySelect(); all_calc();">
                 </td>
                 <td id="result_major_base"></td>
             </tr>
@@ -366,7 +399,7 @@
                 <td>専門基礎指定外</td>
                 <td></td>
                 <td>
-                    <input id="out_major_base" class="txt" type="number" step="2" onKeyDown="nextInput('info_tec');" min='0' oninput="all_calc(); ChangeBySelect();">
+                    <input id="out_major_base" class="txt" type="number" step="0.5" onKeyDown="nextInput('info_tec');" min='0' oninput="ChangeBySelect(); all_calc();">
                 </td>
                 <td></td>
             </tr>
@@ -398,7 +431,7 @@
                 <td>情報技術</td>
                 <td>2</td>
                 <td>
-                    <input id="info_tec" class="txt" type="number" step="2" onKeyDown="nextInput('ex');" min='0' oninput="all_calc(); ChangeBySelect();">
+                    <input id="info_tec" class="txt" type="number" step="0.5" onKeyDown="nextInput('ex');" min='0' oninput="ChangeBySelect(); all_calc();">
                 </td>
                 <td id="result_info_tec"></td>
             </tr>
@@ -407,7 +440,7 @@
                 <td>総合力演習</td>
                 <td>7</td>
                 <td>
-                    <input id="ex" class="txt" type="number" onKeyDown="nextInput('experiment');" min='0' oninput="all_calc(); ChangeBySelect();">
+                    <input id="ex" class="txt" type="number" step="0.5" onKeyDown="nextInput('experiment');" min='0' oninput="ChangeBySelect(); all_calc();">
                     <!-- プログラミング演習1単位のため，1単位 -->
                 </td>
                 <td id="result_ex"></td>
@@ -417,7 +450,7 @@
                 <td>研究実験</td>
                 <td id="req_experiment">15</td>
                 <td>
-                    <input id="experiment" class="txt" type="number" step="0.5" onKeyDown="nextInput('math_base');" min='0' oninput="all_calc(); ChangeBySelect();">
+                    <input id="experiment" class="txt" type="number" step="0.5" onKeyDown="nextInput('math_base');" min='0' oninput="ChangeBySelect(); all_calc();">
                     <!-- 実験だけstep="0.5" -->
                 </td>
                 <td id="result_exp"></td>
@@ -427,7 +460,7 @@
                 <td>数学基礎</td>
                 <td>6</td>
                 <td>
-                    <input id="math_base" class="txt" type="number" step="2" onKeyDown="nextInput('core');" min='0' oninput="all_calc(); ChangeBySelect();">
+                    <input id="math_base" class="txt" type="number" step="0.5" onKeyDown="nextInput('core');" min='0' oninput="ChangeBySelect(); all_calc();">
                 </td>
                 <td id="result_math_base"></td>
             </tr>
@@ -436,7 +469,7 @@
                 <td>知能情報コア</td>
                 <td>26</td>
                 <td>
-                    <input id="core" class="txt" type="number" step="2" onKeyDown="nextInput('fusion');" min='0' oninput="all_calc(); ChangeBySelect();">
+                    <input id="core" class="txt" type="number" step="0.5" onKeyDown="nextInput('fusion');" min='0' oninput="ChangeBySelect(); all_calc();">
                 </td>
                 <td id="result_core"></td>
             </tr>
@@ -453,7 +486,7 @@
                 <td>工学融合(選択)</td>
                 <td>4</td>
                 <td>
-                    <input id="fusion" class="txt" type="number" step="2" onKeyDown="nextInput('math_base_select');" min='0' oninput="all_calc(); ChangeBySelect();">
+                    <input id="fusion" class="txt" type="number" step="0.5" onKeyDown="nextInput('math_base_select');" min='0' oninput="ChangeBySelect(); all_calc();">
                 </td>
                 <td id="result_fusion"></td>
             </tr>
@@ -462,7 +495,7 @@
                 <td>数学基礎(選択)</td>
                 <td></td>
                 <td>
-                    <input id="math_base_select" class="txt" type="number" step="2" onKeyDown="nextInput('adv');" min='0' oninput="all_calc(); ChangeBySelect();">
+                    <input id="math_base_select" class="txt" type="number" step="0.5" onKeyDown="nextInput('adv');" min='0' oninput="ChangeBySelect(); all_calc();">
                 </td>
                 <td></td>
             </tr>
@@ -471,7 +504,7 @@
                 <td>知能情報アドバンスト</td>
                 <td></td>
                 <td>
-                    <input id="adv" class="txt" type="number" step="2" onKeyDown="nextInput('relation');" min='0' oninput="all_calc(); ChangeBySelect();">
+                    <input id="adv" class="txt" type="number" step="0.5" onKeyDown="nextInput('relation');" min='0' oninput="ChangeBySelect(); all_calc();">
                 </td>
                 <td></td>
             </tr>
@@ -480,7 +513,7 @@
                 <td>知能情報関連</td>
                 <td></td>
                 <td>
-                    <input id="relation" class="txt" type="number" onKeyDown="nextInput('common_engineering');" min='0' oninput="all_calc(); ChangeBySelect();">
+                    <input id="relation" class="txt" type="number" step="0.5" onKeyDown="nextInput('common_engineering');" min='0' oninput="ChangeBySelect(); all_calc();">
                     <!-- インターンが1単位のため，1ずつ変化 -->
                 </td>
                 <td></td>
@@ -502,7 +535,7 @@
                 <td>選択(工学共通)</td>
                 <td></td>
                 <td>
-                    <input id="common_engineering" class="txt" type="number" step="2" onKeyDown="nextInput('free');" min='0' oninput="all_calc(); ChangeBySelect();">
+                    <input id="common_engineering" class="txt" type="number" step="0.5" onKeyDown="nextInput('free');" min='0' oninput="ChangeBySelect(); all_calc();">
                 </td>
                 <td></td>
             </tr>
@@ -511,7 +544,7 @@
                 <td>自由</td>
                 <td></td>
                 <td>
-                    <input id="free" class="txt" type="number" step="2" onKeyDown="nextInput('teacher');" min='0' oninput="all_calc(); ChangeBySelect();">
+                    <input id="free" class="txt" type="number" step="0.5" onKeyDown="nextInput('teacher');" min='0' oninput="ChangeBySelect(); all_calc();">
                 </td>
                 <td></td>
             </tr>
@@ -520,7 +553,7 @@
                 <td>教職</td>
                 <td></td>
                 <td>
-                    <input id="teacher" class="txt" type="number" min='0' oninput="all_calc(); ChangeBySelect();">
+                    <input id="teacher" class="txt" type="number" step="0.5" min='0' oninput="ChangeBySelect(); all_calc();">
                     <!-- 教職単位対応のため，1ずつ変化 -->
                 </td>
                 <td id="teacher_warning"></td>
@@ -788,20 +821,7 @@
         </div>
 
         <br />
-        <div class="portal_usage" align="center" id=portal_usage>
-            <h4>〜教務システムから成績表を取得する方法〜</h4>
-            <div class="ol_portal_usage" id=ol_portal_usage>
-            <ol>
-                <li><a href="https://tiglon.jim.u-ryukyu.ac.jp/portal/Login.aspx" target="_blank">教務情報システム</a>にログインします。</li>
-                <li>履修・成績情報をクリックし、成績参照をクリックします。</li>
-                <li>「個別成績表の表示」の「表示する」をクリックしてください。</li>
-                <li>成績一覧が表示され、PDF形式の成績表をダウンロードすることができます。</li>
-            </ol>
-            </div>
-            <p>※学内環境に接続する必要があります。学外から成績表を見たい場合はVPNに接続してください。</p>
-            <p>VPNへの接続方法がわからない方は<a href="http://www.cnc.u-ryukyu.ac.jp/ssl-vpn3/" target="_blank">こちら</a>をご覧ください。</p>
-        </div>
-
+        
         <br />
         <div class="course_model" align="center" id="course_model_y18"><!-- y18履修モデル -->
             <h4>〜2018年度入学生履修モデル〜</h4>

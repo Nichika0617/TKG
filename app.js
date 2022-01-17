@@ -202,7 +202,7 @@ const foreign_calc = ()=>{
     }else{
         if (sum_second >= 4){
             // 一つの科目群から4単位以上でなかったとしても，とりあえずマイナスにならないように合計が4超えた時も0とする
-            document.getElementById('result_second').innerHTML = "<span class='warning' title='第二言語は合計で4単位以上ではなく，\n 1つの言語から4単位取得する必要があります．'>0 &#x1f4a1</span> ";
+            document.getElementById('result_second').innerHTML = "<div class='table_tooltip'><p class='warning'>0 <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chat-left-text' viewBox='0 0 16 16'><path d='M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z'/><path d='M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z'/></svg> </span></p><div class='description'>第二言語は合計で4単位以上ではなく，\n 1つの言語から4単位取得する必要があります．</div></div>"; 
             second_foreign_judge = false; // 第二言語の条件を満たしていない
         }else{
             document.getElementById('result_second').textContent = Math.max(4-sum_second,0)
@@ -217,14 +217,14 @@ const foreign_calc = ()=>{
     if(foreignTotal >= 12){
         if(English >= 12){
             second_foreign_judge = true
-            document.getElementById('result_foreignTotal').innerHTML = document.getElementById('result_foreignTotal').innerHTML = "<span class='success' title='英語12単位で満たされています．'>0 &#x1f4a1</span>";
+            document.getElementById('result_foreignTotal').innerHTML = document.getElementById('result_foreignTotal').innerHTML = "<div class='table_tooltip'><p class='success'>0 <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chat-left-text' viewBox='0 0 16 16'><path d='M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z'/><path d='M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z'/></svg> </span></p><div class='description'>英語12単位で満たされています．</div></div>";
             log("英語12");
         }else if(English >= 8 && second_foreign_judge == true){
         // 英語8単位以上かつ，第二言語1つを4単位以上とっているならば
-            document.getElementById('result_foreignTotal').innerHTML = "<span class='success' title='英語8単位，第二言語4単位で満たされています．'>0 &#x1f4a1</span>";
+            document.getElementById('result_foreignTotal').innerHTML = "<div class='table_tooltip'><p class='success'>0 <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chat-left-text' viewBox='0 0 16 16'><path d='M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z'/><path d='M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z'/></svg> </span></p><div class='description'>英語8単位，第二言語4単位で満たされています．</div></div>";
             log("英語8と第二言語4")
         }else{
-            document.getElementById('result_foreignTotal').innerHTML = "<span class='warning' title='言語の取得条件を満たしていません．'>0 &#x1f4a1</span>";
+            document.getElementById('result_foreignTotal').innerHTML = "<div class='table_tooltip'><p class='warning'>0 <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chat-left-text' viewBox='0 0 16 16'><path d='M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z'/><path d='M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z'/></svg> </span></p><div class='description'>言語の取得条件を満たしていません．</div></div>";
             
         }
     }
@@ -261,39 +261,39 @@ const total1_calc = () => {
         if(Math.max(2-health,0) == 0 && Math.max(14-subTotal2,0) == 0 && Math.max(2-info,0) == 0 && Math.max(12-foreignTotal,0) == 0 && subtotal2_judge == true && English >= 8 && second_foreign_judge == true){
             // 注意文とか追加したから document.getElementById == 0の比較はできなくなってしまった
             // 2 + 14 + 2 + 12 = 30 で条件を満たしているならば，
-            document.getElementById('result_total1').innerHTML = "<span class='success' title='30単位の条件を満たしています．'>0 &#x1f4a1</span>";
+            document.getElementById('result_total1').innerHTML = "<div class='table_tooltip'><p class='success'>0 <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chat-left-text' viewBox='0 0 16 16'><path d='M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z'/><path d='M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z'/></svg> </span></p><div class='description'>30単位の条件を満たしています．</div></div>";
             log("共通30満たした．")
         }else if(Math.max(2-health,0) != 0){
             // 30単位は満たしたが，健康運動を取得していない
-            document.getElementById('result_total1').innerHTML = "<span class='warning' title='健康運動を2単位以上取得する必要があります．'>0 &#x1f4a1</span>";
+            document.getElementById('result_total1').innerHTML = "<div class='table_tooltip'><p class='warning'>0 <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chat-left-text' viewBox='0 0 16 16'><path d='M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z'/><path d='M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z'/></svg> </span></p><div class='description'>健康運動を2単位以上取得する必要があります．</div></div>";
         }else if(second_foreign_judge == false){
             // 30単位は満たしたが，第二言語の取り方を間違っている．
-            document.getElementById('result_total1').innerHTML = "<span class='warning' title='第二言語計を確認してください．'>0 &#x1f4a1</span>";
+            document.getElementById('result_total1').innerHTML = "<div class='table_tooltip'><p class='warning'>0 <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chat-left-text' viewBox='0 0 16 16'><path d='M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z'/><path d='M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z'/></svg> </span></p><div class='description'>第二言語計を確認してください．</div></div>";
         }else if(Math.max(12-foreignTotal,0) != 0){
             // 30単位は満たしたが，外国語計を満たしていない
-            document.getElementById('result_total1').innerHTML = "<span class='warning' title='外国語を合計12単位取得する必要があります．'>0 &#x1f4a1</span>";
+            document.getElementById('result_total1').innerHTML = "<div class='table_tooltip'><p class='warning'>0 <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chat-left-text' viewBox='0 0 16 16'><path d='M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z'/><path d='M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z'/></svg> </span></p><div class='description'>外国語を合計12単位取得する必要があります．</div></div>";
         }else if(Math.max(2-info,0) != 0){
             // 30単位は満たしたが，情報関係を取得していない
-                document.getElementById('result_total1').innerHTML = "<span class='warning' title='情報関係を2単位以上取得する必要があります．'>0 &#x1f4a1</span>";
+                document.getElementById('result_total1').innerHTML = "<div class='table_tooltip'><p class='warning'>0 <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chat-left-text' viewBox='0 0 16 16'><path d='M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z'/><path d='M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z'/></svg> </span></p><div class='description'>情報関係を2単位以上取得する必要があります．</div></div>";
         }else if(subtotal2_judge != true){
             // 小計2の判定がfalseを吐いている時，
             if(document.getElementById('result_jinbun').textContent != 0){
                 // 人文を満たしていない
-                document.getElementById('result_total1').innerHTML = "<span class='warning' title='人文系科目を2単位以上取得する必要があります．'>0 &#x1f4a1</span>";
+                document.getElementById('result_total1').innerHTML = "<div class='table_tooltip'><p class='warning'>0 <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chat-left-text' viewBox='0 0 16 16'><path d='M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z'/><path d='M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z'/></svg> </span></p><div class='description'>人文系科目を2単位以上取得する必要があります．</div></div>";
             }else if(document.getElementById('result_syakai').textContent != 0){
                 // 社会を満たしていない
-                document.getElementById('result_total1').innerHTML = "<span class='warning' title='社会系科目を2単位以上取得する必要があります．'>0 &#x1f4a1</span>";
+                document.getElementById('result_total1').innerHTML = "<div class='table_tooltip'><p class='warning'>0 <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chat-left-text' viewBox='0 0 16 16'><path d='M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z'/><path d='M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z'/></svg> </span></p><div class='description'>社会系科目を2単位以上取得する必要があります．</div></div>";
             }else if(document.getElementById('result_sougouryouiki').textContent != 0){
                 // 総合領域を満たしていない
-                document.getElementById('result_total1').innerHTML = "<span class='warning' title='総合領域を2単位以上取得する必要があります．'>0 &#x1f4a1</span>";
+                document.getElementById('result_total1').innerHTML = "<div class='table_tooltip'><p class='warning'>0 <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chat-left-text' viewBox='0 0 16 16'><path d='M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z'/><path d='M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z'/></svg> </span></p><div class='description'>総合領域を2単位以上取得する必要があります．</div></div>";
             }else if(Math.max(14-subTotal2,0) != 0){
             // 30単位は満たしたが，小計2が満たされていない．(言語を取りすぎとか．)
-                document.getElementById('result_total1').innerHTML = "<span class='warning' title='小計2を確認してください．'>0 &#x1f4a1</span>";
+                document.getElementById('result_total1').innerHTML = "<div class='table_tooltip'><p class='warning'>0 <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chat-left-text' viewBox='0 0 16 16'><path d='M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z'/><path d='M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z'/></svg> </span></p><div class='description'>小計2を確認してください．</div></div>";
             }
         }else if(English < 8){
-            document.getElementById('result_total1').innerHTML = "<span class='warning' title='外国語計を確認してください．'>0 &#x1f4a1</span>";
+            document.getElementById('result_total1').innerHTML = "<div class='table_tooltip'><p class='warning'>0 <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chat-left-text' viewBox='0 0 16 16'><path d='M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z'/><path d='M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z'/></svg> </span></p><div class='description'>外国語計を確認してください．</div></div>";
         }else{
-            document.getElementById('result_total1').innerHTML = "<span class='warning' title='上の各条件を確認してください．'>0 &#x1f4a1</span>";
+            document.getElementById('result_total1').innerHTML = "<div class='table_tooltip'><p class='warning'>0 <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chat-left-text' viewBox='0 0 16 16'><path d='M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z'/><path d='M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z'/></svg> </span></p><div class='description'>上の各条件を確認してください．</div></div>";
             // マイナスにならないよう取得単位が30を超えたら0にしておくが，どこかの条件を満たせていないという注意を表示
             log("共通30の条件に合っていない")
         }
@@ -341,35 +341,36 @@ const subtotal4_calc = () => {
     
     const teacher = convertNum(document.getElementById('teacher').value);
     if(teacher > 10){
-        document.getElementById('teacher_warning').innerHTML = "<span title='教職科目は10単位までしか卒業単位に含まれません'>&#x1f4a1</span>";;
+        document.getElementById('teacher_warning').innerHTML = "<div class='table_tooltip'><p class='warning'><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chat-left-text' viewBox='0 0 16 16'><path d='M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z'/><path d='M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z'/></svg> </span></p><div class='description'>教職科目は10単位までしか卒業単位に含まれません</div></div>";
     }else{
         document.getElementById('teacher_warning').innerHTML = "";
     }
 
     const subTotal4 = fusion + subTotal3 + common_engineering + free + teacher; 
     // 数情統計 教職もここに↑↑
-
+    req_subtotal4 = convertNum(document.getElementById("req_sub_total4").textContent);
     document.getElementById('sub_total4').textContent = subTotal4;
-    document.getElementById('result_sub_total4').textContent = Math.max(36-subTotal4,0);
-    if(subTotal4 >= 36){
+    document.getElementById('result_sub_total4').textContent = Math.max(document.getElementById("req_sub_total4").value-subTotal4,0);
+    if(subTotal4 >= req_subtotal4){
         // 36満たした時，内訳を確認
         if(subTotal3 >= 22){
             if(fusion_judge == true){
             //数情計が22単位以上かつ，工学融合を4単位以上取得しているならば
-                document.getElementById('result_sub_total4').innerHTML = `<span class='success' title='36単位の条件を満たしています．'>${Math.max(36-subTotal4,0)} &#x1f4a1</span>`;
+            log(`${req_subtotal4}単位満たした!`)
+                document.getElementById('result_sub_total4').innerHTML = `<div class='table_tooltip'><p class='success'>${Math.max(req_subtotal4-subTotal4,0)}  <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chat-left-text' viewBox='0 0 16 16'><path d='M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z'/><path d='M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z'/></svg> </span></p><div class='description'>${req_subtotal4}単位の条件を満たしています．</div></div>`;
             }else{
                 // 数は満たしているが，工学融合をとっていない
-                document.getElementById('result_sub_total4').innerHTML = `<span class='warning' title='工学融合科目を4単位以上取得する必要があります．'>${Math.max(36-subTotal4,0)} &#x1f4a1</span>`;
+                document.getElementById('result_sub_total4').innerHTML = `<div class='table_tooltip'><p class='warning'>${Math.max(req_subtotal4-subTotal4,0)} <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chat-left-text' viewBox='0 0 16 16'><path d='M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z'/><path d='M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z'/></svg> </span></p><div class='description'>工学融合科目を4単位以上取得する必要があります．</div></div>`;
             }
         }else{
             // 36は超えてるが，数情計を22単位取っていない 融合と自由取りすぎ？
-            document.getElementById('result_sub_total4').innerHTML = `<span class='warning' title='数情計を22単位取得する必要があります．'>${Math.max(36-subTotal4,0)} &#x1f4a1</span>`;
+            document.getElementById('result_sub_total4').innerHTML = `<div class='table_tooltip'><p class='warning'>${Math.max(req_subtotal4-subTotal4,0)} <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chat-left-text' viewBox='0 0 16 16'><path d='M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z'/><path d='M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z'/></svg> </span></p><div class='description'>数情計を22単位取得する必要があります．</div></div>`;
         }
     }else{
         // 36超えてない値に戻した時は，一度警告を全部消すため，
         document.getElementById('result_sub_total4').innerHTML = ""
         // innerHTMLをリセットして，
-        document.getElementById('result_sub_total4').textContent = Math.max(36-subTotal4,0);
+        document.getElementById('result_sub_total4').textContent = Math.max(req_subtotal4-subTotal4,0);
         // 再設定
     }
 }
@@ -441,27 +442,27 @@ const total2_calc = () => {
     if(total2 >= 92){
         if(info_tec_judge != true){
             // 92超えてるが，情報技術を満たしていない
-            document.getElementById('result_total2').innerHTML = `<span class='warning' title='情報技術の単位が不足しています．'>0 &#x1f4a1</span>`;
+            document.getElementById('result_total2').innerHTML = "<div class='table_tooltip'><p class='warning'>0 <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chat-left-text' viewBox='0 0 16 16'><path d='M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z'/><path d='M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z'/></svg> </span></p><div class='description'>情報技術の単位が不足しています．</div></div>";
         }else if(ex_judge != true){
             // 92超えてるが，総合力演習を満たしていない
-            document.getElementById('result_total2').innerHTML = `<span class='warning' title='総合力演習の単位が不足しています．'>0 &#x1f4a1</span>`;
+            document.getElementById('result_total2').innerHTML = "<div class='table_tooltip'><p class='warning'>0 <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chat-left-text' viewBox='0 0 16 16'><path d='M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z'/><path d='M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z'/></svg> </span></p><div class='description'>総合力演習の単位が不足しています．</div></div>";
         }else if(exp_judge != true){
             // 92超えてるが，研究実験を満たしていない
-            document.getElementById('result_total2').innerHTML = `<span class='warning' title='研究実験の単位が不足しています．'>0 &#x1f4a1</span>`;
+            document.getElementById('result_total2').innerHTML = "<div class='table_tooltip'><p class='warning'>0 <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chat-left-text' viewBox='0 0 16 16'><path d='M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z'/><path d='M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z'/></svg> </span></p><div class='description'>研究実験の単位が不足しています．</div></div>";
         }else if(math_base_judge != true){
             // 92超えてるが，数学基礎を満たしていない
-            document.getElementById('result_total2').innerHTML = `<span class='warning' title='数学基礎の単位が不足しています．'>0 &#x1f4a1</span>`;
+            document.getElementById('result_total2').innerHTML = "<div class='table_tooltip'><p class='warning'>0 <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chat-left-text' viewBox='0 0 16 16'><path d='M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z'/><path d='M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z'/></svg> </span></p><div class='description'>数学基礎の単位が不足しています．</div></div>";
         }else if(core_judge != true){
             // 92超えてるが，知能情報コアを満たしていない
-            document.getElementById('result_total2').innerHTML = `<span class='warning' title='知能情報コアの単位が不足しています．'>0 &#x1f4a1</span>`;
+            document.getElementById('result_total2').innerHTML = "<div class='table_tooltip'><p class='warning'>0 <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chat-left-text' viewBox='0 0 16 16'><path d='M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z'/><path d='M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z'/></svg> </span></p><div class='description'>知能情報コアの単位が不足しています．</div></div>";
         }else if(fusion_judge != true){
-            document.getElementById('result_total2').innerHTML = `<span class='warning' title='工学融合の単位が不足しています．'>0 &#x1f4a1</span>`;
-        }else if(subTotal4 < 36){
-            // 92超えてるが，数情等計36単位を満たしていない または，数情等計36満たしているが，工学融合を満たしていない．
-            document.getElementById('result_total2').innerHTML = `<span class='warning' title='数情統計の単位が不足しています．'>0 &#x1f4a1</span>`;
+            document.getElementById('result_total2').innerHTML = "<div class='table_tooltip'><p class='warning'>0 <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chat-left-text' viewBox='0 0 16 16'><path d='M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z'/><path d='M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z'/></svg> </span></p><div class='description'>工学融合の単位が不足しています．</div></div>";
+        }else if(subTotal4 < document.getElementById("req_sub_total4").textContent){
+            // 92超えてるが，数情等計36単位を満たしていない または，数情等計36(37)満たしているが，工学融合を満たしていない．
+            document.getElementById('result_total2').innerHTML = "<div class='table_tooltip'><p class='warning'>0 <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chat-left-text' viewBox='0 0 16 16'><path d='M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z'/><path d='M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z'/></svg> </span></p><div class='description'>数情統計の単位が不足しています．</div></div>";
         }else{
             // おそらく全部満たしている．．？
-            document.getElementById('result_total2').innerHTML = `<span class='success' title='92単位の条件を満たしています．'>0 &#x1f4a1</span>`;
+            document.getElementById('result_total2').innerHTML = "<div class='table_tooltip'><p class='success'>0 <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chat-left-text' viewBox='0 0 16 16'><path d='M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z'/><path d='M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z'/></svg> </span></p><div class='description'>92単位の条件を満たしています．</div></div>";
         }
     }
     return total2;

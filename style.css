@@ -87,7 +87,7 @@ h1 {
 
 .usage{
 /* 上の使い方説明のcss */
-  text-align: center;
+  /*text-align: center; */
   margin: 10px 10px;
 }
 
@@ -115,6 +115,7 @@ h1 {
   background-color: rgb(255, 251, 218);
 }
 
+/*単位数入力蘭を赤枠にするために使用していた*/
 input:invalid{
   border: solid 1px red;
 }
@@ -221,7 +222,18 @@ li {
   opacity: 1;
   transition: 2s;
 }
+
 /* アコーディオンメニュー */
+
+.usage{
+  width: 696px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.ac_usage_inside{
+  text-align: left;
+}
 
 .usage :last-child {
   margin-bottom: 20px; /* 最後の要素の下にだけ余白 */
@@ -231,12 +243,12 @@ li {
 }
 .usage label {
   color: #474747; /* 文字色 */
-  font-size: 25px; /* 文字サイズ */
+  font-size: 18px; /* 文字サイズ */
   line-height: 2; /* 行間 */
-  font-weight: bold; /* 文字を太く */
+  /*font-weight: bold; /* 文字を太く */
   text-align: center; /* 文字を中央に */
-  background:  #ffd98a; /* グラデーションの背景色 */
-  padding: 10px; /* 内側の余白 */
+  background:  #fce6b8; /* グラデーションの背景色 */
+  padding: 3px; /* 内側の余白 */
   cursor: pointer;
   position: relative;
   display: block;
@@ -274,4 +286,42 @@ li {
   width: 90%;
   max-width: 650px;
   display: none;
+}
+
+
+.table_tooltip{
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+}
+.table_tooltip p{
+    margin:0;
+    padding:0;
+}
+.description {
+    display: none;
+    position: absolute;
+    padding: 10px;
+    font-size: 15px;
+    line-height: 1.6em;
+    color: #000;
+    border-radius: 5px;
+    background: #fce6b8;
+    width: 120px;
+}
+.description:before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 130px;
+    border: 15px solid transparent;
+    border-top: 15px solid #fce6b8;
+    margin-left: -15px;
+    transform: rotateZ(270deg);
+}
+
+.table_tooltip:hover .description{
+    display: inline-block;
+    top: 0px;
+    left: -130px;
 }
