@@ -87,7 +87,7 @@ h1 {
 
 .usage{
 /* 上の使い方説明のcss */
-  text-align: center;
+  /*text-align: center; */
   margin: 10px 10px;
 }
 
@@ -222,7 +222,18 @@ li {
   opacity: 1;
   transition: 2s;
 }
+
 /* アコーディオンメニュー */
+
+.usage{
+  width: 696px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.ac_usage_inside{
+  text-align: left;
+}
 
 .usage :last-child {
   margin-bottom: 20px; /* 最後の要素の下にだけ余白 */
@@ -232,12 +243,12 @@ li {
 }
 .usage label {
   color: #474747; /* 文字色 */
-  font-size: 25px; /* 文字サイズ */
+  font-size: 18px; /* 文字サイズ */
   line-height: 2; /* 行間 */
-  font-weight: bold; /* 文字を太く */
+  /*font-weight: bold; /* 文字を太く */
   text-align: center; /* 文字を中央に */
-  background:  #ffd98a; /* グラデーションの背景色 */
-  padding: 10px; /* 内側の余白 */
+  background:  #fce6b8; /* グラデーションの背景色 */
+  padding: 3px; /* 内側の余白 */
   cursor: pointer;
   position: relative;
   display: block;
