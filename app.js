@@ -1614,6 +1614,7 @@ const setValuesFromPdfObject = (textContent) => {
     }
     setValue(obj);
     all_calc();
+    ChangeBySelect();
 }
               
 document.getElementById("pdfInput").onchange = function(event) {
