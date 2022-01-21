@@ -184,26 +184,29 @@ const foreign_calc = ()=>{
     const foreignTotal = English + German + French + Spanish + Chinese + etc;
     // 第二言語計の結果を計算，出力
 
+    const second_condition = Math.max(English-8,German,French,Spanish,Chinese,etc)>=4?4:0
+    log(`second_condition=${second_condition}`);
     document.getElementById('result_eng').textContent=Math.max(8-English,0);
 
-    document.getElementById('result_german').textContent=Math.max(4-German,0);
-    document.getElementById('result_french').textContent=Math.max(4-French,0);
-    document.getElementById('result_spanish').textContent=Math.max(4-Spanish,0);
-    document.getElementById('result_chinese').textContent=Math.max(4-Chinese,0);
-    document.getElementById('result_etc').textContent=Math.max(4-etc,0);
+    document.getElementById('result_german').textContent=Math.max(4-German-second_condition,0);
+    document.getElementById('result_french').textContent=Math.max(4-French-second_condition,0);
+    document.getElementById('result_spanish').textContent=Math.max(4-Spanish-second_condition,0);
+    document.getElementById('result_chinese').textContent=Math.max(4-Chinese-second_condition,0);
+    document.getElementById('result_etc').textContent=Math.max(4-etc-second_condition,0);
     document.getElementById('sum_second').textContent = sum_second;
 
     // 第二言語は一つの科目から4単位以上取得する必要がある部分の判定処理
+
     if(parseInt(German) >=4 || parseInt(French) >=4 || + parseInt(Spanish) >=4 || + parseInt(Chinese)>=4 || parseInt(etc)>=4){
         // 合計で4ではなく，一つの言語を4単位以上あるかを確かめる
         second_foreign_judge = true; // 第二言語の条件を満たした．
         document.getElementById('result_second').textContent = 0;
         log("第二言語満たした")
     }else{
-        if (sum_second >= 4){
+        second_foreign_judge = false;// 第二言語の条件を満たしていない
+        if (sum_second >= 4){//エラー表現の切り替え(第二外国語群の内２種類以上で4単位を満たしているときにtrueとなり、エラーを出す。)
             // 一つの科目群から4単位以上でなかったとしても，とりあえずマイナスにならないように合計が4超えた時も0とする
             document.getElementById('result_second').innerHTML = "<div class='table_tooltip'><p class='warning'>0 <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chat-left-text' viewBox='0 0 16 16'><path d='M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z'/><path d='M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z'/></svg> </span></p><div class='description'>第二言語は合計で4単位以上ではなく，\n 1つの言語から4単位取得する必要があります．</div></div>"; 
-            second_foreign_judge = false; // 第二言語の条件を満たしていない
         }else{
             document.getElementById('result_second').textContent = Math.max(4-sum_second,0)
         }
@@ -221,7 +224,7 @@ const foreign_calc = ()=>{
             log("英語12");
         }else if(English >= 8 && second_foreign_judge == true){
         // 英語8単位以上かつ，第二言語1つを4単位以上とっているならば
-            document.getElementById('result_foreignTotal').innerHTML = "<div class='table_tooltip'><p class='success'>0 <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chat-left-text' viewBox='0 0 16 16'><path d='M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z'/><path d='M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z'/></svg> </span></p><div class='description'>英語8単位，第二言語4単位で満たされています．</div></div>";
+            document.getElementById('result_foreignTotal').innerHTML = "<div class='table_tooltip'><p class='success'>0 <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chat-left-text' viewBox='0 0 16 16'><path d='M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z'/><path d='M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z'/></svg> </span></p><div class='description'>英語8単位以上，第二言語4単位以上で満たされています．</div></div>";
             log("英語8と第二言語4")
         }else{
             document.getElementById('result_foreignTotal').innerHTML = "<div class='table_tooltip'><p class='warning'>0 <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chat-left-text' viewBox='0 0 16 16'><path d='M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z'/><path d='M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z'/></svg> </span></p><div class='description'>言語の取得条件を満たしていません．</div></div>";
@@ -1611,6 +1614,7 @@ const setValuesFromPdfObject = (textContent) => {
     }
     setValue(obj);
     all_calc();
+    ChangeBySelect();
 }
               
 document.getElementById("pdfInput").onchange = function(event) {
