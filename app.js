@@ -8,9 +8,9 @@ let core_judge = false; // 知能情報コアを26単位取得したか．
 let fusion_judge = false; // 工学融合を4単位取得したか．
 // 同じ科目群から取得しているかの判定はまだできていない(10/21)
 // 全てのinputにつけられたidのリスト
-const idList = ["health", "jinbun", "syakai", "sougou", "career", "ryudai", "Japanese", "sizen", "info", "English", "German", "French", "Spanish", "Chinese", "etc", "major_base", "out_major_base", "info_tec", "ex", "experiment", "math_base", "core", "fusion", "math_base_select", "adv", "relation", "common_engineering", "free", "teacher"];
+const idList = ["health", "jinbun", "syakai", "sougou", "career", "ryudai", "sizen", "info", "Japanese", "JapanCircumstances", "English", "German", "French", "Spanish", "Chinese", "etc", "major_base", "out_major_base", "info_tec", "ex", "experiment", "math_base", "core", "fusion", "math_base_select", "adv", "relation", "common_engineering", "free", "teacher"];
 //pdfで取得するリスト(上のidListと同期しなければならない)
-const pdfIdList = ["健康運動", "人文", "社会", "総合", "キャリア関係", "琉大特色・地域創生", "日本語・日本語事情", "自然", "情報関係", "英語", "ドイツ語", "フランス語", "スペイン語", "中国語", "その他", "専門基礎", "専門基礎指定外", "情報技術", "総合力演習", "研究実験", "数学基礎", "知能情報コア", "工学融合（選択）", "数学基礎（選択）", "知能情報アドバンスト", "知能情報関連", "選択（工学共通）", "自由", "教職"]
+const pdfIdList = ["健康運動", "人文", "社会", "総合", "キャリア関係", "琉大特色・地域創生", "自然", "情報関係", "日本語", "日本事情", "英語", "ドイツ語", "フランス語", "スペイン語", "中国語", "その他", "専門基礎", "専門基礎指定外", "情報技術", "総合力演習", "研究実験", "数学基礎", "知能情報コア", "工学融合（選択）", "数学基礎（選択）", "知能情報アドバンスト", "知能情報関連", "選択（工学共通）", "自由", "教職"]
 // 表下の前期後期の必修科目につけられたidのリスト
 
 const compulsoryIdList = ['first_year_Compulsory', 'first_year_2nd_Compulsory', 'second_year_Compulsory', 'second_year_2nd_Compulsory', 'third_year_Compulsory', 'third_year_2nd_Compulsory', 'fourth_year_Compulsory', 'fourth_year_2nd_Compulsory', 'y21_first_year_Compulsory', 'y21_first_year_2nd_Compulsory', 'y21_second_year_Compulsory', 'y21_second_year_2nd_Compulsory', 'y21_third_year_Compulsory', 'y21_third_year_2nd_Compulsory', 'y21_fourth_year_Compulsory', 'y21_fourth_year_2nd_Compulsory']
