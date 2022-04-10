@@ -129,9 +129,6 @@ const subtotal1_calc = () => {
     const career = convertNum(document.getElementById('career').value);
     const ryudai = convertNum(document.getElementById('ryudai').value);
     const sougouryouiki = sougou + career + ryudai;
-
-    // 日本語事情への対応はまだできていない(10/20)
-    const Japanese = convertNum(document.getElementById('Japanese').value);
     const subTotal1 = jinbun + syakai + sougouryouiki;
     // それぞれの不足単位を計算，出力
     document.getElementById('result_jinbun').textContent = Math.max(2 - jinbun, 0);
@@ -249,6 +246,8 @@ const total1_calc = () => {
     const subTotal1 = jinbun + syakai + sougouryouiki;
     const subTotal2 = subTotal1 + sizen;
     const info = convertNum(document.getElementById('info').value);
+    const Japanese = convertNum(document.getElementById('Japanese').value);
+    const JapanCircumstances = convertNum(document.getElementById('JapanCircumstances').value);
     document.getElementById('result_info').textContent = Math.max(2 - info, 0);
     const English = convertNum(document.getElementById('English').value);
     const German = convertNum(document.getElementById('German').value);
@@ -257,7 +256,7 @@ const total1_calc = () => {
     const Chinese = convertNum(document.getElementById('Chinese').value);
     const etc = convertNum(document.getElementById('etc').value);
     const foreignTotal = English + German + French + Spanish + Chinese + etc;
-    const total1 = health + subTotal2 + info + foreignTotal;
+    const total1 = health + subTotal2 + info + foreignTotal + Japanese + JapanCircumstances;
     document.getElementById('total1').textContent = total1;
 
     if (total1 >= 30) {
