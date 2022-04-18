@@ -9,9 +9,9 @@ let fusion_judge = false; // 工学融合を4単位取得したか．
 // 同じ科目群から取得しているかの判定はまだできていない(10/21)
 
 // 全てのinputにつけられたidのリスト
-const idList = ["health", "jinbun", "syakai", "sougou", "career", "ryudai", "sizen", "info", "Japanese", "JapanCircumstances", "English", "German", "French", "Spanish", "Chinese", "etc", "major_base", "out_major_base", "info_tec", "ex", "experiment", "math_base", "core", "fusion", "math_base_select", "adv", "relation", "common_engineering", "free", "teacher"];
+const idList = ["health", "jinbun", "syakai", "sougou", "career", "ryudai", "sizen", "info", "JapanCircumstances", "English", "German", "French", "Spanish", "Chinese", "Japanese", "etc", "major_base", "out_major_base", "info_tec", "ex", "experiment", "math_base", "core", "fusion", "math_base_select", "adv", "relation", "common_engineering", "free", "teacher"];
 //pdfで取得するリスト(上のidListと同期しなければならない)
-const pdfIdList = ["健康運動", "人文", "社会", "総合", "キャリア関係", "琉大特色・地域創生", "自然", "情報関係", "日本語", "日本事情", "英語", "ドイツ語", "フランス語", "スペイン語", "中国語", "その他", "専門基礎", "専門基礎指定外", "情報技術", "総合力演習", "研究実験", "数学基礎", "知能情報コア", "工学融合（選択）", "数学基礎（選択）", "知能情報アドバンスト", "知能情報関連", "選択（工学共通）", "自由", "教職"]
+const pdfIdList = ["健康運動", "人文", "社会", "総合", "キャリア関係", "琉大特色・地域創生", "自然", "情報関係", "日本事情", "英語", "ドイツ語", "フランス語", "スペイン語", "中国語", "日本語", "その他", "専門基礎", "専門基礎指定外", "情報技術", "総合力演習", "研究実験", "数学基礎", "知能情報コア", "工学融合（選択）", "数学基礎（選択）", "知能情報アドバンスト", "知能情報関連", "選択（工学共通）", "自由", "教職"]
 // 表下の前期後期の必修科目につけられたidのリスト
 
 const compulsoryIdList = ['first_year_Compulsory', 'first_year_2nd_Compulsory', 'second_year_Compulsory', 'second_year_2nd_Compulsory', 'third_year_Compulsory', 'third_year_2nd_Compulsory', 'fourth_year_Compulsory', 'fourth_year_2nd_Compulsory', 'y21_first_year_Compulsory', 'y21_first_year_2nd_Compulsory', 'y21_second_year_Compulsory', 'y21_second_year_2nd_Compulsory', 'y21_third_year_Compulsory', 'y21_third_year_2nd_Compulsory', 'y21_fourth_year_Compulsory', 'y21_fourth_year_2nd_Compulsory']
@@ -130,9 +130,6 @@ const subtotal1_calc = () => {
     const career = convertNum(document.getElementById('career').value);
     const ryudai = convertNum(document.getElementById('ryudai').value);
     const sougouryouiki = sougou + career + ryudai;
-
-    // 日本語事情への対応はまだできていない(10/20)
-    const Japanese = convertNum(document.getElementById('Japanese').value);
     const subTotal1 = jinbun + syakai + sougouryouiki;
     // それぞれの不足単位を計算，出力
     document.getElementById('result_jinbun').textContent = Math.max(2 - jinbun, 0);
@@ -251,6 +248,8 @@ const total1_calc = () => {
     const subTotal1 = jinbun + syakai + sougouryouiki;
     const subTotal2 = subTotal1 + sizen;
     const info = convertNum(document.getElementById('info').value);
+    const Japanese = convertNum(document.getElementById('Japanese').value);
+    const JapanCircumstances = convertNum(document.getElementById('JapanCircumstances').value);
     document.getElementById('result_info').textContent = Math.max(2 - info, 0);
     const English = convertNum(document.getElementById('English').value);
     const German = convertNum(document.getElementById('German').value);
@@ -259,7 +258,7 @@ const total1_calc = () => {
     const Chinese = convertNum(document.getElementById('Chinese').value);
     const etc = convertNum(document.getElementById('etc').value);
     const foreignTotal = English + German + French + Spanish + Chinese + etc;
-    const total1 = health + subTotal2 + info + foreignTotal;
+    const total1 = health + subTotal2 + info + foreignTotal + Japanese + JapanCircumstances;
     document.getElementById('total1').textContent = total1;
 
     if (total1 >= 30) {
