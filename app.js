@@ -537,8 +537,8 @@ const admissionYearTableChange = () => {
         // 2020年度入学
         befor2021ChengeGraduationReq();
         before2021GradeTableChange();
-    } else if (options[4].selected == true) {
-        // 2021年度入学
+    } else if (options[4].selected == true || options[5].selected == true) {
+        // 2021年度以降入学
         log("2021年度以降入学に対する処理")
         onAndAfter2021ChengeGraduationReq();
         onAndAfter2021GradeTableChange();
