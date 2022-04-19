@@ -55,7 +55,7 @@ const highLightObjects = //イベントリスナー追加対象のid,ハイラ�
         ]
     ]
 
-const DEBUG = true;//コンソール出力をするか否か
+const DEBUG = false;//コンソール出力をするか否か
 
 const log = (log) => {
     if (DEBUG == true) {
@@ -514,6 +514,8 @@ takeAllCheckbox_y21.addEventListener('change', valueChange);
 
 // セレクトボックスの値の変化によって表示を変更する関数をまとめて発火するための関数
 const ChangeBySelect = () => {
+    const selected_year_by_select = document.getElementById('select_admission_year').value;
+    document.getElementById('selected_year').innerHTML=`<p>選択中の入学年度:${selected_year_by_select}年</P>`
     TableChangeReqLab();
     admissionYearTableChange();
     TableChangeSubjectClassificationImage();
@@ -1507,7 +1509,7 @@ const generateJson = () => {
     obj = {}
     //入学年度の追加
     const options = document.getElementById("select_admission_year").options;
-    console.log(options.length);
+    log(options.length);
     for (let i = 0; i < options.length; i++) {
         log(options[i])
         if (options[i].selected == true) {
