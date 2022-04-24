@@ -8,7 +8,7 @@ ___
 
 [Trello](https://trello.com/b/E91blxK1/tkg)に移行しました．(2021/10/19)
 
-[TKGのURL](https://nichika0617.github.io/TKG/)
+[動いているものはこちら](https://nichika0617.github.io/TKG/)
 ___
 
 卒業要件を満たすために必要な単位が確認できるサイトです．
