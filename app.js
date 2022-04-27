@@ -344,12 +344,20 @@ const subtotal4_calc = () => {
     const free = convertNum(document.getElementById('free').value);
 
     const teacher = convertNum(document.getElementById('teacher').value);
-    if (teacher > 10) {
-        document.getElementById('teacher_warning').innerHTML = "<div class='table_tooltip'><p class='warning'><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chat-left-text' viewBox='0 0 16 16'><path d='M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z'/><path d='M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z'/></svg> </span></p><div class='description'>教職科目は10単位までしか卒業単位に含まれません</div></div>";
+    if (teacher + free > 10) {
+        if(free == 0){
+            // 自由科目をとっていない場合は，教職の欄に警告文を表示する
+            document.getElementById('teacher_warning').innerHTML = "<div class='table_tooltip'><p class='warning'><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chat-left-text' viewBox='0 0 16 16'><path d='M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z'/><path d='M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z'/></svg> </span></p><div class='description'>自由と教職合計で10単位までのカウントとなります</div></div>";
+        }else{
+            // 自由科目が1単位でもある場合は自由科目の欄に警告文を表示する．
+            document.getElementById('free_warning').innerHTML = "<div class='table_tooltip'><p class='warning'><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chat-left-text' viewBox='0 0 16 16'><path d='M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z'/><path d='M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z'/></svg> </span></p><div class='description'>自由と教職合計で10単位までのカウントとなります</div></div>";
+        }
+        
     } else {
         document.getElementById('teacher_warning').innerHTML = "";
+        document.getElementById('free_warning').innerHTML = "";
     }
-
+    
     const subTotal4 = fusion + subTotal3 + common_engineering + free + teacher;
     // 数情統計 教職もここに↑↑
     req_subtotal4 = convertNum(document.getElementById("req_sub_total4").textContent);
