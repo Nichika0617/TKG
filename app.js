@@ -344,12 +344,20 @@ const subtotal4_calc = () => {
     const free = convertNum(document.getElementById('free').value);
 
     const teacher = convertNum(document.getElementById('teacher').value);
-    if (teacher > 10) {
-        document.getElementById('teacher_warning').innerHTML = "<div class='table_tooltip'><p class='warning'><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chat-left-text' viewBox='0 0 16 16'><path d='M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z'/><path d='M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z'/></svg> </span></p><div class='description'>教職科目は10単位までしか卒業単位に含まれません</div></div>";
+    if (teacher + free > 10) {
+        if(free == 0){
+            // 自由科目をとっていない場合は，教職の欄に警告文を表示する
+            document.getElementById('teacher_warning').innerHTML = "<div class='table_tooltip'><p class='warning'><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chat-left-text' viewBox='0 0 16 16'><path d='M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z'/><path d='M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z'/></svg> </span></p><div class='description'>自由と教職合計で10単位までのカウントとなります</div></div>";
+        }else{
+            // 自由科目が1単位でもある場合は自由科目の欄に警告文を表示する．
+            document.getElementById('free_warning').innerHTML = "<div class='table_tooltip'><p class='warning'><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chat-left-text' viewBox='0 0 16 16'><path d='M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z'/><path d='M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z'/></svg> </span></p><div class='description'>自由と教職合計で10単位までのカウントとなります</div></div>";
+        }
+        
     } else {
         document.getElementById('teacher_warning').innerHTML = "";
+        document.getElementById('free_warning').innerHTML = "";
     }
-
+    
     const subTotal4 = fusion + subTotal3 + common_engineering + free + teacher;
     // 数情統計 教職もここに↑↑
     req_subtotal4 = convertNum(document.getElementById("req_sub_total4").textContent);
@@ -515,7 +523,13 @@ takeAllCheckbox_y21.addEventListener('change', valueChange);
 // セレクトボックスの値の変化によって表示を変更する関数をまとめて発火するための関数
 const ChangeBySelect = () => {
     const selected_year_by_select = document.getElementById('select_admission_year').value;
-    document.getElementById('selected_year').innerHTML=`<p>選択中の入学年度:${selected_year_by_select}年</P>`
+    log(parseInt(selected_year_by_select))
+    if(isNaN(parseInt(selected_year_by_select))){
+        document.getElementById('selected_year').innerHTML=`<p>入学年度が選択されていません．[保存した値を削除]ボタンから入学年度選択画面に画面に移ることが出来ます．</P>`
+    }else{
+        document.getElementById('selected_year').innerHTML=`<p>選択中の入学年度:${selected_year_by_select}年</P>`
+    }
+
     TableChangeReqLab();
     admissionYearTableChange();
     TableChangeSubjectClassificationImage();
@@ -1495,11 +1509,8 @@ const setValue = (json) => {
             document.getElementById(id).value = json[id]
         }
         const options = document.getElementById("select_admission_year").options;
-        if (options[json["admission_year"]] != undefined) {
+        if ([json["admission_year"]] != 0) { // 何も選んでないときは0になる．0のままTKGに進んでしまわないように．
             options[json["admission_year"]].selected = true;//入学年度の復元
-            // 値を削除した後，pdfを読み込もうとすると，このadmission_yearでエラー起きます．
-            // setValuesFromPdfObject でadmission_year抜きの科目群だけのobjが引数で渡されるから，
-            // undefinedになる．だからadmission_yearがないときは
             document.getElementById("select_admission_year").onchange();
         }
     }
@@ -1509,14 +1520,8 @@ const generateJson = () => {
     obj = {}
     //入学年度の追加
     const options = document.getElementById("select_admission_year").options;
-    log(options.length);
-    for (let i = 0; i < options.length; i++) {
-        log(options[i])
-        if (options[i].selected == true) {
-            obj["admission_year"] = i;
-            log(`選択された学年の番号(admission_year)は${obj["admission_year"]}`)
-        }
-    }
+    obj["admission_year"] = options.selectedIndex; // 2018は1．2019は2
+    log(`選択された学年の番号(admission_year)は${obj["admission_year"]}`)
     //単位要素の追加
     for (let i = 0; i < idList.length; i++) {
         id = idList[i]
