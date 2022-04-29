@@ -523,7 +523,13 @@ takeAllCheckbox_y21.addEventListener('change', valueChange);
 // セレクトボックスの値の変化によって表示を変更する関数をまとめて発火するための関数
 const ChangeBySelect = () => {
     const selected_year_by_select = document.getElementById('select_admission_year').value;
-    document.getElementById('selected_year').innerHTML=`<p>選択中の入学年度:${selected_year_by_select}年</P>`
+    console.log(parseInt(selected_year_by_select))
+    if(isNaN(parseInt(selected_year_by_select))){
+        document.getElementById('selected_year').innerHTML=`<p>入学年度が選択されていません．[保存した値を削除]ボタンから入学年度選択画面に画面に移ることが出来ます．</P>`
+    }else{
+        document.getElementById('selected_year').innerHTML=`<p>選択中の入学年度:${selected_year_by_select}年</P>`
+    }
+
     TableChangeReqLab();
     admissionYearTableChange();
     TableChangeSubjectClassificationImage();
@@ -1505,9 +1511,6 @@ const setValue = (json) => {
         const options = document.getElementById("select_admission_year").options;
         if (options[json["admission_year"]] != undefined) {
             options[json["admission_year"]].selected = true;//入学年度の復元
-            // 値を削除した後，pdfを読み込もうとすると，このadmission_yearでエラー起きます．
-            // setValuesFromPdfObject でadmission_year抜きの科目群だけのobjが引数で渡されるから，
-            // undefinedになる．だからadmission_yearがないときは
             document.getElementById("select_admission_year").onchange();
         }
     }
