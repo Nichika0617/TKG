@@ -1520,14 +1520,8 @@ const generateJson = () => {
     obj = {}
     //入学年度の追加
     const options = document.getElementById("select_admission_year").options;
-    log(options.length);
-    for (let i = 0; i < options.length; i++) {
-        log(options[i])
-        if (options[i].selected == true) {
-            obj["admission_year"] = i;
-            log(`選択された学年の番号(admission_year)は${obj["admission_year"]}`)
-        }
-    }
+    obj["admission_year"] = options.selectedIndex; // 2018は1．2019は2
+    log(`選択された学年の番号(admission_year)は${obj["admission_year"]}`)
     //単位要素の追加
     for (let i = 0; i < idList.length; i++) {
         id = idList[i]
