@@ -523,7 +523,7 @@ takeAllCheckbox_y21.addEventListener('change', valueChange);
 // セレクトボックスの値の変化によって表示を変更する関数をまとめて発火するための関数
 const ChangeBySelect = () => {
     const selected_year_by_select = document.getElementById('select_admission_year').value;
-    console.log(parseInt(selected_year_by_select))
+    log(parseInt(selected_year_by_select))
     if(isNaN(parseInt(selected_year_by_select))){
         document.getElementById('selected_year').innerHTML=`<p>入学年度が選択されていません．[保存した値を削除]ボタンから入学年度選択画面に画面に移ることが出来ます．</P>`
     }else{
@@ -1509,7 +1509,7 @@ const setValue = (json) => {
             document.getElementById(id).value = json[id]
         }
         const options = document.getElementById("select_admission_year").options;
-        if (options[json["admission_year"]] != undefined) {
+        if ([json["admission_year"]] != 0) { // 何も選んでないときは0になる．0のままTKGに進んでしまわないように．
             options[json["admission_year"]].selected = true;//入学年度の復元
             document.getElementById("select_admission_year").onchange();
         }
