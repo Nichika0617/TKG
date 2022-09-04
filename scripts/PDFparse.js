@@ -1,22 +1,24 @@
 const PDFWIDTHMIN = 100;
 const PDFWIDTHMAX = 118;
+const PDFHEIGHTMAX = 4;
 
 const setValuesFromPdfObject = (textContent) => {
     /*
     pdfObject has page objects
-    page object has textContent() 
+    page object has textContent()
     textContent return has items and styles
     pdfobject.items is object array
-    theobject has str, transform[], etc...  
+    theobject has str, transform[], etc...
     */
     const objectArray = textContent.items
+    log(objectArray);
     let target = 0;
     obj = {}
     for (let i = 0; i < objectArray.length; i++) {
         let baseObject = objectArray[i];
         if (baseObject.str == pdfIdList[target]) {//スタートを探す
             log("match:" + baseObject.str);
-            const basePos = baseObject.transform.slice(4);
+            const basePos = baseObject.transform.slice(4);//xy座標のみ取り出す
             let value = 0;
             for (let j = i + 1; j < objectArray.length; j++) {
                 const targetObject = objectArray[j];
@@ -29,7 +31,7 @@ const setValuesFromPdfObject = (textContent) => {
                 */
 
                 const posDiff = targetPos[0] - basePos[0];
-                if (Math.abs(basePos[1] - targetPos[1]) < 4) {
+                if (Math.abs(basePos[1] - targetPos[1]) < PDFHEIGHTMAX) {
                     if (PDFWIDTHMAX > posDiff && posDiff > PDFWIDTHMIN) {
                         value = targetObject.str
                         break;
